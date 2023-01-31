@@ -38,11 +38,34 @@ namespace Projet2.Models
             return utilisateur.Id;
         }
 
+
+
         public int CreateUser(Utilisateur utilisateur)
         {
             _bddContext.Utilisateurs.Add(utilisateur);
             _bddContext.SaveChanges();
             return utilisateur.Id;
+        }
+
+
+        public void ModifyUser(Utilisateur utilisateur)
+        {
+            _bddContext.Utilisateurs.Update(utilisateur);
+            _bddContext.SaveChanges();
+        }
+
+        public void ModifyUser(int Id, int idCompte, int IdInfosPersonnelles)
+        {
+            Utilisateur utilisateur = _bddContext.Utilisateurs.Find(Id);
+            if (utilisateur != null)
+            {
+                utilisateur.CompteId = idCompte;
+                utilisateur.InfosPersonnellesId = IdInfosPersonnelles;
+                utilisateur.InfosPersonnelles.Nom = utilisateur.InfosPersonnelles.Nom;
+                utilisateur.InfosPersonnelles.Prenom = utilisateur.InfosPersonnelles.Prenom;
+
+                _bddContext.SaveChanges();
+            }
         }
     }
 }

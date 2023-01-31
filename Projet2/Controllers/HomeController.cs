@@ -25,9 +25,42 @@ namespace Projet2.Controllers
             return View(listeUsers);
         }
 
-        public IActionResult ModifyUser()
+
+        // recovers the saved values and displays them
+        public IActionResult ModifyUser(int id)
         {
-            return View();
+            if (id != 0)
+            {
+                using (IDal dal = new Dal())
+                {
+                    Utilisateur utilisateur = dal.GetUsersList().Where(r => r.Id == id).FirstOrDefault();
+
+                    if (utilisateur == null)
+                    {
+                        return View("Error");
+                    }
+                    return View("ModifyUser", utilisateur);
+                }
+            }
+            return View("Error");
+        }
+
+        // sends the modified data
+        [HttpPost]
+        public IActionResult ModifyUser(Utilisateur utilisateur)
+        {
+            if (utilisateur.Id != 0)
+            {
+                using (Dal dal = new Dal())
+                {
+                    dal.ModifyUser(utilisateur);
+                    return RedirectToAction("UserList");
+                }
+            }
+            else
+            {
+                return View("Error");
+            }
         }
 
 
