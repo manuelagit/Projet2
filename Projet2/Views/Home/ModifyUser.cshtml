@@ -1,0 +1,83 @@
+﻿@model Projet2.Models.Utilisateur
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ModifyUser</title>
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        <fieldset>
+            @Html.HiddenFor(m => Model.CompteId)  @*crée des inputs cachés qui contiennent les valeurs pour ne pas perdre les données*@
+            @Html.HiddenFor(m => Model.InfosPersonnellesId)
+
+            <legend><h4>Modification d'un compte utilisateur</h4></legend>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>@Html.LabelFor(m => Model.InfosPersonnelles.Nom)</td>
+                        <td>@Html.TextBoxFor(m => Model.InfosPersonnelles.Nom)</td>
+                        <td>@Html.ValidationMessageFor(m => Model.InfosPersonnelles.Nom)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(m => Model.InfosPersonnelles.Prenom)</td>
+                        <td>@Html.TextBoxFor(m => Model.InfosPersonnelles.Prenom)</td>
+                        <td>@Html.ValidationMessageFor(m => Model.InfosPersonnelles.Prenom)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(m => Model.InfosPersonnelles.DateNaissance)</td>
+                        <td>@Html.TextBoxFor(m => Model.InfosPersonnelles.DateNaissance, new { type = "Date" })</td>
+                        <td>@Html.ValidationMessageFor(m => Model.InfosPersonnelles.DateNaissance)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(m => Model.InfosPersonnelles.Adresse)</td>
+                        <td>@Html.TextBoxFor(m => Model.InfosPersonnelles.Adresse.NumeroRue)</td>
+                        <td>@Html.ValidationMessageFor(m => Model.InfosPersonnelles.Adresse.NumeroRue)</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>@Html.TextBoxFor(m => Model.InfosPersonnelles.Adresse.NomRue)</td>
+                        <td>@Html.ValidationMessageFor(m => Model.InfosPersonnelles.Adresse.NomRue)</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>@Html.TextBoxFor(m => Model.InfosPersonnelles.Adresse.CodePostal)</td>
+                        <td>@Html.ValidationMessageFor(m => Model.InfosPersonnelles.Adresse.CodePostal)</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>@Html.TextBoxFor(m => Model.InfosPersonnelles.Adresse.NomVille)</td>
+                        <td>@Html.ValidationMessageFor(m => Model.InfosPersonnelles.Adresse.NomVille)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(m => Model.Compte.AdressEmail)</td>
+                        <td>@Html.TextBoxFor(m => Model.Compte.AdressEmail, new { type = "email" })</td>
+                        <td>@Html.ValidationMessageFor(m => Model.Compte.AdressEmail)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(m => Model.Compte.MotDePasse)</td>
+                        <td>@Html.TextBoxFor(m => Model.Compte.MotDePasse, new { type = "password" })</td>
+                        <td>@Html.ValidationMessageFor(m => Model.Compte.MotDePasse)</td>
+                    </tr>
+
+                </tbody>
+            </table>
+            <br />
+            <br />
+
+            <input type="button" onclick="window.location.href='https://localhost:5001/Home';" class="btn btn-warning btn-lg" value="Retour accueil" />
+            <input type="button" onclick="window.location.href='https://localhost:5001/Home/UserList';" class="btn btn-warning btn-lg" value="Retour Liste" />
+            <input type="submit" value="Modifier" />
+        </fieldset>
+    }
+    @*vérification du type de données dans le front*@
+    <script type="text/javascript" src="~/Scripts/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.validate-vsdoc.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+
+</body>
+</html>

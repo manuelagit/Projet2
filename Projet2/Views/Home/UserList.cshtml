@@ -1,0 +1,67 @@
+﻿@model List<Projet2.Models.Utilisateur>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste des utilisateurs</title>
+</head>
+<center>
+    <body>
+        <h1>Liste des utilisateurs</h1>
+        <table border="1" style="margin: 20px">
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Date de naissance</th>
+                <th>Adresse</th>
+                <th>adresse Email</th>
+                <th>Mot de passe</th>
+            </tr>
+            <tbody>
+                @foreach (var member in Model)
+
+                {
+                    <tr>
+                        <td>@member.Id</td>
+                        <td>@member.InfosPersonnelles.Nom</td>
+                        <td>@member.InfosPersonnelles.Prenom</td>
+                        <td>@member.InfosPersonnelles.DateNaissance.ToString("dd/MM/yyyy")</td>
+                        <td>@member.InfosPersonnelles.Adresse.NumeroRue, @member.InfosPersonnelles.Adresse.NomRue - @member.InfosPersonnelles.Adresse.CodePostal @member.InfosPersonnelles.Adresse.NomVille </td>
+                        <td>@member.Compte.AdressEmail</td>
+                        <td>@member.Compte.MotDePasse</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <form action="RemoveUser" method="get">
+            <div style="margin: 20px">
+                <input type="text" name="id" placeholder="Id" size="10rem" />
+                <button type="submit">Remove member</button>
+            </div>
+        </form>
+
+        <form action="ModifyUser" method="get">
+            <div style="margin: 20px">
+                <input type="text" name="id" placeholder="Id" size="10rem" />
+                <button type="submit" onclick="window.location.href='https://localhost:5001/Home/ModifyUser';">Modifier membre</button>
+            </div>
+        </form>
+
+
+
+
+        <div style="margin: 20px">
+            <input type="button" onclick="window.location.href='https://localhost:5001/Home';" class="btn btn-warning btn-lg" value="Retour accueil" />
+            <button type="submit" onclick="window.location.href='https://localhost:5001/Home/createUser';">Créer membre</button>
+        </div>
+
+
+
+    </body>
+</center>
+</html>
+
