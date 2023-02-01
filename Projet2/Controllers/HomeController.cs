@@ -75,12 +75,11 @@ namespace Projet2.Controllers
         [HttpPost]
         public IActionResult CreateUser(Utilisateur utilisateur)
         {
-
-            int idCount = ListeUtilisateurs.listeUtilisateurs.Count() + 1;
-            utilisateur.Id = idCount;
-            ListeUtilisateurs.CreateUser(idCount, utilisateur.Compte, utilisateur.InfosPersonnelles);
             Dal dal = new Dal();
+            utilisateur.InfosPersonnellesId = dal.CreateInfosPersonnelles(utilisateur.InfosPersonnelles);
+            utilisateur.CompteId = dal.CreateCompte(utilisateur.Compte);
 
+            //ListeUtilisateurs.CreateUser(idCount, utilisateur.Compte, utilisateur.InfosPersonnelles);
             dal.CreateUser(utilisateur);
             return RedirectToAction("UserList");
         }

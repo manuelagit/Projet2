@@ -30,6 +30,20 @@ namespace Projet2.Models
         }
 
 
+        public int CreateInfosPersonnelles(InfosPersonnelles infosPersonnelles)
+        {
+            _bddContext.InfosPersonnelles.Add(infosPersonnelles);
+            _bddContext.SaveChanges();
+            return infosPersonnelles.Id;
+        }
+
+        public int CreateCompte(Compte compte)
+        {
+            _bddContext.Comptes.Add(compte);
+            _bddContext.SaveChanges();
+            return compte.Id;
+        }
+
         public int CreateUser(int idCompte, int IdInfosPersonnelles)
         {
             Utilisateur utilisateur = new Utilisateur { CompteId = idCompte, InfosPersonnellesId = IdInfosPersonnelles };
