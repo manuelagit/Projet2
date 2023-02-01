@@ -28,7 +28,7 @@
                     </tr>
                     <tr>
                         <td>@Html.LabelFor(m => Model.InfosPersonnelles.DateNaissance)</td>
-                        <td>@Html.TextBoxFor(m => Model.InfosPersonnelles.DateNaissance, new { type = "Date" })</td>
+                        <td>@Html.TextBoxFor(m => Model.InfosPersonnelles.DateNaissance, "{0:yyyy-MM-dd}", new { type = "Date" })</td>
                         <td>@Html.ValidationMessageFor(m => Model.InfosPersonnelles.DateNaissance)</td>
                     </tr>
                     <tr>
