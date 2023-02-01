@@ -6,6 +6,8 @@ namespace Projet2.Models.Paiement
 {
     public class Facturation
     {
+        public int Id { get; set; }
+
         [Required(ErrorMessage = "Le nom est requis")]
         public string NomFacture { get; set; }
 
