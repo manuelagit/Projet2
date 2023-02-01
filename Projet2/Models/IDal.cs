@@ -9,6 +9,9 @@ namespace Projet2.Models
         List<Utilisateur> GetUsersList();
         int CreateUser(int idCompte, int IdInfosPersonnelles);
         int CreateUser(Utilisateur utilisateur);
+        int ModifyUser(Utilisateur utilisateur);
+        void ModifyUser(int id);
+        void RemoveUser(Utilisateur utilisateur);
     }
 }
 

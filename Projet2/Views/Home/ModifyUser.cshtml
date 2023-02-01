@@ -12,8 +12,10 @@
     @using (Html.BeginForm())
     {
         <fieldset>
-            @Html.HiddenFor(m => Model.CompteId)  @*crée des inputs cachés qui contiennent les valeurs pour ne pas perdre les données*@
-            @Html.HiddenFor(m => Model.InfosPersonnellesId)
+            @Html.HiddenFor(m => Model.CompteId)            @*crée des inputs cachés qui contiennent les valeurs pour ne pas perdre les données*@
+            @Html.HiddenFor(m => Model.InfosPersonnellesId) @*clé etrangère dans la table utilisateur*@
+            @Html.HiddenFor(m => Model.InfosPersonnelles.Id)@*clé primaire dans la table InfosPersonnelles*@
+            @Html.HiddenFor(m => Model.Compte.Id)           @*clé primaire dans la table Compte*@
 
             <legend><h4>Modification d'un compte utilisateur</h4></legend>
             <table>
@@ -73,11 +75,11 @@
             <input type="button" onclick="window.location.href='https://localhost:5001/Home/UserList';" class="btn btn-warning btn-lg" value="Retour Liste" />
             <input type="submit" value="Modifier" />
         </fieldset>
-    }
-    @*vérification du type de données dans le front*@
-    <script type="text/javascript" src="~/Scripts/jquery-3.3.1.js"></script>
-    <script type="text/javascript" src="~/Scripts/jquery.validate-vsdoc.js"></script>
-    <script type="text/javascript" src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+        }
+        @*vérification du type de données dans le front*@
+            <script type="text/javascript" src="~/Scripts/jquery-3.3.1.js"></script>
+            <script type="text/javascript" src="~/Scripts/jquery.validate-vsdoc.js"></script>
+            <script type="text/javascript" src="~/Scripts/jquery.validate.unobtrusive.js"></script>
 
 </body>
 </html>
