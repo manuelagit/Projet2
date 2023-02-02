@@ -112,12 +112,6 @@ namespace Projet2.Controllers
             return View(offreAbonnements);
         }
 
-        //Creation of a catalog
-        public IActionResult testPaiement()
-        {
-           
-            return View("testPaiement");
-        }
 
     }
 }
