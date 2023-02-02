@@ -41,6 +41,14 @@ namespace Projet2.Models
             return infosPersonnelles.Id;
         }
 
+
+        public int CreateInfosClub(InfosClub infosClub)
+        {
+            _bddContext.InfosClubs.Add(infosClub);
+            _bddContext.SaveChanges();
+            return infosClub.Id;
+        }
+
         public int CreateCompte(Compte compte)
         {
             _bddContext.Comptes.Add(compte);
@@ -63,6 +71,16 @@ namespace Projet2.Models
             _bddContext.SaveChanges();
             return utilisateur.Id;
         }
+
+
+        public int CreateClub(int idCompte, int IdInfosClub)
+        {
+            Club club = new Club { CompteId = idCompte, InfosClubId = IdInfosClub };
+            _bddContext.Clubs.Add(club);
+            _bddContext.SaveChanges();
+            return club.Id;
+        }
+
 
 
         public int CreateClub(Club club)
@@ -97,6 +115,13 @@ namespace Projet2.Models
             _bddContext.Utilisateurs.Update(utilisateur);
             _bddContext.SaveChanges();
             return utilisateur.Id;
+        }
+
+        public int ModifyClub(Club club)
+        {
+            _bddContext.Clubs.Update(club);
+            _bddContext.SaveChanges();
+            return club.Id;
         }
 
         public void RemoveUser(Utilisateur utilisateur)

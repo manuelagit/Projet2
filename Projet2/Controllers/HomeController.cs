@@ -29,7 +29,7 @@ namespace Projet2.Controllers
         {
             Dal dal = new Dal();
             List<Club> listeClubs = dal.GetClubsList(); // to be able to use the helper, instead of ViewData["ListeUtilisateurs"] = dal.GetUsersList();
-            return View();
+            return View(listeClubs);
         }
 
 
@@ -151,8 +151,8 @@ namespace Projet2.Controllers
         {
             Dal dal = new Dal();
             club.CompteId = dal.CreateCompte(club.Compte);
+            club.InfosClubId = dal.CreateInfosClub(club.InfosClub);
 
-            //ListeUtilisateurs.CreateUser(idCount, utilisateur.Compte, utilisateur.InfosPersonnelles);
             dal.CreateClub(club);
             return RedirectToAction("ClubList");
         }
@@ -184,6 +184,34 @@ namespace Projet2.Controllers
             }
         }
 
+
+        public IActionResult RemoveClub(int Id)
+        {
+            if (Id != 0)
+            {
+                using (Dal dal = new Dal())
+                {
+                    Club club = dal.GetClubsList().Where(r => r.Id == Id).FirstOrDefault();
+                    dal.RemoveClub(club);
+                    return RedirectToAction("ClubList");
+                }
+            }
+            else
+            {
+                return View("Error");
+            }
+        }
+
+
+        public IActionResult PaymentView() 
+        { 
+            return View();
+        }
+
+        public IActionResult FacturationView()
+        {
+            return View();
+        }
     }
 }
 

@@ -20,6 +20,11 @@ namespace Projet2.Models
             listeClubs.Add(new Club() { Id = id, Compte = compte, InfosClub = infosClub });
         }
 
+        // add a user to the list via Club
+        public static void CreateUser(Club club)
+        {
+            listeClubs.Add(club);
+        }
 
         // remove a club from the list 
         public static void RemoveClub(Club club)

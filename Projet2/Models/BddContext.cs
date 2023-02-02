@@ -42,6 +42,12 @@ namespace Projet2.Models
             Compte compteClub = new Compte() { Id =3, AdressEmail = "vlg@gmail.com", MotDePasse = "123" };
             Club club = new Club() { Id = 3, CompteId = 3, InfosClubId = 3};
 
+            Adresse adresseClubAVL = new Adresse() { Id = 4, CodePostal = 38870, NomVille = "Annecy", NomRue = "rue Daudet", NumeroRue = 43 };
+            InfosClub infosClubAVL = new InfosClub() { Id = 4, NomClub = "Annecy Vol Libre", AdresseId = 4 };
+
+            Compte compteClubAVL = new Compte() { Id = 4, AdressEmail = "avl@gmail.com", MotDePasse = "12EEE3" };
+            Club clubAVL = new Club() { Id = 4, CompteId = 4, InfosClubId = 4 };
+
             this.Adresses.Add(adresse);
             this.InfosPersonnelles.Add(infosperso);
             this.Comptes.Add(compte);
@@ -49,15 +55,22 @@ namespace Projet2.Models
             this.OffreAbonnements.Add(offreAbonnement);
             this.OffreAbonnements.Add(offreAbonnement2);
 
+            club.Compte = compteClub;
+            club.InfosClub = infosClub;
             this.Adresses.Add(adresseClub);
             this.InfosClubs.Add(infosClub);
             this.Comptes.Add(compteClub);
             this.Clubs.Add(club);
+            this.Adresses.Add(adresseClubAVL);
+            this.InfosClubs.Add(infosClubAVL);
+            this.Comptes.Add(compteClubAVL);
+            this.Clubs.Add(clubAVL);
             this.SaveChanges();
 
 
             
         }
+
 
     }
 }

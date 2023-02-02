@@ -15,7 +15,9 @@ namespace Projet2.Models
 
         List<Club> GetClubsList();
         int CreateClub(Club club);
+        int CreateClub(int idCompte, int IdInfosClub);
         void ModifyClub(int id);
+        int ModifyClub(Club club);
         void RemoveClub(Club club);
 
     }
