@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/css/Site.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="entete">
+        <h1>WINGSOLUTION</h1>
+    </div>
+
+    <div id="main">
+        <div id="menu">
+            <ul>
+                <li>@Html.ActionLink("Accueil", "Index")</li>
+                <li>@Html.ActionLink("Connexion", "Liste")</li>
+                <li>@Html.ActionLink("Inscription", "Forum")</li>
+                <li>@Html.ActionLink("Rechercher un club", "")<li>
+            </ul>
+        </div>
+
+        <div id="contenu">
+            @RenderBody()
+        </div>
+    </div>
+
+    <div id="footer">
+        &copy; @DateTime.Now.Year - Super site de tutoriels, contactez moi sur monmail@supersitetutoriels.com
+    </div>
+</body>
+</html>

@@ -83,7 +83,6 @@ namespace Projet2.Controllers
             dal.CreateUser(utilisateur);
             return RedirectToAction("UserList");
         }
-
     }
 }
 

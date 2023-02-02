@@ -25,8 +25,16 @@
     <Folder Include="wwwroot\" />
     <Folder Include="Views\" />
     <Folder Include="Views\Home\" />
+    <Folder Include="wwwroot\css\" />
+    <Folder Include="wwwroot\Images\" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="wwwroot\" />
+    <Content Remove="wwwroot\css\Site.css" />
+    <Content Remove="wwwroot\css\" />
+    <Content Remove="wwwroot\Images\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="wwwroot\css\Site.css" />
   </ItemGroup>
 </Project>

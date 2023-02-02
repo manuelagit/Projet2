@@ -1,14 +1,8 @@
 ﻿@model Projet2.Models.Utilisateur
 @{
-    Layout = null;
+    ViewBag.Title = "CreateUser";
+    Layout = "_LayoutDuSite";
 }
-<!DOCTYPE html>
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>CreateUser</title>
-</head>
-<body>
     @using (Html.BeginForm())
     {
         <fieldset>
@@ -76,6 +70,3 @@
     <script type="text/javascript" src="~/Scripts/jquery-3.3.1.js"></script>
     <script type="text/javascript" src="~/Scripts/jquery.validate-vsdoc.js"></script>
     <script type="text/javascript" src="~/Scripts/jquery.validate.unobtrusive.js"></script>
-
-</body>
-</html>
