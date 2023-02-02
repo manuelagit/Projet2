@@ -62,22 +62,36 @@ namespace Projet2.Models
         }
 
 
-        public void ModifyUser(Utilisateur utilisateur)
-        {
-            _bddContext.Utilisateurs.Update(utilisateur);
-            _bddContext.SaveChanges();
-        }
-
-        public void ModifyUser(int Id, int idCompte, int IdInfosPersonnelles)
+        public void ModifyUser(int Id)
         {
             Utilisateur utilisateur = _bddContext.Utilisateurs.Find(Id);
             if (utilisateur != null)
             {
-                utilisateur.CompteId = idCompte;
-                utilisateur.InfosPersonnellesId = IdInfosPersonnelles;
-                utilisateur.InfosPersonnelles.Nom = utilisateur.InfosPersonnelles.Nom;
-                utilisateur.InfosPersonnelles.Prenom = utilisateur.InfosPersonnelles.Prenom;
+                _bddContext.Utilisateurs.Update(utilisateur);
+                _bddContext.SaveChanges();
+            }
+        }
 
+        public int ModifyUser(Utilisateur utilisateur)
+        {
+            _bddContext.Utilisateurs.Update(utilisateur);
+            _bddContext.SaveChanges();
+            return utilisateur.Id;
+        }
+
+        public void RemoveUser(Utilisateur utilisateur)
+        {
+            if (utilisateur != null)
+            {
+                Compte tmpCompte = utilisateur.Compte;
+                InfosPersonnelles tmpInfos = utilisateur.InfosPersonnelles;
+                Adresse tmpAdresse = utilisateur.InfosPersonnelles.Adresse;
+
+                utilisateur.InfosPersonnellesId = 0;
+                _bddContext.Utilisateurs.Remove(utilisateur);
+                _bddContext.InfosPersonnelles.Remove(tmpInfos);
+                _bddContext.Adresses.Remove(tmpAdresse);
+                _bddContext.Comptes.Remove(tmpCompte);
                 _bddContext.SaveChanges();
             }
         }
@@ -123,6 +137,7 @@ namespace Projet2.Models
 
 
         }
+
     }
 }
 

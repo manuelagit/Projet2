@@ -95,6 +95,23 @@ namespace Projet2.Controllers
         }
 
        
+        public IActionResult RemoveUser(int Id)
+        {
+            if (Id != 0)
+            {
+                using (Dal dal = new Dal())
+                {
+                    Utilisateur utilisateur = dal.GetUsersList().Where(r => r.Id == Id).FirstOrDefault();
+                    dal.RemoveUser(utilisateur);
+                    return RedirectToAction("UserList");
+                }
+            }
+            else
+            {
+                return View("Error");
+            }
+        }
+
     }
 }
 

@@ -14,6 +14,9 @@ namespace Projet2.Models
         int CreateOffreAbonnements(string descriptionOffre, int dureeOffreMois, string typeOffre, double prix);
         int CreateOffreAbonnements(OffreAbonnement offreAbonnement);
 
+        int ModifyUser(Utilisateur utilisateur);
+        void ModifyUser(int id);
+        void RemoveUser(Utilisateur utilisateur);
     }
 }
 
