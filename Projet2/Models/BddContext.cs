@@ -31,8 +31,8 @@ namespace Projet2.Models
             Compte compte = new Compte() { Id = 1, AdressEmail = "papa@gmail.com", MotDePasse = "123" };
             Utilisateur utilisateur = new Utilisateur() { Id = 1, InfosPersonnellesId = 1, CompteId = 1 };
             OffreAbonnement offreAbonnement = new OffreAbonnement() { Id = 1, DescriptionOffre = "Offre Annuelle sans engagement : 680.75 Euros", TypeOffre = "Annuelle", DureeOffreMois = 12, Prix = 680.75 };
-            OffreAbonnement offreAbonnement2 = new OffreAbonnement() { Id = 2, DescriptionOffre = "Offre Mensuelle sans engagement : 69.99", TypeOffre = "Mensuelle", DureeOffreMois = 1, Prix = 69.99 };
-            OffreAbonnement offreAbonnement3 = new OffreAbonnement() { Id = 3, DescriptionOffre = "Forfait Mensuelle : 49.99", TypeOffre = "Mensuelle", DureeOffreMois = 1, Prix = 49.99 };
+            OffreAbonnement offreAbonnement2 = new OffreAbonnement() { Id = 2, DescriptionOffre = "Offre Mensuelle sans engagement : 69.99 Euros", TypeOffre = "Mensuelle", DureeOffreMois = 1, Prix = 69.99 };
+            OffreAbonnement offreAbonnement3 = new OffreAbonnement() { Id = 3, DescriptionOffre = "Forfait Mensuelle : 49.99 Euros", TypeOffre = "Mensuelle", DureeOffreMois = 1, Prix = 49.99 };
 
             this.Adresses.Add(adresse);
             this.InfosPersonnelles.Add(infosperso);
