@@ -111,7 +111,15 @@ namespace Projet2.Controllers
                 return View("Error");
             }
         }
-        
+        public IActionResult PaymentView() 
+        { 
+            return View();
+        }
+
+        public IActionResult FacturationView()
+        {
+            return View();
+        }
     }
 }
 
