@@ -7,13 +7,13 @@ namespace Projet2.Models
         public int Id { get; set; }
 
         [Required(ErrorMessage = "Le nom est requis")]
-        public string NomFacturion { get; set; }
+        public string NomFacturation { get; set; }
 
         [Required(ErrorMessage = "Le prenom est requis")]
-        public string PrenomFacturion { get; set; }
+        public string PrenomFacturation { get; set; }
 
         [Required(ErrorMessage = "La ville est requise")]
-        public string VilleFacturion { get; set; }
+        public string VilleFacturation { get; set; }
 
         [Required(ErrorMessage = "L'adresse est requise")]
         public string AdresseFacturation { get; set; }

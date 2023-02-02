@@ -7,7 +7,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>CreateUser</title>
+    <title>PaymentView</title>
 </head>
 <body>
     @using (Html.BeginForm())
@@ -39,8 +39,7 @@
             <br />
  
             <input type="button" onclick="window.location.href='https://localhost:5001/Home';" class="btn btn-warning btn-lg" value="Retour accueil" />
-            <input type="button" onclick="window.location.href='https://localhost:5001/Home/UserList';" class="btn btn-warning btn-lg" value="Retour Liste" />
-            <input type="submit" value="Créer" />
+            <input type="button" onclick="window.location.href='https://localhost:5001/Shared/FacturationView';" class="btn btn-warning btn-lg" value="Validez payement" />
         </fieldset>
     }
     @*vérification du type de données dans le front*@
