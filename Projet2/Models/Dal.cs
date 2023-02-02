@@ -28,7 +28,7 @@ namespace Projet2.Models
         {
             return _bddContext.Utilisateurs.Include(U => U.InfosPersonnelles).Include(U => U.InfosPersonnelles.Adresse).Include(U => U.Compte).ToList(); // charge + jointure
         }
-
+       
 
         public int CreateInfosPersonnelles(InfosPersonnelles infosPersonnelles)
         {
@@ -80,6 +80,48 @@ namespace Projet2.Models
 
                 _bddContext.SaveChanges();
             }
+        }
+
+
+        public List<OffreAbonnement> GetOfferCatalog()
+        {
+            return _bddContext.OffreAbonnements.ToList();
+        }
+
+        public int CreateOffreAbonnements(string descriptionOffre, int dureeOffreMois, string typeOffre, double prix)
+        {
+            OffreAbonnement offreAbonnement = new OffreAbonnement { DescriptionOffre = descriptionOffre, DureeOffreMois = dureeOffreMois, TypeOffre = typeOffre, Prix = prix };
+            _bddContext.OffreAbonnements.Add(offreAbonnement);
+            _bddContext.SaveChanges();
+            return offreAbonnement.Id;
+        }
+
+        public int CreateOffreAbonnements(OffreAbonnement offreAbonnement)
+        {
+            _bddContext.OffreAbonnements.Add(offreAbonnement);
+            _bddContext.SaveChanges();
+            return offreAbonnement.Id;
+        }
+
+        public void ModifyOffreAbonnements(OffreAbonnement offreAbonnement)
+        {
+            _bddContext.OffreAbonnements.Update(offreAbonnement);
+            _bddContext.SaveChanges();
+        }
+
+        public void ModifyOffreAbonnements(int Id, string descriptionOffre, int dureeOffreMois, string typeOffre, double prix)
+        {
+            OffreAbonnement offreAbonnement = _bddContext.OffreAbonnements.Find(Id);
+            if (offreAbonnement != null)
+            {
+                offreAbonnement.DescriptionOffre= descriptionOffre;
+                offreAbonnement.DureeOffreMois= dureeOffreMois;
+                offreAbonnement.TypeOffre= typeOffre;
+                offreAbonnement.Prix= prix;
+                _bddContext.SaveChanges();
+            }
+
+
         }
     }
 }

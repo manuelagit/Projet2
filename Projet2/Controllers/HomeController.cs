@@ -45,6 +45,8 @@ namespace Projet2.Controllers
             return View("Error");
         }
 
+
+
         // sends the modified data
         [HttpPost]
         public IActionResult ModifyUser(Utilisateur utilisateur)
@@ -84,6 +86,15 @@ namespace Projet2.Controllers
             return RedirectToAction("UserList");
         }
 
+        //Creation of a catalog
+        public IActionResult OfferCatalog()
+        {
+            Dal dal = new Dal();
+            List<OffreAbonnement> offreAbonnements = dal.GetOfferCatalog(); // to be able to use the helper, instead of ViewData["ListeUtilisateurs"] = dal.GetUsersList();
+            return View(offreAbonnements);
+        }
+
+       
     }
 }
 
