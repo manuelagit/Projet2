@@ -28,7 +28,11 @@ namespace Projet2.Models
         {
             return _bddContext.Utilisateurs.Include(U => U.InfosPersonnelles).Include(U => U.InfosPersonnelles.Adresse).Include(U => U.Compte).ToList(); // charge + jointure
         }
-       
+
+        public List<Club> GetClubsList()
+        {
+            return _bddContext.Clubs.Include(U => U.InfosClub).Include(U => U.InfosClub.Adresse).Include(U => U.Compte).ToList(); // charge + jointure
+        }
 
         public int CreateInfosPersonnelles(InfosPersonnelles infosPersonnelles)
         {
@@ -53,7 +57,6 @@ namespace Projet2.Models
         }
 
 
-
         public int CreateUser(Utilisateur utilisateur)
         {
             _bddContext.Utilisateurs.Add(utilisateur);
@@ -62,12 +65,29 @@ namespace Projet2.Models
         }
 
 
+        public int CreateClub(Club club)
+        {
+            _bddContext.Clubs.Add(club);
+            _bddContext.SaveChanges();
+            return club.Id;
+        }
+
         public void ModifyUser(int Id)
         {
             Utilisateur utilisateur = _bddContext.Utilisateurs.Find(Id);
             if (utilisateur != null)
             {
                 _bddContext.Utilisateurs.Update(utilisateur);
+                _bddContext.SaveChanges();
+            }
+        }
+
+        public void ModifyClub(int Id)
+        {
+            Club club = _bddContext.Clubs.Find(Id);
+            if (club != null)
+            {
+                _bddContext.Clubs.Update(club);
                 _bddContext.SaveChanges();
             }
         }
@@ -90,6 +110,21 @@ namespace Projet2.Models
                 utilisateur.InfosPersonnellesId = 0;
                 _bddContext.Utilisateurs.Remove(utilisateur);
                 _bddContext.InfosPersonnelles.Remove(tmpInfos);
+                _bddContext.Adresses.Remove(tmpAdresse);
+                _bddContext.Comptes.Remove(tmpCompte);
+                _bddContext.SaveChanges();
+            }
+        }
+
+
+        public void RemoveClub(Club club)
+        {
+            if (club != null)
+            {
+                Compte tmpCompte = club.Compte;
+                Adresse tmpAdresse = club.InfosClub.Adresse;
+
+                _bddContext.Clubs.Remove(club);
                 _bddContext.Adresses.Remove(tmpAdresse);
                 _bddContext.Comptes.Remove(tmpCompte);
                 _bddContext.SaveChanges();

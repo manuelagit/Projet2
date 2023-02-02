@@ -25,6 +25,15 @@ namespace Projet2.Controllers
             return View(listeUsers);
         }
 
+        public IActionResult ClubList()
+        {
+            Dal dal = new Dal();
+            List<Club> listeClubs = dal.GetClubsList(); // to be able to use the helper, instead of ViewData["ListeUtilisateurs"] = dal.GetUsersList();
+            return View();
+        }
+
+
+
 
         // recovers the saved values and displays them
         public IActionResult ModifyUser(int id)
@@ -66,6 +75,47 @@ namespace Projet2.Controllers
         }
 
 
+
+        // recovers the saved values and displays them
+        public IActionResult ModifyClub(int id)
+        {
+            if (id != 0)
+            {
+                using (IDal dal = new Dal())
+                {
+                    Club club = dal.GetClubsList().Where(r => r.Id == id).FirstOrDefault();
+
+                    if (club == null)
+                    {
+                        return View("Error");
+                    }
+                    return View("ModifyClub", club);
+                }
+            }
+            return View("Error");
+        }
+
+
+
+        // sends the modified data
+        [HttpPost]
+        public IActionResult ModifyClub(Club club)
+        {
+            if (club.Id != 0)
+            {
+                using (Dal dal = new Dal())
+                {
+                    dal.ModifyClub(club.Id);
+                    return RedirectToAction("ClubList");
+                }
+            }
+            else
+            {
+                return View("Error");
+            }
+        }
+
+
         // Creation of a user
         // Display of the view
         public IActionResult CreateUser()
@@ -85,6 +135,28 @@ namespace Projet2.Controllers
             dal.CreateUser(utilisateur);
             return RedirectToAction("UserList");
         }
+
+
+
+        // Creation of a club
+        // Display of the view
+        public IActionResult CreateClub()
+        {
+            return View();
+        }
+
+        // sending the data
+        [HttpPost]
+        public IActionResult CreateClub(Club club)
+        {
+            Dal dal = new Dal();
+            club.CompteId = dal.CreateCompte(club.Compte);
+
+            //ListeUtilisateurs.CreateUser(idCount, utilisateur.Compte, utilisateur.InfosPersonnelles);
+            dal.CreateClub(club);
+            return RedirectToAction("ClubList");
+        }
+
 
         //Creation of a catalog
         public IActionResult OfferCatalog()
