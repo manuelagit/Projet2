@@ -14,6 +14,7 @@ namespace Projet2.Models
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseMySql("server=localhost;user id=root;password=rrrrr;database=BDDprojet2");
+
         }
 
         //public void InitialiseDb()

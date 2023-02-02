@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace Projet2.Models.Paiement
+namespace Projet2.Models
 {
     public class Paiement
     {
@@ -15,5 +15,8 @@ namespace Projet2.Models.Paiement
         [Required(ErrorMessage = "Le code de sécurité est requis")]
         [RegularExpression(@"^\d{3}$", ErrorMessage = "Entrez le code de sécurité.")]
         public int CodeDeSecurite { get; set; }
+
+        public int? CompteID { get; set; }
+        public Compte Compte { get; set; }
     }
 }

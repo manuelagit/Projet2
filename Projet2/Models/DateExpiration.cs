@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Projet2.Models.Paiement
+namespace Projet2.Models
 {
     public class DateExpiration
     {
