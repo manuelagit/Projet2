@@ -1,0 +1,32 @@
+﻿@model List<Projet2.Models.Activite>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste Evenement</title>
+</head>
+<body>
+    <h1>Choississez l'évènement qui vous convient</h1>
+    <br />
+    <table style="width:30%">
+        @foreach (var member in Model)
+        {
+            <tr>
+                <td>@member.DescriptionActivite</td>
+                <td><input name="Activite" value="news" type="radio" /></td>
+            </tr>
+        }
+    </table>
+    <br />
+    <br />
+
+    <div>
+        <input type="submit" onclick="window.location.href='https://localhost:5001/Home';" value="S'inscrire" />
+        <input type="button" onclick="window.location.href='https://localhost:5001/Home';" class="btn btn-warning btn-lg" value="Retour accueil" />
+    </div>
+
+</body>
+
+</html>

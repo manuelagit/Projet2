@@ -112,6 +112,20 @@ namespace Projet2.Controllers
             return View(offreAbonnements);
         }
 
+        public IActionResult Activite()
+        {
+            Dal dal = new Dal();
+            List<Activite> activites = dal.GetActivityList(); // to be able to use the helper, instead of ViewData["ListeUtilisateurs"] = dal.GetUsersList();
+            return View(activites);
+        }
+
+        public IActionResult EvenementClub()
+        {
+            Dal dal = new Dal();
+            List<EvenementClub> evenementClubs = dal.GetEvenementClubListe(); // to be able to use the helper, instead of ViewData["ListeUtilisateurs"] = dal.GetUsersList();
+            return View(evenementClubs);
+        }
+
 
     }
 }

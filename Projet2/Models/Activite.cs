@@ -9,6 +9,8 @@ namespace Projet2.Models
 
         public DateTime DateActivite { get; set;}
 
+        public int DureeActiviteHeure { get; set; }
+
         public string TypeActivite { get; set; }
         public string DescriptionActivite { get; set;}
 

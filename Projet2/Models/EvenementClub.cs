@@ -2,9 +2,9 @@
 {
     public class EvenementClub : Activite
     {
-        public int dureeEvenementClub { get; set; }
-        public int niveauRequis { get; set; }
-        public int nombrePlace { get; set; }
-        public double prixEvenementClub { get; set; }
+        
+        public int NiveauRequis { get; set; }
+        public int NombrePlace { get; set; }
+        public double PrixEvenementClub { get; set; }
     }
 }
