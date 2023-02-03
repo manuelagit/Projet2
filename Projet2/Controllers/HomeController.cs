@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Projet2.Models;
 
 namespace Projet2.Controllers
@@ -111,8 +112,9 @@ namespace Projet2.Controllers
                 return View("Error");
             }
         }
-        public IActionResult PaymentView() 
-        { 
+        public IActionResult PaymentView()
+            
+        {
             return View();
         }
 
@@ -120,6 +122,7 @@ namespace Projet2.Controllers
         {
             return View();
         }
+
     }
 }
 

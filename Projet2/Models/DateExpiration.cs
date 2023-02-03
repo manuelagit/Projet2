@@ -10,6 +10,16 @@ namespace Projet2.Models
 
         [Required(ErrorMessage = "L'année d'expiration est requise")]
         [RegularExpression(@"^\d{2}$", ErrorMessage = "Entrez l'année d'expiration.")]
-        public int AnneExpiration { get; set; }
+        public int AnneeExpiration { get; set; }
+    }
+
+    public enum MoisExpiration
+    {
+        [Display(Name ="01")]
+        Janvier,
+        Fevrier,
+        Mars
+        
+
     }
 }
