@@ -14,6 +14,8 @@
         <fieldset>
             @Html.HiddenFor(m => Model.CompteId)            @*crée des inputs cachés qui contiennent les valeurs pour ne pas perdre les données*@
             @Html.HiddenFor(m => Model.Compte.Id)           @*clé primaire dans la table Compte*@
+            @Html.HiddenFor(m => Model.InfosClubId)
+            @Html.HiddenFor(m => Model.InfosClub.Id)
 
             <legend><h4>Modification d'un compte utilisateur</h4></legend>
             <table>

@@ -36,7 +36,7 @@ namespace Projet2.Models
             OffreAbonnement offreAbonnement = new OffreAbonnement() { Id = 1, DescriptionOffre = "Quelques années après la publication de cet ouvrage, force est de constater que le mot d’ordre « Expérimenter plutôt que posséder » est plus que jamais au cœur de la relation client.", TypeOffre = "Annuelle", DureeOffreMois = 12, Prix = 680.75 };
             OffreAbonnement offreAbonnement2 = new OffreAbonnement() { Id = 2, DescriptionOffre = "Quelques années après la publication de cet ouvrage, force est de constater que le mot d’ordre « Expérimenter plutôt que posséder » est plus que jamais au cœur de la relation client.", TypeOffre = "Mensuelle", DureeOffreMois = 6, Prix = 249.99 };
 
-            Adresse adresseClub = new Adresse() { Id = 3, CodePostal = 01170, NomVille = "Gex", NomRue = "rue alphonse", NumeroRue = 4};
+            Adresse adresseClub = new Adresse() { Id = 3, CodePostal = 11170, NomVille = "Gex", NomRue = "rue alphonse", NumeroRue = 4};
             InfosClub infosClub = new InfosClub() { Id = 1, NomClub = "VLG", AdresseId = 3 };
 
             Compte compteClub = new Compte() { Id =3, AdressEmail = "vlg@gmail.com", MotDePasse = "123" };

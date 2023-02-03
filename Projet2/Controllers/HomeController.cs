@@ -40,7 +40,7 @@ namespace Projet2.Controllers
         {
             if (id != 0)
             {
-                using (IDal dal = new Dal())
+                using (Dal dal = new Dal())
                 {
                     Utilisateur utilisateur = dal.GetUsersList().Where(r => r.Id == id).FirstOrDefault();
 
@@ -81,7 +81,7 @@ namespace Projet2.Controllers
         {
             if (id != 0)
             {
-                using (IDal dal = new Dal())
+                using (Dal dal = new Dal())
                 {
                     Club club = dal.GetClubsList().Where(r => r.Id == id).FirstOrDefault();
 
@@ -105,7 +105,7 @@ namespace Projet2.Controllers
             {
                 using (Dal dal = new Dal())
                 {
-                    dal.ModifyClub(club.Id);
+                    dal.ModifyClub(club);
                     return RedirectToAction("ClubList");
                 }
             }
