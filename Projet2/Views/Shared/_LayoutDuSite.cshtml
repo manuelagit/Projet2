@@ -7,27 +7,26 @@
     <link href="~/css/Site.css" rel="stylesheet" />
 </head>
 <body>
-    <div id="entete">
-        <h1>WINGSOLUTION</h1>
+    <div id="header">
+        <h1></h1>
     </div>
-
     <div id="main">
         <div id="menu">
+            <h1>MENU</h1>
             <ul>
-                <li>@Html.ActionLink("Accueil", "Index")</li>
+                <li>@Html.ActionLink("Acceuil", "Index")</li>
                 <li>@Html.ActionLink("Connexion", "Liste")</li>
                 <li>@Html.ActionLink("Inscription", "Forum")</li>
-                <li>@Html.ActionLink("Rechercher un club", "")<li>
+                <li>@Html.ActionLink("Rechercher un club", "")</li>
+                <li>@Html.ActionLink("Évènement club", "")</li>
             </ul>
         </div>
-
         <div id="contenu">
             @RenderBody()
         </div>
     </div>
-
     <div id="footer">
-        &copy; @DateTime.Now.Year - Super site de tutoriels, contactez moi sur monmail@supersitetutoriels.com
+        &copy; @DateTime.Now.Year - Conditions générales de ventes - 
     </div>
 </body>
 </html>
