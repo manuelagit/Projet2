@@ -1,29 +1,55 @@
-﻿#header {
+﻿.header {
+    border-radius: 30px;
+    min-height: 100px;
     text-align: center;
     color: black;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    background-image: url("../Images/FOND HEAD.png");
+    background-image: url("wwwwroot/FOND\ HEAD.png");
     background-position: center;
     background-size: cover;
     border-radius: 30px;
-    padding: 4%
-}
-body {
-    margin: 1px;
+    margin-bottom: 5px;
 }
 
+.general {
+    display: flex;
+    min-height: 100vh;
+}
 
-#menu {
-    color: black;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    background-color: beige;
+.menu {
+    border: 2px solid black;
     border-radius: 30px;
-    /*float: left;*/
-    padding: 300px;
+    min-height: 10px;
+    background-color: beige;
+    /*epaisseur*/ width: 20%;
 }
 
-#footer {
-    background-color: grey;
-    text-align: center;
-    clear: both;
+.titre1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    padding: (-10px, -50px); /* check comment déplacer avec les - etc)*/
+}
+
+.Boutton {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+
+.contenu {
+    border: 2px solid black;
+    border-radius: 30px;
+    min-height: 10px;
+    width: 80%;
+}
+
+.footer {
+    border: 2px solid black;
+    border-radius: 30px;
+    min-height: 40px;
 }
