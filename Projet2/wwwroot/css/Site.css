@@ -3,7 +3,7 @@
     min-height: 100px;
     text-align: center;
     color: black;
-    background-image: url("wwwwroot/FOND\ HEAD.png");
+    background-image: url("/Images/FondHead.png");
     background-position: center;
     background-size: cover;
     border-radius: 30px;
