@@ -73,7 +73,7 @@ namespace Projet2.Controllers
             }
             else
             {
-                return View("Error");
+                return View("Errooor");
             }
         }
 
