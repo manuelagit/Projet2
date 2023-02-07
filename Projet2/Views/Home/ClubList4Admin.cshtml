@@ -39,15 +39,27 @@
 
 
 
+        <form action="RemoveClub" method="get">
+            <div style="margin: 20px">
+                <input type="text" name="id" placeholder="Id" size="10rem" />
+                <button type="submit">Supprimer club</button>
+            </div>
+        </form>
+
+        <form action="ModifyClub" method="get">
+            <div style="margin: 20px">
+                <input type="text" name="id" placeholder="Id" size="10rem" />
+                <button type="submit" onclick="window.location.href='https://localhost:5001/Home/ModifyClub';">Modifier club</button>
+            </div>
+        </form>
+
+
+
 
 
         <div style="margin: 20px">
-            <input type="button" onclick="window.location.href='https://localhost:5001/Home/CreateUser';" value="M'inscrire" />
-        </div>
-
-
-        <div style="margin: 20px">
-            <input type="button" onclick="window.location.href='https://localhost:5001/Home/EspaceParapentiste';" value="Retour Espace Parapentiste" />
+            <input type="button" onclick="window.location.href='https://localhost:5001/Home/EspaceAdmin';" value="Retour Espace Admin" />
+            <button type="submit" onclick="window.location.href='https://localhost:5001/Home/CreateClub';">Créer club</button>
         </div>
 
         <div>

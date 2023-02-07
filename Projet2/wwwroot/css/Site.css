@@ -1,6 +1,6 @@
 ﻿.header {
     border-radius: 30px;
-    min-height: 100px;
+    min-height: 300px;
     text-align: center;
     color: black;
     background-image: url("/Images/FondHead.png");
@@ -48,6 +48,36 @@
     text-align: center;
     cursor: pointer
 }
+
+.btn--btnClub {
+    background: #23437a;
+    color: white;
+}
+
+    .btn--btnClub:hover {
+        background: lightblue;
+        color: black
+    }
+
+.btn--btnAdmin {
+    background: #23437a;
+    color: white;
+}
+
+    .btn--btnAdmin:hover {
+        background: lightblue;
+        color: black
+    }
+
+.btn--btnParapentiste {
+    background: #23437a;
+    color: white;
+}
+
+    .btn--btnParapentiste:hover {
+        background: lightblue;
+        color: black
+    }
 
 .btn--btnAcceuil {
     background: #23437a;

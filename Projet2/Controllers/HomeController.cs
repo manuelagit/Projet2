@@ -21,6 +21,20 @@ namespace Projet2.Controllers
             return View();
         }
 
+        public IActionResult EspaceAdmin()
+        {
+            return View();
+        }
+
+        public IActionResult EspaceClub()
+        {
+            return View();
+        }
+        public IActionResult EspaceParapentiste()
+        {
+            return View();
+        }
+
         public IActionResult UserList()
         {
             Dal dal = new Dal();
@@ -36,7 +50,12 @@ namespace Projet2.Controllers
         }
 
 
-
+        public IActionResult ClubList4Admin()
+        {
+            Dal dal = new Dal();
+            List<Club> listeClubs4Admin = dal.GetClubsList(); // to be able to use the helper, instead of ViewData["ListeUtilisateurs"] = dal.GetUsersList();
+            return View(listeClubs4Admin);
+        }
 
 
         // recovers the saved values and displays them

@@ -1,7 +1,8 @@
 ﻿@model Projet2.Models.Club
 @{
-    Layout = null;
-}
+    Layout = "_Layout";
+    ViewBag.Title = "CreateClub";
+    }
 <!DOCTYPE html>
 <html>
 <head>
@@ -58,11 +59,19 @@
             <br />
             <br />
 
-            <input type="button" onclick="window.location.href='https://localhost:5001/Home';" class="btn btn-warning btn-lg" value="Retour accueil" />
-            <input type="button" onclick="window.location.href='https://localhost:5001/Home/ClubList';" class="btn btn-warning btn-lg" value="Retour Liste" />
             <input type="submit" value="Créer" />
         </fieldset>
+        <br />
+        <fieldset>
+            <legend><h4>Importer liste adhérents</h4></legend>
+            <button type="submit">Choisir un fichier</button>
+        </fieldset>
     }
+    <br />
+    <br />
+
+    <input type="button" onclick="window.location.href='https://localhost:5001/Home/EspaceClub';" value="Retour Espace Club" />
+
     @*vérification du type de données dans le front*@
     <script type="text/javascript" src="~/Scripts/jquery-3.3.1.js"></script>
     <script type="text/javascript" src="~/Scripts/jquery.validate-vsdoc.js"></script>
