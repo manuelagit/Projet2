@@ -17,6 +17,7 @@
 
 .menu {
     border: 2px solid black;
+    padding: 20px;
     border-radius: 30px;
     min-height: 10px;
     background-color: beige;
@@ -39,7 +40,7 @@
     align-items: center;
     border-radius: 50px;
     border: 0;
-    font-size: 1.3rem;
+    font-size: 1rem;
     margin: 1rem 0;
     padding: 2rem 3rem;
     text-transform: uppercase;
@@ -98,6 +99,7 @@
 
 .contenu {
     border: 2px solid black;
+    padding: 20px;
     border-radius: 30px;
     min-height: 10px;
     width: 80%;
