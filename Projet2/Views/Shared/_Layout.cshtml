@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="~/css/Site.css">
+</head>
+<body>
+    <div class="header"></div>
+    <div class="general">
+        <div class="menu">
+            <div class="titre1">
+                <h1>Menu</h1>
+            </div>
+            <div>
+                <button class="btn btn--btnAcceuil">Acceuil</button>
+                <button class="btn btn--btnConnexion">Connexion</button>
+                <button class="btn btn--btnRechercheClub">Recherche Club</button>
+                <button class="btn btn--btnEvent">Évènements</button>
+                <button class="btn btn--btnAbonnement">Abonnement</button>
+                <!--<input type="button1" value="Acceuil">
+    <input type="button2" value="Connexion">
+    <input type="button3" value="Rechercher Club">
+    <input type="button4" value="Abonnement">
+    <input type="button5" value="Évènement">-->
+            </div>
+            <!--</button>-->
+        </div>
+        <div class="contenu">@RenderBody()</div>
+    </div>
+    <div class="footer"></div>
+</body>
+</html>

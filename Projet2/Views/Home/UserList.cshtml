@@ -1,4 +1,8 @@
 ﻿@model List<Projet2.Models.Utilisateur>
+@{
+    ViewBag.Title = "UserList";
+    Layout = "_Layout";
+}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -57,6 +61,8 @@
         <div style="margin: 20px">
             <input type="button" onclick="window.location.href='https://localhost:5001/Home';" class="btn btn-warning btn-lg" value="Retour accueil" />
             <button type="submit" onclick="window.location.href='https://localhost:5001/Home/createUser';">Créer membre</button>
+            <button type="submit" onclick="window.location.href='https://localhost:5001/Home/searchUser';">Rechercher membre</button>
+
         </div>
 
 

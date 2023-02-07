@@ -38,6 +38,16 @@ namespace Projet2.Models
             Club club = ListeClubs.listeClubs.FirstOrDefault(mb => mb.Id == id); // retrieve the club having this given Id
             listeClubs.Remove(club);
         }
+
+        // look for a club by a given data (name, city, dpt...)
+        public static Club LookForClub(int idSearch)
+        {
+
+            Club club = ListeClubs.listeClubs.FirstOrDefault(mb => mb.Id == idSearch);
+            return club;
+        }
+            
+
     }
 }
 

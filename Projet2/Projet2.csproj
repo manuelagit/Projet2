@@ -4,14 +4,7 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
-  <ItemGroup>
-    <None Remove="Pomelo.EntityFrameworkCore.MySql" />
-    <None Remove="Microsoft.EntityFrameworkCore" />
-    <None Remove="Microsoft.EntityFrameworkCore.Tools" />
-    <None Remove="Models\" />
-    <None Remove="Views\" />
-    <None Remove="Views\Home\" />
-  </ItemGroup>
+
   <ItemGroup>
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="3.2.5" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.15" />
@@ -22,8 +15,13 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="wwwroot\" />
+    <Folder Include="Views\" />
+    <Folder Include="Views\Home\" />
+    <Folder Include="wwwroot\css\" />
+    <Folder Include="wwwroot\Images\" />
   </ItemGroup>
+
   <ItemGroup>
-    <Content Remove="wwwroot\" />
+    <None Include="wwwroot\css\Site.css" />
   </ItemGroup>
 </Project>
