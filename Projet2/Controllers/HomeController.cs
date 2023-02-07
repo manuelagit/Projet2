@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Projet2.Models;
 
 namespace Projet2.Controllers
@@ -31,6 +33,7 @@ namespace Projet2.Controllers
             List<Club> listeClubs = dal.GetClubsList(); // to be able to use the helper, instead of ViewData["ListeUtilisateurs"] = dal.GetUsersList();
             return View(listeClubs);
         }
+
 
 
 
@@ -166,7 +169,35 @@ namespace Projet2.Controllers
             return View(offreAbonnements);
         }
 
-       
+
+        public IActionResult LookForClub(int Id)
+        {
+            return View();
+        }
+
+
+        //public async Task<IActionResult> Search(string SearchString)
+        //{
+        //    using (Dal dal = new Dal())
+        //    {
+        //        if (id != 0)
+        //        {
+
+        //            Club clubFiltered = dal.GetClubsList().Where(clubFiltered.name.contains(SearchString)).FirstOrDefault();
+        //            if (clubFiltered == null)
+        //            {
+        //                return Problem("Entity is null.");
+        //            }
+
+                    
+
+        //            return View(await clubsFiltered.ToListAsync());
+        //        }
+        //    }
+        //}
+
+
+
         public IActionResult RemoveUser(int Id)
         {
             if (Id != 0)
