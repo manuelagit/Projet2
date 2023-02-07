@@ -26,20 +26,75 @@
 .titre1 {
     display: flex;
     justify-content: center;
+    font-size: 1.5rem;
     align-items: center;
-    border: 1px solid black;
-    padding: (-10px, -50px); /* check comment déplacer avec les - etc)*/
+    border-radius: 30px;
+    background-color: lightgray;
 }
 
-.Boutton {
+.btn {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    border-radius: 50px;
+    border: 0;
+    font-size: 1.3rem;
+    margin: 1rem 0;
+    padding: 2rem 3rem;
+    text-transform: uppercase;
+    white-space: nowrap;
+    text-align: center;
+    cursor: pointer
 }
 
+.btn--btnAcceuil {
+    background: #23437a;
+    color: white;
+}
 
+    .btn--btnAcceuil:hover {
+        background: lightblue;
+        color: black
+    }
 
+.btn--btnConnexion {
+    background: #23437a;
+    color: white;
+}
+
+    .btn--btnConnexion:hover {
+        background: lightblue;
+        color: black;
+    }
+
+.btn--btnRechercheClub {
+    background: #23437a;
+    color: white;
+}
+
+    .btn--btnRechercheClub:hover {
+        background: lightblue;
+        color: black;
+    }
+.btn--btnEvent {
+    background: #23437a;
+    color: white;
+}
+
+    .btn--btnEvent:hover {
+        background: lightblue;
+        color: black;
+    }
+.btn--btnAbonnement {
+    background: #23437a;
+    color: white;
+}
+
+    .btn--btnAbonnement:hover {
+        background: lightblue;
+        color: black;
+    }
 
 .contenu {
     border: 2px solid black;
