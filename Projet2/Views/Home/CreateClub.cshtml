@@ -10,6 +10,8 @@
     <title>CreateClub</title>
 </head>
 <body>
+    <h1>Espace club</h1>
+
     @using (Html.BeginForm())
     {
         <fieldset>
@@ -59,7 +61,7 @@
             <br />
             <br />
 
-            <input type="submit" value="Créer" />
+            <input type="submit" onclick="window.location.href='https://localhost:5001/Home/EspaceClubLogged';" value="Créer" />
         </fieldset>
         <br />
         <fieldset>
@@ -69,6 +71,7 @@
     }
     <br />
     <br />
+
 
     <input type="button" onclick="window.location.href='https://localhost:5001/Home/EspaceClub';" value="Retour Espace Club" />
 

@@ -31,6 +31,36 @@ namespace Projet2.Controllers
             return View();
         }
 
+        public IActionResult EspaceClubVisible()
+        {
+            return View();
+        }
+
+        public IActionResult EspaceClubLogged()
+        {
+            return View();
+        }
+
+        public IActionResult ClubLogin()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult ClubLogin(string NomClub)
+        {
+            using (Dal dal = new Dal())
+            {
+                Club club = dal.GetClubsList().Where(r => r.InfosClub.NomClub == NomClub).FirstOrDefault();
+                if (club == null)
+                {
+                    return View("Error");
+                }
+                return View("EspaceClubLogged", club);
+            }
+        }
+
+
         public IActionResult EspaceParapentiste()
         {
             return View();
