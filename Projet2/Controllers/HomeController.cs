@@ -128,13 +128,22 @@ namespace Projet2.Controllers
         public IActionResult StageAdherent()
         {
             Dal dal = new Dal();
-            return View("StageAdherent");
+            List<Stage> stages = dal.GetStageList();
+            return View();
         }
 
         public IActionResult VoyageAdherent()
         {
             Dal dal = new Dal();
-            return View("VoyageAdherent");
+            List<Voyage> voyageAdherent = dal.GetVoyageList();
+            return View();
+        }
+
+        public IActionResult SortieAdherent()
+        {
+            Dal dal = new Dal();
+            List<SortieAdherent> sortieAdherent = dal.GetSortieAdherentList();
+            return View(sortieAdherent);
         }
 
 

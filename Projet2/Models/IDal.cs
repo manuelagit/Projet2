@@ -33,15 +33,15 @@ namespace Projet2.Models
         int CreateEvenementClub(EvenementClub evenementClub);
         int CreateEvenementClub(int idEvenementClub);
 
-        List<Activite> StageList();
+        List<Stage> GetStageList();
         int CreateStage(Stage stage);
         int CreateStage(int idStage);
 
-        List<Activite> VoyageList();
+        List<Voyage> GetVoyageList();
         int CreateVoyage(Voyage voyage);
         int CreateVoyage(int idVoyage);
 
-        List<Activite> SortieAdherentList();
+        List<SortieAdherent> GetSortieAdherentList();
         int CreateSortieAdherent(SortieAdherent sortieAdherent);
         int CreateSortieAdherent(int idSortieAdherent);
 

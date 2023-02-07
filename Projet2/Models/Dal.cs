@@ -157,19 +157,19 @@ namespace Projet2.Models
             return _bddContext.EvenementClubs.ToList();
         }
 
-        public List<Activite> StageList()
+        public List<Stage> GetStageList()
         {
-            return _bddContext.Activites.Include(U => U.EvenementClub.Stage).ToList();
+            return _bddContext.Stages.ToList();
         }
 
-        public List<Activite> VoyageList()
+        public List<Voyage> GetVoyageList()
         {
-            return _bddContext.Activites.Include(U => U.EvenementClub.Voyage).ToList();
+            return _bddContext.Voyages.ToList();
         }
 
-        public List<Activite> SortieAdherentList()
+        public List<SortieAdherent> GetSortieAdherentList()
         {
-            return _bddContext.Activites.Include(U => U.SortieAdherent).ToList();
+            return _bddContext.SortieAdherents.ToList();
         }
 
         public int CreateEvenementClub(EvenementClub evenementClub)
