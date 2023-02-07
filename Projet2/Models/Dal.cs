@@ -227,8 +227,11 @@ namespace Projet2.Models
             _bddContext.SaveChanges();
             return paiement.Id;
         }
+        public List<Facturation> GetFacturesList()
+        {
+            return _bddContext.Facturations.ToList();
+        }
 
-        
     }
 }
 

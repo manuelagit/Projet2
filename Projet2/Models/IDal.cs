@@ -21,7 +21,8 @@ namespace Projet2.Models
         int CreateFacturation(string nomFacturation, string prenomFacturation, string villeFacturation, string adresseFacturation, string codePostalFacturation, string paysFacturation, string TelephoneFacturation);
         int CreateFacturation(Facturation facturation);
 
-        List<Club> GetClubsList();
+
+        List<Facturation> GetFacturesList();
         int CreateClub(Club club);
         int CreateClub(int idCompte, int IdInfosClub);
         void ModifyClub(int id);
