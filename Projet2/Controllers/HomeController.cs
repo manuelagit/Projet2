@@ -129,14 +129,14 @@ namespace Projet2.Controllers
         {
             Dal dal = new Dal();
             List<Stage> stages = dal.GetStageList();
-            return View();
+            return View(stages);
         }
 
         public IActionResult VoyageAdherent()
         {
             Dal dal = new Dal();
             List<Voyage> voyageAdherent = dal.GetVoyageList();
-            return View();
+            return View(voyageAdherent);
         }
 
         public IActionResult SortieAdherent()
