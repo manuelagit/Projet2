@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace Projet2.Models
@@ -10,10 +11,11 @@ namespace Projet2.Models
         [Display(Name = "Numéro de Carte Bleu")]
         [Required(ErrorMessage = "Le numéro de la carte bleu est requis")]
         [RegularExpression(@"^\d{16}$", ErrorMessage = "Entrez le numéro de carte bleu.")]
-        public int NumeroCB { get; set; }
+        public string NumeroCB { get; set; }
 
         [Display(Name = "Date d'expiration")]
         [Required(ErrorMessage = "La date d'expiration est requise")]
+        
         public DateTime DateExpiration { get; set; }
 
         [Display(Name = "Code de sécurité")]
