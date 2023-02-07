@@ -30,7 +30,13 @@ namespace Projet2.Controllers
         {
             return View();
         }
+
         public IActionResult EspaceParapentiste()
+        {
+            return View();
+        }
+
+        public IActionResult PageEvents()
         {
             return View();
         }
