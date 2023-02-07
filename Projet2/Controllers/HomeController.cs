@@ -256,7 +256,13 @@ namespace Projet2.Controllers
             dal.CreatePaiement(paiement);
             return RedirectToAction("");
         }
-
+        public IActionResult FacturationList()
+        {
+            Dal dal = new Dal();
+            List<Facturation> listeFacturation = dal.GetFacturesList(); // to be able to use the helper, instead of ViewData["ListeUtilisateurs"] = dal.GetUsersList();
+            return View(listeFacturation);
+           
+        }
     }
 }
 

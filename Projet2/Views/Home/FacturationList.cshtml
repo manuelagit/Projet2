@@ -5,18 +5,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Liste des facture</title>
+    <title>Liste des factures</title>
 </head>
 <center>
     <body>
-        <h1>Liste des clubs</h1>
+        <h1>Liste des factures</h1>
         <table border="1" style="margin: 20px">
             <tr>
                 <th>Id</th>
-                <th>Nom du club</th>
-                <th>Adresse</th>
-                <th>adresse Email</th>
-                <th>Mot de passe</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Adresse de Facturation</th>
+                <th>Ville</th>
+                <th>Code Postal</th>
+                <th>Pays</th>
+                <th>Telephone</th>
             </tr>
             <tbody>
                 @foreach (var member in Model)
@@ -24,35 +27,29 @@
                 {
                     <tr>
                         <td>@member.Id</td>
-                        <td>@member.InfosClub.NomClub</td>
-                        <td>@member.InfosClub.Adresse.NumeroRue, @member.InfosClub.Adresse.NomRue - @member.InfosClub.Adresse.CodePostal @member.InfosClub.Adresse.NomVille </td>
-                        <td>@member.Compte.AdressEmail</td>
-                        <td>@member.Compte.MotDePasse</td>
+                        <td>@member.NomFacturation</td>
+                        <td>@member.PrenomFacturation </td>
+                        <td>@member.AdresseFacturation</td>
+                        <td>@member.VilleFacturation</td>
+                        <td>@member.CodePostalFacturation</td>
+                        <td>@member.PaysFacturation</td>
+                        <td>@member.TelephoneFacturation</td>
                     </tr>
                 }
             </tbody>
         </table>
 
-        <form action="RemoveClub" method="get">
+        <form action="RemoveFacture" method="get">
             <div style="margin: 20px">
                 <input type="text" name="id" placeholder="Id" size="10rem" />
-                <button type="submit">Supprimer club</button>
+                <button type="submit">Supprimer facture</button>
             </div>
         </form>
-
-        <form action="ModifyClub" method="get">
-            <div style="margin: 20px">
-                <input type="text" name="id" placeholder="Id" size="10rem" />
-                <button type="submit" onclick="window.location.href='https://localhost:5001/Home/ModifyClub';">Modifier club</button>
-            </div>
-        </form>
-
-
 
 
         <div style="margin: 20px">
             <input type="button" onclick="window.location.href='https://localhost:5001/Home';" class="btn btn-warning btn-lg" value="Retour accueil" />
-            <button type="submit" onclick="window.location.href='https://localhost:5001/Home/CreateClub';">Créer club</button>
+            <input type="submit"; value="Créer Facture"/>
         </div>
 
         <div>
