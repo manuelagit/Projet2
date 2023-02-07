@@ -1,0 +1,50 @@
+﻿@model Projet2.Models.Club
+@{
+    Layout = "_Layout";
+    ViewBag.Title = "CreateClub";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" method="get"/>
+    <title>ClubLogin</title>
+</head>
+<body>
+    <h1>Identification</h1>
+
+    @using (Html.BeginForm())
+    {
+        <fieldset>
+
+            <legend><h4>Identifiez-vous</h4></legend>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>@Html.LabelFor(m => Model.InfosClub.NomClub)</td>
+                        <td>@Html.TextBoxFor(m => Model.InfosClub.NomClub, new { placeholder = "nom du club" })</td>
+                        <td>@Html.ValidationMessageFor(m => Model.InfosClub.NomClub)</td>
+                    </tr>
+
+                    <tr>
+                        <td>@Html.LabelFor(m => Model.Compte.MotDePasse)</td>
+                        <td>@Html.TextBoxFor(m => Model.Compte.MotDePasse, new { type = "password" })</td>
+                        <td>@Html.ValidationMessageFor(m => Model.Compte.MotDePasse)</td>
+                    </tr>
+
+                </tbody>
+            </table>
+            <br />
+            <br />
+            <input type="button" onclick="window.location.href='https://localhost:5001/Home/EspaceClubLogged?nom=NonClub';" value="Valider" />
+
+        </fieldset>
+
+    }
+
+    @*vérification du type de données dans le front*@
+    <script type="text/javascript" src="~/Scripts/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.validate-vsdoc.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+
+</body>
+</html>
