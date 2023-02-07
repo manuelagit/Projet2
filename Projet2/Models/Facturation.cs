@@ -27,5 +27,7 @@ namespace Projet2.Models
 
         [StringLength(10)]
         public string TelephoneFacturation { get; set; }
+
+        
     }
 }

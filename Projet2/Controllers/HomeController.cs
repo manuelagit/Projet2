@@ -123,6 +123,13 @@ namespace Projet2.Controllers
             return View();
         }
 
+        public IActionResult CreatePaiement(Paiement paiement)
+        {
+            Dal dal = new Dal();
+            paiement.Id = dal.CreateFacturation(paiement.Facturation);       
+            dal.CreatePaiement(paiement);
+            return RedirectToAction("UserList");
+        }
     }
 }
 

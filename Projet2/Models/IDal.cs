@@ -17,6 +17,9 @@ namespace Projet2.Models
         int ModifyUser(Utilisateur utilisateur);
         void ModifyUser(int id);
         void RemoveUser(Utilisateur utilisateur);
+
+        int CreatePaiement(int numeroCB, DateTime dateExpiration, int codeDeSecurité, int facturationId);
+        int CreatePaiement(Paiement paiement);
     }
 }
 

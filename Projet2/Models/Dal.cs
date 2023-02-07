@@ -137,7 +137,29 @@ namespace Projet2.Models
 
 
         }
+        public int CreatePaiement(int numeroCB, DateTime dateExpiration, int codeDeSecurité, int facturationId)
+        {
+            Paiement paiment = new Paiement { NumeroCB = numeroCB, DateExpiration = dateExpiration, CodeDeSecurite = codeDeSecurité,FacturationId= facturationId };
+            _bddContext.Paiements.Add(paiment);
+            _bddContext.SaveChanges();
+            return paiment.Id;
+        }
 
+
+
+        public int CreatePaiement(Paiement paiement)
+        {
+            _bddContext.Paiements.Add(paiement);
+            _bddContext.SaveChanges();
+            return paiement.Id;
+        }
+
+        public int CreateFacturation(Facturation facturation)
+        {
+            object value = _bddContext.Facturations.Add(facturation);
+            _bddContext.SaveChanges();
+            return facturation.Id;
+        }
     }
 }
 

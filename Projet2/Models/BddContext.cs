@@ -10,19 +10,14 @@ namespace Projet2.Models
         public DbSet<Adresse> Adresses { get; set; }
         public DbSet<Compte> Comptes { get; set; }
         public DbSet<OffreAbonnement> OffreAbonnements { get; set; }
-
+        public DbSet<Paiement> Paiements { get; set; }
+        public DbSet<Facturation> Facturations { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseMySql("server=localhost;user id=root;password=rrrrr;database=BDDprojet2");
 
         }
 
-        //public void InitialiseDb()
-        //{
-        //    this.Database.EnsureDeleted();
-        //    this.Database.EnsureCreated();
-        //    this.SaveChanges();
-        //}
         public void InitialiseDb()
         {
             this.Database.EnsureDeleted();

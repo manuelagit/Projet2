@@ -5,6 +5,8 @@ namespace Projet2.Models
 {
     public class Paiement
     {
+        public int Id { get; set; }
+
         [Display(Name = "Numéro de Carte Bleu")]
         [Required(ErrorMessage = "Le numéro de la carte bleu est requis")]
         [RegularExpression(@"^\d{16}$", ErrorMessage = "Entrez le numéro de carte bleu.")]
@@ -19,8 +21,9 @@ namespace Projet2.Models
         [RegularExpression(@"^\d{3}$", ErrorMessage = "Entrez le code de sécurité.")]
         public int CodeDeSecurite { get; set; }
 
-        public int? CompteID { get; set; }
-        public Compte Compte { get; set; }
+        public int? FacturationId { get; set; }
+        public Facturation Facturation { get; set;}
+       
     }
     
 }
