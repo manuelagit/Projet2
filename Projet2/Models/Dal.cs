@@ -195,9 +195,40 @@ namespace Projet2.Models
                 _bddContext.SaveChanges();
             }
 
-
         }
 
+        //Create Facturation
+        public int CreateFacturation(string nomFacturation, string prenomFacturation, string villeFacturation, string adresseFacturation, string codePostalFacturation, string paysFacturation, string TelephoneFacturation)
+        {
+            Facturation facturation = new Facturation { NomFacturation = nomFacturation, PrenomFacturation = prenomFacturation, VilleFacturation = villeFacturation, AdresseFacturation = adresseFacturation, CodePostalFacturation = codePostalFacturation, PaysFacturation = paysFacturation, TelephoneFacturation = TelephoneFacturation };
+            _bddContext.Facturations.Add(facturation);
+            _bddContext.SaveChanges();
+            return facturation.Id;
+        }
+        public int CreateFacturation(Facturation facturation)
+        {
+            _bddContext.Facturations.Add(facturation);
+            _bddContext.SaveChanges();
+            return facturation.Id;
+        }
+        //Create Payment 
+        public int CreatePaiement(string numeroCB, DateTime dateExpiration, int codeDeSecurité, int facturationId)
+        {
+            Paiement paiement = new Paiement { NumeroCB = numeroCB, DateExpiration = dateExpiration, CodeDeSecurite = codeDeSecurité,FacturationId= facturationId };
+            _bddContext.Paiements.Add(paiement);
+            _bddContext.SaveChanges();
+            return paiement.Id;
+        }
+
+
+        public int CreatePaiement(Paiement paiement)
+        {
+            _bddContext.Paiements.Add(paiement);
+            _bddContext.SaveChanges();
+            return paiement.Id;
+        }
+
+        
     }
 }
 

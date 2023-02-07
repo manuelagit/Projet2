@@ -12,18 +12,14 @@ namespace Projet2.Models
         public DbSet<OffreAbonnement> OffreAbonnements { get; set; }
         public DbSet<Club> Clubs { get; set; }
         public DbSet<InfosClub> InfosClubs { get; set; }
+        public DbSet<Paiement> Paiements { get; set; }
+        public DbSet<Facturation> Facturations { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseMySql("server=localhost;user id=root;password=rrrrrrrr;database=BDDprojet2");
+            optionsBuilder.UseMySql("server=localhost;user id=root;password=rrrrr;database=BDDprojet2");
         }
 
-        //public void InitialiseDb()
-        //{
-        //    this.Database.EnsureDeleted();
-        //    this.Database.EnsureCreated();
-        //    this.SaveChanges();
-        //}
         public void InitialiseDb()
         {
             this.Database.EnsureDeleted();
@@ -48,6 +44,9 @@ namespace Projet2.Models
             Compte compteClubAVL = new Compte() { Id = 4, AdressEmail = "avl@gmail.com", MotDePasse = "12EEE3" };
             Club clubAVL = new Club() { Id = 4, CompteId = 4, InfosClubId = 4 };
 
+            Facturation facturation = new Facturation() { Id = 1, NomFacturation = "Paubel", PrenomFacturation = "Paul", VilleFacturation = "Paris", AdresseFacturation = "11 rue des pigeons", CodePostalFacturation = "75000", PaysFacturation = "France", TelephoneFacturation = "0622113344" };
+            Paiement paiement = new Paiement() { Id = 1, NumeroCB = "1111222233334444",DateExpiration= new DateTime(2026,12,1),CodeDeSecurite=123,FacturationId=1 };
+
             this.Adresses.Add(adresse);
             this.InfosPersonnelles.Add(infosperso);
             this.Comptes.Add(compte);
@@ -67,8 +66,9 @@ namespace Projet2.Models
             this.Clubs.Add(clubAVL);
             this.SaveChanges();
 
-
-            
+            this.Facturations.Add(facturation);
+            this.Paiements.Add(paiement);
+            this.SaveChanges();
         }
 
 

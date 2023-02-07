@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Projet2.Models;
 
@@ -215,6 +216,7 @@ namespace Projet2.Controllers
             }
         }
 
+        
 
         public IActionResult RemoveClub(int Id)
         {
@@ -236,6 +238,7 @@ namespace Projet2.Controllers
 
         public IActionResult PaymentView() 
         { 
+
             return View();
         }
 
@@ -243,6 +246,17 @@ namespace Projet2.Controllers
         {
             return View();
         }
+
+        
+        [HttpPost]
+        public IActionResult PaymentView(Paiement paiement)
+        {
+            Dal dal = new Dal();
+            paiement.FacturationId = dal.CreateFacturation(paiement.Facturation);
+            dal.CreatePaiement(paiement);
+            return RedirectToAction("");
+        }
+
     }
 }
 
