@@ -1,0 +1,55 @@
+﻿@model Projet2.Models.Paiement
+
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>PaymentView</title>
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        <fieldset>
+
+            <legend> <h4>Paiement</h4> </legend>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>@Html.LabelFor(m => Model.NumeroCB)</td>
+                        <td>@Html.TextBoxFor(m => Model.NumeroCB, new { placeholder = "Numéro Carte Bleu" })</td>
+                        <td>@Html.ValidationMessageFor(m => Model.NumeroCB)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(m => Model.DateExpiration)</td>
+                        <td>@Html.TextBoxFor(m => Model.DateExpiration,"{0:MM-yyyy}", new { placeholder = "Date d'expiration de la carte" })</td>
+                        <td>@Html.ValidationMessageFor(m => Model.DateExpiration)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(m => Model.CodeDeSecurite)</td>
+                        <td>@Html.TextBoxFor(m => Model.CodeDeSecurite, new { type = "Code de sécurité" })</td>
+                        <td>@Html.ValidationMessageFor(m => Model.CodeDeSecurite)</td>
+                    </tr>
+          
+                </tbody>
+            </table>
+            <br />
+            <br />
+ 
+            <input type="button" onclick="window.location.href='https://localhost:5001/Home';" class="btn btn-warning btn-lg" value="Retour accueil" />
+            <input type="button" onclick="window.location.href='https://localhost:5001/Home/FacturationView';" class="btn btn-warning btn-lg" value="Validez payement" />
+        </fieldset>
+    }
+    @*vérification du type de données dans le front*@
+    <script type="text/javascript" src="~/Scripts/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.validate-vsdoc.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+
+</body>
+</html>@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
