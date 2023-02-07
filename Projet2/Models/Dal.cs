@@ -136,18 +136,97 @@ namespace Projet2.Models
             }
         }
 
+        public void RemoveOffreAbonnements(OffreAbonnement offreAbonnement)
+        {
+            _bddContext.OffreAbonnements.Remove(offreAbonnement);
+            _bddContext.SaveChanges();
+        }
+
+
 
 
 
 
         public List<Activite> GetActivityList()
         {
-            return _bddContext.Activites.ToList();
+            return _bddContext.Activites.ToList(); // charge + jointure
         }
 
-        public int CreateActivite(string nomActivite, DateTime dateActivite, string typeActivite, string descriptionActivite, string lieuActivite)
+        public List<EvenementClub> GetEvenementClubList()
         {
-            Activite activite = new Activite { NomActivite = nomActivite, DateActivite = dateActivite, TypeActivite = typeActivite, DescriptionActivite = descriptionActivite, LieuActivite = lieuActivite };
+            return _bddContext.EvenementClubs.ToList();
+        }
+
+        public List<Activite> StageList()
+        {
+            return _bddContext.Activites.Include(U => U.EvenementClub.Stage).ToList();
+        }
+
+        public List<Activite> VoyageList()
+        {
+            return _bddContext.Activites.Include(U => U.EvenementClub.Voyage).ToList();
+        }
+
+        public List<Activite> SortieAdherentList()
+        {
+            return _bddContext.Activites.Include(U => U.SortieAdherent).ToList();
+        }
+
+        public int CreateEvenementClub(EvenementClub evenementClub)
+        {
+            _bddContext.EvenementClubs.Add(evenementClub);
+            _bddContext.SaveChanges();
+            return evenementClub.Id;
+        }
+
+        public int CreateEvenementClub(int idEvenementClub)
+        {
+            Activite activite = new Activite { EvenementClubId = idEvenementClub };
+            _bddContext.Activites.Add(activite);
+            _bddContext.SaveChanges();
+            return activite.Id;
+        }
+
+        public int CreateStage(Stage stage)
+        {
+            _bddContext.Stages.Add(stage);
+            _bddContext.SaveChanges();
+            return stage.Id;
+        }
+
+        public int CreateStage(int idStage)
+        {
+            EvenementClub evenementClub = new EvenementClub { StageId = idStage };
+            _bddContext.EvenementClubs.Add(evenementClub);
+            _bddContext.SaveChanges();
+            return evenementClub.Id;
+        }
+
+        public int CreateVoyage(Voyage voyage)
+        {
+            _bddContext.Voyages.Add(voyage);
+            _bddContext.SaveChanges();
+            return voyage.Id;
+        }
+
+        public int CreateVoyage(int idVoyage)
+        {
+            EvenementClub evenementClub = new EvenementClub { VoyageId = idVoyage };
+            _bddContext.EvenementClubs.Add(evenementClub);
+            _bddContext.SaveChanges();
+            return evenementClub.Id;
+        }
+
+        public int CreateSortieAdherent(SortieAdherent sortieAdherent)
+        {
+            _bddContext.SortieAdherents.Add(sortieAdherent);
+            _bddContext.SaveChanges();
+            return sortieAdherent.Id;
+        }
+
+        public int CreateSortieAdherent(int idSortieAdherent)
+        {
+            Activite activite = new Activite { SortieAdherentId = idSortieAdherent };
             _bddContext.Activites.Add(activite);
             _bddContext.SaveChanges();
             return activite.Id;
@@ -160,70 +239,47 @@ namespace Projet2.Models
             return activite.Id;
         }
 
-        public void ModifyActivite(Activite activite)
+        public int ModifyActivite(Activite activite)
         {
             _bddContext.Activites.Update(activite);
             _bddContext.SaveChanges();
+            return activite.Id;
         }
 
-        public void ModifyActivite(int Id, string nomActivite, DateTime dateActivite, string typeActivite, string descriptionActivite, string lieuActivite)
+        public void ModifyActivite(int Id)
         {
             Activite activite = _bddContext.Activites.Find(Id);
             if (activite != null)
             {
-                activite.NomActivite = nomActivite;
-                activite.DateActivite = dateActivite;
-                activite.TypeActivite = typeActivite;
-                activite.DescriptionActivite = descriptionActivite;
-                activite.LieuActivite = lieuActivite;
+                _bddContext.Activites.Update(activite);
                 _bddContext.SaveChanges();
             }
         }
 
 
-        public List<EvenementClub> GetEvenementClubListe()
+        public void RemoveActivite(Activite activite)
         {
-            return _bddContext.EvenementClubs.ToList();
-        }
-
-        public int CreateEvenementClub(string nomActivite, DateTime dateActivite, string typeActivite, string descriptionActivite, string lieuActivite, int niveauRequis, int nombrePlace, double prixEvenementClub)
-        {
-            EvenementClub evenementClub = new EvenementClub { NomActivite = nomActivite, DateActivite = dateActivite, TypeActivite = typeActivite, DescriptionActivite = descriptionActivite, LieuActivite = lieuActivite, NiveauRequis = niveauRequis, NombrePlace = nombrePlace, PrixEvenementClub = prixEvenementClub };
-            _bddContext.EvenementClubs.Add(evenementClub);
-            _bddContext.SaveChanges();
-            return evenementClub.Id;
-        }
-
-        public int CreateEvenementClub(EvenementClub evenementClub)
-        {
-            _bddContext.EvenementClubs.Add(evenementClub);
-            _bddContext.SaveChanges();
-            return evenementClub.Id;
-        }
-
-        public void ModifyEvenementClub(EvenementClub evenementClub)
-        {
-            _bddContext.EvenementClubs.Update(evenementClub);
-            _bddContext.SaveChanges();
-        }
-
-        public void ModifyEvenementClub(int Id, string nomActivite, DateTime dateActivite, string typeActivite, string descriptionActivite, string lieuActivite, int niveauRequis, int nombrePlace, double prixEvenementClub)
-        {
-            EvenementClub evenementClub = _bddContext.EvenementClubs.Find(Id);
-            if (evenementClub != null)
+            if (activite != null)
             {
-                evenementClub.NomActivite = nomActivite;
-                evenementClub.DateActivite = dateActivite;
-                evenementClub.TypeActivite = typeActivite;
-                evenementClub.DescriptionActivite = descriptionActivite;
-                evenementClub.LieuActivite = lieuActivite;
-                evenementClub.NiveauRequis= niveauRequis;
-                evenementClub.NombrePlace= nombrePlace;
-                evenementClub.PrixEvenementClub= prixEvenementClub;
+                EvenementClub tmpEvenementClub = activite.EvenementClub;
+                SortieAdherent tmpSortieAdherent = activite.SortieAdherent;
+                Stage tmpStage = activite.EvenementClub.Stage;
+                Voyage tmpVoyage = activite.EvenementClub.Voyage;
+
+                activite.EvenementClubId = 0;
+                _bddContext.Activites.Remove(activite);
+                _bddContext.EvenementClubs.Remove(tmpEvenementClub);
+                _bddContext.SortieAdherents.Remove(tmpSortieAdherent);
+                _bddContext.Stages.Remove(tmpStage);
+                _bddContext.Voyages.Remove(tmpVoyage);
 
                 _bddContext.SaveChanges();
             }
         }
+
+
+
+
     }
 }
 

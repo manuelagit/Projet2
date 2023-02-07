@@ -15,6 +15,12 @@ namespace Projet2.Models
 
         public DbSet<EvenementClub> EvenementClubs { get; set; }
 
+        public DbSet<Stage> Stages { get; set; }
+
+        public DbSet<Voyage> Voyages { get; set; }
+
+        public DbSet<SortieAdherent> SortieAdherents { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseMySql("server=localhost;user id=root;password=rrrrr;database=BDDprojet2");
@@ -37,10 +43,16 @@ namespace Projet2.Models
             OffreAbonnement offreAbonnement = new OffreAbonnement() { Id = 1, DescriptionOffre = "Offre Annuelle sans engagement : 680.75 Euros", TypeOffre = "Annuelle", DureeOffreMois = 12, Prix = 680.75 };
             OffreAbonnement offreAbonnement2 = new OffreAbonnement() { Id = 2, DescriptionOffre = "Offre Mensuelle sans engagement : 69.99 Euros", TypeOffre = "Mensuelle", DureeOffreMois = 1, Prix = 69.99 };
             OffreAbonnement offreAbonnement3 = new OffreAbonnement() { Id = 3, DescriptionOffre = "Forfait Mensuelle : 49.99 Euros", TypeOffre = "Mensuelle", DureeOffreMois = 1, Prix = 49.99 };
-            Activite activite = new Activite() { Id = 1, NomActivite = "Activite1", DateActivite = new DateTime(2023, 3, 29), DureeActiviteHeure = 3, TypeActivite = "Bâpteme air", DescriptionActivite = "Bâpteme air", LieuActivite = "Annemasse" };
-            Activite activite1 = new Activite() { Id = 2, NomActivite = "Activite2", DateActivite = new DateTime(2023, 4, 15), DureeActiviteHeure = 3, TypeActivite = "Bâpteme air cross", DescriptionActivite = "Bâpteme air", LieuActivite = "Geneve" };
-            EvenementClub evenementClub = new EvenementClub() { Id = 3, NomActivite = "Activite1", DateActivite = new DateTime(2023, 3, 29), DureeActiviteHeure = 3, TypeActivite = "Bâpteme air", DescriptionActivite = "Bâpteme air", LieuActivite = "Annemasse", NiveauRequis = 1, NombrePlace = 8, PrixEvenementClub = 49.99 };
-            EvenementClub evenementClub1 = new EvenementClub() { Id = 4, NomActivite = "Activite2", DateActivite = new DateTime(2023, 4, 15), DureeActiviteHeure = 3, TypeActivite = "Bâpteme air cross", DescriptionActivite = "Bâpteme air", LieuActivite = "Geneve", NiveauRequis = 3, NombrePlace = 12, PrixEvenementClub = 79.99 };  
+
+            Stage stage = new Stage() { Id = 1, NomStage = "Stage1", DateStage = new DateTime(2023, 3, 23), DescriptionStage = "Stage vol plané", LieuStage = "Annemasse", DureeStageHeure = 3, NiveauRequisStage = 2, NombrePlaceStage = 12, PrixStage = 49.99 };
+            Voyage voyage = new Voyage() { Id = 1, NomVoyage = "Voyage1", DateVoyage = new DateTime(2023, 3, 15), DescriptionVoyage = "Voyage bapteme", LieuVoyage = "Bordeaux", DureeVoyageHeure = 3, NiveauRequisVoyage = 3, NombrePlaceVoyage = 20, PrixVoyage = 79.99 };
+            SortieAdherent sortieAdherent = new SortieAdherent() { Id = 1, NomSortie = "Sortie1", DateSortie = new DateTime(2023, 4, 28), DescriptionSortie = "Decouverte vin de Alexandre", LieuSortie = "Bordeaux", NomLeader = "Alexandre", TypeSortie = "Ballade" };
+            EvenementClub evenementClub1 = new EvenementClub { Id = 1, StageId = 1, Stage = stage };
+            EvenementClub evenementClub2 = new EvenementClub { Id = 2, VoyageId = 1, Voyage = voyage };
+
+            Activite activite1 = new Activite() { Id = 1, EvenementClubId = 1, EvenementClub = evenementClub1 };
+            Activite activite2 = new Activite() { Id = 2, EvenementClubId = 2, EvenementClub = evenementClub2 };
+            Activite activite3 = new Activite() { Id = 3, SortieAdherentId = 1, SortieAdherent = sortieAdherent };
 
             this.Adresses.Add(adresse);
             this.InfosPersonnelles.Add(infosperso);
@@ -49,11 +61,10 @@ namespace Projet2.Models
             this.OffreAbonnements.Add(offreAbonnement);
             this.OffreAbonnements.Add(offreAbonnement2);
             this.OffreAbonnements.Add(offreAbonnement3);
-            this.Activites.Add(activite);
             this.Activites.Add(activite1);
-            this.EvenementClubs.Add(evenementClub);
-            this.EvenementClubs.Add(evenementClub1);
-
+            this.Activites.Add(activite2);
+            this.Activites.Add(activite3);
+            
 
             this.SaveChanges();
 

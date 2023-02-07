@@ -14,10 +14,16 @@ namespace Projet2.Models
             return listeActivites;
         }
 
-        // add an activity to the list via id, description, duree
-        public static void CreateActivity(int id, string nomActivite, DateTime dateActivite, string typeActivite, string descriptionActivite, string lieuActivite)
+        // add an event to the list via id, EvenementClub
+        public static void CreateActivity(int id, EvenementClub evenementClub)
         {
-            listeActivites.Add(new Activite() { Id = id, NomActivite = nomActivite, DateActivite = dateActivite, TypeActivite = typeActivite, DescriptionActivite = descriptionActivite, LieuActivite = lieuActivite });
+            listeActivites.Add(new Activite() { Id = id, EvenementClub = evenementClub });
+        }
+
+        // add a travel to the list via id, SortieAdherent
+        public static void CreateActivity(int id, SortieAdherent sortieAdherent)
+        {
+            listeActivites.Add(new Activite() { Id = id, SortieAdherent  = sortieAdherent });
         }
 
         // add an activity to the list via Activite

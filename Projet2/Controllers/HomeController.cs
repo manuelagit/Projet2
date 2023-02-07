@@ -122,9 +122,22 @@ namespace Projet2.Controllers
         public IActionResult EvenementClub()
         {
             Dal dal = new Dal();
-            List<EvenementClub> evenementClubs = dal.GetEvenementClubListe(); // to be able to use the helper, instead of ViewData["ListeUtilisateurs"] = dal.GetUsersList();
-            return View(evenementClubs);
+            return View("EvenementClub");
         }
+
+        public IActionResult StageAdherent()
+        {
+            Dal dal = new Dal();
+            return View("StageAdherent");
+        }
+
+        public IActionResult VoyageAdherent()
+        {
+            Dal dal = new Dal();
+            return View("VoyageAdherent");
+        }
+
+
 
 
     }

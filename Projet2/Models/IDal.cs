@@ -18,20 +18,35 @@ namespace Projet2.Models
         int CreateOffreAbonnements(OffreAbonnement offreAbonnement);
         void ModifyOffreAbonnements(OffreAbonnement offreAbonnement);
         void ModifyOffreAbonnements(int Id, string descriptionOffre, int dureeOffreMois, string typeOffre, double prix);
+        void RemoveOffreAbonnements(OffreAbonnement offreAbonnement);
 
 
         List<Activite> GetActivityList();
-        int CreateActivite(string nomActivite, DateTime dateActivite, string typeActivite, string descriptionActivite, string lieuActivite);
         int CreateActivite(Activite activite);
-        void ModifyActivite(Activite activite);
-        void ModifyActivite(int Id, string nomActivite, DateTime dateActivite, string typeActivite, string descriptionActivite, string lieuActivite);
+        int ModifyActivite(Activite activite);
+        void ModifyActivite(int Id);
+
+        void RemoveActivite(Activite activite);
 
 
-        List<EvenementClub> GetEvenementClubListe();
-        int CreateEvenementClub(string nomActivite, DateTime dateActivite, string typeActivite, string descriptionActivite, string lieuActivite, int niveauRequis, int nombrePlace, double prixEvenementClub);
+        List<EvenementClub> GetEvenementClubList();
         int CreateEvenementClub(EvenementClub evenementClub);
-        void ModifyEvenementClub(EvenementClub evenementClub);
-        void ModifyEvenementClub(int Id, string nomActivite, DateTime dateActivite, string typeActivite, string descriptionActivite, string lieuActivite, int niveauRequis, int nombrePlace, double prixEvenementClub);
+        int CreateEvenementClub(int idEvenementClub);
+
+        List<Activite> StageList();
+        int CreateStage(Stage stage);
+        int CreateStage(int idStage);
+
+        List<Activite> VoyageList();
+        int CreateVoyage(Voyage voyage);
+        int CreateVoyage(int idVoyage);
+
+        List<Activite> SortieAdherentList();
+        int CreateSortieAdherent(SortieAdherent sortieAdherent);
+        int CreateSortieAdherent(int idSortieAdherent);
+
+
+
     }
 }
 
