@@ -39,9 +39,8 @@ namespace Projet2.Models
             Compte compte = new Compte() { Id = 1, AdressEmail = "papa@gmail.com", MotDePasse = "123" };
             Utilisateur utilisateur = new Utilisateur() { Id = 1, InfosPersonnellesId = 1, CompteId = 1 };
 
-            OffreAbonnement offreAbonnement = new OffreAbonnement() { Id = 1, DescriptionOffre = "Quelques années après la publication de cet ouvrage, force est de constater que le mot d’ordre « Expérimenter plutôt que posséder » est plus que jamais au cœur de la relation client.", TypeOffre = "Annuelle", DureeOffreMois = 12, Prix = 680.75 };
-            OffreAbonnement offreAbonnement2 = new OffreAbonnement() { Id = 2, DescriptionOffre = "Quelques années après la publication de cet ouvrage, force est de constater que le mot d’ordre « Expérimenter plutôt que posséder » est plus que jamais au cœur de la relation client.", TypeOffre = "Mensuelle", DureeOffreMois = 6, Prix = 249.99 };
-            OffreAbonnement offreAbonnement3 = new OffreAbonnement() { Id = 3, DescriptionOffre = "Forfait Mensuelle : 49.99 Euros", TypeOffre = "Mensuelle", DureeOffreMois = 1, Prix = 49.99 };
+            OffreAbonnement offreAbonnement = new OffreAbonnement() { Id = 1, DescriptionOffre = "DescriptionOffre à écrire", TypeOffre = "annuel", DureeOffreMois = 12, Prix = 600.00 };
+            OffreAbonnement offreAbonnement2 = new OffreAbonnement() { Id = 2, DescriptionOffre = "DescriptionOffre à écrir", TypeOffre = "mensuel", DureeOffreMois = 6, Prix = 70.00 };
 
             Adresse adresseClub = new Adresse() { Id = 3, CodePostal = 11170, NomVille = "Gex", NomRue = "rue alphonse", NumeroRue = 4};
             InfosClub infosClub = new InfosClub() { Id = 1, NomClub = "VLG", AdresseId = 3 };
@@ -79,7 +78,6 @@ namespace Projet2.Models
 
             this.OffreAbonnements.Add(offreAbonnement);
             this.OffreAbonnements.Add(offreAbonnement2);
-            this.OffreAbonnements.Add(offreAbonnement3);
             this.Activites.Add(activite1);
             this.Activites.Add(activite2);
             this.Activites.Add(activite3);
