@@ -217,13 +217,6 @@ namespace Projet2.Controllers
         }
 
 
-        //Creation of a catalog
-        public IActionResult OfferCatalog()
-        {
-            Dal dal = new Dal();
-            List<OffreAbonnement> offreAbonnements = dal.GetOfferCatalog(); // to be able to use the helper, instead of ViewData["ListeUtilisateurs"] = dal.GetUsersList();
-            return View(offreAbonnements);
-        }
 
 
         public IActionResult LookForClub(int Id)
@@ -326,6 +319,8 @@ namespace Projet2.Controllers
             List<OffreAbonnement> offreAbonnements = dal.GetOfferCatalog(); // to be able to use the helper, instead of ViewData["ListeUtilisateurs"] = dal.GetUsersList();
             return View(offreAbonnements);
         }
+
+
 
         public IActionResult Activite()
         {
