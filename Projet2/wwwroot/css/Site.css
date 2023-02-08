@@ -16,16 +16,15 @@
     margin-block: 5px;
     display: flex;
     min-height: 83vh;
-
 }
 
 .menu {
     margin-block: 4px;
-    width: 15vw;
+    //width: 15vw;
     border: 2px solid black;
     border-radius: 30px;
     background-color: beige;
-    /*background-position: top;*/
+    //background-position: top;
 }
 
 .titre1 {
@@ -36,6 +35,13 @@
     border-radius: 30px;
     background-color: lightgray;
     margin: 0;
+}
+
+.btn {
+    margin: 5px;
+    min-width: 100% !important;
+    display: flex;
+    flex-direction: column;
 }
 
 .buttons {
@@ -111,7 +117,7 @@
     border: 2px solid black;
     border-radius: 30px;
     min-height: 10px;
-    width: 100%;
+    width: 75%;
 }
 
 .footer {

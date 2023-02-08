@@ -6,67 +6,22 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Projet2.Models;
+//using Syncfusion.Pdf;
+//using Syncfusion.Pdf.Graphics;
+using Syncfusion.Drawing;
+using System.IO;
+//using Syncfusion.Pdf.Grid;
 
 namespace Projet2.Controllers
 {
-	public class HomeController : Controller
-	{
+    public class HomeController : Controller
+    {
         public IActionResult Index()
         {
             return View("WelcomeView");
         }
 
         public IActionResult Error()
-        {
-            return View();
-        }
-
-        public IActionResult EspaceAdmin()
-        {
-            return View();
-        }
-
-        public IActionResult EspaceClub()
-        {
-            return View();
-        }
-
-        public IActionResult EspaceClubVisible()
-        {
-            return View();
-        }
-
-        public IActionResult EspaceClubLogged()
-        {
-            return View();
-        }
-
-        public IActionResult ClubLogin()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public IActionResult ClubLogin(string NomClub)
-        {
-            using (Dal dal = new Dal())
-            {
-                Club club = dal.GetClubsList().Where(r => r.InfosClub.NomClub == NomClub).FirstOrDefault();
-                if (club == null)
-                {
-                    return View("Error");
-                }
-                return View("EspaceClubLogged", club);
-            }
-        }
-
-
-        public IActionResult EspaceParapentiste()
-        {
-            return View();
-        }
-
-        public IActionResult PageEvents()
         {
             return View();
         }
@@ -86,12 +41,7 @@ namespace Projet2.Controllers
         }
 
 
-        public IActionResult ClubList4Admin()
-        {
-            Dal dal = new Dal();
-            List<Club> listeClubs4Admin = dal.GetClubsList(); // to be able to use the helper, instead of ViewData["ListeUtilisateurs"] = dal.GetUsersList();
-            return View(listeClubs4Admin);
-        }
+
 
 
         // recovers the saved values and displays them
@@ -217,13 +167,6 @@ namespace Projet2.Controllers
         }
 
 
-        //Creation of a catalog
-        public IActionResult OfferCatalog()
-        {
-            Dal dal = new Dal();
-            List<OffreAbonnement> offreAbonnements = dal.GetOfferCatalog(); // to be able to use the helper, instead of ViewData["ListeUtilisateurs"] = dal.GetUsersList();
-            return View(offreAbonnements);
-        }
 
 
         public IActionResult LookForClub(int Id)
@@ -232,6 +175,62 @@ namespace Projet2.Controllers
         }
 
 
+        public IActionResult EspaceAdmin()
+        {
+            return View();
+        }
+
+        public IActionResult EspaceClub()
+        {
+            return View();
+        }
+
+        public IActionResult EspaceClubVisible()
+        {
+            return View();
+        }
+
+        public IActionResult EspaceClubLogged()
+        {
+            return View();
+        }
+
+        public IActionResult ClubLogin()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult ClubLogin(string NomClub)
+        {
+            using (Dal dal = new Dal())
+            {
+                Club club = dal.GetClubsList().Where(r => r.InfosClub.NomClub == NomClub).FirstOrDefault();
+                if (club == null)
+                {
+                    return View("Error");
+                }
+                return View("EspaceClubLogged", club);
+            }
+        }
+
+
+        public IActionResult EspaceParapentiste()
+        {
+            return View();
+        }
+
+        public IActionResult PageEvents()
+        {
+            return View();
+        }
+
+        public IActionResult ClubList4Admin()
+        {
+            Dal dal = new Dal();
+            List<Club> listeClubs4Admin = dal.GetClubsList(); // to be able to use the helper, instead of ViewData["ListeUtilisateurs"] = dal.GetUsersList();
+            return View(listeClubs4Admin);
+        }
         //public async Task<IActionResult> Search(string SearchString)
         //{
         //    using (Dal dal = new Dal())
@@ -245,12 +244,13 @@ namespace Projet2.Controllers
         //                return Problem("Entity is null.");
         //            }
 
-                    
+
 
         //            return View(await clubsFiltered.ToListAsync());
         //        }
         //    }
         //}
+
 
 
 
@@ -271,7 +271,7 @@ namespace Projet2.Controllers
             }
         }
 
-        
+
 
         public IActionResult RemoveClub(int Id)
         {
@@ -291,8 +291,8 @@ namespace Projet2.Controllers
         }
 
 
-        public IActionResult PaymentView() 
-        { 
+        public IActionResult PaymentView()
+        {
 
             return View();
         }
@@ -302,7 +302,7 @@ namespace Projet2.Controllers
             return View();
         }
 
-        
+
         [HttpPost]
         public IActionResult PaymentView(Paiement paiement)
         {
@@ -314,10 +314,123 @@ namespace Projet2.Controllers
         public IActionResult FacturationList()
         {
             Dal dal = new Dal();
-            List<Facturation> listeFacturation = dal.GetFacturesList(); // to be able to use the helper, instead of ViewData["ListeUtilisateurs"] = dal.GetUsersList();
+            List<Facturation> listeFacturation = dal.GetFacturesList(); // to be able to use the helper
             return View(listeFacturation);
-           
+
         }
+
+        //public IActionResult CreatePDFDocument()
+        //{
+        //    Dal dal = new Dal();
+        //    List<Facturation> listeFacturation = dal.GetFacturesList(); // to be able to use the helper
+
+        //    //Generate a new PDF document.
+        //    PdfDocument document = new PdfDocument();
+
+        //    //Add a page.
+        //    PdfPage page = document.Pages.Add();
+
+        //    //Create a PdfGrid.
+        //    PdfGrid pdfGrid = new PdfGrid();
+
+        //    //Add values to list.
+
+        //    List<object> data = new List<object>();
+            
+
+        //    //Add rows. 
+        //    foreach (Facturation f in listeFacturation)
+        //    {
+        //        data.Add(new { 
+        //            Id = f.Id,
+        //            Nom = f.NomFacturation, 
+        //            Prenom = f.PrenomFacturation, 
+        //            Ville = f.VilleFacturation, 
+        //            Adresse = f.AdresseFacturation, 
+        //            CodePostal = f.CodePostalFacturation, 
+        //            Pays= f.PaysFacturation, 
+        //            Telephone = f.TelephoneFacturation 
+        //        });
+        //    }
+            
+
+
+        //    //Add list to IEnumerable.
+        //    IEnumerable<object> dataTable = data;
+
+        //    //Assign data source.
+        //    pdfGrid.DataSource = dataTable;
+
+        //    //Draw grid to the page of PDF document.
+        //    pdfGrid.Draw(page, new Syncfusion.Drawing.PointF(10, 10));
+
+        //    //Write the PDF document to stream
+        //    MemoryStream stream = new MemoryStream();
+        //    document.Save(stream);
+
+        //    //If the position is not set to '0' then the PDF will be empty.
+        //    stream.Position = 0;
+
+        //    //Close the document.
+        //    document.Close(true);
+
+        //    //Defining the ContentType for pdf file.
+        //    string contentType = "application/pdf";
+
+        //    //Define the file name.
+        //    string fileName = "Output.pdf";
+
+        //    //Creates a FileContentResult object by using the file contents, content type, and file name.
+        //    return File(stream, contentType, fileName);
+        //}
+
+        //Creation of a catalog
+        public IActionResult OfferCatalog()
+        {
+            Dal dal = new Dal();
+            List<OffreAbonnement> offreAbonnements = dal.GetOfferCatalog(); // to be able to use the helper, instead of ViewData["ListeUtilisateurs"] = dal.GetUsersList();
+            return View(offreAbonnements);
+        }
+
+
+
+        public IActionResult Activite()
+        {
+            Dal dal = new Dal();
+            List<Activite> activites = dal.GetActivityList(); // to be able to use the helper, instead of ViewData["ListeUtilisateurs"] = dal.GetUsersList();
+            return View(activites);
+        }
+
+        public IActionResult EvenementClub()
+        {
+            Dal dal = new Dal();
+            return View("EvenementClub");
+        }
+
+        public IActionResult StageAdherent()
+        {
+            Dal dal = new Dal();
+            List<Stage> stages = dal.GetStageList();
+            return View(stages);
+        }
+
+        public IActionResult VoyageAdherent()
+        {
+            Dal dal = new Dal();
+            List<Voyage> voyageAdherent = dal.GetVoyageList();
+            return View(voyageAdherent);
+        }
+
+        public IActionResult SortieAdherent()
+        {
+            Dal dal = new Dal();
+            List<SortieAdherent> sortieAdherent = dal.GetSortieAdherentList();
+            return View(sortieAdherent);
+        }
+
+
+
+
     }
 }
 

@@ -17,7 +17,7 @@
     {
         <fieldset>
 
-            <legend><h4>Création d'un compte club</h4></legend>
+            <legend><h4>Créez votre compte club</h4></legend>
             <table>
                 <tbody>
                     <tr>
@@ -158,11 +158,7 @@
 
 
 
-            <input type="button" value="Ajouter une ligne" onclick="addRow('dataTable')">
-
-
-
-            <input type="Button" Value="Apply"><table id="dataTable" width="350px" border="0">
+            <table id="dataTable" width="350px" border="0">
                 <tbody>
                     <tr>
                         <th>Nom</th>
@@ -187,6 +183,9 @@
                     </tr>
                 </tbody>
             </table>
+            <input type="button" value="Ajouter une ligne" onclick="addRow('dataTable')">
+            <input type="Button" Value="Enregistrer cette liste">
+
             <br />
             <br />
             <button type="submit">Choisir un fichier</button>
@@ -225,7 +224,6 @@
         //function myDeleteFunction() {
         //    document.getElementById("ZeTable").deleteRow(-1);
         //}</script>
-
 
 
     <input type="button" onclick="window.location.href='https://localhost:5001/Home/EspaceClub';" value="Retour Espace Club" />
