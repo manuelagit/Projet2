@@ -167,13 +167,6 @@ namespace Projet2.Controllers
         }
 
 
-        //Creation of a catalog
-        public IActionResult OfferCatalog()
-        {
-            Dal dal = new Dal();
-            List<OffreAbonnement> offreAbonnements = dal.GetOfferCatalog(); // to be able to use the helper, instead of ViewData["ListeUtilisateurs"] = dal.GetUsersList();
-            return View(offreAbonnements);
-        }
 
 
         public IActionResult LookForClub(int Id)
@@ -201,6 +194,7 @@ namespace Projet2.Controllers
         //        }
         //    }
         //}
+
 
 
 
@@ -333,6 +327,53 @@ namespace Projet2.Controllers
             //Creates a FileContentResult object by using the file contents, content type, and file name.
             return File(stream, contentType, fileName);
         }
+
+        //Creation of a catalog
+        public IActionResult OfferCatalog()
+        {
+            Dal dal = new Dal();
+            List<OffreAbonnement> offreAbonnements = dal.GetOfferCatalog(); // to be able to use the helper, instead of ViewData["ListeUtilisateurs"] = dal.GetUsersList();
+            return View(offreAbonnements);
+        }
+
+
+
+        public IActionResult Activite()
+        {
+            Dal dal = new Dal();
+            List<Activite> activites = dal.GetActivityList(); // to be able to use the helper, instead of ViewData["ListeUtilisateurs"] = dal.GetUsersList();
+            return View(activites);
+        }
+
+        public IActionResult EvenementClub()
+        {
+            Dal dal = new Dal();
+            return View("EvenementClub");
+        }
+
+        public IActionResult StageAdherent()
+        {
+            Dal dal = new Dal();
+            List<Stage> stages = dal.GetStageList();
+            return View(stages);
+        }
+
+        public IActionResult VoyageAdherent()
+        {
+            Dal dal = new Dal();
+            List<Voyage> voyageAdherent = dal.GetVoyageList();
+            return View(voyageAdherent);
+        }
+
+        public IActionResult SortieAdherent()
+        {
+            Dal dal = new Dal();
+            List<SortieAdherent> sortieAdherent = dal.GetSortieAdherentList();
+            return View(sortieAdherent);
+        }
+
+
+
 
     }
 }
