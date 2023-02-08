@@ -2,7 +2,6 @@
     border-radius: 30px;
     border: 2px solid black;
     min-height: 200px;
-
     text-align: center;
     color: black;
     background-image: url("/Images/FondHead.png");
@@ -24,10 +23,9 @@
     margin-block: 4px;
     width: 15vw;
     border: 2px solid black;
-    padding: 20px;
     border-radius: 30px;
     background-color: beige;
-    background-position: top;
+    /*background-position: top;*/
 }
 
 .titre1 {
@@ -50,7 +48,7 @@
     min-width: 100% !important;
     border-radius: 50px;
     border: 0;
-    font-size: 1rem;
+    font-size: 1.3rem;
     margin: 1rem 0;
     padding: 2rem 3rem;
     text-transform: uppercase;
@@ -58,39 +56,6 @@
     text-align: center;
     cursor: pointer;
 }
-
-
-
-
-.btn--btnClub {
-    background: #23437a;
-    color: white;
-}
-
-    .btn--btnClub:hover {
-        background: lightblue;
-        color: black
-    }
-
-.btn--btnAdmin {
-    background: #23437a;
-    color: white;
-}
-
-    .btn--btnAdmin:hover {
-        background: lightblue;
-        color: black
-    }
-
-.btn--btnParapentiste {
-    background: #23437a;
-    color: white;
-}
-
-    .btn--btnParapentiste:hover {
-        background: lightblue;
-        color: black
-    }
 
 .btn--btnAcceuil {
     background: #23437a;
@@ -140,12 +105,10 @@
         color: black;
     }
 
-
 .contenu {
-    padding : 20px;
+    padding: 20px;
     margin: 4px;
     border: 2px solid black;
-    padding: 20px;
     border-radius: 30px;
     min-height: 10px;
     width: 100%;
@@ -159,8 +122,4 @@
     border-radius: 30px;
     min-height: 25px;
     background-color: #23437a;
-}
-
-.import mailImport {
-    width: 20px
 }
