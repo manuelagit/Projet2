@@ -7,18 +7,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Catalogue d'offre d'abonnement</title>
 </head>
-<center>
     <body>
-        <h1>Choississez l'offre qui vous convient</h1>
-        @foreach (var member in Model)
-        {
-            <div>
-                <span>@member.DescriptionOffre</span><input name="OffreAbonnement" value="news" type="radio" /><br />
-            </div> 
-        }
+        <h1>Choississez l'offre qui vous convient</h1><br />
+        <table style="width:30%">
+                @foreach (var member in Model)
+                { <tr>
+                    <td>@member.DescriptionOffre</td>
+                    <td><input name="OffreAbonnement" value="news" type="radio" /></td>
+                  </tr>
+                }
+        </table>
+        <br />
+        <br />
 
         <div>
-            <input type="submit" value="S'abonner" />
+            <input type="submit" onclick="window.location.href='https://localhost:5001/Home/testPaiement';" value="S'abonner" />
+            <input type="button" onclick="window.location.href='https://localhost:5001/Home';" class="btn btn-warning btn-lg" value="Retour accueil" />
         </div>
 
     </body>
+
+
+
+

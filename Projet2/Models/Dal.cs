@@ -194,7 +194,139 @@ namespace Projet2.Models
                 offreAbonnement.Prix= prix;
                 _bddContext.SaveChanges();
             }
+        }
 
+        public void RemoveOffreAbonnements(OffreAbonnement offreAbonnement)
+        {
+            _bddContext.OffreAbonnements.Remove(offreAbonnement);
+            _bddContext.SaveChanges();
+        }
+
+
+
+
+
+
+        public List<Activite> GetActivityList()
+        {
+            return _bddContext.Activites.ToList(); // charge + jointure
+        }
+
+        public List<EvenementClub> GetEvenementClubList()
+        {
+            return _bddContext.EvenementClubs.ToList();
+        }
+
+        public List<Stage> GetStageList()
+        {
+            return _bddContext.Stages.ToList();
+        }
+
+        public List<Voyage> GetVoyageList()
+        {
+            return _bddContext.Voyages.ToList();
+        }
+
+        public List<SortieAdherent> GetSortieAdherentList()
+        {
+            return _bddContext.SortieAdherents.ToList();
+        }
+
+        public int CreateEvenementClub(EvenementClub evenementClub)
+        {
+            _bddContext.EvenementClubs.Add(evenementClub);
+            _bddContext.SaveChanges();
+            return evenementClub.Id;
+        }
+
+        public int CreateEvenementClub(int idEvenementClub)
+        {
+            Activite activite = new Activite { EvenementClubId = idEvenementClub };
+            _bddContext.Activites.Add(activite);
+            _bddContext.SaveChanges();
+            return activite.Id;
+        }
+
+        public int CreateStage(Stage stage)
+        {
+            _bddContext.Stages.Add(stage);
+            _bddContext.SaveChanges();
+            return stage.Id;
+        }
+
+        public int CreateStage(int idStage)
+        {
+            EvenementClub evenementClub = new EvenementClub { StageId = idStage };
+            _bddContext.EvenementClubs.Add(evenementClub);
+            _bddContext.SaveChanges();
+            return evenementClub.Id;
+        }
+
+        public int CreateVoyage(Voyage voyage)
+        {
+            _bddContext.Voyages.Add(voyage);
+            _bddContext.SaveChanges();
+            return voyage.Id;
+        }
+
+        public int CreateVoyage(int idVoyage)
+        {
+            EvenementClub evenementClub = new EvenementClub { VoyageId = idVoyage };
+            _bddContext.EvenementClubs.Add(evenementClub);
+            _bddContext.SaveChanges();
+            return evenementClub.Id;
+        }
+
+        public int CreateSortieAdherent(SortieAdherent sortieAdherent)
+        {
+            _bddContext.SortieAdherents.Add(sortieAdherent);
+            _bddContext.SaveChanges();
+            return sortieAdherent.Id;
+        }
+
+        public int CreateSortieAdherent(int idSortieAdherent)
+        {
+            Activite activite = new Activite { SortieAdherentId = idSortieAdherent };
+            _bddContext.Activites.Add(activite);
+            _bddContext.SaveChanges();
+            return activite.Id;
+        }
+
+        public int CreateActivite(Activite activite)
+        {
+            _bddContext.Activites.Add(activite);
+            _bddContext.SaveChanges();
+            return activite.Id;
+        }
+
+        public int ModifyActivite(Activite activite)
+        {
+            _bddContext.Activites.Update(activite);
+            _bddContext.SaveChanges();
+            return activite.Id;
+        }
+
+        public void ModifyActivite(int Id)
+        {
+            Activite activite = _bddContext.Activites.Find(Id);
+            if (activite != null)
+            {
+                _bddContext.Activites.Update(activite);
+                _bddContext.SaveChanges();
+            }
+        }
+
+
+        public void RemoveActivite(Activite activite)
+        {
+            if (activite != null)
+            {
+                EvenementClub tmpEvenementClub = activite.EvenementClub;
+                SortieAdherent tmpSortieAdherent = activite.SortieAdherent;
+                Stage tmpStage = activite.EvenementClub.Stage;
+                Voyage tmpVoyage = activite.EvenementClub.Voyage;
+
+            }
         }
 
         //Create Facturation
@@ -227,10 +359,15 @@ namespace Projet2.Models
             _bddContext.SaveChanges();
             return paiement.Id;
         }
+
         public List<Facturation> GetFacturesList()
         {
             return _bddContext.Facturations.ToList();
+            
         }
+
+
+
 
     }
 }
