@@ -26,56 +26,6 @@ namespace Projet2.Controllers
             return View();
         }
 
-        public IActionResult EspaceAdmin()
-        {
-            return View();
-        }
-
-        public IActionResult EspaceClub()
-        {
-            return View();
-        }
-
-        public IActionResult EspaceClubVisible()
-        {
-            return View();
-        }
-
-        public IActionResult EspaceClubLogged()
-        {
-            return View();
-        }
-
-        public IActionResult ClubLogin()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public IActionResult ClubLogin(string NomClub)
-        {
-            using (Dal dal = new Dal())
-            {
-                Club club = dal.GetClubsList().Where(r => r.InfosClub.NomClub == NomClub).FirstOrDefault();
-                if (club == null)
-                {
-                    return View("Error");
-                }
-                return View("EspaceClubLogged", club);
-            }
-        }
-
-
-        public IActionResult EspaceParapentiste()
-        {
-            return View();
-        }
-
-        public IActionResult PageEvents()
-        {
-            return View();
-        }
-
         public IActionResult UserList()
         {
             Dal dal = new Dal();
@@ -91,12 +41,7 @@ namespace Projet2.Controllers
         }
 
 
-        public IActionResult ClubList4Admin()
-        {
-            Dal dal = new Dal();
-            List<Club> listeClubs4Admin = dal.GetClubsList(); // to be able to use the helper, instead of ViewData["ListeUtilisateurs"] = dal.GetUsersList();
-            return View(listeClubs4Admin);
-        }
+
 
 
         // recovers the saved values and displays them
@@ -341,11 +286,7 @@ namespace Projet2.Controllers
             //Add values to list.
 
             List<object> data = new List<object>();
-            //Object row1 = new { ID = "E01", Name = "Clay" };
-            //Object row2 = new { ID = "E02", Name = "Thomas" };
-            //Object row3 = new { ID = "E03", Name = "Andrew" };
-            //Object row4 = new { ID = "E04", Name = "Paul" };
-            //Object row5 = new { ID = "E05", Name = "Gray" };
+            
 
             //Add rows. 
             foreach (Facturation f in listeFacturation)
