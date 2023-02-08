@@ -1,0 +1,47 @@
+﻿@model List<Projet2.Models.Activite>
+
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>PaymentView</title>
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        <fieldset>
+
+            <legend> <h4>Stage</h4> </legend>
+            <table>
+                <tbody>
+                   @foreach (var member in Model)
+                    {
+                        <tr>
+                            <td>@member.EvenementClub.Stage.NomStage</td>
+                            <td><input name="Sortie" value="news" type="radio" /></td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+            <br />
+            <br />
+
+            <input type="button" onclick="window.location.href='https://localhost:5001/Home';" class="btn btn-warning btn-lg" value="Retour accueil" />
+            <input type="button" onclick="window.location.href='https://localhost:5001/Home/FacturationView';" class="btn btn-warning btn-lg" value="Validez payement" />
+        </fieldset>
+    }
+    @*vérification du type de données dans le front*@
+    <script type="text/javascript" src="~/Scripts/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.validate-vsdoc.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+
+</body>
+</html>@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}

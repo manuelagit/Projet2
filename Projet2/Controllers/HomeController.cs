@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Projet2.Models;
@@ -147,7 +148,13 @@ namespace Projet2.Controllers
         }
 
 
-
+        public IActionResult Activites()
+        {
+            Dal dal = new Dal();
+            List<Stage> stages = dal.GetStageList();
+            
+            return View(stages);
+        }
 
     }
 }
