@@ -6,11 +6,16 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Projet2.Models;
+using Syncfusion.Pdf;
+using Syncfusion.Pdf.Graphics;
+using Syncfusion.Drawing;
+using System.IO;
+using Syncfusion.Pdf.Grid;
 
 namespace Projet2.Controllers
 {
-	public class HomeController : Controller
-	{
+    public class HomeController : Controller
+    {
         public IActionResult Index()
         {
             return View("WelcomeView");
@@ -190,7 +195,7 @@ namespace Projet2.Controllers
         //                return Problem("Entity is null.");
         //            }
 
-                    
+
 
         //            return View(await clubsFiltered.ToListAsync());
         //        }
@@ -216,7 +221,7 @@ namespace Projet2.Controllers
             }
         }
 
-        
+
 
         public IActionResult RemoveClub(int Id)
         {
@@ -236,8 +241,8 @@ namespace Projet2.Controllers
         }
 
 
-        public IActionResult PaymentView() 
-        { 
+        public IActionResult PaymentView()
+        {
 
             return View();
         }
@@ -247,7 +252,7 @@ namespace Projet2.Controllers
             return View();
         }
 
-        
+
         [HttpPost]
         public IActionResult PaymentView(Paiement paiement)
         {
@@ -259,10 +264,80 @@ namespace Projet2.Controllers
         public IActionResult FacturationList()
         {
             Dal dal = new Dal();
-            List<Facturation> listeFacturation = dal.GetFacturesList(); // to be able to use the helper, instead of ViewData["ListeUtilisateurs"] = dal.GetUsersList();
+            List<Facturation> listeFacturation = dal.GetFacturesList(); // to be able to use the helper
             return View(listeFacturation);
-           
+
         }
+
+        public IActionResult CreatePDFDocument()
+        {
+            Dal dal = new Dal();
+            List<Facturation> listeFacturation = dal.GetFacturesList(); // to be able to use the helper
+
+            //Generate a new PDF document.
+            PdfDocument document = new PdfDocument();
+
+            //Add a page.
+            PdfPage page = document.Pages.Add();
+
+            //Create a PdfGrid.
+            PdfGrid pdfGrid = new PdfGrid();
+
+            //Add values to list.
+
+            List<object> data = new List<object>();
+            //Object row1 = new { ID = "E01", Name = "Clay" };
+            //Object row2 = new { ID = "E02", Name = "Thomas" };
+            //Object row3 = new { ID = "E03", Name = "Andrew" };
+            //Object row4 = new { ID = "E04", Name = "Paul" };
+            //Object row5 = new { ID = "E05", Name = "Gray" };
+
+            //Add rows. 
+            foreach (Facturation f in listeFacturation)
+            {
+                data.Add(new { 
+                    Id = f.Id,
+                    Nom = f.NomFacturation, 
+                    Prenom = f.PrenomFacturation, 
+                    Ville = f.VilleFacturation, 
+                    Adresse = f.AdresseFacturation, 
+                    CodePostal = f.CodePostalFacturation, 
+                    Pays= f.PaysFacturation, 
+                    Telephone = f.TelephoneFacturation 
+                });
+            }
+            
+
+
+            //Add list to IEnumerable.
+            IEnumerable<object> dataTable = data;
+
+            //Assign data source.
+            pdfGrid.DataSource = dataTable;
+
+            //Draw grid to the page of PDF document.
+            pdfGrid.Draw(page, new Syncfusion.Drawing.PointF(10, 10));
+
+            //Write the PDF document to stream
+            MemoryStream stream = new MemoryStream();
+            document.Save(stream);
+
+            //If the position is not set to '0' then the PDF will be empty.
+            stream.Position = 0;
+
+            //Close the document.
+            document.Close(true);
+
+            //Defining the ContentType for pdf file.
+            string contentType = "application/pdf";
+
+            //Define the file name.
+            string fileName = "Output.pdf";
+
+            //Creates a FileContentResult object by using the file contents, content type, and file name.
+            return File(stream, contentType, fileName);
+        }
+
     }
 }
 
