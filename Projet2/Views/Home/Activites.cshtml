@@ -1,4 +1,4 @@
-﻿@model List<Projet2.Models.Activite>
+﻿@model Projet2.ViewModels.ActiviteViewModel
 
 @{
     Layout = null;
@@ -7,7 +7,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>PaymentView</title>
+    <title>Activites</title>
 </head>
 <body>
     @using (Html.BeginForm())
@@ -17,10 +17,52 @@
             <legend> <h4>Stage</h4> </legend>
             <table>
                 <tbody>
-                   @foreach (var member in Model)
+                   @foreach (var member in Model.Stages)
                     {
                         <tr>
-                            <td>@member.EvenementClub.Stage.NomStage</td>
+                            <td>@member.NomStage</td>
+                            <td><input name="Sortie" value="news" type="radio" /></td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+            <br />
+            <br />
+
+            <input type="button" onclick="window.location.href='https://localhost:5001/Home';" class="btn btn-warning btn-lg" value="Retour accueil" />
+            <input type="button" onclick="window.location.href='https://localhost:5001/Home/FacturationView';" class="btn btn-warning btn-lg" value="Validez payement" />
+        </fieldset>
+         <fieldset>
+
+            <legend> <h4>Voyage</h4> </legend>
+            <table>
+                <tbody>
+                   @foreach (var member in Model.Voyages)
+                    {
+                        <tr>
+                            <td>@member.NomVoyage</td>
+                            <td><input name="Sortie" value="news" type="radio" /></td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+            <br />
+            <br />
+
+            <input type="button" onclick="window.location.href='https://localhost:5001/Home';" class="btn btn-warning btn-lg" value="Retour accueil" />
+            <input type="button" onclick="window.location.href='https://localhost:5001/Home/FacturationView';" class="btn btn-warning btn-lg" value="Validez payement" />
+        </fieldset>
+         <fieldset>
+
+            <legend> <h4>Sortie Adherent</h4> </legend>
+            <table>
+                <tbody>
+                   @foreach (var member in Model.SortieAdherents)
+                    {
+                        <tr>
+                            <td>@member.NomSortie</td>
                             <td><input name="Sortie" value="news" type="radio" /></td>
                         </tr>
                     }

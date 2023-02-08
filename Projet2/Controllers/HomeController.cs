@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Projet2.Models;
+using Projet2.ViewModels;
 
 namespace Projet2.Controllers
 {
@@ -151,10 +152,26 @@ namespace Projet2.Controllers
         public IActionResult Activites()
         {
             Dal dal = new Dal();
+
+            List<Activite> activites= dal.GetActivityList();
             List<Stage> stages = dal.GetStageList();
+            List<Voyage> voyages = dal.GetVoyageList();
+            List<SortieAdherent> sortieAdherents = dal.GetSortieAdherentList();
+
+            ActiviteViewModel viewModel = new ActiviteViewModel
+            {
+                Stages = stages,
+                Voyages = voyages,
+                SortieAdherents = sortieAdherents,
+                Activites = activites,
+
+
+            };
             
-            return View(stages);
+            return View(viewModel);
         }
+
+
 
     }
 }
