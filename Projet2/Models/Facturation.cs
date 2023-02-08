@@ -35,6 +35,7 @@ namespace Projet2.Models
         [StringLength(10)]
         public string TelephoneFacturation { get; set; }
 
-        
+        public int? ClubId { get; set; }
+        public Club Club { get; set; }
     }
 }
