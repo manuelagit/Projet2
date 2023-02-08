@@ -1,11 +1,13 @@
 ﻿.header {
     border-radius: 30px;
-    min-height: 300px;
+    border: 2px solid black;
+    min-height: 200px;
     text-align: center;
     color: black;
     background-image: url("/Images/FondHead.png");
     background-position: center;
     background-size: cover;
+    object-fit: fill;
     border-radius: 30px;
     margin-bottom: 5px;
 }
@@ -22,17 +24,18 @@
     border: 2px solid black;
     padding: 20px;
     border-radius: 30px;
-    min-height: 10px;
     background-color: beige;
+    //background-position: top;
 }
 
 .titre1 {
-    display: flex;
-    justify-content: center;
-    font-size: 1.5rem;
+    text-align: center;
+    font-size: 1.8rem;
+    padding: 2px;
     align-items: center;
     border-radius: 30px;
     background-color: lightgray;
+    margin: 0;
 }
 
 .btn {
@@ -40,8 +43,16 @@
     min-width: 100% !important;
     display: flex;
     flex-direction: column;
+}
+
+.buttons {
     justify-content: center;
     align-items: center;
+}
+
+.btn {
+    margin: 5px;
+    min-width: 100% !important;
     border-radius: 50px;
     border: 0;
     font-size: 1rem;
@@ -50,7 +61,7 @@
     text-transform: uppercase;
     white-space: nowrap;
     text-align: center;
-    cursor: pointer
+    cursor: pointer;
 }
 
 
@@ -134,7 +145,10 @@
         color: black;
     }
 
+
 .contenu {
+    padding : 20px;
+    margin: 4px;
     border: 2px solid black;
     padding: 20px;
     border-radius: 30px;
