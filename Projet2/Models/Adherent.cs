@@ -1,6 +1,6 @@
 ﻿namespace Projet2.Models
 {
-    public class Adhérent
+    public class Adherent
     {
         public int Id { get; set; }
         public int? ClubId { get; set; }
