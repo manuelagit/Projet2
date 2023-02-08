@@ -1,8 +1,9 @@
 ﻿@model Projet2.Models.Paiement
 
 @{
-    Layout = null;
-}
+    Layout = "_Layout";
+    ViewBag.Title = "Paiement";
+    }
 <!DOCTYPE html>
 <html>
 <head>
@@ -86,8 +87,8 @@
             <br />
             <br />
 
-            <input type="button" onclick="window.location.href='https://localhost:5001/Home';" class="btn btn-warning btn-lg" value="Retour accueil" />
-            <input type="submit" onclick="window.location.href='https://localhost:5001/Home';" class="btn btn-warning btn-lg" value="Validez payement" />
+            <input type="button" onclick="window.location.href='https://localhost:5001/Home';" value="Retour accueil" />
+            <input type="submit" value="Valider paiement" />
 
         </fieldset>
     }

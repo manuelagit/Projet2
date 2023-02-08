@@ -26,6 +26,56 @@ namespace Projet2.Controllers
             return View();
         }
 
+        public IActionResult EspaceAdmin()
+        {
+            return View();
+        }
+
+        public IActionResult EspaceClub()
+        {
+            return View();
+        }
+
+        public IActionResult EspaceClubVisible()
+        {
+            return View();
+        }
+
+        public IActionResult EspaceClubLogged()
+        {
+            return View();
+        }
+
+        public IActionResult ClubLogin()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult ClubLogin(string NomClub)
+        {
+            using (Dal dal = new Dal())
+            {
+                Club club = dal.GetClubsList().Where(r => r.InfosClub.NomClub == NomClub).FirstOrDefault();
+                if (club == null)
+                {
+                    return View("Error");
+                }
+                return View("EspaceClubLogged", club);
+            }
+        }
+
+
+        public IActionResult EspaceParapentiste()
+        {
+            return View();
+        }
+
+        public IActionResult PageEvents()
+        {
+            return View();
+        }
+
         public IActionResult UserList()
         {
             Dal dal = new Dal();
@@ -41,7 +91,12 @@ namespace Projet2.Controllers
         }
 
 
-
+        public IActionResult ClubList4Admin()
+        {
+            Dal dal = new Dal();
+            List<Club> listeClubs4Admin = dal.GetClubsList(); // to be able to use the helper, instead of ViewData["ListeUtilisateurs"] = dal.GetUsersList();
+            return View(listeClubs4Admin);
+        }
 
 
         // recovers the saved values and displays them

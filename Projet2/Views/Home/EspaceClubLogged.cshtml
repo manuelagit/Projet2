@@ -1,0 +1,38 @@
+﻿@model Projet2.Models.Club
+@{
+    Layout = "_Layout";
+    ViewBag.Title = "EspaceClub";
+}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+</head>
+<center>
+
+    <body>
+
+        <h1>Bienvenue @Html.LabelFor(m => Model.InfosClub.NomClub)</h1>
+
+
+        <div style="margin: 20px">
+            <button type="submit" onclick="window.location.href='https://localhost:5001/Home/CreateClub';">Inscription</button>
+        </div>
+
+        <button type="submit">Visionner liste adhérents</button>
+
+        <button type="submit" onclick="window.location.href='https://localhost:5001/Home/EspaceClubVisible';">Personnaliser votre espace club</button>
+        <p>ajouter une case pour insérer le logo</p>
+        <p>ajouter un espace nom du club</p>
+        <p>ajouter un calendrier</p>
+        <p>etc</p>
+
+
+    </body>
+</center>
+
+</html>
+
+<br />
