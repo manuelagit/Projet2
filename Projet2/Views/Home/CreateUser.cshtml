@@ -1,14 +1,8 @@
 ﻿@model Projet2.Models.Utilisateur
 @{
-    Layout = null;
+    ViewBag.Title = "CreateUser";
+    Layout = "_Layout";
 }
-<!DOCTYPE html>
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>CreateUser</title>
-</head>
-<body>
     @using (Html.BeginForm())
     {
         <fieldset>
@@ -67,15 +61,12 @@
             <br />
             <br />
 
-            <input type="button" onclick="window.location.href='https://localhost:5001/Home';" class="btn btn-warning btn-lg" value="Retour accueil" />
-            <input type="button" onclick="window.location.href='https://localhost:5001/Home/UserList';" class="btn btn-warning btn-lg" value="Retour Liste" />
-            <input type="submit" value="Créer" />
+
+            <input type="button" onclick="window.location.href='https://localhost:5001/Home/UserList';" value="Retour Liste des clubs" />
+            <input type="button" onclick="window.location.href='https://localhost:5001/Home/PaymentView';" value="Créer" />
         </fieldset>
     }
     @*vérification du type de données dans le front*@
     <script type="text/javascript" src="~/Scripts/jquery-3.3.1.js"></script>
     <script type="text/javascript" src="~/Scripts/jquery.validate-vsdoc.js"></script>
     <script type="text/javascript" src="~/Scripts/jquery.validate.unobtrusive.js"></script>
-
-</body>
-</html>
