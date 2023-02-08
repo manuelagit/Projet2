@@ -1,0 +1,24 @@
+﻿@model List<Projet2.Models.OffreAbonnement>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catalogue d'offre d'abonnement</title>
+</head>
+<center>
+    <body>
+        <h1>Choississez l'offre qui vous convient</h1>
+        @foreach (var member in Model)
+        {
+            <div>
+                <span>@member.DescriptionOffre</span><input name="OffreAbonnement" value="news" type="radio" /><br />
+            </div> 
+        }
+
+        <div>
+            <input type="submit" value="S'abonner" />
+        </div>
+
+    </body>

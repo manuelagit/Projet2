@@ -15,6 +15,12 @@ namespace Projet2.Models
         [Required(ErrorMessage = "Le mot de passe est requis")]
         [Display(Name = "Mot de passe")]
         public string MotDePasse { get; set; }
+        
+        public int? FacturationId { get; set; }
+        public Facturation Facturation { get; set;}
+        public int? PaiementId { get;}
+        public Paiement paiement { get; set; }
+
     }
 }
 

@@ -1,0 +1,63 @@
+﻿@model List<Projet2.Models.Club>
+@{
+    ViewBag.Title = "ClubList";
+    Layout = "_Layout";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste des clubs</title>
+</head>
+<center>
+    <body>
+        <h1>Liste des clubs</h1>
+        <table border="1" style="margin: 20px">
+            <tr>
+                <th>Id</th>
+                <th>Nom du club</th>
+                <th>Adresse</th>
+                <th>adresse Email</th>
+                <th>Mot de passe</th>
+            </tr>
+            <tbody>
+                @foreach (var member in Model)
+
+                {
+                    <tr>
+                        <td>@member.Id</td>
+                        <td>@member.InfosClub.NomClub</td>
+                        <td>@member.InfosClub.Adresse.NumeroRue, @member.InfosClub.Adresse.NomRue - @member.InfosClub.Adresse.CodePostal @member.InfosClub.Adresse.NomVille </td>
+                        <td>@member.Compte.AdressEmail</td>
+                        <td>@member.Compte.MotDePasse</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+
+
+
+
+        <div style="margin: 20px">
+            <input type="button" onclick="window.location.href='https://localhost:5001/Home/CreateUser';" value="M'inscrire" />
+        </div>
+
+
+        <div style="margin: 20px">
+            <input type="button" onclick="window.location.href='https://localhost:5001/Home/EspaceParapentiste';" value="Retour Espace Parapentiste" />
+        </div>
+
+        <div>
+            <label for="name">Recherche</label>
+            <input type="text" id="searchBox" name="searchBox">
+        </div>
+
+
+
+    </body>
+</center>
+</html>
+

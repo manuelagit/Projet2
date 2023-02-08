@@ -11,10 +11,19 @@
         <title>Welcome</title>
     </head>
     <body>
-        <h1>Bienvenu sur WingSolution</h1>
+        <h1>Bienvenue sur WingSolution</h1>
 
-        <!--<p><a href="https://localhost:5001/home/CreateUser/">Ajouter un utilisateur</a></p>
-    <p><a href="https://localhost:5001/home/UserList">Liste des utilisateurs</a></p>-->
+        <p>Notre plateforme est une passerelle entre parapentistes et clubs de parapentes.</p>
+        <p>Parapentistes, vous pouvez rejoindre un de nos clubs membres et participer aux événements proposés par les clubs</p>
+        <p>Clubs de parapentes, vous disposez d'une plateforme vous permettant de gérer votre vie de club et sur laquelle donner de la visibilité à vos événements.</p>
+        <br />
+
+        <p><a href="https://localhost:5001/home/FacturationList">Liste des factures</a></p>
+
+        <div>
+            <input type="button" onclick="window.location.href='https://localhost:5001/Home/EspaceClub';" class="btn btn--btnClub" value="Espace club" />
+            <input type="button" onclick="window.location.href='https://localhost:5001/Home/EspaceParapentiste';" class="btn btn--btnParapentiste" value="Espace parapentiste" />
+        </div>
 
     </body>
 </html>

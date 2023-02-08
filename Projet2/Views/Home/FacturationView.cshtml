@@ -1,0 +1,73 @@
+﻿@model Projet2.Models.Facturation
+
+@{
+    Layout = "_Layout";
+    ViewBag.Title = "Facturation";
+    }
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>FacturationView</title>
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        <fieldset>
+            <legend><h4>Informations De Facturation</h4></legend>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>@Html.LabelFor(m => Model.NomFacturation)</td>
+                        <td>@Html.TextBoxFor(m => Model.NomFacturation, new { placeholder = "Nom" })</td>
+                        <td>@Html.ValidationMessageFor(m => Model.NomFacturation)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(m => Model.PrenomFacturation)</td>
+                        <td>@Html.TextBoxFor(m => Model.PrenomFacturation, new { placeholder = "Prenom" })</td>
+                        <td>@Html.ValidationMessageFor(m => Model.PrenomFacturation)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(m => Model.AdresseFacturation)</td>
+                        <td>@Html.TextBoxFor(m => Model.AdresseFacturation, new { placeholder = "numéro et nom de la rue" })</td>
+                        <td>@Html.ValidationMessageFor(m => Model.AdresseFacturation)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(m => Model.VilleFacturation)</td>
+                        <td>@Html.TextBoxFor(m => Model.VilleFacturation, new { placeholder = "Ville" })</td>
+                        <td>@Html.ValidationMessageFor(m => Model.VilleFacturation)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(m => Model.CodePostalFacturation)</td>
+                        <td>@Html.TextBoxFor(m => Model.CodePostalFacturation, new { placeholder = "Code Postal" })</td>
+                        <td>@Html.ValidationMessageFor(m => Model.CodePostalFacturation)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(m => Model.PaysFacturation)</td>
+                        <td>@Html.TextBoxFor(m => Model.PaysFacturation, new { placeholder = "Pays" })</td>
+                        <td>@Html.ValidationMessageFor(m => Model.PaysFacturation)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(m => Model.TelephoneFacturation)</td>
+                        <td>@Html.TextBoxFor(m => Model.TelephoneFacturation, new { placeholder = "Numéro de Telephone" })</td>
+                        <td>@Html.ValidationMessageFor(m => Model.TelephoneFacturation)</td>
+                    </tr>
+
+
+                </tbody>
+            </table>
+            <br />
+            <br />
+
+            <input type="button" onclick="window.location.href='https://localhost:5001/Home';" class="btn btn-warning btn-lg" value="Retour accueil" />
+            
+        </fieldset>
+    }
+         @*vérification du type de données dans le front*@
+    <script type="text/javascript" src="~/Scripts/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.validate-vsdoc.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+
+
+</body>
+</html>
