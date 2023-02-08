@@ -14,13 +14,15 @@
 <center>
     <body>
         <h1>Liste des clubs</h1>
-        <table border="1" style="margin: 20px">
+        <label for="name">Recherche</label>
+
+        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
+        <table id="ListClubsTable" onkeyup="myFunction()" border="1" style="margin: 20px">
             <tr>
                 <th>Id</th>
                 <th>Nom du club</th>
                 <th>Adresse</th>
                 <th>adresse Email</th>
-                <th>Mot de passe</th>
             </tr>
             <tbody>
                 @foreach (var member in Model)
@@ -31,14 +33,33 @@
                         <td>@member.InfosClub.NomClub</td>
                         <td>@member.InfosClub.Adresse.NumeroRue, @member.InfosClub.Adresse.NomRue - @member.InfosClub.Adresse.CodePostal @member.InfosClub.Adresse.NomVille </td>
                         <td>@member.Compte.AdressEmail</td>
-                        <td>@member.Compte.MotDePasse</td>
                     </tr>
                 }
             </tbody>
         </table>
 
 
+        <script>function myFunction() {
+                // Declare variables
+                var input, filter, table, tr, td, i, txtValue;
+                input = document.getElementById("myInput");
+                filter = input.value.toUpperCase();
+                table = document.getElementById("ListClubsTable");
+                tr = table.getElementsByTagName("tr");
 
+                // Loop through all table rows, and hide those who don't match the search query
+                for (i = 0; i < tr.length; i++) {
+                    td = tr[i].getElementsByTagName("td")[0];
+                    if (td) {
+                        txtValue = td.textContent || td.innerText;
+                        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                            tr[i].style.display = "";
+                        } else {
+                            tr[i].style.display = "none";
+                        }
+                    }
+                }
+            }</script>
 
 
         <div style="margin: 20px">
@@ -50,10 +71,6 @@
             <input type="button" onclick="window.location.href='https://localhost:5001/Home/EspaceParapentiste';" value="Retour Espace Parapentiste" />
         </div>
 
-        <div>
-            <label for="name">Recherche</label>
-            <input type="text" id="searchBox" name="searchBox">
-        </div>
 
 
 
