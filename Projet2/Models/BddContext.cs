@@ -24,6 +24,7 @@ namespace Projet2.Models
         public DbSet<Voyage> Voyages { get; set; }
 
         public DbSet<SortieAdherent> SortieAdherents { get; set; }
+        public DbSet<Adherent> Adherents { get; set; }
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -71,6 +72,7 @@ namespace Projet2.Models
             Activite activite2 = new Activite() { Id = 2, EvenementClubId = 2, EvenementClub = evenementClub2 };
             Activite activite3 = new Activite() { Id = 3, SortieAdherentId = 1, SortieAdherent = sortieAdherent };
 
+            Adherent adherent1 = new Adherent() { Id = 1, ClubId = 3, UtilisateurId=1 };
 
 
             this.Adresses.Add(adresse);
@@ -99,6 +101,8 @@ namespace Projet2.Models
 
             this.Facturations.Add(facturation);
             this.Paiements.Add(paiement);
+
+            this.Adherents.Add(adherent1);
             this.SaveChanges();
         }
 
