@@ -1,4 +1,4 @@
-﻿@model Projet2.Models.Club
+﻿@model Projet2.Models.InfosInputClub
 @{
     Layout = "_Layout";
     ViewBag.Title = "EspaceClub";
@@ -14,12 +14,10 @@
 
     <body>
 
-        <h1>Bienvenue @Html.LabelFor(m => Model.InfosClub.NomClub)</h1>
+        <h1>Bienvenue @Html.LabelFor(m => Model.titreClub)</h1>
 
 
         <button type="submit">Visionner liste adhérents</button>
-
-        <button type="submit" onclick="window.location.href='https://localhost:5001/Home/EspaceClubVisible';">Personnaliser votre espace club</button>
 
         <button type="submit" onclick="window.location.href='https://localhost:5001/Home/Activite';">Liste des activites</button>
 

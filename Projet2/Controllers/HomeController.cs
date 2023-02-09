@@ -163,7 +163,7 @@ namespace Projet2.Controllers
             club.InfosClubId = dal.CreateInfosClub(club.InfosClub);
 
             dal.CreateClub(club);
-            return RedirectToAction("ClubList");
+            return RedirectToAction("EspaceClubVisible");
         }
 
 
