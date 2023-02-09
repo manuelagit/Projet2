@@ -20,6 +20,8 @@ namespace Projet2.Models
 
         public int? AdresseId { get; set; } // foreign key
         public Adresse Adresse { get; set; }
+
+
     }
 }
 

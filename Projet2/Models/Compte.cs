@@ -19,7 +19,7 @@ namespace Projet2.Models
         public int? FacturationId { get; set; }
         public Facturation Facturation { get; set;}
         public int? PaiementId { get;}
-        public Paiement paiement { get; set; }
+        public Paiement Paiement { get; set; }
 
     }
 }

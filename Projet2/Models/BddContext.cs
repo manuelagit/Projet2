@@ -22,9 +22,10 @@ namespace Projet2.Models
         public DbSet<SortieAdherent> SortieAdherents { get; set; }
 
 
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseMySql("server=localhost;user id=root;password=rrrrr;database=BDDprojet2");
+            optionsBuilder.UseMySql("server=localhost;user id=root;password=rrrrrrrr;database=BDDprojet2");
         }
 
         public void InitialiseDb()
@@ -41,7 +42,7 @@ namespace Projet2.Models
             OffreAbonnement offreAbonnement2 = new OffreAbonnement() { Id = 2, DescriptionOffre = "Avec notre abonnement mensuel, vous bénéficiez d'un accès à notre plateforme renouvelable 6 mois minimum, payable par mensualité.", TypeOffre = "Mensuel", DureeOffreMois = 6, Prix = 70.00 };
 
             Adresse adresseClub = new Adresse() { Id = 3, CodePostal = 11170, NomVille = "Gex", NomRue = "rue alphonse", NumeroRue = 4};
-            InfosClub infosClub = new InfosClub() { Id = 1, NomClub = "VLG", AdresseId = 3 };
+            InfosClub infosClub = new InfosClub() { Id = 1, NomClub = "VLG", AdresseId = 3, urlLogo = "~/Images/btnValider.png", DescritpionClub = "voici notre club", titreClub = "Mon super club" };
 
             Compte compteClub = new Compte() { Id =3, AdressEmail = "vlg@gmail.com", MotDePasse = "123" };
             Club club = new Club() { Id = 3, CompteId = 3, InfosClubId = 3};
@@ -53,7 +54,7 @@ namespace Projet2.Models
             Compte compteClubAVL = new Compte() { Id = 4, AdressEmail = "avl@gmail.com", MotDePasse = "12EEE3" };
             Club clubAVL = new Club() { Id = 4, CompteId = 4, InfosClubId = 4 };
 
-            Facturation facturation = new Facturation() { Id = 1, NomFacturation = "Paubel", PrenomFacturation = "Paul", VilleFacturation = "Paris", AdresseFacturation = "11 rue des pigeons", CodePostalFacturation = "75000", PaysFacturation = "France", TelephoneFacturation = "0622113344", };
+            Facturation facturation = new Facturation() { Id = 1, NomFacturation = "Paubel", PrenomFacturation = "Paul", VilleFacturation = "Paris", AdresseFacturation = "11 rue des pigeons", CodePostalFacturation = "75000", PaysFacturation = "France", TelephoneFacturation = "0622113344", ClubId=3};
             Paiement paiement = new Paiement() { Id = 1, NumeroCB = "1111222233334444",DateExpiration= new DateTime(2026,12,1),CodeDeSecurite=123,FacturationId=1 };
 
 
@@ -72,6 +73,7 @@ namespace Projet2.Models
             Activite activite2 = new Activite() { Id = 2, EvenementClubId = 2, NomActivite = "Voyage Algerie", DateActivite = "Du 14 au 22 Mai", DescriptionActivite = "Stage aprofondissement", LieuActivite = "Algerie", NombrePlaceActivite = 20, TypeActivite = "EvenementClub", ClubId = 3, EvenementClub = evenement2 };
             Activite activite3 = new Activite() { Id = 3, SortieAdherentId = 1, NomActivite = "Voyage découverte vin", DateActivite = "Du 20 au 23 juin", DescriptionActivite = "Decouverte vin Alexandre", LieuActivite = "Bordeaux", NombrePlaceActivite = 5, TypeActivite = "SortieAdherent", ClubId = 3, SortieAdherent = sortieAdherent1 };
 
+            Adherent adherent1 = new Adherent() { Id = 1, ClubId = 3, UtilisateurId=1 };
 
 
             this.Adresses.Add(adresse);
@@ -92,7 +94,6 @@ namespace Projet2.Models
             this.InfosClubs.Add(infosClubAVL);
             this.Comptes.Add(compteClubAVL);
             this.Clubs.Add(clubAVL);
-            this.SaveChanges();
 
             this.Activites.Add(activite1);
             this.Activites.Add(activite2);
@@ -100,11 +101,8 @@ namespace Projet2.Models
 
             this.Facturations.Add(facturation);
             this.Paiements.Add(paiement);
-            /*try
-            {*/
-                this.SaveChanges();
-            /*}
-            catch { }*/
+
+            this.SaveChanges();
         }
 
 

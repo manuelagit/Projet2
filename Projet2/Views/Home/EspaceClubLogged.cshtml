@@ -1,4 +1,4 @@
-﻿@model Projet2.Models.Club
+﻿@model Projet2.ViewModels.CreateClubViewModel
 @{
     Layout = "_Layout";
     ViewBag.Title = "EspaceClub";
@@ -13,15 +13,36 @@
 
 <body>
     <center>
+        <h1>Bienvenue @Html.ValueFor(m => Model.Club.InfosClub.NomClub)</h1>
+
+        <p><h4>Vous pouvez personnaliser votre page ici. Voici la page que verrons les visiteurs :</h4></p>
+        <br/>
+        <br/>
+        <div class="pageVisible">
+            <tr>
+                <td><h1>@Html.ValueFor(m => Model.Club.InfosClub.titreClub)</h1></td>
 
 
-        <h1>Bienvenue @Html.TextBoxFor(m => Model.InfosClub.titreClub)</h1>
+                <td><button type="button" onclick="window.location.href='https://localhost:5001/Home/ListeAdherentsView';">Modifier le titre</button></td>
+            </tr>
+            <br/>
+            <tr>
+                <p>@Html.ValueFor(m => Model.Club.InfosClub.DescritpionClub)</p>
+                <td><button type="button" onclick="window.location.href='https://localhost:5001/Home/ListeAdherentsView';">Modifier la description</button></td>
+            </tr>
 
+            <tr >
+                <div class="contactPageVisible">
+                    <h3>Contact</h3>
+                    <p>@Html.ValueFor(m => Model.Club.Compte.AdressEmail)</p>
+                </div>
+            </tr>
+            <br />
+            <br />
+            <button type="button" onclick="window.location.href='https://localhost:5001/Home/ListeAdherentsView';">Liste des adhérents</button>
 
-        <button type="submit">Visionner liste adhérents</button>
-
-        <button type="submit" onclick="window.location.href='https://localhost:5001/Home/Activites';">Liste des activites</button>
-
+            <button type="submit" onclick="window.location.href='https://localhost:5001/Home/Activites';">Liste des activités du club</button>
+        </div>
 
     </center>
 

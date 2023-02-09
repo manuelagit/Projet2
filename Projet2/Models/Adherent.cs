@@ -6,7 +6,7 @@
         public int? ClubId { get; set; }
         public Club Club { get; set; }
 
-        public int CompteId { get; set; }
-        public Compte Compte { get; set; }
+        public int UtilisateurId { get; set; }
+        public Utilisateur Utilisateur { get; set; }
     }
 }
