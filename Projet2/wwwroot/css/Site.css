@@ -20,12 +20,12 @@
 
 .menu {
     margin-block: 4px;
-    //width: 15vw;
+    width: 15vw;
     border: 2px solid black;
     padding: 20px;
     border-radius: 30px;
     background-color: beige;
-    //background-position: top;
+    background-position: top;
 }
 
 .titre1 {
@@ -48,6 +48,7 @@
 .buttons {
     justify-content: center;
     align-items: center;
+    text-align: center;
 }
 
 .btn {
@@ -153,7 +154,51 @@
     padding: 20px;
     border-radius: 30px;
     min-height: 10px;
-    width: 75%;
+    width: 100%;
+}
+
+    .slider {
+    width: 440px;
+    overflow: hidden;
+    margin: 15px auto;
+}
+.slides {
+    position: center;
+    width: calc(800px * 3);
+    animation: glisse 12s alternate infinite ;
+}
+
+.slide {
+    float: left;
+}
+
+@keyframes glisse {
+    0% {
+        transform: translateX(0);
+    }
+    10% {
+        transform: translateX(0);
+    }
+
+    33% {
+        transform: translateX(-441px);
+    }
+    45% {
+        transform: translateX(-441px);
+    }
+
+    66% {
+        transform: translateX(-884px);
+    }
+
+    100% {
+        transform: translateX(-884px);
+    }
+}
+
+.espace-Selection-C-P {
+    padding: 200px;
+    border: 2px solid 
 }
 
 .footer {
