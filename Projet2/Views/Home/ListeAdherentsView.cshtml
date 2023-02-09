@@ -16,9 +16,15 @@
         <h1>Liste des adhérents</h1>
         <table border="1" style="margin: 20px">
             <tr>
-                <th>Id</th>
-                <th>Club</th>
-                <th>Compte</th>
+                @*<th>Id</th>
+                <th>Id Club</th>
+                <th>Id Utilisateur</th>*@
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Date de naissance</th>
+                <th>Adresse</th>
+                <th>Adresse Mail</th>
+
                 
             </tr>
             <tbody>
@@ -26,18 +32,23 @@
 
                 {
                     <tr>
-                        <td>@member.Id</td>
-                        <td>@member.Club.InfosClub.NomClub</td>
-                        <td>@member.Compte.AdressEmail</td>
-                       
+                       @* <td>@member.Id</td>
+                        <td>@member.ClubId</td>
+                        <td>@member.UtilisateurId</td>*@
+                        <td>@member.Utilisateur.InfosPersonnelles.Nom</td>
+                        <td>@member.Utilisateur.InfosPersonnelles.Prenom</td>
+                        <td>@member.Utilisateur.InfosPersonnelles.DateNaissance.ToShortDateString()</td>
+                        <td>
+                            @member.Utilisateur.InfosPersonnelles.Adresse.NumeroRue,
+                            @member.Utilisateur.InfosPersonnelles.Adresse.NomRue,
+                            @member.Utilisateur.InfosPersonnelles.Adresse.CodePostal,
+                            @member.Utilisateur.InfosPersonnelles.Adresse.NomVille
+                        </td>
+                        <td>@member.Utilisateur.Compte.AdressEmail</td>
                     </tr>
                 }
             </tbody>
         </table>
-
-        
-
-
 
     </body>
 </center>
