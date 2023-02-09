@@ -26,9 +26,10 @@ namespace Projet2.Models
         public DbSet<SortieAdherent> SortieAdherents { get; set; }
         public DbSet<Adherent> Adherents { get; set; }
 
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseMySql("server=localhost;user id=root;password=rrrrr;database=BDDprojet2");
+            optionsBuilder.UseMySql("server=localhost;user id=root;password=rrrrrrrr;database=BDDprojet2");
         }
 
         public void InitialiseDb()
@@ -41,8 +42,8 @@ namespace Projet2.Models
             Utilisateur utilisateur = new Utilisateur() { Id = 1, InfosPersonnellesId = 1, CompteId = 1 };
 
 
-            OffreAbonnement offreAbonnement = new OffreAbonnement() { Id = 1, DescriptionOffre = "Quelques années après la publication de cet ouvrage, force est de constater que le mot d’ordre « Expérimenter plutôt que posséder » est plus que jamais au cœur de la relation client.", TypeOffre = "Annuelle", DureeOffreMois = 12, Prix = 680.75 };
-            OffreAbonnement offreAbonnement2 = new OffreAbonnement() { Id = 2, DescriptionOffre = "Quelques années après la publication de cet ouvrage, force est de constater que le mot d’ordre « Expérimenter plutôt que posséder » est plus que jamais au cœur de la relation client.", TypeOffre = "Mensuelle", DureeOffreMois = 6, Prix = 249.99 };
+            OffreAbonnement offreAbonnement = new OffreAbonnement() { Id = 1, DescriptionOffre = "Avec notre abonnement annuel, vous bénéficiez d'un accès à notre plateforme à compter du jour de votre inscription, valable jusqu'à la même date de l'année suivante.", TypeOffre = "Annuel", DureeOffreMois = 12, Prix = 680.00 };
+            OffreAbonnement offreAbonnement2 = new OffreAbonnement() { Id = 2, DescriptionOffre = "Avec notre abonnement mensuel, vous bénéficiez d'un accès à notre plateforme renouvelable 6 mois minimum, payable par mensualité.", TypeOffre = "Mensuel", DureeOffreMois = 6, Prix = 70.00 };
 
             Adresse adresseClub = new Adresse() { Id = 3, CodePostal = 11170, NomVille = "Gex", NomRue = "rue alphonse", NumeroRue = 4};
             InfosClub infosClub = new InfosClub() { Id = 1, NomClub = "VLG", AdresseId = 3 };
@@ -51,7 +52,8 @@ namespace Projet2.Models
             Club club = new Club() { Id = 3, CompteId = 3, InfosClubId = 3};
 
             Adresse adresseClubAVL = new Adresse() { Id = 4, CodePostal = 38870, NomVille = "Annecy", NomRue = "rue Daudet", NumeroRue = 43 };
-            InfosClub infosClubAVL = new InfosClub() { Id = 4, NomClub = "Annecy Vol Libre", AdresseId = 4 };
+            InfosClub infosClubAVL = new InfosClub() { Id = 4, NomClub = "Annecy Vol Libre", AdresseId = 4, urlLogo = "~/Images/btnValider.png", DescritpionClub = "voici notre club", titreClub = "Mon super club" };
+
 
             Compte compteClubAVL = new Compte() { Id = 4, AdressEmail = "avl@gmail.com", MotDePasse = "12EEE3" };
             Club clubAVL = new Club() { Id = 4, CompteId = 4, InfosClubId = 4 };
@@ -71,6 +73,7 @@ namespace Projet2.Models
             Activite activite3 = new Activite() { Id = 3, SortieAdherentId = 1, SortieAdherent = sortieAdherent };
 
             Adherent adherent1 = new Adherent() { Id = 1, ClubId = 3, UtilisateurId=1 };
+
 
             this.Adresses.Add(adresse);
             this.InfosPersonnelles.Add(infosperso);

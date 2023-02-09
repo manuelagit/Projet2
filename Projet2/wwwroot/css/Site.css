@@ -166,6 +166,20 @@
     background-color: #23437a;
 }
 
-.import mailImport {
-    width: 20px
+
+
+.logo {
+    border: 2px solid black;
+    border-radius: 30px;
 }
+
+div .col-sm-1 {
+    width: 20%;
+    background-color: white;
+}
+
+div .col-sm-4, .col-sm-7 {
+    width: 20%;
+    background-color: white;
+}
+
