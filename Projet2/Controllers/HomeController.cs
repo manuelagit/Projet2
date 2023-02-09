@@ -13,6 +13,8 @@ using System.IO;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Projet2.ViewModels;
+using Syncfusion.Pdf;
+using Syncfusion.Pdf.Grid;
 //using Syncfusion.Pdf.Grid;
 
 namespace Projet2.Controllers
@@ -376,72 +378,74 @@ namespace Projet2.Controllers
 
         }
 
-        //public IActionResult CreatePDFDocument()
-        //{
-        //    Dal dal = new Dal();
-        //    List<Facturation> listeFacturation = dal.GetFacturesList(); // to be able to use the helper
+        public IActionResult CreatePDFDocument()
+        {
+            Dal dal = new Dal();
+            List<Facturation> listeFacturation = dal.GetFacturesList(); // to be able to use the helper
 
-        //    //Generate a new PDF document.
-        //    PdfDocument document = new PdfDocument();
+            //Generate a new PDF document.
+            PdfDocument document = new PdfDocument();
 
-        //    //Add a page.
-        //    PdfPage page = document.Pages.Add();
+            //Add a page.
+            PdfPage page = document.Pages.Add();
 
-        //    //Create a PdfGrid.
-        //    PdfGrid pdfGrid = new PdfGrid();
+            //Create a PdfGrid.
+            PdfGrid pdfGrid = new PdfGrid();
 
-        //    //Add values to list.
+            //Add values to list.
 
-        //    List<object> data = new List<object>();
-            
-
-        //    //Add rows. 
-        //    foreach (Facturation f in listeFacturation)
-        //    {
-        //        data.Add(new { 
-        //            Id = f.Id,
-        //            Nom = f.NomFacturation, 
-        //            Prenom = f.PrenomFacturation, 
-        //            Ville = f.VilleFacturation, 
-        //            Adresse = f.AdresseFacturation, 
-        //            CodePostal = f.CodePostalFacturation, 
-        //            Pays= f.PaysFacturation, 
-        //            Telephone = f.TelephoneFacturation 
-        //        });
-        //    }
-            
+            List<object> data = new List<object>();
 
 
-        //    //Add list to IEnumerable.
-        //    IEnumerable<object> dataTable = data;
+            //Add rows. 
+            foreach (Facturation f in listeFacturation)
+            {
+                data.Add(new
+                {
+                    Id = f.Id,
+                    Nom = f.NomFacturation,
+                    Prenom = f.PrenomFacturation,
+                    Ville = f.VilleFacturation,
+                    Adresse = f.AdresseFacturation,
+                    CodePostal = f.CodePostalFacturation,
+                    Pays = f.PaysFacturation,
+                    Telephone = f.TelephoneFacturation,
+                    Club = f.Club.InfosClub.NomClub
+                });
+            }
 
-        //    //Assign data source.
-        //    pdfGrid.DataSource = dataTable;
 
-        //    //Draw grid to the page of PDF document.
-        //    pdfGrid.Draw(page, new Syncfusion.Drawing.PointF(10, 10));
 
-        //    //Write the PDF document to stream
-        //    MemoryStream stream = new MemoryStream();
-        //    document.Save(stream);
+            //Add list to IEnumerable.
+            IEnumerable<object> dataTable = data;
 
-        //    //If the position is not set to '0' then the PDF will be empty.
-        //    stream.Position = 0;
+            //Assign data source.
+            pdfGrid.DataSource = dataTable;
 
-        //    //Close the document.
-        //    document.Close(true);
+            //Draw grid to the page of PDF document.
+            pdfGrid.Draw(page, new Syncfusion.Drawing.PointF(10, 10));
 
-        //    //Defining the ContentType for pdf file.
-        //    string contentType = "application/pdf";
+            //Write the PDF document to stream
+            MemoryStream stream = new MemoryStream();
+            document.Save(stream);
 
-        //    //Define the file name.
-        //    string fileName = "Output.pdf";
+            //If the position is not set to '0' then the PDF will be empty.
+            stream.Position = 0;
 
-        //    //Creates a FileContentResult object by using the file contents, content type, and file name.
-        //    return File(stream, contentType, fileName);
-        //}
+            //Close the document.
+            document.Close(true);
 
-        //Creation of a catalog
+            //Defining the ContentType for pdf file.
+            string contentType = "application/pdf";
+
+            //Define the file name.
+            string fileName = "Liste Facture.pdf";
+
+            //Creates a FileContentResult object by using the file contents, content type, and file name.
+            return File(stream, contentType, fileName);
+        }
+
+            //Creation of a catalog
         public IActionResult OfferCatalog()
         {
             Dal dal = new Dal();
