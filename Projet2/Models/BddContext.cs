@@ -25,6 +25,7 @@ namespace Projet2.Models
 
         public DbSet<SortieAdherent> SortieAdherents { get; set; }
 
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseMySql("server=localhost;user id=root;password=rrrrr;database=BDDprojet2");
@@ -39,8 +40,9 @@ namespace Projet2.Models
             Compte compte = new Compte() { Id = 1, AdressEmail = "papa@gmail.com", MotDePasse = "123" };
             Utilisateur utilisateur = new Utilisateur() { Id = 1, InfosPersonnellesId = 1, CompteId = 1 };
 
-            OffreAbonnement offreAbonnement = new OffreAbonnement() { Id = 1, DescriptionOffre = "DescriptionOffre à écrire", TypeOffre = "annuel", DureeOffreMois = 12, Prix = 600.00 };
-            OffreAbonnement offreAbonnement2 = new OffreAbonnement() { Id = 2, DescriptionOffre = "DescriptionOffre à écrir", TypeOffre = "mensuel", DureeOffreMois = 6, Prix = 70.00 };
+
+            OffreAbonnement offreAbonnement = new OffreAbonnement() { Id = 1, DescriptionOffre = "Avec notre abonnement annuel, vous bénéficiez d'un accès à notre plateforme à compter du jour de votre inscription, valable jusqu'à la même date de l'année suivante.", TypeOffre = "Annuel", DureeOffreMois = 12, Prix = 680.00 };
+            OffreAbonnement offreAbonnement2 = new OffreAbonnement() { Id = 2, DescriptionOffre = "Avec notre abonnement mensuel, vous bénéficiez d'un accès à notre plateforme renouvelable 6 mois minimum, payable par mensualité.", TypeOffre = "Mensuel", DureeOffreMois = 6, Prix = 70.00 };
 
             Adresse adresseClub = new Adresse() { Id = 3, CodePostal = 11170, NomVille = "Gex", NomRue = "rue alphonse", NumeroRue = 4};
             InfosClub infosClub = new InfosClub() { Id = 1, NomClub = "VLG", AdresseId = 3 };
@@ -49,10 +51,14 @@ namespace Projet2.Models
             Club club = new Club() { Id = 3, CompteId = 3, InfosClubId = 3};
 
             Adresse adresseClubAVL = new Adresse() { Id = 4, CodePostal = 38870, NomVille = "Annecy", NomRue = "rue Daudet", NumeroRue = 43 };
-            InfosClub infosClubAVL = new InfosClub() { Id = 4, NomClub = "Annecy Vol Libre", AdresseId = 4 };
+            InfosClub infosClubAVL = new InfosClub() { Id = 4, NomClub = "Annecy Vol Libre", AdresseId = 4, urlLogo = "~/Images/btnValider.png", DescritpionClub = "voici notre club", titreClub = "Mon super club" };
+
 
             Compte compteClubAVL = new Compte() { Id = 4, AdressEmail = "avl@gmail.com", MotDePasse = "12EEE3" };
             Club clubAVL = new Club() { Id = 4, CompteId = 4, InfosClubId = 4 };
+
+            Facturation facturation = new Facturation() { Id = 1, NomFacturation = "Paubel", PrenomFacturation = "Paul", VilleFacturation = "Paris", AdresseFacturation = "11 rue des pigeons", CodePostalFacturation = "75000", PaysFacturation = "France", TelephoneFacturation = "0622113344", };
+            Paiement paiement = new Paiement() { Id = 1, NumeroCB = "1111222233334444",DateExpiration= new DateTime(2026,12,1),CodeDeSecurite=123,FacturationId=1 };
 
 
             Stage stage = new Stage() { Id = 1, NomStage = "Stage1", DateStage = new DateTime(2023, 3, 23), DescriptionStage = "Stage vol plané", LieuStage = "Annemasse", DureeStageHeure = 3, NiveauRequisStage = 2, NombrePlaceStage = 12, PrixStage = 49.99 };
@@ -65,11 +71,7 @@ namespace Projet2.Models
             Activite activite2 = new Activite() { Id = 2, EvenementClubId = 2, EvenementClub = evenementClub2 };
             Activite activite3 = new Activite() { Id = 3, SortieAdherentId = 1, SortieAdherent = sortieAdherent };
 
-            
 
-
-            Facturation facturation = new Facturation() { Id = 1, NomFacturation = "Paubel", PrenomFacturation = "Paul", VilleFacturation = "Paris", AdresseFacturation = "11 rue des pigeons", CodePostalFacturation = "75000", PaysFacturation = "France", TelephoneFacturation = "0622113344" };
-            Paiement paiement = new Paiement() { Id = 1, NumeroCB = "1111222233334444",DateExpiration= new DateTime(2026,12,1),CodeDeSecurite=123,FacturationId=1 };
 
             this.Adresses.Add(adresse);
             this.InfosPersonnelles.Add(infosperso);
@@ -78,9 +80,6 @@ namespace Projet2.Models
 
             this.OffreAbonnements.Add(offreAbonnement);
             this.OffreAbonnements.Add(offreAbonnement2);
-            this.Activites.Add(activite1);
-            this.Activites.Add(activite2);
-            this.Activites.Add(activite3);
 
             club.Compte = compteClub;
             club.InfosClub = infosClub;
@@ -92,6 +91,11 @@ namespace Projet2.Models
             this.InfosClubs.Add(infosClubAVL);
             this.Comptes.Add(compteClubAVL);
             this.Clubs.Add(clubAVL);
+            this.SaveChanges();
+
+            this.Activites.Add(activite1);
+            this.Activites.Add(activite2);
+            this.Activites.Add(activite3);
 
             this.Facturations.Add(facturation);
             this.Paiements.Add(paiement);

@@ -14,6 +14,17 @@ namespace Projet2.Models
 
         public int? AdresseId { get; set; } // foreign key
         public Adresse Adresse { get; set; }
+
+        [Display(Name = "Courte description")]
+        public int? DescritpionClubId { get; set; }
+        public string DescritpionClub { get; set; }
+
+        [Display(Name = "Titre de votre page")]
+        public int? titreClubId { get; set; }
+        public string titreClub { get; set; }
+
+        public int? urlLogoId { get; set; }
+        public string urlLogo { get; set; }
     }
 }
 

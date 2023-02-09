@@ -1,0 +1,89 @@
+﻿@model Projet2.ViewModels.ActiviteViewModel
+
+@{
+    ViewBag.Title = "ActiviteViewModel";
+    Layout = "_Layout";
+    }
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Activites</title>
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        <h1>Liste des activités proposées par le club</h1>
+
+        <fieldset>
+
+
+            <legend> <h4>Stage</h4> </legend>
+            <table>
+                <tbody>
+                    @foreach (var member in Model.Stages)
+                    {
+                        <tr>
+                            <td>@member.NomStage</td>
+                            <td><input name="Sortie" value="news" type="radio" /></td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+            <br />
+            <br />
+
+            <input type="button" onclick="window.location.href='https://localhost:5001/Home/PaymentView';" value="Validez payement" />
+        </fieldset>
+        <fieldset>
+
+            <legend> <h4>Voyage</h4> </legend>
+            <table>
+                <tbody>
+                    @foreach (var member in Model.Voyages)
+                    {
+                        <tr>
+                            <td>@member.NomVoyage</td>
+                            <td><input name="Sortie" value="news" type="radio" /></td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+            <br />
+            <br />
+
+            <input type="button" onclick="window.location.href='https://localhost:5001/Home/PaymentView';" value="Validez payement" />
+        </fieldset>
+        <fieldset>
+
+            <legend> <h4>Sortie Adherent</h4> </legend>
+            <table>
+                <tbody>
+                    @foreach (var member in Model.SortieAdherents)
+                    {
+                        <tr>
+                            <td>@member.NomSortie</td>
+                            <td><input name="Sortie" value="news" type="radio" /></td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+            <br />
+            <br />
+
+            <input type="button" onclick="window.location.href='https://localhost:5001/Home/PaymentView';" value="Validez payement" />
+        </fieldset>
+    }
+    @*vérification du type de données dans le front*@
+    <script type="text/javascript" src="~/Scripts/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.validate-vsdoc.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+
+</body>
+</html>
+
