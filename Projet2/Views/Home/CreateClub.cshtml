@@ -61,15 +61,21 @@
             </table>
             <br />
             <br />
-            <input type="submit" value="Valider" />
 
         </fieldset>
         <br />
 
         <fieldset>
+            @*@using (Html.BeginForm("Modify", "User", FormMethod.Post, new { enctype = "multipart/form-data" }));*@
             <legend><h4>Personnalisez votre espace club</h4></legend>
             <table>
                 <tbody>
+                    <tr>
+                        <td>@Html.LabelFor(m => Model.InfosClub.titreClub)</td>
+                        <td>@Html.TextBoxFor(m => Model.InfosClub.titreClub, new { placeholder = "Bienvenue sur notre site !" })</td>
+                        <td>@Html.ValidationMessageFor(m => Model.InfosClub.titreClub)</td>
+                    </tr>
+
 
                     <tr>
                         <td>Titre de votre site</td>
@@ -89,6 +95,8 @@
                     </tr>
 
             </table>
+            <input type="submit" value="Valider" />
+
         </fieldset>
         <br />
 

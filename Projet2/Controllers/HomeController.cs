@@ -10,6 +10,9 @@ using Projet2.Models;
 //using Syncfusion.Pdf.Graphics;
 using Syncfusion.Drawing;
 using System.IO;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Projet2.ViewModels;
 //using Syncfusion.Pdf.Grid;
 
 namespace Projet2.Controllers
@@ -40,8 +43,44 @@ namespace Projet2.Controllers
             return View(listeClubs);
         }
 
+        //public void UserController(IWebHostEnvironment env)
+        //{
+        //    _env = env;
+        //}
 
+        //private bool UploadFile(IFormFile iFormFile)
+        //{
+        //    if (iFormFile == null || iFormFile.Length == 0)
+        //    {
+        //        return false;
+        //    }
 
+        //    var filePath = _env.WebRootPath + "/wwwroot/Images/" + iFormFile.FileName;
+        //    using (var stream = new FileStream(filePath, FileMode.Create))
+        //    {
+        //        iFormFile.CopyTo(stream);
+        //    }
+        //    return true;
+        //}
+
+        //[HttpPost]
+        //public IActionResult getLogo(InfosInputClub infosInputClub, IFormFile iFormFile)
+        //{
+        //    if (infosInputClub.Id != 0)
+        //    {
+        //        if (iFormFile != null)
+        //        {
+        //            UploadFile(iFormFile);
+        //            infosInputClub.urlLogo = "/wwwroot/Images/" + iFormFile.FileName;
+        //        }
+        //        HttpContext.SignOutASync();
+        //        return RedirectToAction("CreateClub");
+        //    }
+        //    else
+        //    {
+        //        return View("Error");
+        //    }
+        //}
 
 
         // recovers the saved values and displays them
@@ -163,7 +202,7 @@ namespace Projet2.Controllers
             club.InfosClubId = dal.CreateInfosClub(club.InfosClub);
 
             dal.CreateClub(club);
-            return RedirectToAction("EspaceClubVisible");
+            return RedirectToAction("EspaceClubLogged");
         }
 
 
@@ -214,6 +253,24 @@ namespace Projet2.Controllers
             }
         }
 
+        public IActionResult AdminLogin()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult AdminLogin(string Nom)
+        {
+            using (Dal dal = new Dal())
+            {
+                Utilisateur utilisateur = dal.GetUsersList().Where(r => r.InfosPersonnelles.Nom == Nom).FirstOrDefault();
+                if (utilisateur == null)
+                {
+                    return View("Error");
+                }
+                return View("EsapceAdmin", utilisateur);
+            }
+        }
 
         public IActionResult EspaceParapentiste()
         {
@@ -394,12 +451,6 @@ namespace Projet2.Controllers
 
 
 
-        public IActionResult Activite()
-        {
-            Dal dal = new Dal();
-            List<Activite> activites = dal.GetActivityList(); // to be able to use the helper, instead of ViewData["ListeUtilisateurs"] = dal.GetUsersList();
-            return View(activites);
-        }
 
         public IActionResult EvenementClub()
         {
@@ -427,6 +478,30 @@ namespace Projet2.Controllers
             List<SortieAdherent> sortieAdherent = dal.GetSortieAdherentList();
             return View(sortieAdherent);
         }
+
+
+        public IActionResult Activites()
+        {
+            Dal dal = new Dal();
+
+            List<Activite> activites = dal.GetActivityList();
+            List<Stage> stages = dal.GetStageList();
+            List<Voyage> voyages = dal.GetVoyageList();
+            List<SortieAdherent> sortieAdherents = dal.GetSortieAdherentList();
+
+            ActiviteViewModel viewModel = new ActiviteViewModel
+            {
+                Stages = stages,
+                Voyages = voyages,
+                SortieAdherents = sortieAdherents,
+                Activites = activites,
+
+
+            };
+
+            return View(viewModel);
+        }
+
 
 
 

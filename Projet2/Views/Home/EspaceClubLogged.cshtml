@@ -1,4 +1,4 @@
-﻿@model Projet2.Models.InfosInputClub
+﻿@model Projet2.Models.Club
 @{
     Layout = "_Layout";
     ViewBag.Title = "EspaceClub";
@@ -10,21 +10,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome</title>
 </head>
-<center>
 
-    <body>
+<body>
+    <center>
 
-        <h1>Bienvenue @Html.LabelFor(m => Model.titreClub)</h1>
+
+        <h1>Bienvenue @Html.TextBoxFor(m => Model.InfosClub.titreClub)</h1>
 
 
         <button type="submit">Visionner liste adhérents</button>
 
-        <button type="submit" onclick="window.location.href='https://localhost:5001/Home/Activite';">Liste des activites</button>
+        <button type="submit" onclick="window.location.href='https://localhost:5001/Home/Activites';">Liste des activites</button>
 
 
+    </center>
 
-    </body>
-</center>
+</body>
 
 </html>
 
