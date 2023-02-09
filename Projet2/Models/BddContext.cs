@@ -96,7 +96,7 @@ namespace Projet2.Models
 
             this.Activites.Add(activite1);
             this.Activites.Add(activite2);
-            //this.Activites.Add(activite3);
+            this.Activites.Add(activite3);
 
             this.Facturations.Add(facturation);
             this.Paiements.Add(paiement);

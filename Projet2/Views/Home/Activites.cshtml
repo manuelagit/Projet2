@@ -32,7 +32,7 @@
                         <th>Selection</th>
                     </tr>
                     <tbody>
-                       @foreach (var member in Model.Activites)
+                       @foreach (var member in Model.Activites.Where(i => i.SortieAdherentId == null))
 
                         {
                             <tr>
@@ -66,8 +66,8 @@
                         <th>Telephone</th>
                         <th>Selection</th>
                     </tr>
-                   @* <tbody>
-                        @foreach (var member in Model.Activites)
+                    <tbody>
+                        @foreach (var member in Model.Activites.Where(i => i.EvenementClubId == null))
 
                             {
                                 <tr>
@@ -83,7 +83,7 @@
                                     <td><input name="Activite" value="news" type="radio" /></td>
                                 </tr>
                             }
-                    </tbody>*@
+                    </tbody>
                 </table><br />
         
 
