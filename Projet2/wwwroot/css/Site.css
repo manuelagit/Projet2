@@ -20,12 +20,16 @@
 
 .menu {
     margin-block: 4px;
-    width: 15vw;
+    width: 250px;
     border: 2px solid black;
-    padding: 20px;
+    padding: 20px !important;
     border-radius: 30px;
     background-color: beige;
     background-position: top;
+}
+
+.titreSite {
+    text-align: center;
 }
 
 .titre1 {
@@ -228,3 +232,22 @@ div .col-sm-4, .col-sm-7 {
     background-color: white;
 }
 
+div .pageVisible {
+    background-color: lightblue;
+    padding: 20px;
+    margin-block: 20px;
+    text-align: center;
+    border: 2px solid blue;
+    border-radius: 30px;
+    min-height: 25px;
+}
+
+tr .contactPageVisible {
+    background-color: lightcoral;
+    padding: 20px;
+    margin-block: 20px;
+    text-align: center;
+    border: 2px solid orange;
+    border-radius: 3px;
+    min-height: 25px;
+}

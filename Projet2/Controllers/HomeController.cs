@@ -200,17 +200,22 @@ namespace Projet2.Controllers
         public IActionResult CreateClub(Club club)
         {
             Dal dal = new Dal();
+            List<Utilisateur> utilisateurs = dal.GetUsersList();
             club.CompteId = dal.CreateCompte(club.Compte);
             club.InfosClubId = dal.CreateInfosClub(club.InfosClub);
-
             dal.CreateClub(club);
-            return RedirectToAction("EspaceClubLogged");
+
+            CreateClubViewModel createClubViewModel = new CreateClubViewModel { Club = club, Utilisateurs = utilisateurs };
+
+            return View("EspaceClubLogged", createClubViewModel);
         }
 
 
 
 
-        public IActionResult LookForClub(int Id)
+
+
+        public IActionResult EspaceClubLogged()
         {
             return View();
         }
@@ -231,10 +236,9 @@ namespace Projet2.Controllers
             return View();
         }
 
-        public IActionResult EspaceClubLogged()
-        {
-            return View();
-        }
+
+
+
 
         public IActionResult ClubLogin()
         {
