@@ -362,7 +362,7 @@ namespace Projet2.Models
 
         public List<Facturation> GetFacturesList()
         {
-            return _bddContext.Facturations.ToList();
+            return _bddContext.Facturations.Include(U => U.Club).Include(U => U.Club.InfosClub).ToList();
             
         }
         public List<Adherent> GetAdherentsList()
