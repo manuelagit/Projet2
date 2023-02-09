@@ -466,19 +466,19 @@ namespace Projet2.Controllers
             return View("EvenementClub");
         }
 
-        public IActionResult StageAdherent()
-        {
-            Dal dal = new Dal();
-            List<Stage> stages = dal.GetStageList();
-            return View(stages);
-        }
+        //public IActionResult StageAdherent()
+        //{
+        //    Dal dal = new Dal();
+        //    List<Stage> stages = dal.GetStageList();
+        //    return View(stages);
+        //}
 
-        public IActionResult VoyageAdherent()
-        {
-            Dal dal = new Dal();
-            List<Voyage> voyageAdherent = dal.GetVoyageList();
-            return View(voyageAdherent);
-        }
+        //public IActionResult VoyageAdherent()
+        //{
+        //    Dal dal = new Dal();
+        //    List<Voyage> voyageAdherent = dal.GetVoyageList();
+        //    return View(voyageAdherent);
+        //}
 
         public IActionResult SortieAdherent()
         {
@@ -500,14 +500,12 @@ namespace Projet2.Controllers
             Dal dal = new Dal();
 
             List<Activite> activites = dal.GetActivityList();
-            List<Stage> stages = dal.GetStageList();
-            List<Voyage> voyages = dal.GetVoyageList();
+            List<EvenementClub> evenementClubs = dal.GetEvenementClubList();
             List<SortieAdherent> sortieAdherents = dal.GetSortieAdherentList();
 
             ActiviteViewModel viewModel = new ActiviteViewModel
             {
-                Stages = stages,
-                Voyages = voyages,
+                EvenementClubs = evenementClubs,
                 SortieAdherents = sortieAdherents,
                 Activites = activites,
 
