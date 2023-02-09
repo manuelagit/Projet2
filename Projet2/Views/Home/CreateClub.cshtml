@@ -76,25 +76,21 @@
                         <td>@Html.ValidationMessageFor(m => Model.InfosClub.titreClub)</td>
                     </tr>
 
+                    <tr>
+                        <td>@Html.LabelFor(m => Model.InfosClub.DescritpionClub)</td>
+                        <td>@Html.TextAreaFor(m => Model.InfosClub.DescritpionClub, 10, 40, htmlAttributes: new { style = "width: 100%; max-width: 100%;", placeholder = "Annecy Vol Libre est un club situé à 3 km du Lac d'Annecy, offrant de nombreuses possibilités de vols." })</td>
+                        <td>@Html.ValidationMessageFor(m => Model.InfosClub.DescritpionClub)</td>
+                    </tr>
 
                     <tr>
-                        <td>Titre de votre site</td>
-                        <td><TextArea id="titreSite" name="titreSite" rows="1" cols="50" placeholder="Bienvenue sur Annecy Vol Libre !"></TextArea></td>
-                        <td>@Html.ValidationMessageFor(m => Model.InfosClub.NomClub)</td>
-                    </tr>
-                    <tr>
-                        <td>Entrez un descriptif</td>
-                        <td><TextArea id="descSite" name="descSite" rows="5" cols="50" placeholder="Annecy Vol Libre est un club situé à 3 km du Lac d'Annecy, offrant de nombreuses possibilités de vols."></TextArea></td>
-                    </tr>
-                    <tr>
 
-                        <p><input type="file" accept="image/*" name="image" id="file" onchange="loadFile(event)" style="display: none;"></p>
+                        <input type="file" accept="image/*" name="image" id="file" onchange="loadFile(event)" style="display: none;">
                         <p><label for="file" style="cursor: pointer;">Ajoutez le logo de votre club</label></p>
                         <p><img id="output" width="200" /></p>
 
                     </tr>
 
-            </table>
+</table>
             <input type="submit" value="Valider" />
 
         </fieldset>

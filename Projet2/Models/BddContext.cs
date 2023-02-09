@@ -91,7 +91,6 @@ namespace Projet2.Models
             this.InfosClubs.Add(infosClubAVL);
             this.Comptes.Add(compteClubAVL);
             this.Clubs.Add(clubAVL);
-            this.SaveChanges();
 
             this.Activites.Add(activite1);
             this.Activites.Add(activite2);
