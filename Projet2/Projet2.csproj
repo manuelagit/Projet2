@@ -25,4 +25,7 @@
   <ItemGroup>
     <None Include="wwwroot\css\Site.css" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Remove="wwwroot\Images\para_ferret.png" />
+  </ItemGroup>
 </Project>
