@@ -41,20 +41,14 @@ namespace Projet2.Models
         int ModifyActivite(Activite activite);
         void ModifyActivite(int Id);
 
-        void RemoveActivite(Activite activite);
+        //void RemoveActivite(Activite activite);
 
 
         List<EvenementClub> GetEvenementClubList();
         int CreateEvenementClub(EvenementClub evenementClub);
         int CreateEvenementClub(int idEvenementClub);
 
-        List<Stage> GetStageList();
-        int CreateStage(Stage stage);
-        int CreateStage(int idStage);
-
-        List<Voyage> GetVoyageList();
-        int CreateVoyage(Voyage voyage);
-        int CreateVoyage(int idVoyage);
+   
 
         List<SortieAdherent> GetSortieAdherentList();
         int CreateSortieAdherent(SortieAdherent sortieAdherent);

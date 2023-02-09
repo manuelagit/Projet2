@@ -19,10 +19,6 @@ namespace Projet2.Models
 
         public DbSet<EvenementClub> EvenementClubs { get; set; }
 
-        public DbSet<Stage> Stages { get; set; }
-
-        public DbSet<Voyage> Voyages { get; set; }
-
         public DbSet<SortieAdherent> SortieAdherents { get; set; }
 
 
@@ -61,15 +57,20 @@ namespace Projet2.Models
             Paiement paiement = new Paiement() { Id = 1, NumeroCB = "1111222233334444",DateExpiration= new DateTime(2026,12,1),CodeDeSecurite=123,FacturationId=1 };
 
 
-            Stage stage = new Stage() { Id = 1, NomStage = "Stage1", DateStage = new DateTime(2023, 3, 23), DescriptionStage = "Stage vol plané", LieuStage = "Annemasse", DureeStageHeure = 3, NiveauRequisStage = 2, NombrePlaceStage = 12, PrixStage = 49.99 };
+            /*Stage stage = new Stage() { Id = 1, NomStage = "Stage1", DateStage = new DateTime(2023, 3, 23), DescriptionStage = "Stage vol plané", LieuStage = "Annemasse", DureeStageHeure = 3, NiveauRequisStage = 2, NombrePlaceStage = 12, PrixStage = 49.99 };
             Voyage voyage = new Voyage() { Id = 1, NomVoyage = "Voyage1", DateVoyage = new DateTime(2023, 3, 15), DescriptionVoyage = "Voyage bapteme", LieuVoyage = "Bordeaux", DureeVoyageHeure = 3, NiveauRequisVoyage = 3, NombrePlaceVoyage = 20, PrixVoyage = 79.99 };
             SortieAdherent sortieAdherent = new SortieAdherent() { Id = 1, NomSortie = "Sortie1", DateSortie = new DateTime(2023, 4, 28), DescriptionSortie = "Decouverte vin de Alexandre", LieuSortie = "Bordeaux", NomLeader = "Alexandre", TypeSortie = "Ballade" };
             EvenementClub evenementClub1 = new EvenementClub { Id = 1, StageId = 1, Stage = stage };
-            EvenementClub evenementClub2 = new EvenementClub { Id = 2, VoyageId = 1, Voyage = voyage };
+            EvenementClub evenementClub2 = new EvenementClub { Id = 2, VoyageId = 1, Voyage = voyage };*/
 
-            Activite activite1 = new Activite() { Id = 1, EvenementClubId = 1, EvenementClub = evenementClub1 };
-            Activite activite2 = new Activite() { Id = 2, EvenementClubId = 2, EvenementClub = evenementClub2 };
-            Activite activite3 = new Activite() { Id = 3, SortieAdherentId = 1, SortieAdherent = sortieAdherent };
+            EvenementClub evenement1 = new EvenementClub() { Id =1, NiveauRequis = 1, Prix = 45.3};
+            EvenementClub evenement2 = new EvenementClub() { Id = 2, NiveauRequis = 1, Prix = 50 };
+            SortieAdherent sortieAdherent1 = new SortieAdherent() { Id = 1, NomLeader = "Alexandre", Telephone = "0645857812" };
+            
+
+            Activite activite1 = new Activite() { Id = 1, EvenementClubId = 1,  NomActivite = "Voyage Maroc", DateActivite = "Du 10 au 20 Mars", DescriptionActivite = "Stage perfectionnement", LieuActivite = "Maroc", NombrePlaceActivite = 12, TypeActivite = "EvenementClub", ClubId = 3, EvenementClub = evenement1 };
+            Activite activite2 = new Activite() { Id = 2, EvenementClubId = 2, NomActivite = "Voyage Algerie", DateActivite = "Du 14 au 22 Mai", DescriptionActivite = "Stage aprofondissement", LieuActivite = "Algerie", NombrePlaceActivite = 20, TypeActivite = "EvenementClub", ClubId = 3, EvenementClub = evenement2 };
+            Activite activite3 = new Activite() { Id = 3, SortieAdherentId = 1, NomActivite = "Voyage découverte vin", DateActivite = "Du 20 au 23 juin", DescriptionActivite = "Decouverte vin Alexandre", LieuActivite = "Bordeaux", NombrePlaceActivite = 5, TypeActivite = "SortieAdherent", ClubId = 3, SortieAdherent = sortieAdherent1 };
 
 
 
@@ -95,11 +96,15 @@ namespace Projet2.Models
 
             this.Activites.Add(activite1);
             this.Activites.Add(activite2);
-            this.Activites.Add(activite3);
+            //this.Activites.Add(activite3);
 
             this.Facturations.Add(facturation);
             this.Paiements.Add(paiement);
-            this.SaveChanges();
+            /*try
+            {*/
+                this.SaveChanges();
+            /*}
+            catch { }*/
         }
 
 

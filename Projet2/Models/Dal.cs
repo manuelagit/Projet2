@@ -217,15 +217,7 @@ namespace Projet2.Models
             return _bddContext.EvenementClubs.ToList();
         }
 
-        public List<Stage> GetStageList()
-        {
-            return _bddContext.Stages.ToList();
-        }
-
-        public List<Voyage> GetVoyageList()
-        {
-            return _bddContext.Voyages.ToList();
-        }
+      
 
         public List<SortieAdherent> GetSortieAdherentList()
         {
@@ -247,35 +239,7 @@ namespace Projet2.Models
             return activite.Id;
         }
 
-        public int CreateStage(Stage stage)
-        {
-            _bddContext.Stages.Add(stage);
-            _bddContext.SaveChanges();
-            return stage.Id;
-        }
-
-        public int CreateStage(int idStage)
-        {
-            EvenementClub evenementClub = new EvenementClub { StageId = idStage };
-            _bddContext.EvenementClubs.Add(evenementClub);
-            _bddContext.SaveChanges();
-            return evenementClub.Id;
-        }
-
-        public int CreateVoyage(Voyage voyage)
-        {
-            _bddContext.Voyages.Add(voyage);
-            _bddContext.SaveChanges();
-            return voyage.Id;
-        }
-
-        public int CreateVoyage(int idVoyage)
-        {
-            EvenementClub evenementClub = new EvenementClub { VoyageId = idVoyage };
-            _bddContext.EvenementClubs.Add(evenementClub);
-            _bddContext.SaveChanges();
-            return evenementClub.Id;
-        }
+         
 
         public int CreateSortieAdherent(SortieAdherent sortieAdherent)
         {
@@ -317,17 +281,17 @@ namespace Projet2.Models
         }
 
 
-        public void RemoveActivite(Activite activite)
-        {
-            if (activite != null)
-            {
-                EvenementClub tmpEvenementClub = activite.EvenementClub;
-                SortieAdherent tmpSortieAdherent = activite.SortieAdherent;
-                Stage tmpStage = activite.EvenementClub.Stage;
-                Voyage tmpVoyage = activite.EvenementClub.Voyage;
+        //public void RemoveActivite(Activite activite)
+        //{
+        //    if (activite != null)
+        //    {
+        //        EvenementClub tmpEvenementClub = activite.EvenementClub;
+        //        SortieAdherent tmpSortieAdherent = activite.SortieAdherent;
+        //        Stage tmpStage = activite.EvenementClub.Stage;
+        //        Voyage tmpVoyage = activite.EvenementClub.Voyage;
 
-            }
-        }
+        //    }
+        //}
 
         //Create Facturation
         public int CreateFacturation(string nomFacturation, string prenomFacturation, string villeFacturation, string adresseFacturation, string codePostalFacturation, string paysFacturation, string TelephoneFacturation)

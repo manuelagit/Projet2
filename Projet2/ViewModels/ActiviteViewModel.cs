@@ -12,14 +12,9 @@ namespace Projet2.ViewModels
         public SortieAdherent SortieAdherent { get; set; }
         public List<SortieAdherent> SortieAdherents { get; set; }
 
-        public Voyage Voyage { get; set; }
-        public List<Voyage> Voyages { get; set; }
+        public EvenementClub EvenementClub { get; set; }
 
-        public Stage Stage { get; set; }
-        public List<Stage> Stages { get; set; }
-
-
-
+        public List<EvenementClub> EvenementClubs { get; set; }
 
     }
 }
