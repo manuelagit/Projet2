@@ -362,12 +362,15 @@ namespace Projet2.Models
 
         public List<Facturation> GetFacturesList()
         {
-            return _bddContext.Facturations.ToList();
+            return _bddContext.Facturations.Include(U => U.Club).Include(U => U.Club.InfosClub).ToList();
             
         }
+        public List<Adherent> GetAdherentsList()
+        {
+            return _bddContext.Adherents.Include(U => U.Utilisateur).Include(U=>U.Utilisateur.InfosPersonnelles).Include(U => U.Utilisateur.InfosPersonnelles.Adresse).Include(U => U.Utilisateur.Compte).ToList(); 
+        }
 
-
-
+        
 
     }
 }

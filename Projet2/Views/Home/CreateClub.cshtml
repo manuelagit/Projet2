@@ -62,9 +62,46 @@
             <br />
             <br />
 
-            <input type="submit" onclick="window.location.href='https://localhost:5001/Home/EspaceClubLogged';" value="Créer" />
         </fieldset>
         <br />
+
+        <fieldset>
+            @*@using (Html.BeginForm("Modify", "User", FormMethod.Post, new { enctype = "multipart/form-data" }));*@
+            <legend><h4>Personnalisez votre espace club</h4></legend>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>@Html.LabelFor(m => Model.InfosClub.titreClub)</td>
+                        <td>@Html.TextBoxFor(m => Model.InfosClub.titreClub, new { placeholder = "Bienvenue sur notre site !" })</td>
+                        <td>@Html.ValidationMessageFor(m => Model.InfosClub.titreClub)</td>
+                    </tr>
+
+                    <tr>
+                        <td>@Html.LabelFor(m => Model.InfosClub.DescritpionClub)</td>
+                        <td>@Html.TextAreaFor(m => Model.InfosClub.DescritpionClub, 10, 40, htmlAttributes: new { style = "width: 100%; max-width: 100%;", placeholder = "Annecy Vol Libre est un club situé à 3 km du Lac d'Annecy, offrant de nombreuses possibilités de vols." })</td>
+                        <td>@Html.ValidationMessageFor(m => Model.InfosClub.DescritpionClub)</td>
+                    </tr>
+
+                    <tr>
+
+                        <input type="file" accept="image/*" name="image" id="file" onchange="loadFile(event)" style="display: none;">
+                        <p><label for="file" style="cursor: pointer;">Ajoutez le logo de votre club</label></p>
+                        <p><img id="output" width="200" /></p>
+
+                    </tr>
+
+</table>
+            <input type="submit" value="Valider" />
+
+        </fieldset>
+        <br />
+
+        <script>var loadFile = function (event) {
+                var image = document.getElementById('output');
+                image.src = URL.createObjectURL(event.target.files[0]);
+            };</script>
+
+
 
         <fieldset>
             <legend><h4>Importer la liste de vos adhérents</h4></legend>

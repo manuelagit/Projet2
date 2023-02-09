@@ -1,0 +1,127 @@
+﻿@model Projet2.ViewModels.ActiviteViewModel
+
+@{
+    ViewBag.Title = "ActiviteViewModel";
+    Layout = "_Layout";
+    }
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Activites</title>
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        <h1>Liste des activités proposées par le club</h1><br />
+
+            <h3>Stages</h3>
+                <table id="Stage" onkeyup="myFunction()" border="1" style="margin: 20px">
+                    <tr>
+                        <th>Id</th>
+                        <th>Nom du stage</th>
+                        <th>Date</th>
+                        <th>Description</th>
+                        <th>Lieu</th>
+                        <th>Prix</th>
+                        <th>Duree</th>
+                        <th>Niveau requis</th>
+                        <th>Selection</th>
+                    </tr>
+                    <tbody>
+                        @foreach (var member in Model.Stages)
+
+                        {
+                            <tr>
+                                <td>@member.Id</td>
+                                <td>@member.NomStage</td>
+                                <td>@member.DateStage </td>
+                                <td>@member.DescriptionStage</td>
+                                <td>@member.LieuStage</td>
+                                <td>@member.PrixStage €</td>
+                                <td>@member.DureeStageHeure H</td>
+                                <td>@member.NiveauRequisStage </td>
+                                <td><input name="Sortie" value="news" type="radio" /></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table> <br />
+               
+
+            <h3>Voyages</h3>
+                <table id="Voyage" onkeyup="myFunction()" border="1" style="margin: 20px">
+                    <tr>
+                        <th>Id</th>
+                        <th>Nom du Voyage</th>
+                        <th>Date</th>
+                        <th>Description</th>
+                        <th>Lieu</th>
+                        <th>Prix</th>
+                        <th>Duree</th>
+                        <th>Niveau requis</th>
+                        <th>Selection</th>
+                    </tr>
+                    <tbody>
+                        @foreach (var member in Model.Voyages)
+
+                        {
+                            <tr>
+                                <td>@member.Id</td>
+                                <td>@member.NomVoyage</td>
+                                <td>@member.DateVoyage </td>
+                                <td>@member.DescriptionVoyage</td>
+                                <td>@member.LieuVoyage</td>
+                                <td>@member.PrixVoyage €</td>
+                                <td>@member.DureeVoyageHeure H</td>
+                                <td>@member.NiveauRequisVoyage </td>
+                                <td><input name="Sortie" value="news" type="radio" /></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table><br />
+
+
+             <h3>Sorties</h3>
+                <table id="SortieAdherent" onkeyup="myFunction()" border="1" style="margin: 20px">
+                    <tr>
+                        <th>Id</th>
+                        <th>Nom de la sortie</th>
+                        <th>Date</th>
+                        <th>Description</th>
+                        <th>Lieu</th>
+                        <th>Nom Du Leader</th>
+                        <th>Type de sortie</th>
+                        
+                    </tr>
+                    <tbody>
+                        @foreach (var member in Model.SortieAdherents)
+
+                        {
+                            <tr>
+                                <td>@member.Id</td>
+                                <td>@member.NomSortie</td>
+                                <td>@member.DateSortie</td>
+                                <td>@member.DescriptionSortie</td>
+                                <td>@member.LieuSortie</td>
+                                <td>@member.NomLeader</td>
+                                <td>@member.TypeSortie</td>
+                                <td><input name="Sortie" value="news" type="radio" /></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table><br />
+        
+
+            <input type="button" onclick="window.location.href='https://localhost:5001/Home/PaymentView';" value="S'inscrire" />
+        
+    }
+    @*vérification du type de données dans le front*@
+    <script type="text/javascript" src="~/Scripts/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.validate-vsdoc.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+
+</body>
+</html>
+

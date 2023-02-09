@@ -12,6 +12,8 @@ namespace Projet2.Models
 
         public int? CompteId { get; set; }
         public Compte Compte { get; set; }
+
+
     }
 }
 

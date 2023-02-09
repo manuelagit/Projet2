@@ -60,7 +60,7 @@ namespace Projet2.Models
         int CreateSortieAdherent(SortieAdherent sortieAdherent);
         int CreateSortieAdherent(int idSortieAdherent);
 
-
+        List<Adherent> GetAdherentsList();
 
     }
 }

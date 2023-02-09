@@ -10,27 +10,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome</title>
 </head>
-<center>
 
-    <body>
-
-        <h1>Bienvenue @Html.LabelFor(m => Model.InfosClub.NomClub)</h1>
-
-
-        <div style="margin: 20px">
-            <button type="submit" onclick="window.location.href='https://localhost:5001/Home/CreateClub';">Inscription</button>
-        </div>
-
-        <button type="submit">Visionner liste adhérents</button>
-
-        <button type="submit" onclick="window.location.href='https://localhost:5001/Home/EspaceClubVisible';">Personnaliser votre espace club</button>
-
-        <button type="submit" onclick="window.location.href='https://localhost:5001/Home/Activite';">Liste des activites</button>
+<body>
+    <center>
 
 
 
-    </body>
-</center>
+
+        <button type="button" onclick="window.location.href='https://localhost:5001/Home/ListeAdherentsView';">Visionner liste adhérents</button>
+
+        <button type="submit" onclick="window.location.href='https://localhost:5001/Home/Activites';">Liste des activites</button>
+
+
+    </center>
+
+</body>
 
 </html>
 

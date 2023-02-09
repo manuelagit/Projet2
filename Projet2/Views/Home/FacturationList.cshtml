@@ -1,4 +1,8 @@
 ﻿@model List<Projet2.Models.Facturation>
+@{
+  Layout = "_Layout";
+    ViewBag.Title = "EspaceFacture";
+    }
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +16,6 @@
         <h1>Liste des factures</h1>
         <table border="1" style="margin: 20px">
             <tr>
-                <th>Id</th>
                 <th>Nom</th>
                 <th>Prenom</th>
                 <th>Adresse de Facturation</th>
@@ -20,13 +23,13 @@
                 <th>Code Postal</th>
                 <th>Pays</th>
                 <th>Telephone</th>
+                <th>Club</th>
             </tr>
             <tbody>
                 @foreach (var member in Model)
 
                 {
                     <tr>
-                        <td>@member.Id</td>
                         <td>@member.NomFacturation</td>
                         <td>@member.PrenomFacturation </td>
                         <td>@member.AdresseFacturation</td>
@@ -34,6 +37,7 @@
                         <td>@member.CodePostalFacturation</td>
                         <td>@member.PaysFacturation</td>
                         <td>@member.TelephoneFacturation</td>
+                        <td>@member.Club.InfosClub.NomClub</td>
                     </tr>
                 }
             </tbody>
@@ -47,20 +51,10 @@
         </form>
 
 
-        <div style="margin: 20px">
-            <input type="button" onclick="window.location.href='https://localhost:5001/Home';" class="btn btn-warning btn-lg" value="Retour accueil" />
-            <input type="button"; value="Exporter liste facture"/>
-        </div>
-
-        <div>
-            <label for="name">Recherche</label>
-            <input type="text" id="searchBox" name="searchBox">
-        </div>
-
         @{Html.BeginForm("CreatePDFDocument", "Home", FormMethod.Get);
     {
         <div>
-            <input type="submit" value="Generate PDF Document" style="width:300px;height:27px" />
+            <input type="submit" value="Exporter" style="width:300px;height:27px" />
         </div>
     }
         Html.EndForm();
