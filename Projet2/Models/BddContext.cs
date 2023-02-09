@@ -46,7 +46,7 @@ namespace Projet2.Models
             OffreAbonnement offreAbonnement2 = new OffreAbonnement() { Id = 2, DescriptionOffre = "Avec notre abonnement mensuel, vous bénéficiez d'un accès à notre plateforme renouvelable 6 mois minimum, payable par mensualité.", TypeOffre = "Mensuel", DureeOffreMois = 6, Prix = 70.00 };
 
             Adresse adresseClub = new Adresse() { Id = 3, CodePostal = 11170, NomVille = "Gex", NomRue = "rue alphonse", NumeroRue = 4};
-            InfosClub infosClub = new InfosClub() { Id = 1, NomClub = "VLG", AdresseId = 3 };
+            InfosClub infosClub = new InfosClub() { Id = 1, NomClub = "VLG", AdresseId = 3, urlLogo = "~/Images/btnValider.png", DescritpionClub = "voici notre club", titreClub = "Mon super club" };
 
             Compte compteClub = new Compte() { Id =3, AdressEmail = "vlg@gmail.com", MotDePasse = "123" };
             Club club = new Club() { Id = 3, CompteId = 3, InfosClubId = 3};
