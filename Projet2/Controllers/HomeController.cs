@@ -479,6 +479,13 @@ namespace Projet2.Controllers
             return View(sortieAdherent);
         }
 
+        public IActionResult ListeAdherentsView()
+        {
+            Dal dal = new Dal();
+            List<Adherent> adherent = dal.GetAdherentsList();
+            return View(adherent);
+            
+        }
 
         public IActionResult Activites()
         {

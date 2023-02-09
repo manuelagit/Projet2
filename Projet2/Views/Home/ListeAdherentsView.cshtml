@@ -1,0 +1,60 @@
+﻿@model List<Projet2.Models.Adherent>
+@{
+    ViewBag.Title = "AdherentList";
+    Layout = "_Layout";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste des adherents</title>
+</head>
+<center>
+    <body>
+        <h1>Liste des adhérents</h1>
+        <table border="1" style="margin: 20px">
+            <tr>
+                @*<th>Id</th>
+                <th>Id Club</th>
+                <th>Id Utilisateur</th>*@
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Date de naissance</th>
+                <th>Adresse</th>
+                <th>Adresse Mail</th>
+
+                
+            </tr>
+            <tbody>
+                @foreach (var member in Model)
+
+                {
+                    <tr>
+                       @* <td>@member.Id</td>
+                        <td>@member.ClubId</td>
+                        <td>@member.UtilisateurId</td>*@
+                        <td>@member.Utilisateur.InfosPersonnelles.Nom</td>
+                        <td>@member.Utilisateur.InfosPersonnelles.Prenom</td>
+                        <td>@member.Utilisateur.InfosPersonnelles.DateNaissance.ToShortDateString()</td>
+                        <td>
+                            @member.Utilisateur.InfosPersonnelles.Adresse.NumeroRue,
+                            @member.Utilisateur.InfosPersonnelles.Adresse.NomRue,
+                            @member.Utilisateur.InfosPersonnelles.Adresse.CodePostal,
+                            @member.Utilisateur.InfosPersonnelles.Adresse.NomVille
+                        </td>
+                        <td>@member.Utilisateur.Compte.AdressEmail</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </body>
+</center>
+</html>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}

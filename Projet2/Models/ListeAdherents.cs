@@ -14,9 +14,9 @@ namespace Projet2.Models
         }
 
         // add an Adherent to the list
-        public static void CreateAdherent(int id, Compte compte, Club club)
+        public static void CreateAdherent(int id, Utilisateur utilisateur, Club club)
         {
-            listeAdherents.Add(new Adherent() { Id = id, Compte = compte, Club = club });
+            listeAdherents.Add(new Adherent() { Id = id, Utilisateur = utilisateur, Club = club });
         }
 
         // remove an Adherent from the list 
