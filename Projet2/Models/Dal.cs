@@ -90,6 +90,11 @@ namespace Projet2.Models
             return club.Id;
         }
 
+        public int EspaceClubLogged(Club club)
+        {
+            return club.Id;
+        }
+
         public void ModifyUser(int Id)
         {
             Utilisateur utilisateur = _bddContext.Utilisateurs.Find(Id);
@@ -329,6 +334,7 @@ namespace Projet2.Models
             return _bddContext.Facturations.Include(U => U.Club).Include(U => U.Club.InfosClub).ToList();
             
         }
+
         public List<Adherent> GetAdherentsList()
         {
             return _bddContext.Adherents.Include(U => U.Utilisateur).Include(U=>U.Utilisateur.InfosPersonnelles).Include(U => U.Utilisateur.InfosPersonnelles.Adresse).Include(U => U.Utilisateur.Compte).ToList(); 
