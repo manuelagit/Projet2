@@ -209,7 +209,7 @@ namespace Projet2.Models
 
         public List<Activite> GetActivityList()
         {
-            return _bddContext.Activites.ToList(); // charge + jointure
+            return _bddContext.Activites.Include(U => U.EvenementClub).Include(U => U.SortieAdherent).ToList(); // charge + jointure
         }
 
         public List<EvenementClub> GetEvenementClubList()

@@ -1,0 +1,69 @@
+﻿@model Projet2.Models.Activite
+@{
+    ViewBag.Title = "ModifySortieAdherent";
+    Layout = "_Layout";
+}
+
+@using (Html.BeginForm())
+{
+    <fieldset>
+        @Html.HiddenFor(m => Model.SortieAdherentId)@*crée des inputs cachés qui contiennent les valeurs pour ne pas perdre les données*@
+        @Html.HiddenFor(m => Model.EvenementClubId) @*clé etrangère dans la table utilisateur*@
+       
+        <legend><h4>Modification d'une sortie</h4></legend>
+        <table>
+            <tbody>
+                <tr>
+                    <td>@Html.LabelFor(m => Model.NomActivite, "Nom")</td>
+                    <td>@Html.TextBoxFor(m => Model.NomActivite)</td>
+                    <td>@Html.ValidationMessageFor(m => Model.NomActivite)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => Model.DateDebutActivite, "Date debut")</td>
+                    <td>@Html.TextBoxFor(m => Model.DateDebutActivite, "{0:yyyy-MM-dd}", new { type = "Date" })</td>
+                    <td>@Html.ValidationMessageFor(m => Model.DateDebutActivite)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => Model.DateFinActivite, "Date debut")</td>
+                    <td>@Html.TextBoxFor(m => Model.DateFinActivite, "{0:yyyy-MM-dd}", new { type = "Date" })</td>
+                    <td>@Html.ValidationMessageFor(m => Model.DateFinActivite)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => Model.DescriptionActivite, "Description")</td>
+                    <td>@Html.TextBoxFor(m => Model.DescriptionActivite)</td>
+                    <td>@Html.ValidationMessageFor(m => Model.DescriptionActivite)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => Model.LieuActivite, "Lieu")</td>
+                    <td>@Html.TextBoxFor(m => Model.LieuActivite)</td>
+                    <td>@Html.ValidationMessageFor(m => Model.LieuActivite)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => Model.NombrePlaceActivite, "Nombre de place")</td>
+                    <td>@Html.TextBoxFor(m => Model.NombrePlaceActivite)</td>
+                    <td>@Html.ValidationMessageFor(m => Model.NombrePlaceActivite)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => Model.SortieAdherent.NomLeader, "Nom de organisateur")</td>
+                    <td>@Html.TextBoxFor(m => Model.SortieAdherent.NomLeader)</td>
+                    <td>@Html.ValidationMessageFor(m => Model.SortieAdherent.NomLeader)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => Model.SortieAdherent.Telephone, "Telephone")</td>
+                    <td>@Html.TextBoxFor(m => Model.SortieAdherent.Telephone)</td>
+                    <td>@Html.ValidationMessageFor(m => Model.SortieAdherent.Telephone)</td>
+                </tr>
+            </tbody>
+        </table>
+        <br />
+        <br />
+
+        <input type="button" onclick="window.location.href='https://localhost:5001/Home/Activites';" class="btn btn-warning btn-lg" value="Retour liste activites" />
+        <input type="submit" value="Modifier" />
+    </fieldset>
+}
+@*vérification du type de données dans le front*@
+<script type="text/javascript" src="~/Scripts/jquery-3.3.1.js"></script>
+<script type="text/javascript" src="~/Scripts/jquery.validate-vsdoc.js"></script>
+<script type="text/javascript" src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+

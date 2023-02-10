@@ -525,7 +525,84 @@ namespace Projet2.Controllers
             return View("CreateSortieAdherent");
         }
 
-       
+        public IActionResult ModifyEvenementClub(int id)
+        {
+            if (id != 0)
+            {
+                using (Dal dal = new Dal())
+                {
+                    Activite activite = dal.GetActivityList().Where(r => r.Id == id).FirstOrDefault();
+
+                    if (activite == null)
+                    {
+                        return View("Error");
+                    }
+                    return View("ModifyEvenementClub", activite);
+                }
+            }
+            return View("Error");
+        }
+
+
+
+        // sends the modified data
+        [HttpPost]
+        public IActionResult ModifyEvenementClub(Activite activite)
+        {
+            if (activite.Id != 0)
+            {
+                using (Dal dal = new Dal())
+                {
+                    dal.ModifyActivite(activite);
+                    return RedirectToAction("Activites");
+                }
+            }
+            else
+            {
+                return View("Error");
+            }
+        }
+
+
+        public IActionResult ModifySortieAdherent(int id)
+        {
+            if (id != 0)
+            {
+                using (Dal dal = new Dal())
+                {
+                    Activite activite = dal.GetActivityList().Where(r => r.Id == id).FirstOrDefault();
+
+                    if (activite == null)
+                    {
+                        return View("Error");
+                    }
+                    return View("ModifySortieAdherent", activite);
+                }
+            }
+            return View("Error");
+        }
+
+
+
+        // sends the modified data
+        [HttpPost]
+        public IActionResult ModifySortieAdherent(Activite activite)
+        {
+            if (activite.Id != 0 && activite.SortieAdherentId != 0)
+            {
+                using (Dal dal = new Dal())
+                {
+                    dal.ModifyActivite(activite);
+                    return RedirectToAction("Activites");
+                }
+            }
+            else
+            {
+                return View("Error");
+            }
+        }
+
+
 
     }
 }
