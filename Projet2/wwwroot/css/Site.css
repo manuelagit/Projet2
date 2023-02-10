@@ -38,17 +38,17 @@
     margin: 0;
 }
 
-.btn {
+/*.btn {
     margin: 5px;
     min-width: 100% !important;
     display: flex;
     flex-direction: column;
-}
+}*/
 
 .buttons {
     justify-content: center;
     align-items: center;
-    text-align: center;
+
 }
 
 .btn {
