@@ -23,7 +23,8 @@
                         <th>Id</th>
                         <th>Type Activite</th>
                         <th>Nom Activite</th>
-                        <th>Date</th>
+                        <th>Date debut</th>
+                        <th>Date fin</th>
                         <th>Description</th>
                         <th>Lieu</th>
                         <th>Nombre de Place</th>
@@ -32,19 +33,20 @@
                         <th>Selection</th>
                     </tr>
                     <tbody>
-                       @foreach (var member in Model.Activites)
+                       @foreach (var member in Model.Activites.Where(i => i.SortieAdherentId == null))
 
                         {
                             <tr>
                                 <td>@member.Id</td>
                                 <td>@member.TypeActivite</td>
                                 <td>@member.NomActivite</td>
-                                <td>@member.DateActivite</td>
+                                <td>@member.DateDebutActivite</td>
+                                <td>@member.DateFinActivite</td>
                                 <td>@member.DescriptionActivite</td>
                                 <td>@member.LieuActivite</td>
                                 <td>@member.NombrePlaceActivite</td>
                                 <td>@member.EvenementClub.NiveauRequis</td>
-                                <td>@member.EvenementClub.Prix</td>
+                                <td>@member.EvenementClub.Prix €</td>
                                 <td><input name="Activite" value="news" type="radio" /></td>
                             </tr>
                         }
@@ -58,7 +60,8 @@
                         <th>Id</th>
                         <th>Type Activite</th>
                         <th>Nom Activite</th>
-                        <th>Date</th>
+                        <th>Date debut</th>
+                        <th>Date fin</th>
                         <th>Description</th>
                         <th>Lieu</th>
                         <th>Nombre de Place</th>
@@ -66,15 +69,16 @@
                         <th>Telephone</th>
                         <th>Selection</th>
                     </tr>
-                   @* <tbody>
-                        @foreach (var member in Model.Activites)
+                    <tbody>
+                        @foreach (var member in Model.Activites.Where(i => i.EvenementClubId == null))
 
                             {
                                 <tr>
                                     <td>@member.Id</td>
                                     <td>@member.TypeActivite</td>
                                     <td>@member.NomActivite</td>
-                                    <td>@member.DateActivite</td>
+                                    <td>@member.DateDebutActivite</td>
+                                    <td>@member.DateFinActivite</td>
                                     <td>@member.DescriptionActivite</td>
                                     <td>@member.LieuActivite</td>
                                     <td>@member.NombrePlaceActivite</td>
@@ -83,7 +87,7 @@
                                     <td><input name="Activite" value="news" type="radio" /></td>
                                 </tr>
                             }
-                    </tbody>*@
+                    </tbody>
                 </table><br />
         
 

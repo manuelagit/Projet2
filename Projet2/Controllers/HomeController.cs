@@ -515,9 +515,17 @@ namespace Projet2.Controllers
             return View(viewModel);
         }
 
+        public IActionResult CreateEvenementClub()
+        {
+            return View("CreateEvenementClub");
+        }
 
+        public IActionResult CreateSortieAdherent()
+        {
+            return View("CreateSortieAdherent");
+        }
 
-
+       
 
     }
 }
