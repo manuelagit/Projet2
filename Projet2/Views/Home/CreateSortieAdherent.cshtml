@@ -1,0 +1,65 @@
+﻿@model Projet2.Models.Activite
+@{
+    ViewBag.Title = "CreateSortieAdherent";
+    Layout = "_Layout";
+}
+@using (Html.BeginForm())
+{
+    <fieldset>
+
+        <legend><h4>Création d'une sortie</h4></legend>
+        <table>
+            <tbody>
+                <tr>
+                    <td>@Html.LabelFor(m => Model.NomActivite, "Nom")</td>
+                    <td>@Html.TextBoxFor(m => Model.NomActivite, new { placeholder = "Nom" })</td>
+                    <td>@Html.ValidationMessageFor(m => Model.NomActivite)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => Model.DateDebutActivite, "Date debut")</td>
+                    <td>@Html.TextBoxFor(m => Model.DateDebutActivite, new { placeholder = "Date debut" })</td>
+                    <td>@Html.ValidationMessageFor(m => Model.DateDebutActivite)</td>
+                </tr>
+                 <tr>
+                    <td>@Html.LabelFor(m => Model.DateFinActivite, "Date fin")</td>
+                    <td>@Html.TextBoxFor(m => Model.DateFinActivite, new { placeholder = "Date fin" })</td>
+                    <td>@Html.ValidationMessageFor(m => Model.DateFinActivite)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => Model.DescriptionActivite, "Description")</td>
+                    <td>@Html.TextBoxFor(m => Model.DescriptionActivite, new { placeholder = "Description" })</td>
+                    <td>@Html.ValidationMessageFor(m => Model.DescriptionActivite)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => Model.LieuActivite, "Lieu")</td>
+                    <td>@Html.TextBoxFor(m => Model.LieuActivite, new { placeholder = "Lieu" })</td>
+                    <td>@Html.ValidationMessageFor(m => Model.LieuActivite)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => Model.NombrePlaceActivite, "Nombre de place")</td>
+                    <td>@Html.TextBoxFor(m => Model.NombrePlaceActivite, new { placeholder = "Nombre de place" })</td>
+                    <td>@Html.ValidationMessageFor(m => Model.NombrePlaceActivite)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => Model.SortieAdherent.NomLeader, "Nom de organisateur")</td>
+                    <td>@Html.TextBoxFor(m => Model.SortieAdherent.NomLeader, new { placeholder = "Nom de organisateur" })</td>
+                    <td>@Html.ValidationMessageFor(m => Model.SortieAdherent.NomLeader)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => Model.SortieAdherent.Telephone, "Telephone")</td>
+                    <td>@Html.TextBoxFor(m => Model.SortieAdherent.Telephone, new { placeholder = "Telephone" })</td>
+                    <td>@Html.ValidationMessageFor(m => Model.SortieAdherent.Telephone)</td>
+                </tr>
+            </tbody>
+        </table>
+        <br />
+        <br />
+
+        <input type="button" onclick="window.location.href='https://localhost:5001/Home/UserList';" value="Retour Liste des clubs" />
+        <input type="image" src="~/Images/btnValider.png" alt="Valider" width="43" height="38" />
+    </fieldset>
+}
+@*vérification du type de données dans le front*@
+<script type="text/javascript" src="~/Scripts/jquery-3.3.1.js"></script>
+<script type="text/javascript" src="~/Scripts/jquery.validate-vsdoc.js"></script>
+<script type="text/javascript" src="~/Scripts/jquery.validate.unobtrusive.js"></script>

@@ -13,7 +13,11 @@ namespace Projet2.Models
         public DbSet<Club> Clubs { get; set; }
         public DbSet<InfosClub> InfosClubs { get; set; }
         public DbSet<Paiement> Paiements { get; set; }
+<<<<<<< HEAD
         public DbSet<Facturation> Facturations { get; set; }
+=======
+        public DbSet<Facturation> Facturations { get; set; }
+>>>>>>> 475d7edac72c6bd3a13ef241bfa6c89d5c7cfe2f
         public DbSet<Adherent> Adherents { get; set; }
 
         public DbSet<Activite> Activites { get; set; }
@@ -22,11 +26,11 @@ namespace Projet2.Models
 
         public DbSet<SortieAdherent> SortieAdherents { get; set; }
 
-
+        public DbSet<Adherent> Adherents { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseMySql("server=localhost;user id=root;password=rrrrrrrr;database=BDDprojet2");
+            optionsBuilder.UseMySql("server=localhost;user id=root;password=rrrrr;database=BDDprojet2");
         }
 
         public void InitialiseDb()
@@ -70,9 +74,9 @@ namespace Projet2.Models
             SortieAdherent sortieAdherent1 = new SortieAdherent() { Id = 1, NomLeader = "Alexandre", Telephone = "0645857812" };
             
 
-            Activite activite1 = new Activite() { Id = 1, EvenementClubId = 1,  NomActivite = "Voyage Maroc", DateActivite = "Du 10 au 20 Mars", DescriptionActivite = "Stage perfectionnement", LieuActivite = "Maroc", NombrePlaceActivite = 12, TypeActivite = "EvenementClub", ClubId = 3, EvenementClub = evenement1 };
-            Activite activite2 = new Activite() { Id = 2, EvenementClubId = 2, NomActivite = "Voyage Algerie", DateActivite = "Du 14 au 22 Mai", DescriptionActivite = "Stage aprofondissement", LieuActivite = "Algerie", NombrePlaceActivite = 20, TypeActivite = "EvenementClub", ClubId = 3, EvenementClub = evenement2 };
-            Activite activite3 = new Activite() { Id = 3, SortieAdherentId = 1, NomActivite = "Voyage découverte vin", DateActivite = "Du 20 au 23 juin", DescriptionActivite = "Decouverte vin Alexandre", LieuActivite = "Bordeaux", NombrePlaceActivite = 5, TypeActivite = "SortieAdherent", ClubId = 3, SortieAdherent = sortieAdherent1 };
+            Activite activite1 = new Activite() { Id = 1, EvenementClubId = 1,  NomActivite = "Voyage Maroc", DateDebutActivite = new DateTime(2023/03/18), DateFinActivite = new DateTime(2023 / 03 / 18), DescriptionActivite = "Stage perfectionnement", LieuActivite = "Maroc", NombrePlaceActivite = 12, TypeActivite = "EvenementClub", ClubId = 3, EvenementClub = evenement1 };
+            Activite activite2 = new Activite() { Id = 2, EvenementClubId = 2, NomActivite = "Voyage Algerie", DateDebutActivite = new DateTime(2023 / 03 / 18), DateFinActivite = new DateTime(2023 / 03 / 18), DescriptionActivite = "Stage aprofondissement", LieuActivite = "Algerie", NombrePlaceActivite = 20, TypeActivite = "EvenementClub", ClubId = 3, EvenementClub = evenement2 };
+            Activite activite3 = new Activite() { Id = 3, SortieAdherentId = 1, NomActivite = "Voyage découverte vin", DateDebutActivite = new DateTime(2023 / 03 / 18), DateFinActivite = new DateTime(2023 / 03 / 18), DescriptionActivite = "Decouverte vin Alexandre", LieuActivite = "Bordeaux", NombrePlaceActivite = 5, TypeActivite = "SortieAdherent", ClubId = 3, SortieAdherent = sortieAdherent1 };
 
             Adherent adherent1 = new Adherent() { Id = 1, ClubId = 3, UtilisateurId=1 };
             
@@ -98,7 +102,7 @@ namespace Projet2.Models
 
             this.Activites.Add(activite1);
             this.Activites.Add(activite2);
-            //this.Activites.Add(activite3);
+            this.Activites.Add(activite3);
 
             this.Facturations.Add(facturation);
             this.Paiements.Add(paiement);
