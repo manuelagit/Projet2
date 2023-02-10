@@ -14,6 +14,7 @@ namespace Projet2.Models
         public DbSet<InfosClub> InfosClubs { get; set; }
         public DbSet<Paiement> Paiements { get; set; }
         public DbSet<Facturation> Facturations { get; set; }
+        public DbSet<Adherent> Adherents { get; set; }
 
         public DbSet<Activite> Activites { get; set; }
 

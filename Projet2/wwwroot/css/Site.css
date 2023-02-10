@@ -42,17 +42,17 @@
     margin: 0;
 }
 
-.btn {
+/*.btn {
     margin: 5px;
     min-width: 100% !important;
     display: flex;
     flex-direction: column;
-}
+}*/
 
 .buttons {
     justify-content: center;
     align-items: center;
-    text-align: center;
+
 }
 
 .btn {
@@ -161,48 +161,100 @@
     width: 100%;
 }
 
-    .slider {
+.slider {
     width: 440px;
     overflow: hidden;
     margin: 15px auto;
 }
-.slides {
+    .slides {
     position: center;
     width: calc(800px * 3);
     animation: glisse 12s alternate infinite ;
-}
+       }
 
-.slide {
+    .slide {
     float: left;
+    }
+
+        @keyframes glisse {
+            0% {
+                transform: translateX(0);
+            }
+            10% {
+                transform: translateX(0);
+            }
+
+            33% {
+                transform: translateX(-441px);
+            }
+            45% {
+                transform: translateX(-441px);
+            }
+
+            66% {
+                transform: translateX(-884px);
+            }
+
+            100% {
+                transform: translateX(-884px);
+            }
+        }
+
+
+.btn2 {
+    justify-content: center;
+    align-items: center;
+    width: 250px;
+    margin-top: 20px;
+    margin-left: 250px;
+    border: 2px solid black;
+    padding: 200px !important;
+    border-radius: 30px;
+    background-color: beige;
+    background-position: top;
+    text-align: center;
+    cursor: pointer;
 }
 
-@keyframes glisse {
-    0% {
-        transform: translateX(0);
-    }
-    10% {
-        transform: translateX(0);
-    }
-
-    33% {
-        transform: translateX(-441px);
-    }
-    45% {
-        transform: translateX(-441px);
+.btn2--btnClub2 {
+    background-image: url("/Images/espaceclub2.png");
+    color: white;
+}
+    .btn2--btnClub2:hover {
+        background-image: url("/Images/decollage1.png");
+        color: black;
     }
 
-    66% {
-        transform: translateX(-884px);
-    }
-
-    100% {
-        transform: translateX(-884px);
-    }
+.btn2--btnParapentiste2 {
+    background-image: url("/Images/espaceparapentiste.png");
+    color: white;
 }
 
-.espace-Selection-C-P {
-    padding: 200px;
-    border: 2px solid 
+    .btn2--btnParapentiste2:hover {
+        background-image: url("/Images/decollage1.png");
+        color: black;
+    }
+
+.container {
+    position: relative;
+    text-align: center;
+    color: white;
+}
+
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.image-link {
+    border-radius: 30px;
+}
+
+    .image-link:hover {
+    content: url("/Images/decollage1.png");
+
+ 
 }
 
 .footer {
