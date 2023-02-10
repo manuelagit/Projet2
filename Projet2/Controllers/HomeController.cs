@@ -200,17 +200,22 @@ namespace Projet2.Controllers
         public IActionResult CreateClub(Club club)
         {
             Dal dal = new Dal();
+            List<Utilisateur> utilisateurs = dal.GetUsersList();
             club.CompteId = dal.CreateCompte(club.Compte);
             club.InfosClubId = dal.CreateInfosClub(club.InfosClub);
-
             dal.CreateClub(club);
-            return RedirectToAction("EspaceClubLogged");
+
+            CreateClubViewModel createClubViewModel = new CreateClubViewModel { Club = club, Utilisateurs = utilisateurs };
+
+            return View("EspaceClubLogged", createClubViewModel);
         }
 
 
 
 
-        public IActionResult LookForClub(int Id)
+
+
+        public IActionResult EspaceClubLogged()
         {
             return View();
         }
@@ -231,10 +236,9 @@ namespace Projet2.Controllers
             return View();
         }
 
-        public IActionResult EspaceClubLogged()
-        {
-            return View();
-        }
+
+
+
 
         public IActionResult ClubLogin()
         {
@@ -462,19 +466,19 @@ namespace Projet2.Controllers
             return View("EvenementClub");
         }
 
-        public IActionResult StageAdherent()
-        {
-            Dal dal = new Dal();
-            List<Stage> stages = dal.GetStageList();
-            return View(stages);
-        }
+        //public IActionResult StageAdherent()
+        //{
+        //    Dal dal = new Dal();
+        //    List<Stage> stages = dal.GetStageList();
+        //    return View(stages);
+        //}
 
-        public IActionResult VoyageAdherent()
-        {
-            Dal dal = new Dal();
-            List<Voyage> voyageAdherent = dal.GetVoyageList();
-            return View(voyageAdherent);
-        }
+        //public IActionResult VoyageAdherent()
+        //{
+        //    Dal dal = new Dal();
+        //    List<Voyage> voyageAdherent = dal.GetVoyageList();
+        //    return View(voyageAdherent);
+        //}
 
         public IActionResult SortieAdherent()
         {
@@ -496,14 +500,12 @@ namespace Projet2.Controllers
             Dal dal = new Dal();
 
             List<Activite> activites = dal.GetActivityList();
-            List<Stage> stages = dal.GetStageList();
-            List<Voyage> voyages = dal.GetVoyageList();
+            List<EvenementClub> evenementClubs = dal.GetEvenementClubList();
             List<SortieAdherent> sortieAdherents = dal.GetSortieAdherentList();
 
             ActiviteViewModel viewModel = new ActiviteViewModel
             {
-                Stages = stages,
-                Voyages = voyages,
+                EvenementClubs = evenementClubs,
                 SortieAdherents = sortieAdherents,
                 Activites = activites,
 
