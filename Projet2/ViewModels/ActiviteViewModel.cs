@@ -6,7 +6,6 @@ namespace Projet2.ViewModels
     public class ActiviteViewModel
     {
         public Activite Activite { get; set; }
-
         public List<Activite> Activites { get; set; }
 
         public SortieAdherent SortieAdherent { get; set; }
