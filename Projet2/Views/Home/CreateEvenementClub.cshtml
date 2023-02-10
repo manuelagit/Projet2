@@ -1,10 +1,11 @@
 ﻿@model Projet2.Models.Activite
 @{
-    ViewBag.Title = "CreateActivite";
+    ViewBag.Title = "CreateEvenementClub";
     Layout = "_Layout";
 }
-@using (Html.BeginForm())
+@using (Html.BeginForm("AddEvenementClub", "EvenementClub", FormMethod.Post))
 {
+
     <fieldset>
 
         <legend><h4>Création d'un evenement</h4></legend>
@@ -15,7 +16,7 @@
                     <td>@Html.TextBoxFor(m => Model.NomActivite, new { placeholder = "Nom" })</td>
                     <td>@Html.ValidationMessageFor(m => Model.NomActivite)</td>
                 </tr>
-                <tr>
+                @*<tr>
                     <td>@Html.LabelFor(m => Model.DateDebutActivite, "Date debut")</td>
                     <td>@Html.TextBoxFor(m => Model.DateDebutActivite, new { placeholder = "Date debut" })</td>
                     <td>@Html.ValidationMessageFor(m => Model.DateDebutActivite)</td>
@@ -24,6 +25,14 @@
                     <td>@Html.LabelFor(m => Model.DateFinActivite, "Date fin")</td>
                     <td>@Html.TextBoxFor(m => Model.DateFinActivite, new { placeholder = "Date fin" })</td>
                     <td>@Html.ValidationMessageFor(m => Model.DateFinActivite)</td>
+                </tr>*@
+                <tr>
+                    <td>
+                         Date de l'évenement
+                    </td>
+                    <td>
+                        <input type="text" name="datefilter" value="" />
+                    </td>
                 </tr>
                 <tr>
                     <td>@Html.LabelFor(m => Model.DescriptionActivite, "Description")</td>
@@ -56,10 +65,45 @@
         <br />
 
         <input type="button" onclick="window.location.href='https://localhost:5001/Home/UserList';" value="Retour Liste des clubs" />
-        <input type="image" src="~/Images/btnValider.png" alt="Valider" width="43" height="38" />
+        
+        <input type="submit" value="AddEvenementClub">
+
     </fieldset>
+        
+
 }
 @*vérification du type de données dans le front*@
-<script type="text/javascript" src="~/Scripts/jquery-3.3.1.js"></script>
+@*<script type="text/javascript" src="~/Scripts/jquery-3.3.1.js"></script>
 <script type="text/javascript" src="~/Scripts/jquery.validate-vsdoc.js"></script>
-<script type="text/javascript" src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+<script type="text/javascript" src="~/Scripts/jquery.validate.unobtrusive.js"></script>*@
+@section extracss{
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+}
+@section extrajs{
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+
+            $('input[name="datefilter"]').daterangepicker({
+                autoUpdateInput: false,
+                locale: {
+                    cancelLabel: 'Clear'
+                }
+            });
+
+            $('input[name="datefilter"]').on('apply.daterangepicker', function (ev, picker) {
+                $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
+            });
+
+            $('input[name="datefilter"]').on('cancel.daterangepicker', function (ev, picker) {
+                $(this).val('');
+            });
+
+            console.log(picker.startDate.format('YYYY-MM-DD'));
+            console.log(picker.endDate.format('YYYY-MM-DD'));
+
+        });
+    </script>
+}

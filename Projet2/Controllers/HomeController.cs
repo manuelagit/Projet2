@@ -561,7 +561,29 @@ namespace Projet2.Controllers
             return View("CreateSortieAdherent");
         }
 
-        public IActionResult ModifyEvenementClub(int id)
+        [HttpPost]
+        public IActionResult AddEvenementClub(int evenmentClubId, string datefilter)
+        {
+            var splitDate = datefilter.Split('-');
+
+            string dateDebutActivite = splitDate[0].Remove(splitDate[0].Length - 1);
+            var arrayDateDebutActivite = dateDebutActivite.Split('/');
+
+            int monthBegin = Convert.ToInt32(arrayDateDebutActivite[0]);
+            int dayBegin = Convert.ToInt32(arrayDateDebutActivite[1]);
+            int yearBegin = Convert.ToInt32(arrayDateDebutActivite[2]);
+
+            string dateFinActivite = splitDate[1].TrimStart(' ');
+            var arrayDateFinActivite = dateFinActivite.Split('/');
+
+            int monthEnd = Convert.ToInt32(arrayDateFinActivite[0]);
+            int dayEnd = Convert.ToInt32(arrayDateFinActivite[1]);
+            int yearEnd = Convert.ToInt32(arrayDateFinActivite[2]);
+
+            DateTime activiteStart = new DateTime(yearBegin, monthBegin, dayBegin);
+            DateTime activiteEnd = new DateTime(yearEnd, monthEnd, dayEnd);
+    
+    public IActionResult ModifyEvenementClub(int id)
         {
             if (id != 0)
             {
@@ -640,6 +662,17 @@ namespace Projet2.Controllers
 
 
 
+            Activite activite = new Activite{ EvenementClubId = evenmentClubId, DateDebutActivite = activiteStart, DateFinActivite = activiteEnd };
+
+            var ctx = new BddContext();
+            ctx.Activites.Add(activite);
+            ctx.SaveChanges();
+
+
+            return RedirectToAction("EspaceClubLogged");
+        }
     }
+
 }
+
 
