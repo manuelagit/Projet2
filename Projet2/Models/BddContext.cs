@@ -21,11 +21,11 @@ namespace Projet2.Models
 
         public DbSet<SortieAdherent> SortieAdherents { get; set; }
 
-
+        public DbSet<Adherent> Adherents { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseMySql("server=localhost;user id=root;password=rrrrrrrr;database=BDDprojet2");
+            optionsBuilder.UseMySql("server=localhost;user id=root;password=rrrrr;database=BDDprojet2");
         }
 
         public void InitialiseDb()
