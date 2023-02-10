@@ -7,12 +7,12 @@ namespace Projet2.Models
 	public class Compte
 	{
         public int Id { get; set; }
-        [Required(ErrorMessage = "Le mail est requis")]
+        //[Required(ErrorMessage = "Le mail est requis")]
         [Display(Name = "Adresse Email")]
         [RegularExpression(@"^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$", ErrorMessage = "Entrez un mail.")]
         public string AdressEmail { get; set; }
 
-        [Required(ErrorMessage = "Le mot de passe est requis")]
+        //[Required(ErrorMessage = "Le mot de passe est requis")]
         [Display(Name = "Mot de passe")]
         public string MotDePasse { get; set; }
         

@@ -166,6 +166,11 @@ namespace Projet2.Controllers
         }
 
 
+        public IActionResult ModifyClubCreation()
+        {
+            return View();
+        }
+
         // Creation of a user
         // Display of the view
         public IActionResult CreateUser()
@@ -210,15 +215,33 @@ namespace Projet2.Controllers
             return View("EspaceClubLogged", createClubViewModel);
         }
 
-
-
-
-
-
-        public IActionResult EspaceClubLogged()
+        public IActionResult EspaceClubLogged(int Id)
         {
-            return View();
+            Dal dal = new Dal();
+
+            Club club = dal.GetClubsList().Where(r => r.Id == Id).FirstOrDefault();
+
+            CreateClubViewModel createClubViewModel = new CreateClubViewModel { Club = club };
+
+            return View(createClubViewModel);
         }
+
+        [HttpPost]
+        public IActionResult EspaceClubVisible(Club club)
+        {
+            Dal dal = new Dal();
+            club.CompteId = dal.CreateCompte(club.Compte);
+            club.InfosClubId = dal.CreateInfosClub(club.InfosClub);
+            List<Utilisateur> utilisateurs = dal.GetUsersList();
+            dal.CreateClub(club);
+
+            CreateClubViewModel createClubViewModel = new CreateClubViewModel { Club = club, Utilisateurs = utilisateurs };
+
+            return View("EspaceClubVisible", createClubViewModel);
+        }
+
+
+
 
 
         public IActionResult EspaceAdmin()
@@ -231,9 +254,20 @@ namespace Projet2.Controllers
             return View();
         }
 
-        public IActionResult EspaceClubVisible()
+        public IActionResult EspaceClubVisible(int Id)
         {
-            return View();
+
+            using (Dal dal = new Dal())
+            {
+                Club club = dal.GetClubsList().Where(r => r.Id == Id).FirstOrDefault();
+                if (club == null)
+                {
+                    return View("Error");
+                }
+                CreateClubViewModel createClubViewModel = new CreateClubViewModel { Club = club};
+
+                return View(createClubViewModel);
+            }
         }
 
 
@@ -246,16 +280,18 @@ namespace Projet2.Controllers
         }
 
         [HttpPost]
-        public IActionResult ClubLogin(string NomClub)
+        public IActionResult ClubLogin(Club club)
         {
             using (Dal dal = new Dal())
             {
-                Club club = dal.GetClubsList().Where(r => r.InfosClub.NomClub == NomClub).FirstOrDefault();
-                if (club == null)
+                Club club1 = dal.GetClubsList().Where(r => r.InfosClub.NomClub == club.InfosClub.NomClub).FirstOrDefault();
+                if (club1 == null)
                 {
                     return View("Error");
                 }
-                return View("EspaceClubLogged", club);
+                CreateClubViewModel createClubViewModel = new CreateClubViewModel { Club = club1 };
+
+                return View("EspaceClubLogged", createClubViewModel);
             }
         }
 
@@ -546,6 +582,85 @@ namespace Projet2.Controllers
 
             DateTime activiteStart = new DateTime(yearBegin, monthBegin, dayBegin);
             DateTime activiteEnd = new DateTime(yearEnd, monthEnd, dayEnd);
+    
+    public IActionResult ModifyEvenementClub(int id)
+        {
+            if (id != 0)
+            {
+                using (Dal dal = new Dal())
+                {
+                    Activite activite = dal.GetActivityList().Where(r => r.Id == id).FirstOrDefault();
+
+                    if (activite == null)
+                    {
+                        return View("Error");
+                    }
+                    return View("ModifyEvenementClub", activite);
+                }
+            }
+            return View("Error");
+        }
+
+
+
+        // sends the modified data
+        [HttpPost]
+        public IActionResult ModifyEvenementClub(Activite activite)
+        {
+            if (activite.Id != 0)
+            {
+                using (Dal dal = new Dal())
+                {
+                    dal.ModifyActivite(activite);
+                    return RedirectToAction("Activites");
+                }
+            }
+            else
+            {
+                return View("Error");
+            }
+        }
+
+
+        public IActionResult ModifySortieAdherent(int id)
+        {
+            if (id != 0)
+            {
+                using (Dal dal = new Dal())
+                {
+                    Activite activite = dal.GetActivityList().Where(r => r.Id == id).FirstOrDefault();
+
+                    if (activite == null)
+                    {
+                        return View("Error");
+                    }
+                    return View("ModifySortieAdherent", activite);
+                }
+            }
+            return View("Error");
+        }
+
+
+
+        // sends the modified data
+        [HttpPost]
+        public IActionResult ModifySortieAdherent(Activite activite)
+        {
+            if (activite.Id != 0 && activite.SortieAdherentId != 0)
+            {
+                using (Dal dal = new Dal())
+                {
+                    dal.ModifyActivite(activite);
+                    return RedirectToAction("Activites");
+                }
+            }
+            else
+            {
+                return View("Error");
+            }
+        }
+
+
 
             Activite activite = new Activite{ EvenementClubId = evenmentClubId, DateDebutActivite = activiteStart, DateFinActivite = activiteEnd };
 
