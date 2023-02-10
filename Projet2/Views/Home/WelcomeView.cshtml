@@ -2,38 +2,43 @@
 
     Layout = "_Layout";
     ViewBag.Title = "WelcomeView";
-    }
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Welcome</title>
-    </head>
-    <body>
-            <div class="slider">
-                <div class="slides">
-                    <slide><img src="~/Images/para_ferret.png" alt="1" /></slide>
-                    <slide><img src="~/Images/para_montagne.png" alt="2" /></slide>
-                    <slide><img src="~/Images/parap_lac.png" alt="3" /></slide>
-                </div>
-            </div>
+}
 
-        <h1 class="titreSite">Bienvenue sur WingSolution</h1>
+<div class="slider">
+    <div class="slides">
+        <slide><img src="~/Images/para_ferret.png" alt="1" /></slide>
+        <slide><img src="~/Images/para_montagne.png" alt="2" /></slide>
+        <slide><img src="~/Images/parap_lac.png" alt="3" /></slide>
+    </div>
+</div>
 
-        <p>Notre plateforme est une passerelle entre parapentistes et clubs de parapentes.</p>
-        <p>Parapentistes, vous pouvez rejoindre un de nos clubs membres et participer aux événements proposés par les clubs</p>
-        <p>Clubs de parapentes, vous disposez d'une plateforme vous permettant de gérer votre vie de club et sur laquelle donner de la visibilité à vos événements.</p>
-        <br />
+<h1 class="titreSite">Bienvenue sur WingSolution</h1>
 
-        <div class="espace-Selection-C-P"></div>
+<p>Notre plateforme est une passerelle entre parapentistes et clubs de parapentes.</p>
+<p>Parapentistes, vous pouvez rejoindre un de nos clubs membres et participer aux événements proposés par les clubs</p>
+<p>Clubs de parapentes, vous disposez d'une plateforme vous permettant de gérer votre vie de club et sur laquelle donner de la visibilité à vos événements.</p>
+<br />
 
+<!--<div class=".acceuil-contenu-basbtn">
+    <div>
+        <input type="button" onclick="window.location.href='https://localhost:5001/Home/EspaceClub';" class="btn2 btn2--btnClub2" value="Espace club" />
+        <input type="button" onclick="window.location.href='https://localhost:5001/Home/EspaceParapentiste';" class="btn2 btn2--btnParapentiste2" value="Espace parapentiste" />
+    </div>
+</div>-->
+<div style="display:flex;justify-content: space-between; margin: 0px 200px 0px 200px;">
+    <div class="container">
+        <a href="/Home/EspaceClub"><img src="~/Images/espaceclub2.png" alt="1" class="image-link" id="1" ></a>
+        <div class="centered" id="1">Espace Club</div>
+    </div>
+    <div class="container">
+        <a href="/Home/EspaceParapentiste"><img src="~/Images/espaceparapentiste.png" alt="1" class="image-link" id="2"/></a>
+        <div class="centered" style="left:52%" id="2">Espace Parapentiste</div>
+    </div>
 
-        <div>
-            <input type="button" onclick="window.location.href='https://localhost:5001/Home/EspaceClub';" class="btn btn--btnClub" value="Espace club" />
-            <input type="button" onclick="window.location.href='https://localhost:5001/Home/EspaceParapentiste';" class="btn btn--btnParapentiste" value="Espace parapentiste" />
-        </div>
+</div>
+@section JS{
+    <script type="text/javascript" src="~/Scripts/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="~/Scripts/MyScript.js"></script>
 
+}
 
-    </body>
-</html>

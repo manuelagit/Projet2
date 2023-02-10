@@ -17,8 +17,9 @@
         <p>En tant que responsable de votre club, vous pouvez inscrire votre club sur WingSolution, et gérer votre vie de club.</p>
 
         <div style="margin: 20px">
-            <button type="submit" onclick="window.location.href='https://localhost:5001/Home/ClubLogin';">Connexion</button>
-            <button type="submit" onclick="window.location.href='https://localhost:5001/Home/CreateClub';">Inscription</button>
+            <a href=@("/Home/ClubLogin/")><button>Connexion</button></a>
+
+                <button type="submit" onclick="window.location.href='https://localhost:5001/Home/CreateClub';">Inscription</button>
         </div>
 
         <button type="submit" onclick="window.location.href='https://localhost:5001/Home/OfferCatalog';">Consulter nos offres d'abonnement</button>

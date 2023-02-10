@@ -10,7 +10,9 @@ namespace Projet2.Models
 
         public string NomActivite { get; set; }
 
-        public string DateActivite { get; set; }
+        public DateTime DateDebutActivite { get; set; }
+
+        public DateTime DateFinActivite { get; set; }
 
         public string DescriptionActivite { get; set; }
         public string LieuActivite { get; set; }
