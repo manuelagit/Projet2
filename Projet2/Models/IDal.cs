@@ -40,6 +40,9 @@ namespace Projet2.Models
         int CreateActivite(Activite activite);
         int ModifyActivite(Activite activite);
         void ModifyActivite(int Id);
+        void RemoveActivite(int Id);
+
+        int RemoveActivite(Activite activite);
 
         //void RemoveActivite(Activite activite);
 

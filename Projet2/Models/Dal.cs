@@ -280,6 +280,22 @@ namespace Projet2.Models
             }
         }
 
+        public void RemoveActivite(int Id)
+        {
+            Activite activite = _bddContext.Activites.Find(Id);
+            if (activite != null)
+            {
+                _bddContext.Activites.Remove(activite);
+                _bddContext.SaveChanges();
+            }
+        }
+
+        public int RemoveActivite(Activite activite)
+        {
+            _bddContext.Activites.Remove(activite);
+            _bddContext.SaveChanges();
+            return activite.Id;
+        }
 
         //public void RemoveActivite(Activite activite)
         //{
