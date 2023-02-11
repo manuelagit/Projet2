@@ -600,6 +600,9 @@ namespace Projet2.Controllers
 
             DateTime activiteStart = new DateTime(yearBegin, monthBegin, dayBegin);
             DateTime activiteEnd = new DateTime(yearEnd, monthEnd, dayEnd);
+
+            return View("PageEvents");
+        }
     
     public IActionResult ModifyEvenementClub(int id)
         {
@@ -680,16 +683,16 @@ namespace Projet2.Controllers
 
 
 
-            Activite activite = new Activite{ EvenementClubId = evenmentClubId, DateDebutActivite = activiteStart, DateFinActivite = activiteEnd };
+            //Activite activite = new Activite{ EvenementClubId = evenmentClubId, DateDebutActivite = activiteStart, DateFinActivite = activiteEnd };
 
-            var ctx = new BddContext();
-            ctx.Activites.Add(activite);
-            ctx.SaveChanges();
+            //var ctx = new BddContext();
+            //ctx.Activites.Add(activite);
+            //ctx.SaveChanges();
 
 
-            return RedirectToAction("EspaceClubLogged");
+            //return RedirectToAction("EspaceClubLogged");
         }
-    }
+    
 
 }
 
