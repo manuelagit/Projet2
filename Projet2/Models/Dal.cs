@@ -115,6 +115,16 @@ namespace Projet2.Models
             }
         }
 
+        public void ModifyClubCreation(int Id)
+        {
+            Club club = _bddContext.Clubs.Find(Id);
+            if (club != null)
+            {
+                _bddContext.Clubs.Update(club);
+                _bddContext.SaveChanges();
+            }
+        }
+
         public int ModifyUser(Utilisateur utilisateur)
         {
             _bddContext.Utilisateurs.Update(utilisateur);

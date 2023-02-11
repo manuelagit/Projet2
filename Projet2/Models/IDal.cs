@@ -27,6 +27,8 @@ namespace Projet2.Models
         int CreateClub(int idCompte, int IdInfosClub);
         void ModifyClub(int id);
         int ModifyClub(Club club);
+        void ModifyClubCreation(int id);
+
         void RemoveClub(Club club);
         List<OffreAbonnement> GetOfferCatalog();
         int CreateOffreAbonnements(string descriptionOffre, int dureeOffreMois, string typeOffre, double prix);

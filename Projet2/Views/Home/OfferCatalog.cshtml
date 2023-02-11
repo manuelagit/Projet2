@@ -15,12 +15,24 @@
     <h1>Choississez l'offre qui vous convient</h1><br />
     <table class="abo">
 
-        @foreach (var member in Model)
-        {
+    <form method="GET">
 
 
-            <tr>
-                <td><input name="OffreAbonnement" value="news" type="radio" /></td>
+
+        <label>
+            @foreach (var member in Model)
+            {
+                <input type="radio" name="OffreAbonnement" value="Abonnement" required><b>Abonnement @member.TypeOffre </b><b> @member.Prix €</b>
+                <p><em>Engagement : @member.DureeOffreMois mois</em></p>
+                <p>@member.DescriptionOffre</p>
+                <br/>
+            }
+        </label>
+        <input type="submit" value="S'abonner" >
+    </form>
+
+            @*<tr>
+                <td><input name="OffreAbonnement" value="news" type="radio" required></td>
                 <td><b>Abonnement @member.TypeOffre </b> -- <b> @member.Prix €</b></td>
             </tr>
 
@@ -32,18 +44,17 @@
                 <td></td>
                 <td>@member.DescriptionOffre</td>
             </tr>
-        }
 
+        }*@
+                   
     </table>
-
 
 
     <br />
     <br />
 
     <div>
-        <a href=@("/Home/CreateClub/")><button>S'abonner</button></a>
-
+        <input type="submit" onclick="window.location.href='https://localhost:5001/Home/PaymentViewClub';" value="S'abonner" />
     </div>
 
 </body>

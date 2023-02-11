@@ -1,4 +1,6 @@
-﻿@{
+﻿@model Projet2.Models.Utilisateur
+
+@{
     ViewBag.Title = "AdminView";
     Layout = "_Layout";
 }
@@ -12,7 +14,7 @@
 </head>
 
 <body>
-    <h1>Espace Admin</h1>
+    <h1>@Html.ValueFor(m => Model.InfosPersonnelles.Nom), bienvenue sur votre espace admin </h1>
 
     <div style="margin: 20px">
         <input type="button" onclick="window.location.href='https://localhost:5001/Home/ClubList4Admin';" value="Liste des clubs" />
@@ -20,9 +22,9 @@
         <input type="button" onclick="window.location.href='https://localhost:5001/Home/FacturationList';" value="Liste des factures" />
 
     </div>
-    <p><a href="https://localhost:5001/home/FacturationList">Liste des factures</a></p>
-
-    <button type="submit">Déconnexion</button>
+    <div>
+        <button type="submit">Déconnexion</button>
+    </div>
 
 </body>
 

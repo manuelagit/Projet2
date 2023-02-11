@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Projet2.Models;
-//using Syncfusion.Pdf;
 //using Syncfusion.Pdf.Graphics;
 using Syncfusion.Drawing;
 using System.IO;
@@ -15,12 +14,16 @@ using Microsoft.AspNetCore.Http;
 using Projet2.ViewModels;
 using Syncfusion.Pdf;
 using Syncfusion.Pdf.Grid;
-//using Syncfusion.Pdf.Grid;
+using Microsoft.AspNetCore.Authentication;
 
 namespace Projet2.Controllers
 {
+
     public class HomeController : Controller
     {
+
+
+
         public IActionResult Index()
         {
             return View("WelcomeView");
@@ -45,44 +48,48 @@ namespace Projet2.Controllers
             return View(listeClubs);
         }
 
-        //public void UserController(IWebHostEnvironment env)
-        //{
-        //    _env = env;
-        //}
 
-        //private bool UploadFile(IFormFile iFormFile)
-        //{
-        //    if (iFormFile == null || iFormFile.Length == 0)
-        //    {
-        //        return false;
-        //    }
+        private readonly IWebHostEnvironment _env;
 
-        //    var filePath = _env.WebRootPath + "/wwwroot/Images/" + iFormFile.FileName;
-        //    using (var stream = new FileStream(filePath, FileMode.Create))
-        //    {
-        //        iFormFile.CopyTo(stream);
-        //    }
-        //    return true;
-        //}
+        public HomeController(IWebHostEnvironment env)
+        {
+            _env = env;
+        }
 
-        //[HttpPost]
-        //public IActionResult getLogo(InfosInputClub infosInputClub, IFormFile iFormFile)
-        //{
-        //    if (infosInputClub.Id != 0)
-        //    {
-        //        if (iFormFile != null)
-        //        {
-        //            UploadFile(iFormFile);
-        //            infosInputClub.urlLogo = "/wwwroot/Images/" + iFormFile.FileName;
-        //        }
-        //        HttpContext.SignOutASync();
-        //        return RedirectToAction("CreateClub");
-        //    }
-        //    else
-        //    {
-        //        return View("Error");
-        //    }
-        //}
+        private bool UploadFile(IFormFile iFormFile)
+        {
+
+            if (iFormFile == null || iFormFile.Length == 0)
+            {
+                return false;
+            }
+
+            var filePath = _env.WebRootPath + "/Images/" + iFormFile.FileName;
+            using (var stream = new FileStream(filePath, FileMode.Create))
+            {
+                iFormFile.CopyTo(stream);
+            }
+            return true;
+        }
+
+        [HttpPost]
+        public IActionResult GetLogo(Club club, IFormFile iFormFile)
+        {
+            if (club.Id != 0)
+            {
+                if (iFormFile != null)
+                {
+                    UploadFile(iFormFile);
+                    club.InfosClub.urlLogo = "~/Images/" + iFormFile.FileName;
+                }
+                HttpContext.SignOutAsync();
+                return RedirectToAction("CreateClub");
+            }
+            else
+            {
+                return View("Error");
+            }
+        }
 
 
         // recovers the saved values and displays them
@@ -126,6 +133,9 @@ namespace Projet2.Controllers
 
 
 
+
+
+
         // recovers the saved values and displays them
         public IActionResult ModifyClub(int id)
         {
@@ -166,10 +176,73 @@ namespace Projet2.Controllers
         }
 
 
-        public IActionResult ModifyClubCreation()
+
+
+
+
+
+        // recovers the saved values and displays them
+        public IActionResult ModifyClubCreation(int id)
         {
-            return View();
+            if (id != 0)
+            {
+                using (Dal dal = new Dal())
+                {
+                    Club club = dal.GetClubsList().Where(r => r.Id == id).FirstOrDefault();
+
+                    if (club == null)
+                    {
+                        return View("Error");
+                    }
+                    return View("ModifyClubCreation", club);
+                }
+            }
+            return View("Error");
         }
+
+
+
+
+
+        // sends the modified data
+        [HttpPost]
+        public IActionResult ModifyClubCreation(Club club)
+        {
+            if (club.Id != 0)
+            {
+                using (Dal dal = new Dal())
+                {
+                    dal.ModifyClubCreation(club.Id);
+                    CreateClubViewModel createClubViewModel = new CreateClubViewModel { Club = club };
+
+                    return View("EspaceClubLogged", createClubViewModel);
+                }
+            }
+            else
+            {
+                return View("Error");
+            }
+        }
+
+
+        //[HttpPost]
+        //public IActionResult ModifyClubCreation(Club club)
+        //{
+        //    Dal dal = new Dal();
+        //    List<Utilisateur> utilisateurs = dal.GetUsersList();
+        //    club.CompteId = dal.CreateCompte(club.Compte);
+        //    club.InfosClubId = dal.CreateInfosClub(club.InfosClub);
+        //    dal.CreateClub(club);
+
+        //    CreateClubViewModel createClubViewModel = new CreateClubViewModel { Club = club, Utilisateurs = utilisateurs };
+
+        //    return View("EspaceClubLogged", createClubViewModel);
+        //}
+
+
+
+
+
 
         // Creation of a user
         // Display of the view
@@ -191,6 +264,27 @@ namespace Projet2.Controllers
             return RedirectToAction("UserList");
         }
 
+
+        public IActionResult CreateUser4Club()
+        {
+            return View();
+        }
+
+        // sending the data
+        [HttpPost]
+        public IActionResult CreateUser4Club(Utilisateur utilisateur, Club club)
+        {
+            Dal dal = new Dal();
+            utilisateur.InfosPersonnellesId = dal.CreateInfosPersonnelles(utilisateur.InfosPersonnelles);
+            utilisateur.CompteId = dal.CreateCompte(utilisateur.Compte);
+
+            //ListeUtilisateurs.CreateUser(idCount, utilisateur.Compte, utilisateur.InfosPersonnelles);
+            dal.CreateUser(utilisateur);
+            CreateClubViewModel createClubViewModel = new CreateClubViewModel { Club = club};
+
+            return View("EspaceClubLogged", createClubViewModel);
+        }
+        
 
 
         // Creation of a club
@@ -244,10 +338,11 @@ namespace Projet2.Controllers
 
 
 
-        public IActionResult EspaceAdmin()
+        public IActionResult EspaceAdmin(Utilisateur utilisateur)
         {
-            return View();
+            return View(utilisateur);
         }
+
 
         public IActionResult EspaceClub()
         {
@@ -301,16 +396,16 @@ namespace Projet2.Controllers
         }
 
         [HttpPost]
-        public IActionResult AdminLogin(string Nom)
+        public IActionResult AdminLogin(Utilisateur utilisateur)
         {
             using (Dal dal = new Dal())
             {
-                Utilisateur utilisateur = dal.GetUsersList().Where(r => r.InfosPersonnelles.Nom == Nom).FirstOrDefault();
+                //Utilisateur utilisateur = dal.GetUsersList().Where(r => r.InfosPersonnelles.Nom == Nom).FirstOrDefault();
                 if (utilisateur == null)
                 {
                     return View("Error");
                 }
-                return View("EsapceAdmin", utilisateur);
+                return View("EspaceAdmin", utilisateur);
             }
         }
 
