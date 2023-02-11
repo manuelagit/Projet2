@@ -3,7 +3,7 @@
 @{
     Layout = "_Layout";
     ViewBag.Title = "Paiement";
-    }
+}
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,22 +25,22 @@
                     </tr>
                     <tr>
                         <td>@Html.LabelFor(m => m.DateExpiration)</td>
-                        <td>@Html.DropDownListFor(m=>m.DateExpiration.Month,new SelectList(Enumerable.Range(1,12))) </td>
-                        <td>@Html.DropDownListFor(m=>m.DateExpiration.Year,new SelectList(Enumerable.Range(DateTime.Now.Year,4))) </td>
+                        <td>@Html.DropDownListFor(m => m.DateExpiration.Month, new SelectList(Enumerable.Range(1, 12))) </td>
+                        <td>@Html.DropDownListFor(m => m.DateExpiration.Year, new SelectList(Enumerable.Range(DateTime.Now.Year, 4))) </td>
                         <td>@Html.ValidationMessageFor(m => m.DateExpiration)</td>
-                       
+
                     </tr>
                     <tr>
                         <td>@Html.LabelFor(m => Model.CodeDeSecurite)</td>
                         <td>@Html.TextBoxFor(m => Model.CodeDeSecurite, new { type = "Code de sécurité" })</td>
                         <td>@Html.ValidationMessageFor(m => Model.CodeDeSecurite)</td>
                     </tr>
-          
+
                 </tbody>
             </table>
             <br />
             <br />
- 
+
         </fieldset>
         <fieldset>
             <legend><h4>Informations De Facturation</h4></legend>
@@ -87,7 +87,6 @@
             <br />
             <br />
 
-            <input type="button" onclick="window.location.href='https://localhost:5001/Home';" value="Retour accueil" />
             <input type="submit" value="Valider paiement" />
 
         </fieldset>
@@ -98,7 +97,8 @@
     <script type="text/javascript" src="~/Scripts/jquery.validate.unobtrusive.js"></script>
 
 </body>
-</html>@*
+</html>
+@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{

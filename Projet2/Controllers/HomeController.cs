@@ -390,11 +390,6 @@ namespace Projet2.Controllers
         }
 
 
-        public IActionResult PaymentView()
-        {
-
-            return View();
-        }
 
         public IActionResult FacturationView()
         {
@@ -402,14 +397,34 @@ namespace Projet2.Controllers
         }
 
 
+        public IActionResult PaymentViewUser()
+        {
+            return View();
+        }
+
         [HttpPost]
-        public IActionResult PaymentView(Paiement paiement)
+        public IActionResult User(Paiement paiement)
         {
             Dal dal = new Dal();
             paiement.FacturationId = dal.CreateFacturation(paiement.Facturation);
             dal.CreatePaiement(paiement);
-            return RedirectToAction("");
+            return View("CreateClub");
         }
+
+        public IActionResult PaymentViewClub()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult PaymentViewClub(Paiement paiement)
+        {
+            Dal dal = new Dal();
+            paiement.FacturationId = dal.CreateFacturation(paiement.Facturation);
+            dal.CreatePaiement(paiement);
+            return View("CreateClub");
+        }
+
         public IActionResult FacturationList()
         {
             Dal dal = new Dal();
@@ -493,8 +508,11 @@ namespace Projet2.Controllers
             return View(offreAbonnements);
         }
 
-
-
+        [HttpPost]
+        public IActionResult OfferCatalog(OffreAbonnement offreAbonnement)
+        {
+            return View("PaymentViewClub");
+        }
 
         public IActionResult EvenementClub()
         {
