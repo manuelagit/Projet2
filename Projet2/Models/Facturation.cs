@@ -18,11 +18,11 @@ namespace Projet2.Models
         [Required(ErrorMessage = "La ville est requise")]
         public string VilleFacturation { get; set; }
 
-        [Display(Name = "Adresse de Facturation")]
+        [Display(Name = "Adresse de facturation")]
         [Required(ErrorMessage = "L'adresse est requise")]
         public string AdresseFacturation { get; set; }
 
-        [Display(Name = "Code Postal")]
+        [Display(Name = "Code postal")]
         [Required(ErrorMessage = "Le code postal est requis")]
         [RegularExpression(@"^\d{5}$", ErrorMessage = "Entrez un code postal.")]
         public string CodePostalFacturation { get; set; }

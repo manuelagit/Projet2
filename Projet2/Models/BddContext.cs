@@ -13,12 +13,8 @@ namespace Projet2.Models
         public DbSet<Club> Clubs { get; set; }
         public DbSet<InfosClub> InfosClubs { get; set; }
         public DbSet<Paiement> Paiements { get; set; }
-<<<<<<< HEAD
         public DbSet<Facturation> Facturations { get; set; }
-=======
-        public DbSet<Facturation> Facturations { get; set; }
->>>>>>> 475d7edac72c6bd3a13ef241bfa6c89d5c7cfe2f
-        public DbSet<Adherent> Adherents { get; set; }
+
 
         public DbSet<Activite> Activites { get; set; }
 
@@ -30,7 +26,7 @@ namespace Projet2.Models
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseMySql("server=localhost;user id=root;password=rrrrr;database=BDDprojet2");
+            optionsBuilder.UseMySql("server=localhost;user id=root;password=rrrrrrrr;database=BDDprojet2");
         }
 
         public void InitialiseDb()

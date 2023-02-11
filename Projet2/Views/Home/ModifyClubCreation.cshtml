@@ -1,0 +1,95 @@
+﻿@model Projet2.ViewModels.CreateClubViewModel
+@{
+    ViewBag.Title = "ModifyClubCreation";
+    Layout = "_Layout";
+}
+
+    @using (Html.BeginForm())
+        {
+        <fieldset>
+            @Html.HiddenFor(m => Model.Club)            @*crée des inputs cachés qui contiennent les valeurs pour ne pas perdre les données*@
+
+            <legend><h4>Créez votre compte club</h4></legend>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>@Html.LabelFor(m => Model.Club.InfosClub.NomClub)</td>
+                        <td>@Html.TextBoxFor(m => Model.Club.InfosClub.NomClub, new { placeholder = "nom du club" })</td>
+                        <td>@Html.ValidationMessageFor(m => Model.Club.InfosClub.NomClub)</td>
+                    </tr>
+
+                    <tr>
+                        <td>@Html.LabelFor(m => Model.Club.InfosClub.Adresse)</td>
+                        <td>@Html.TextBoxFor(m => Model.Club.InfosClub.Adresse.NumeroRue, new { placeholder = "n°" })</td>
+                        <td>@Html.ValidationMessageFor(m => Model.Club.InfosClub.Adresse.NumeroRue)</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>@Html.TextBoxFor(m => Model.Club.InfosClub.Adresse.NomRue, new { placeholder = "rue" })</td>
+                        <td>@Html.ValidationMessageFor(m => Model.Club.InfosClub.Adresse.NomRue)</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>@Html.TextBoxFor(m => Model.Club.InfosClub.Adresse.CodePostal, new { placeholder = "code postal" })</td>
+                        <td>@Html.ValidationMessageFor(m => Model.Club.InfosClub.Adresse.CodePostal)</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>@Html.TextBoxFor(m => Model.Club.InfosClub.Adresse.NomVille, new { placeholder = "Ville" })</td>
+                        <td>@Html.ValidationMessageFor(m => Model.Club.InfosClub.Adresse.NomVille)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(m => Model.Club.Compte.AdressEmail)</td>
+                        <td>@Html.TextBoxFor(m => Model.Club.Compte.AdressEmail, new { type = "email", placeholder = "mail" })</td>
+                        <td>@Html.ValidationMessageFor(m => Model.Club.Compte.AdressEmail)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(m => Model.Club.Compte.MotDePasse)</td>
+                        <td>@Html.TextBoxFor(m => Model.Club.Compte.MotDePasse, new { type = "password" })</td>
+                        <td>@Html.ValidationMessageFor(m => Model.Club.Compte.MotDePasse)</td>
+                    </tr>
+
+                </tbody>
+            </table>
+            <br />
+            <br />
+
+        </fieldset>
+        <br />
+
+        <fieldset>
+            @*@using (Html.BeginForm("Modify", "User", FormMethod.Post, new { enctype = "multipart/form-data" }));*@
+            <legend><h4>Personnalisez votre espace club</h4></legend>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>@Html.LabelFor(m => Model.Club.InfosClub.titreClub)</td>
+                        <td>@Html.TextBoxFor(m => Model.Club.InfosClub.titreClub, new { placeholder = "Bienvenue sur notre site !" })</td>
+                        <td>@Html.ValidationMessageFor(m => Model.Club.InfosClub.titreClub)</td>
+                    </tr>
+
+                    <tr>
+                        <td>@Html.LabelFor(m => Model.Club.InfosClub.DescritpionClub)</td>
+                        <td>@Html.TextAreaFor(m => Model.Club.InfosClub.DescritpionClub, 10, 60, htmlAttributes: new { style = "width: 100%; max-width: 100%;", placeholder = "Annecy Vol Libre est un club situé à 3 km du Lac d'Annecy, offrant de nombreuses possibilités de vols." })</td>
+                        <td>@Html.ValidationMessageFor(m => Model.Club.InfosClub.DescritpionClub)</td>
+                    </tr>
+
+                    <tr>
+
+                        <input type="file" accept="image/*" name="image" id="file" onchange="loadFile(event)" style="display: none;">
+                        <p><label for="file" style="cursor: pointer;">Ajoutez le logo de votre club</label></p>
+                        <p><img id="output" width="200" /></p>
+
+                    </tr>
+
+                </tbody>
+            </table>
+        </fieldset>
+
+
+        @*vérification du type de données dans le front*@
+        <script type="text/javascript" src="~/Scripts/jquery-3.3.1.js"></script>
+        <script type="text/javascript" src="~/Scripts/jquery.validate-vsdoc.js"></script>
+        <script type="text/javascript" src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+
+        }

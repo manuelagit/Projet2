@@ -25,14 +25,41 @@
         <input type="button" onclick="window.location.href='https://localhost:5001/Home/EspaceParapentiste';" class="btn2 btn2--btnParapentiste2" value="Espace parapentiste" />
     </div>
 </div>-->
-<div style="display:flex;justify-content: space-between; margin: 0px 200px 0px 200px;">
-    <div class="container">
-        <a href="/Home/EspaceClub"><img src="~/Images/espaceclub2.png" alt="1" class="image-link" id="1" ></a>
-        <div class="centered" id="1">Espace Club</div>
+
+@*<div class="container mt-5">
+    <div class="row">
+        <div style="display:flex;justify-content: space-between; margin: 40px 0px 0px 0px;">
+            <div class="col-sm-4">
+                <a href="/Home/EspaceClub"><img src="~/Images/espaceclub2.png" alt="1" class="image-link" id="1"></a>
+                <div class="centered">Espace Club</div>
+            </div>
+            <div class="col-sm-2">
+
+            </div>
+            <div class="col-sm-3">
+                <a href="/Home/EspaceParapentiste"><img src="~/Images/espaceparapentiste.png" alt="1" class="image-link" id="2" /></a>
+                <div class="centered">Espace Parapentiste</div>
+            </div>
+        </div>
     </div>
-    <div class="container">
-        <a href="/Home/EspaceParapentiste"><img src="~/Images/espaceparapentiste.png" alt="1" class="image-link" id="2"/></a>
-        <div class="centered" style="left:52%" id="2">Espace Parapentiste</div>
+</div>*@
+
+
+<div style="display:flex;justify-content: space-between; margin: 0px 0px 0px 0px;">
+    <div class="container" style="display:flex;justify-content: space-between; margin: 0px 0px 0px 110px;">
+
+        <a href="/Home/EspaceClub"><img src="~/Images/espaceclub2.png" alt="1" class="image-link" id="1"></a>
+        <div class="centered" style="font-size: x-large" id="1">
+            <p>Espace</p>
+            <p>Club</p>
+        </div>
+    </div>
+    <div class="container" style="display:flex;justify-content: space-between; margin: 0px 110px 0px 0px;">
+        <a href="/Home/EspaceParapentiste"><img src="~/Images/espaceparapentiste.png" alt="1" class="image-link" id="2" /></a>
+        <div class="centered" style="left:52%; font-size: x-large" id="2">
+        <p>Espace</p>
+        <p>Parapentiste</p>
+        </div>
     </div>
 
 </div>
