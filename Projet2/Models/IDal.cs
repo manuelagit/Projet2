@@ -37,7 +37,6 @@ namespace Projet2.Models
         void ModifyOffreAbonnements(int Id, string descriptionOffre, int dureeOffreMois, string typeOffre, double prix);
         void RemoveOffreAbonnements(OffreAbonnement offreAbonnement);
 
-
         List<Activite> GetActivityList();
         int CreateActivite(Activite activite);
         int ModifyActivite(Activite activite);
@@ -57,7 +56,9 @@ namespace Projet2.Models
         int CreateSortieAdherent(int idSortieAdherent);
 
         List<Adherent> GetAdherentsList();
-        int CreateAdherent(int IdClub);
+        int CreateAdherent(int IdClub, int idCompte, int IdInfosPersonnelles);
+        int CreateAdherent(Adherent adherent);
+
     }
 }
 

@@ -801,20 +801,11 @@ namespace Projet2.Controllers
 
 
             //ListeUtilisateurs.CreateUser(idCount, utilisateur.Compte, utilisateur.InfosPersonnelles);
-            dal.CreateAdherent(adherent.Id);
+            dal.CreateAdherent(adherent);
             return RedirectToAction("Activites");
         }
 
-        public IActionResult CreateUser(Utilisateur utilisateur)
-        {
-            Dal dal = new Dal();
-            utilisateur.InfosPersonnellesId = dal.CreateInfosPersonnelles(utilisateur.InfosPersonnelles);
-            utilisateur.CompteId = dal.CreateCompte(utilisateur.Compte);
 
-            //ListeUtilisateurs.CreateUser(idCount, utilisateur.Compte, utilisateur.InfosPersonnelles);
-            dal.CreateUser(utilisateur);
-            return RedirectToAction("UserList");
-        }
 
 
     }
