@@ -42,6 +42,12 @@
     margin: 0;
 }
 
+h4 .soustitre {
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+
 /*.btn {
     margin: 5px;
     min-width: 100% !important;
