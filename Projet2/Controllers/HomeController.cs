@@ -778,15 +778,48 @@ namespace Projet2.Controllers
 
 
 
-            //Activite activite = new Activite{ EvenementClubId = evenmentClubId, DateDebutActivite = activiteStart, DateFinActivite = activiteEnd };
+        //Activite activite = new Activite{ EvenementClubId = evenmentClubId, DateDebutActivite = activiteStart, DateFinActivite = activiteEnd };
 
-            //var ctx = new BddContext();
-            //ctx.Activites.Add(activite);
-            //ctx.SaveChanges();
+        //var ctx = new BddContext();
+        //ctx.Activites.Add(activite);
+        //ctx.SaveChanges();
 
 
-            //return RedirectToAction("EspaceClubLogged");
+        //return RedirectToAction("EspaceClubLogged");
+
+        public IActionResult CreateAdherent()
+        {
+            return View();
         }
+
+        //sending the data
+       [HttpPost]
+        public IActionResult CreateAdherent(Adherent adherent)
+        {
+            Dal dal = new Dal();
+            adherent.ClubId = dal.CreateClub(adherent.Club);
+
+
+            //ListeUtilisateurs.CreateUser(idCount, utilisateur.Compte, utilisateur.InfosPersonnelles);
+            dal.CreateAdherent(adherent.Id);
+            return RedirectToAction("Activites");
+        }
+
+        public IActionResult CreateUser(Utilisateur utilisateur)
+        {
+            Dal dal = new Dal();
+            utilisateur.InfosPersonnellesId = dal.CreateInfosPersonnelles(utilisateur.InfosPersonnelles);
+            utilisateur.CompteId = dal.CreateCompte(utilisateur.Compte);
+
+            //ListeUtilisateurs.CreateUser(idCount, utilisateur.Compte, utilisateur.InfosPersonnelles);
+            dal.CreateUser(utilisateur);
+            return RedirectToAction("UserList");
+        }
+
+
+    }
+
+
     
 
 }
