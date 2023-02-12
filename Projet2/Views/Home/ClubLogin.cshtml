@@ -1,18 +1,40 @@
 ﻿@model Projet2.Models.Club
 @{
-    Layout = "_Layout";
+    Layout = "_LayoutClub";
     ViewBag.Title = "CreateClub";
 }
-<!DOCTYPE html>
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" method="get"/>
-    <title>ClubLogin</title>
-</head>
-<body>
-    <h1>Identification</h1>
+<bodyClubLogin>
+    <div class="containerClubLogin">
+        <div class="img">
+            <img src="~/Images/Connexion-formulaire-club.png" alt="1">
+        </div>
 
-    @using (Html.BeginForm())
+        <div class="loginClub">
+            <h1>Formulaire de connexion Club</h1>
+            <p>Ravi de vous revoir ! Entrez vos identifiants de club s'il vous plait ! </p>
+            @using (Html.BeginForm())
+            {
+                <div class="identifiantsLoginClub">
+                    @Html.TextBoxFor(m => Model.InfosClub.NomClub, new { placeholder = "Nom de votre club" })
+                    @Html.ValidationMessageFor(m => Model.InfosClub.NomClub)
+                    @Html.PasswordFor(m => Model.InfosClub.NomClub, new { placeholder = "Mot de passe" })
+                    @Html.ValidationMessageFor(m => Model.InfosClub.NomClub)
+                </div>
+                <input type="submit" value="Valider">
+            }
+            <div class="link-redirection-inspcritpion-club">
+                <a href="#">Vous n'avez pas de compte ? Créer un compte</a>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+    <!--@using (Html.BeginForm())
     {
         <fieldset>
 
@@ -36,17 +58,15 @@
             <br />
             <br />
             <input type="submit" value="Valider" />
-                   @*<input type="button" onclick="window.location.href='https://localhost:5001/Home/EspaceClubLogged';" value="Valider" />
-        <input type="button" onclick="window.location.href='https://localhost:5001/Home/EspaceClubLogged?nom=NonClub';" value="Valider" />*@
+            @*<input type="button" onclick="window.location.href='https://localhost:5001/Home/EspaceClubLogged';" value="Valider" />
+                <input type="button" onclick="window.location.href='https://localhost:5001/Home/EspaceClubLogged?nom=NonClub';" value="Valider" />*@
 
         </fieldset>
 
-    }
+    }-->
 
-    @*vérification du type de données dans le front*@
-    <script type="text/javascript" src="~/Scripts/jquery-3.3.1.js"></script>
-    <script type="text/javascript" src="~/Scripts/jquery.validate-vsdoc.js"></script>
-    <script type="text/javascript" src="~/Scripts/jquery.validate.unobtrusive.js"></script>
-
-</body>
-</html>
+</bodyClubLogin>
+@*vérification du type de données dans le front*@
+<script type="text/javascript" src="~/Scripts/jquery-3.3.1.js"></script>
+<script type="text/javascript" src="~/Scripts/jquery.validate-vsdoc.js"></script>
+<script type="text/javascript" src="~/Scripts/jquery.validate.unobtrusive.js"></script>

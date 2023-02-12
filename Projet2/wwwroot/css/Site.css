@@ -1,4 +1,6 @@
-﻿.header {
+﻿/*Layout*/
+
+.header {
     border-radius: 30px;
     border: 2px solid black;
     min-height: 200px;
@@ -11,6 +13,23 @@
     border-radius: 30px;
     margin-bottom: 5px;
 }
+
+
+/*LayoutClub*/
+.header-Club {
+    border-radius: 30px;
+    border: 2px solid black;
+    min-height: 200px;
+    text-align: center;
+    color: black;
+    background-image: url("/Images/HeaderClub.png");
+    background-position: center;
+    background-size: cover;
+    object-fit: fill;
+    border-radius: 30px;
+    margin-bottom: 5px;
+}
+
 
 .general {
     margin-block: 5px;
@@ -28,6 +47,18 @@
     background-position: top;
 }
 
+/*LayoutClub*/
+.menuClub {
+    margin-block: 4px;
+    width: 250px;
+    border: 2px solid black;
+    padding: 20px !important;
+    border-radius: 30px;
+    background-color: #f0e4c1;
+    background-position: top;
+}
+
+
 .titreSite {
     text-align: center;
 }
@@ -41,13 +72,6 @@
     background-color: lightgray;
     margin: 0;
 }
-
-/*.btn {
-    margin: 5px;
-    min-width: 100% !important;
-    display: flex;
-    flex-direction: column;
-}*/
 
 .buttons {
     justify-content: center;
@@ -68,8 +92,6 @@
     text-align: center;
     cursor: pointer;
 }
-
-
 
 
 .btn--btnClub {
@@ -159,8 +181,11 @@
     border-radius: 30px;
     min-height: 10px;
     width: 100%;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
+
+/*Welcome view*/
 .slider {
     width: 440px;
     overflow: hidden;
@@ -256,16 +281,14 @@
  
 }
 
-.footer {
-    margin-block: 1px;
-    text-align: center;
-    color: white;
-    border: 2px solid black;
+/*Espace club*/
+.image-link2 {
     border-radius: 30px;
-    min-height: 25px;
-    background-color: #23437a;
 }
 
+.image-link2:hover {
+    content: url("/Images/decollage1.png");
+}
 
 
 .logo {
@@ -304,7 +327,6 @@ tr .contactPageVisible {
 }
 
 
-
 .btnTransform{
     font: bold 11px Arial;
     text-decoration: none;
@@ -315,4 +337,97 @@ tr .contactPageVisible {
     border-right: 1px solid #333333;
     border-bottom: 1px solid #333333;
     border-left: 1px solid #CCCCCC;
+}
+
+/*formulaire connexion espace club*/
+
+/*bodyClubLogin {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+*/
+.containerClubLogin {
+    display: flex;
+    width: 90%;
+    padding: 0 5%;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+
+}
+
+    .containerClubLogin .img {
+        border-radius: 30px;
+        width: 800px;
+    }
+
+.loginClub {
+    width: 600px;
+}
+
+    .loginClub p {
+        color: #999;
+    }
+
+.identifiantsLoginClub {
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    padding: 15px;
+    border-radius: 6px;
+    margin: 10px 0;
+}
+
+form input {
+    margin: 5px 0;
+    padding: 5px;
+    border: 0;
+    border-bottom: 2px solid #999;
+    outline: 0;
+    transition: 0.5s;
+    color: #2BAEF7;
+}
+
+    form input:focus {
+        border-bottom: 2px solid #2BAEF7;
+    }
+
+    form input[type=submit] {
+        cursor: pointer;
+        background-color: #2BAEF7;
+        border: 1px;
+        color: #fff;
+        border-radius: 20px;
+        margin-top: 15px;
+        width: 100%;
+    }
+
+.link-redirection-inspcritpion-club {
+    margin-top: 15px;
+    text-align: center;
+}
+
+    .link-redirection-inspcritpion-club a {
+        color: black;
+        text-decoration: 0;
+        font-weight: 500;
+        transition: 0.25s;
+    }
+
+
+
+        .link-redirection-inspcritpion-club a:hover {
+            color: #2BAEF7;
+        }
+
+.footer {
+    margin-block: 1px;
+    text-align: center;
+    color: white;
+    border: 2px solid black;
+    border-radius: 30px;
+    min-height: 25px;
+    background-color: #23437a;
 }
