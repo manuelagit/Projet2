@@ -14,6 +14,7 @@ namespace Projet2.Models
         public DbSet<InfosClub> InfosClubs { get; set; }
         public DbSet<Paiement> Paiements { get; set; }
         public DbSet<Facturation> Facturations { get; set; }
+        public DbSet<Adherent> Adherents { get; set; }
 
         public DbSet<Activite> Activites { get; set; }
 
@@ -21,11 +22,11 @@ namespace Projet2.Models
 
         public DbSet<SortieAdherent> SortieAdherents { get; set; }
 
-        public DbSet<Adherent> Adherents { get; set; }
+
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseMySql("server=localhost;user id=root;password=rrrrr;database=BDDprojet2");
+            optionsBuilder.UseMySql("server=localhost;user id=root;password=rrrrrrrr;database=BDDprojet2");
         }
 
         public void InitialiseDb()
@@ -45,7 +46,7 @@ namespace Projet2.Models
             InfosClub infosClub = new InfosClub() { Id = 1, NomClub = "VLG", AdresseId = 3, urlLogo = "~/Images/btnValider.png", DescritpionClub = "voici notre club", titreClub = "Mon super club" };
 
             Compte compteClub = new Compte() { Id =3, AdressEmail = "vlg@gmail.com", MotDePasse = "123" };
-            Club club = new Club() { Id = 3, CompteId = 3, InfosClubId = 3};
+            Club club = new Club() { Id = 3, CompteId = 3, InfosClubId = 1};
 
             Adresse adresseClubAVL = new Adresse() { Id = 4, CodePostal = 38870, NomVille = "Annecy", NomRue = "rue Daudet", NumeroRue = 43 };
             InfosClub infosClubAVL = new InfosClub() { Id = 4, NomClub = "Annecy Vol Libre", AdresseId = 4, urlLogo = "~/Images/btnValider.png", DescritpionClub = "voici notre club", titreClub = "Mon super club" };
@@ -74,7 +75,7 @@ namespace Projet2.Models
             Activite activite3 = new Activite() { Id = 3, SortieAdherentId = 1, NomActivite = "Voyage découverte vin", DateDebutActivite = new DateTime(2023 / 03 / 18), DateFinActivite = new DateTime(2023 / 03 / 18), DescriptionActivite = "Decouverte vin Alexandre", LieuActivite = "Bordeaux", NombrePlaceActivite = 5, TypeActivite = "SortieAdherent", ClubId = 3, SortieAdherent = sortieAdherent1 };
 
             Adherent adherent1 = new Adherent() { Id = 1, ClubId = 3, UtilisateurId=1 };
-
+            
 
             this.Adresses.Add(adresse);
             this.InfosPersonnelles.Add(infosperso);

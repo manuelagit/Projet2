@@ -90,6 +90,11 @@ namespace Projet2.Models
             return club.Id;
         }
 
+        public int EspaceClubLogged(Club club)
+        {
+            return club.Id;
+        }
+
         public void ModifyUser(int Id)
         {
             Utilisateur utilisateur = _bddContext.Utilisateurs.Find(Id);
@@ -101,6 +106,16 @@ namespace Projet2.Models
         }
 
         public void ModifyClub(int Id)
+        {
+            Club club = _bddContext.Clubs.Find(Id);
+            if (club != null)
+            {
+                _bddContext.Clubs.Update(club);
+                _bddContext.SaveChanges();
+            }
+        }
+
+        public void ModifyClubCreation(int Id)
         {
             Club club = _bddContext.Clubs.Find(Id);
             if (club != null)
@@ -345,12 +360,32 @@ namespace Projet2.Models
             return _bddContext.Facturations.Include(U => U.Club).Include(U => U.Club.InfosClub).ToList();
             
         }
+
         public List<Adherent> GetAdherentsList()
         {
             return _bddContext.Adherents.Include(U => U.Utilisateur).Include(U=>U.Utilisateur.InfosPersonnelles).Include(U => U.Utilisateur.InfosPersonnelles.Adresse).Include(U => U.Utilisateur.Compte).ToList(); 
         }
 
-        
+
+        public int CreateAdherent(int IdClub, int idCompte, int IdInfosPersonnelles)
+        {
+            Utilisateur utilisateur = new Utilisateur { CompteId = idCompte, InfosPersonnellesId = IdInfosPersonnelles };
+            Adherent adherent = new Adherent { ClubId = IdClub, Utilisateur= utilisateur };
+            _bddContext.Utilisateurs.Add(utilisateur);
+            _bddContext.Adherents.Add(adherent);
+            _bddContext.SaveChanges();
+            return adherent.Id;
+        }
+
+
+        public int CreateAdherent(Adherent adherent)
+        {
+            _bddContext.Adherents.Add(adherent);
+            _bddContext.SaveChanges();
+            return adherent.Id;
+        }
+
+
 
     }
 }

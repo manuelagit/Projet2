@@ -13,270 +13,271 @@
 <body>
     <h1>Espace club</h1>
 
-    @using (Html.BeginForm())
-    {
-        <fieldset>
+    @*@using (Html.BeginForm("GetLogo", "Club", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {*@
 
-            <legend><h4>Créez votre compte club</h4></legend>
-            <table>
-                <tbody>
-                    <tr>
-                        <td>@Html.LabelFor(m => Model.Club.InfosClub.NomClub)</td>
-                        <td>@Html.TextBoxFor(m => Model.Club.InfosClub.NomClub, new { placeholder = "nom du club" })</td>
-                        <td>@Html.ValidationMessageFor(m => Model.Club.InfosClub.NomClub)</td>
-                    </tr>
+        @using (Html.BeginForm())
+        {
+            <fieldset>
 
-                    <tr>
-                        <td>@Html.LabelFor(m => Model.Club.InfosClub.Adresse)</td>
-                        <td>@Html.TextBoxFor(m => Model.Club.InfosClub.Adresse.NumeroRue, new { placeholder = "n°" })</td>
-                        <td>@Html.ValidationMessageFor(m => Model.Club.InfosClub.Adresse.NumeroRue)</td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>@Html.TextBoxFor(m => Model.Club.InfosClub.Adresse.NomRue, new { placeholder = "rue" })</td>
-                        <td>@Html.ValidationMessageFor(m => Model.Club.InfosClub.Adresse.NomRue)</td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>@Html.TextBoxFor(m => Model.Club.InfosClub.Adresse.CodePostal, new { placeholder = "code postal" })</td>
-                        <td>@Html.ValidationMessageFor(m => Model.Club.InfosClub.Adresse.CodePostal)</td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>@Html.TextBoxFor(m => Model.Club.InfosClub.Adresse.NomVille, new { placeholder = "Ville" })</td>
-                        <td>@Html.ValidationMessageFor(m => Model.Club.InfosClub.Adresse.NomVille)</td>
-                    </tr>
-                    <tr>
-                        <td>@Html.LabelFor(m => Model.Club.Compte.AdressEmail)</td>
-                        <td>@Html.TextBoxFor(m => Model.Club.Compte.AdressEmail, new { type = "email", placeholder = "mail" })</td>
-                        <td>@Html.ValidationMessageFor(m => Model.Club.Compte.AdressEmail)</td>
-                    </tr>
-                    <tr>
-                        <td>@Html.LabelFor(m => Model.Club.Compte.MotDePasse)</td>
-                        <td>@Html.TextBoxFor(m => Model.Club.Compte.MotDePasse, new { type = "password" })</td>
-                        <td>@Html.ValidationMessageFor(m => Model.Club.Compte.MotDePasse)</td>
-                    </tr>
+                <legend><h4>Créez votre compte club</h4></legend>
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>@Html.LabelFor(m => Model.Club.InfosClub.NomClub)</td>
+                            <td>@Html.TextBoxFor(m => Model.Club.InfosClub.NomClub, new { placeholder = "nom du club" })</td>
+                            <td>@Html.ValidationMessageFor(m => Model.Club.InfosClub.NomClub)</td>
+                        </tr>
 
-                </tbody>
-            </table>
+                        <tr>
+                            <td>@Html.LabelFor(m => Model.Club.InfosClub.Adresse)</td>
+                            <td>@Html.TextBoxFor(m => Model.Club.InfosClub.Adresse.NumeroRue, new { placeholder = "n°" })</td>
+                            <td>@Html.ValidationMessageFor(m => Model.Club.InfosClub.Adresse.NumeroRue)</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>@Html.TextBoxFor(m => Model.Club.InfosClub.Adresse.NomRue, new { placeholder = "rue" })</td>
+                            <td>@Html.ValidationMessageFor(m => Model.Club.InfosClub.Adresse.NomRue)</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>@Html.TextBoxFor(m => Model.Club.InfosClub.Adresse.CodePostal, new { placeholder = "code postal" })</td>
+                            <td>@Html.ValidationMessageFor(m => Model.Club.InfosClub.Adresse.CodePostal)</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>@Html.TextBoxFor(m => Model.Club.InfosClub.Adresse.NomVille, new { placeholder = "Ville" })</td>
+                            <td>@Html.ValidationMessageFor(m => Model.Club.InfosClub.Adresse.NomVille)</td>
+                        </tr>
+                        <tr>
+                            <td>@Html.LabelFor(m => Model.Club.Compte.AdressEmail)</td>
+                            <td>@Html.TextBoxFor(m => Model.Club.Compte.AdressEmail, new { type = "email", placeholder = "mail" })</td>
+                            <td>@Html.ValidationMessageFor(m => Model.Club.Compte.AdressEmail)</td>
+                        </tr>
+                        <tr>
+                            <td>@Html.LabelFor(m => Model.Club.Compte.MotDePasse)</td>
+                            <td>@Html.TextBoxFor(m => Model.Club.Compte.MotDePasse, new { type = "password" })</td>
+                            <td>@Html.ValidationMessageFor(m => Model.Club.Compte.MotDePasse)</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+                <br />
+                <br />
+
+            </fieldset>
             <br />
-            <br />
 
-        </fieldset>
-        <br />
+            <fieldset>
+                <legend><h4>Personnalisez votre espace club</h4></legend>
+                <p style="color: red">gérer le logo -> Manuela lundi avec Renaud</p>
 
-        <fieldset>
-            @*@using (Html.BeginForm("Modify", "User", FormMethod.Post, new { enctype = "multipart/form-data" }));*@
-            <legend><h4>Personnalisez votre espace club</h4></legend>
-            <table>
-                <tbody>
-                    <tr>
-                        <td>@Html.LabelFor(m => Model.Club.InfosClub.titreClub)</td>
-                        <td>@Html.TextBoxFor(m => Model.Club.InfosClub.titreClub, new { placeholder = "Bienvenue sur notre site !" })</td>
-                        <td>@Html.ValidationMessageFor(m => Model.Club.InfosClub.titreClub)</td>
-                    </tr>
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>@Html.LabelFor(m => Model.Club.InfosClub.titreClub)</td>
+                            <td>@Html.TextBoxFor(m => Model.Club.InfosClub.titreClub, new { placeholder = "Bienvenue sur notre site !" })</td>
+                            <td>@Html.ValidationMessageFor(m => Model.Club.InfosClub.titreClub)</td>
+                        </tr>
 
-                    <tr>
-                        <td>@Html.LabelFor(m => Model.Club.InfosClub.DescritpionClub)</td>
-                        <td>@Html.TextAreaFor(m => Model.Club.InfosClub.DescritpionClub, 10, 60, htmlAttributes: new { style = "width: 100%; max-width: 100%;", placeholder = "Annecy Vol Libre est un club situé à 3 km du Lac d'Annecy, offrant de nombreuses possibilités de vols." })</td>
-                        <td>@Html.ValidationMessageFor(m => Model.Club.InfosClub.DescritpionClub)</td>
-                    </tr>
+                        <tr>
+                            <td>@Html.LabelFor(m => Model.Club.InfosClub.DescritpionClub)</td>
+                            <td>@Html.TextAreaFor(m => Model.Club.InfosClub.DescritpionClub, 10, 60, htmlAttributes: new { style = "width: 100%; max-width: 100%;", placeholder = "Annecy Vol Libre est un club situé à 3 km du Lac d'Annecy, offrant de nombreuses possibilités de vols." })</td>
+                            <td>@Html.ValidationMessageFor(m => Model.Club.InfosClub.DescritpionClub)</td>
+                        </tr>
 
-                    <tr>
+
 
                         <input type="file" accept="image/*" name="image" id="file" onchange="loadFile(event)" style="display: none;">
                         <p><label for="file" style="cursor: pointer;">Ajoutez le logo de votre club</label></p>
                         <p><img id="output" width="200" /></p>
 
-                    </tr>
 
-</table>
-            <input type="submit" value="Valider" />
+                </table>
+                <input type="submit" value="Valider" />
 
-        </fieldset>
+            </fieldset>
+            <br />
+
+            <script>var loadFile = function (event) {
+                    var image = document.getElementById('output');
+                    image.src = URL.createObjectURL(event.target.files[0]);
+                };</script>
+
+
+
+            <fieldset>
+                <legend><h4>Importer la liste de vos adhérents</h4></legend>
+
+                <p style="color: red">permettre que la liste soit enregistrée dans la bdd</p>
+                <script language="javascript">function addRow(tableID) {
+                        Dal dal = new Dal();
+                        var table = document.getElementById(tableID);
+
+                        var rowCount = table.rows.length;
+                        var row = table.insertRow(rowCount);
+
+                        var cell1 = row.insertCell(0);
+                        var element1 = document.createElement("input");
+                        element1.type = "text";
+                        element1.style.width = "100px";
+                        element1.name = "txtbox[]";
+                        element1.placeholder = "nom";
+                        cell1.appendChild(element1);
+
+                        var cell2 = row.insertCell(1);
+                        var element2 = document.createElement("input");
+                        element2.type = "text";
+                        element2.style.width = "100px";
+                        element2.name = "txtbox[]";
+                        cell2.appendChild(element2);
+                        element2.placeholder = "prénom";
+
+
+                        var cell3 = row.insertCell(2);
+                        var element3 = document.createElement("input");
+                        element3.type = "date";
+                        element3.name = "txtbox[]";
+                        element3.placeholder = "date de naissance";
+                        cell3.appendChild(element3);
+
+                        var cell4 = row.insertCell(3);
+                        var element4 = document.createElement("input");
+                        element4.style.width = "40px";
+                        element4.type = "text";
+                        element4.name = "txtbox[]";
+                        element4.placeholder = "n°";
+                        cell4.appendChild(element4);
+
+                        var cell5 = row.insertCell(4);
+                        var element5 = document.createElement("input");
+                        element5.type = "text";
+                        element5.style.width = "200px";
+                        element5.name = "txtbox[]";
+                        element5.placeholder = "rue";
+                        cell5.appendChild(element5);
+
+                        var cell6 = row.insertCell(5);
+                        var element6 = document.createElement("input");
+                        element6.type = "int";
+                        element6.style.width = "45px";
+                        element6.name = "txtbox[]";
+                        element6.placeholder = "CP";
+                        cell6.appendChild(element6);
+
+                        var cell7 = row.insertCell(6);
+                        var element7 = document.createElement("input");
+                        element7.type = "int";
+                        element7.style.width = "100px";
+                        element7.name = "txtbox[]";
+                        element7.placeholder = "ville";
+                        cell7.appendChild(element7);
+
+                        var cell8 = row.insertCell(7);
+                        var element8 = document.createElement("input");
+                        element8.type = "email";
+                        element8.style.width = "200px";
+                        element8.name = "txtbox[]";
+                        element8.placeholder = "mail";
+                        cell8.appendChild(element8);
+                    }
+
+                    function deleteRow(tableID) {
+                        try {
+                            var table = document.getElementById(tableID);
+                            var rowCount = table.rows.length;
+
+                            for (var i = 0; i < rowCount; i++) {
+                                var row = table.rows[i];
+                                var chkbox = row.cells[0].childNodes[0];
+                                if (null != chkbox && true == chkbox.checked) {
+                                    table.deleteRow(i);
+                                    rowCount--;
+                                    i--;
+                                }
+
+
+                            }
+                        } catch (e) {
+                            alert(e);
+                        }
+                    }</script>
+
+
+
+                <table id="dataTable" border="0">
+                    <tbody>
+                        <tr>
+                            <th>Nom</th>
+                            <th>Prénom</th>
+                            <th>Date de naissance</th>
+                            <th colspan="4">Adresse</th>
+                            <th>email</th>
+                        </tr>
+
+                        <tr>
+                            <td> <input style="width: 100px" type="text" placeholder="nom"> </td>
+                            <td> <input style="width: 100px" type="text" placeholder="prénom"> </td>
+                            <td> <input type="date"> </td>
+                            <td> <input style="width: 40px" type="text" placeholder="n°"> </td>
+                            <td> <input style="width: 200px" type="text" placeholder="rue"> </td>
+                            <td> <input style="width: 45px" type="text" placeholder="CP"> </td>
+                            <td> <input style="width: 100px" type="text" placeholder="ville"> </td>
+                            <td> <input style="width: 200px" type="email" placeholder="mail"> </td>
+
+                        </tr>
+                        <tr>
+                        </tr>
+                    </tbody>
+                </table>
+                <input type="button" value="Ajouter une ligne" onclick="addRow('dataTable')">
+                <input type="submit" Value="Enregistrer cette liste">
+
+                <br />
+                <br />
+                <button type="submit">Choisir un fichier</button>
+            </fieldset>
+        }
+        <br />
         <br />
 
-        <script>var loadFile = function (event) {
-                var image = document.getElementById('output');
-                image.src = URL.createObjectURL(event.target.files[0]);
-            };</script>
+
+        <script>function myCreateFunction() {
+                var table = document.getElementById("importTable");
+                var row = table.insertRow(-1);
+                var cell1 = row.insertCell(0);
+                var cell2 = row.insertCell(1);
+                var cell3 = row.insertCell(2);
+                var cell4 = row.insertCell(3);
+                var cell5 = row.insertCell(4);
+                var cell6 = row.insertCell(5);
+                var cell7 = row.insertCell(6);
+                var cell8 = row.insertCell(7);
+
+                cell1.innerHTML = "nom";
+                cell2.innerHTML = "prénom";
+                cell3.innerHTML = "date";
+                cell4.innerHTML = "n°";
+                cell5.innerHTML = "rue";
+                cell6.innerHTML = "CP";
+                cell7.innerHTML = "ville";
+                cell8.innerHTML = "mail";
 
 
+            }
 
-        <fieldset>
-            <legend><h4>Importer la liste de vos adhérents</h4></legend>
-
-            <script language="javascript">function addRow(tableID) {
-
-                    var table = document.getElementById(tableID);
-
-                    var rowCount = table.rows.length;
-                    var row = table.insertRow(rowCount);
-
-                    var cell1 = row.insertCell(0);
-                    var element1 = document.createElement("input");
-                    element1.type = "text";
-                    element1.style.width = "100px";
-                    element1.name = "txtbox[]";
-                    element1.placeholder = "nom";
-                    cell1.appendChild(element1);
+            //<button onclick="myDeleteFunction()">Delete row</button>
+            //function myDeleteFunction() {
+            //    document.getElementById("ZeTable").deleteRow(-1);
+            //}</script>
 
 
-                    var cell2 = row.insertCell(1);
-                    var element2 = document.createElement("input");
-                    element2.type = "text";
-                    element2.style.width = "100px";
-                    element2.name = "txtbox[]";
-                    cell2.appendChild(element2);
-                    element2.placeholder = "prénom";
+        <input type="button" onclick="window.location.href='https://localhost:5001/Home/EspaceClub';" value="Retour Espace Club" />
 
+        @*vérification du type de données dans le front*@
+        <script type="text/javascript" src="~/Scripts/jquery-3.3.1.js"></script>
+        <script type="text/javascript" src="~/Scripts/jquery.validate-vsdoc.js"></script>
+        <script type="text/javascript" src="~/Scripts/jquery.validate.unobtrusive.js"></script>
 
-                    var cell3 = row.insertCell(2);
-                    var element3 = document.createElement("input");
-                    element3.type = "date";
-                    element3.name = "txtbox[]";
-                    element3.placeholder = "date de naissance";
-                    cell3.appendChild(element3);
-
-                    var cell4 = row.insertCell(3);
-                    var element4 = document.createElement("input");
-                    element4.style.width = "40px";
-                    element4.type = "text";
-                    element4.name = "txtbox[]";
-                    element4.placeholder = "n°";
-                    cell4.appendChild(element4);
-
-                    var cell5 = row.insertCell(4);
-                    var element5 = document.createElement("input");
-                    element5.type = "text";
-                    element5.style.width = "200px";
-                    element5.name = "txtbox[]";
-                    element5.placeholder = "rue";
-                    cell5.appendChild(element5);
-
-                    var cell6 = row.insertCell(5);
-                    var element6 = document.createElement("input");
-                    element6.type = "int";
-                    element6.style.width = "45px";
-                    element6.name = "txtbox[]";
-                    element6.placeholder = "CP";
-                    cell6.appendChild(element6);
-
-                    var cell7 = row.insertCell(6);
-                    var element7 = document.createElement("input");
-                    element7.type = "int";
-                    element7.style.width = "100px";
-                    element7.name = "txtbox[]";
-                    element7.placeholder = "ville";
-                    cell7.appendChild(element7);
-
-                    var cell8 = row.insertCell(7);
-                    var element8 = document.createElement("input");
-                    element8.type = "email";
-                    element8.style.width = "200px";
-                    element8.name = "txtbox[]";
-                    element8.placeholder = "mail";
-                    cell8.appendChild(element8);
-                }
-
-                function deleteRow(tableID) {
-                    try {
-                        var table = document.getElementById(tableID);
-                        var rowCount = table.rows.length;
-
-                        for (var i = 0; i < rowCount; i++) {
-                            var row = table.rows[i];
-                            var chkbox = row.cells[0].childNodes[0];
-                            if (null != chkbox && true == chkbox.checked) {
-                                table.deleteRow(i);
-                                rowCount--;
-                                i--;
-                            }
-
-
-                        }
-                    } catch (e) {
-                        alert(e);
-                    }
-                }</script>
-
-
-
-            <table id="dataTable" border="0">
-                <tbody>
-                    <tr>
-                        <th>Nom</th>
-                        <th>Prénom</th>
-                        <th>Date de naissance</th>
-                        <th colspan="4">Adresse</th>
-                        <th>email</th>
-                    </tr>
-
-                    <tr>
-                        <td></td>
-                        @*<td> <input style="width: 100px" type="text" placeholder="nom"> </td>*@
-                        <td> <input style="width: 100px" type="text" placeholder="prénom"> </td>
-                        <td> <input type="date"> </td>
-                        <td> <input style="width: 40px" type="text" placeholder="n°"> </td>
-                        <td> <input style="width: 200px" type="text" placeholder="rue"> </td>
-                        <td> <input style="width: 45px" type="text" placeholder="CP"> </td>
-                        <td> <input style="width: 100px" type="text" placeholder="ville"> </td>
-                        <td> <input style="width: 200px" type="email" placeholder="mail"> </td>
-
-                    </tr>
-                    <tr>
-                    </tr>
-                </tbody>
-            </table>
-            <input type="button" value="Ajouter une ligne" onclick="addRow('dataTable')">
-            <input type="Button" Value="Enregistrer cette liste">
-
-            <br />
-            <br />
-            <button type="submit">Choisir un fichier</button>
-        </fieldset>
-    }
-    <br />
-    <br />
-
-
-    <script>function myCreateFunction() {
-            var table = document.getElementById("importTable");
-            var row = table.insertRow(-1);
-            var cell1 = row.insertCell(0);
-            var cell2 = row.insertCell(1);
-            var cell3 = row.insertCell(2);
-            var cell4 = row.insertCell(3);
-            var cell5 = row.insertCell(4);
-            var cell6 = row.insertCell(5);
-            var cell7 = row.insertCell(6);
-            var cell8 = row.insertCell(7);
-
-            cell1.innerHTML = "nom";
-            cell2.innerHTML = "prénom";
-            cell3.innerHTML = "date";
-            cell4.innerHTML = "n°";
-            cell5.innerHTML = "rue";
-            cell6.innerHTML = "CP";
-            cell7.innerHTML = "ville";
-            cell8.innerHTML = "mail";
-
-            cell1
-
-        }
-
-        //<button onclick="myDeleteFunction()">Delete row</button>
-        //function myDeleteFunction() {
-        //    document.getElementById("ZeTable").deleteRow(-1);
-        //}</script>
-
-
-    <input type="button" onclick="window.location.href='https://localhost:5001/Home/EspaceClub';" value="Retour Espace Club" />
-
-    @*vérification du type de données dans le front*@
-    <script type="text/javascript" src="~/Scripts/jquery-3.3.1.js"></script>
-    <script type="text/javascript" src="~/Scripts/jquery.validate-vsdoc.js"></script>
-    <script type="text/javascript" src="~/Scripts/jquery.validate.unobtrusive.js"></script>
-
-</body>
+    </body>
 </html>

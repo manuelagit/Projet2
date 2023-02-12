@@ -8,9 +8,9 @@ namespace Projet2.Models
     {
         public int Id { get; set; }
 
-        [Display(Name = "Numéro de Carte Bleu")]
-        [Required(ErrorMessage = "Le numéro de la carte bleu est requis")]
-        [RegularExpression(@"^\d{16}$", ErrorMessage = "Entrez le numéro de carte bleu.")]
+        [Display(Name = "Numéro de CB")]
+        [Required(ErrorMessage = "Le numéro de la carte bleue est requis")]
+        [RegularExpression(@"^\d{16}$", ErrorMessage = "Entrez le numéro de carte bleue.")]
         public string NumeroCB { get; set; }
 
         [Display(Name = "Date d'expiration")]

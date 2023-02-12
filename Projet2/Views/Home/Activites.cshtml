@@ -14,6 +14,8 @@
         <h1>Liste des activités proposées par le club</h1><br /> 
 
             <h3>Evenements Club</h3>
+
+            <p style="color: red"> si on ne sélectionne rien il ne faut pas qu'on puisse aller à paiement, il faut aussi enregistrer le fait que tel utilisatuer s'est inscrit à telle sortie</p>
                 <table id="Voyage" onkeyup="myFunction()" border="1" style="margin: 20px">
                     <tr>
                         <th>Id</th>
@@ -87,7 +89,7 @@
                 </table><br />
         
 
-            <input type="button" onclick="window.location.href='https://localhost:5001/Home/PaymentView';" value="S'inscrire" />
+            <input type="button" onclick="window.location.href='https://localhost:5001/Home/PaymentViewUser';" value="S'inscrire" />
         
     }
     @*vérification du type de données dans le front*@
