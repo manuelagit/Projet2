@@ -354,8 +354,9 @@ namespace Projet2.Models
         public int CreateAdherent(int IdClub, int idCompte, int IdInfosPersonnelles)
         {
             Utilisateur utilisateur = new Utilisateur { CompteId = idCompte, InfosPersonnellesId = IdInfosPersonnelles };
-            Adherent adherent = new Adherent { ClubId = IdClub, Utilisateur= utilisateur };
-            _bddContext.Utilisateurs.Add(utilisateur);
+            Club club = new Club { Id = IdClub };
+            Adherent adherent = new Adherent { Club = club, Utilisateur= utilisateur };
+            
             _bddContext.Adherents.Add(adherent);
             _bddContext.SaveChanges();
             return adherent.Id;
