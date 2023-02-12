@@ -664,15 +664,6 @@ namespace Projet2.Controllers
             return View(viewModel);
         }
 
-        public IActionResult CreateEvenementClub()
-        {
-            return View("CreateEvenementClub");
-        }
-
-        public IActionResult CreateSortieAdherent()
-        {
-            return View("CreateSortieAdherent");
-        }
 
         [HttpPost]
         public IActionResult AddEvenementClub(int evenmentClubId, string datefilter)
@@ -737,6 +728,40 @@ namespace Projet2.Controllers
             }
         }
 
+        public IActionResult RemoveEvenementClub(int Id)
+        {
+            if (Id != 0)
+            {
+                using (Dal dal = new Dal())
+                {
+                    Activite activite = dal.GetActivityList().Where(r => r.Id == Id).FirstOrDefault();
+                    dal.RemoveActivite(activite);
+                    return RedirectToAction("Activites");
+                }
+            }
+            else
+            {
+                return View("Error");
+            }
+        }
+
+        [HttpPost]
+        public IActionResult RemoveEvenementClub(Activite activite)
+        {
+            if (activite.Id != 0)
+            {
+                using (Dal dal = new Dal())
+                {
+                    dal.RemoveActivite(activite);
+                    return RedirectToAction("Activites");
+                }
+            }
+            else
+            {
+                return View("Error");
+            }
+        }
+
 
         public IActionResult ModifySortieAdherent(int id)
         {
@@ -758,15 +783,50 @@ namespace Projet2.Controllers
 
 
 
+
         // sends the modified data
         [HttpPost]
         public IActionResult ModifySortieAdherent(Activite activite)
         {
-            if (activite.Id != 0 && activite.SortieAdherentId != 0)
+            if (activite.Id != 0)
             {
                 using (Dal dal = new Dal())
                 {
                     dal.ModifyActivite(activite);
+                    return RedirectToAction("Activites");
+                }
+            }
+            else
+            {
+                return View("Error");
+            }
+        }
+
+        public IActionResult RemoveSortieAdherent(int Id)
+        {
+            if (Id != 0)
+            {
+                using (Dal dal = new Dal())
+                {
+                    Activite activite = dal.GetActivityList().Where(r => r.Id == Id).FirstOrDefault();
+                    dal.RemoveActivite(activite);
+                    return RedirectToAction("Activites");
+                }
+            }
+            else
+            {
+                return View("Error");
+            }
+        }
+
+        [HttpPost]
+        public IActionResult RemoveSortieAdherent(Activite activite)
+        {
+            if (activite.Id != 0)
+            {
+                using (Dal dal = new Dal())
+                {
+                    dal.RemoveActivite(activite);
                     return RedirectToAction("Activites");
                 }
             }
