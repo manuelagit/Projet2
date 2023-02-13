@@ -355,13 +355,13 @@ tr .contactPageVisible {
 
 /*formulaire connexion espace club*/
 
-/*bodyClubLogin {
+bodyClubLogin {
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-*/
+
 .containerClubLogin {
     display: flex;
     width: 90%;

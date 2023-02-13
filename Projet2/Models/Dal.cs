@@ -138,6 +138,7 @@ namespace Projet2.Models
             if (club != null)
             {
                 _bddContext.Clubs.Update(club);
+
                 _bddContext.SaveChanges();
             }
         }
