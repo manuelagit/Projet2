@@ -11,8 +11,9 @@
         <table>
             <tbody>
                  <tr>
+
                     <td>@Html.LabelFor(m => Model.ClubId)</td>
-                    <td>@Html.TextBoxFor(m => Model.ClubId, new { placeholder = "Id Club" })</td>
+                    <td>@Html.DropDownListFor(M => M.ClubId, new SelectList(ViewBag.Clubs as List<Projet2.Models.Club>,"Id", "Name"))</td>
                     <td>@Html.ValidationMessageFor(m => Model.ClubId)</td>
                 </tr>
                 <tr>

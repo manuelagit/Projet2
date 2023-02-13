@@ -351,16 +351,17 @@ namespace Projet2.Models
         }
 
 
-        public int CreateAdherent(int IdClub, int idCompte, int IdInfosPersonnelles)
-        {
-            Utilisateur utilisateur = new Utilisateur { CompteId = idCompte, InfosPersonnellesId = IdInfosPersonnelles };
-            Club club = new Club { Id = IdClub };
-            Adherent adherent = new Adherent { Club = club, Utilisateur= utilisateur };
+        //public int CreateAdherent(string nomClub, int idCompte, int IdInfosPersonnelles)
+        //{   
+        //    Dal dal = new Dal();
+        //    Utilisateur utilisateur = new Utilisateur { CompteId = idCompte, InfosPersonnellesId = IdInfosPersonnelles };
+        //    Club club = dal.GetClubsList().Where(r => r.InfosClub.NomClub == nomClub).FirstOrDefault();
             
-            _bddContext.Adherents.Add(adherent);
-            _bddContext.SaveChanges();
-            return adherent.Id;
-        }
+        //    Adherent adherent = new Adherent { Club = club, Utilisateur= utilisateur };
+
+        //    CreateAdherent(adherent);
+        //    return adherent.Id;
+        //}
 
 
         public int CreateAdherent(Adherent adherent)
