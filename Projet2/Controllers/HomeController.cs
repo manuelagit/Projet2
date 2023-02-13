@@ -833,10 +833,7 @@ namespace Projet2.Controllers
             return View("PaymentViewUser");
         }
 
-            //ListeUtilisateurs.CreateUser(idCount, utilisateur.Compte, utilisateur.InfosPersonnelles);
-            dal.CreateAdherent(adherent);
-            return RedirectToAction("Activites");
-        }
+
 
     }    
 
