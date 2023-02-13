@@ -5,21 +5,13 @@
     Layout = "_Layout";
     }
 
-
-<!DOCTYPE html>
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Activites</title>
-</head>
-<body>
     @using (Html.BeginForm())
     {
         <h1>Liste des activités proposées par le club</h1><br /> 
 
             <h3>Evenements Club</h3>
 
-            <p style="color: red"> si on ne sélectionne rien il ne faut pas qu'on puisse aller à paiement, il faut aussi enregistrer le fait que tel utilisatuer s'est inscrit à telle sortie</p>
+           
                 <table id="Voyage" onkeyup="myFunction()" border="1" style="margin: 20px">
                     <tr>
                         <th>Id</th>
@@ -91,9 +83,9 @@
                             }
                     </tbody>
                 </table><br />
-        
 
-            <input type="button" onclick="window.location.href='https://localhost:5001/Home/PaymentViewUser';" value="S'inscrire" />
+
+    <input type="button" onclick="window.location.href='https://localhost:5001/Home/PaymentViewUser';" value="S'inscrire" style="display:none;" id="inscrirebutton" />
         
     }
     @*vérification du type de données dans le front*@
@@ -101,6 +93,26 @@
     <script type="text/javascript" src="~/Scripts/jquery.validate-vsdoc.js"></script>
     <script type="text/javascript" src="~/Scripts/jquery.validate.unobtrusive.js"></script>
 
-</body>
-</html>
+    @section JS{
+        <script>
+            function updatebtn() {
+            var radioButtons = document.querySelectorAll('input[name="Activite"]')
+                var ischecked = false
+                for (let btn of radioButtons) {
+                    if (btn.checked) {
+                        ischecked = true
+                    }
+                }
+                if (ischecked) {
+                var inputbtn = document.getElementById("inscrirebutton")
+                    inputbtn.style.display = "block"
+                }
+            }
+        var radioButtons = document.querySelectorAll('input[name="Activite"]')
+            for (let btn of radioButtons) {
+                btn.addEventListener("click", function () {
+                    updatebtn()
+                })
+            }</script>
+    }
 
