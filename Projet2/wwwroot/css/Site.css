@@ -355,13 +355,13 @@ tr .contactPageVisible {
 
 /*formulaire connexion espace club*/
 
-/*bodyClubLogin {
+bodyClubLogin {
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-*/
+
 .containerClubLogin {
     display: flex;
     width: 90%;
@@ -468,10 +468,35 @@ updatebtn {
         color: #999;
     }
 
+/*visuel tableau liste adhérents*/
+.tableau-style {
+    border-collapse: collapse;
+    min-width: 400px;
+    width: auto;
+    box-shadow: 0 5px 50px rgba(0,0,0,0.15);
+    cursor: pointer;
+    margin: 100px auto;
+    border: 2px solid #2BAEF7;
+}
 
+thead tr {
+    background-color: #2BAEF7;
+    color : #fff;
+}
 
+th, td {
+    padding: 15px 20px;
 
+}
 
+/*couleur bordure intérieur tableau*/
+tbody tr, td, th {
+    border: 1px solid #ddd;
+}
+
+    tbody tr:nth-child(even) {
+        background-color: #f3f3f3;
+    }
 
 .footer {
     margin-block: 1px;
