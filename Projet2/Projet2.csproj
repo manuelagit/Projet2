@@ -25,10 +25,5 @@
   <ItemGroup>
     <None Include="wwwroot\css\Site.css" />
   </ItemGroup>
-  <ItemGroup>
-    <Content Remove="wwwroot\Images\para_ferret.png" />
-    <Content Remove="Views\Home\ModifyClubCreation.cshtml" />
-    <Content Remove="Views\Home\PaymentView.cshtml" />
-    <Content Remove="Views\Home\PaymentViewClub %28copy%29.cshtml" />
-  </ItemGroup>
+
 </Project>

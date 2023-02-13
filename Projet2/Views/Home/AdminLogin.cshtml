@@ -21,13 +21,13 @@
                 <tbody>
                     <tr>
                         <td>@Html.LabelFor(m => Model.InfosPersonnelles.Nom)</td>
-                        <td>@Html.TextBoxFor(m => Model.InfosPersonnelles.Nom, new { placeholder = "nom du club" })</td>
+                        <td>@Html.TextBoxFor(m => Model.InfosPersonnelles.Nom, new { placeholder = "nom Admin" })</td>
                         <td>@Html.ValidationMessageFor(m => Model.InfosPersonnelles.Nom)</td>
                     </tr>
 
                     <tr>
                         <td>@Html.LabelFor(m => Model.Compte.MotDePasse)</td>
-                        <td>@Html.TextBoxFor(m => Model.Compte.MotDePasse, new { type = "password" })</td>
+                        <td>@Html.TextBoxFor(m => Model.Compte.MotDePasse, new { type = "password", placeholder = "mot de passe Admin" })</td>
                         <td>@Html.ValidationMessageFor(m => Model.Compte.MotDePasse)</td>
                     </tr>
 

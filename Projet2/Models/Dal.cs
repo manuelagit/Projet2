@@ -105,6 +105,15 @@ namespace Projet2.Models
             }
         }
 
+
+        public int ModifyUser(Utilisateur utilisateur)
+        {
+            _bddContext.Utilisateurs.Update(utilisateur);
+            _bddContext.SaveChanges();
+            return utilisateur.Id;
+        }
+
+
         public void ModifyClub(int Id)
         {
             Club club = _bddContext.Clubs.Find(Id);
@@ -114,6 +123,14 @@ namespace Projet2.Models
                 _bddContext.SaveChanges();
             }
         }
+
+        public int ModifyClub(Club club)
+        {
+            _bddContext.Clubs.Update(club);
+            _bddContext.SaveChanges();
+            return club.Id;
+        }
+
 
         public void ModifyClubCreation(int Id)
         {
@@ -125,14 +142,7 @@ namespace Projet2.Models
             }
         }
 
-        public int ModifyUser(Utilisateur utilisateur)
-        {
-            _bddContext.Utilisateurs.Update(utilisateur);
-            _bddContext.SaveChanges();
-            return utilisateur.Id;
-        }
-
-        public int ModifyClub(Club club)
+        public int ModifyClubCreation(Club club)
         {
             _bddContext.Clubs.Update(club);
             _bddContext.SaveChanges();
