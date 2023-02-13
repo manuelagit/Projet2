@@ -350,7 +350,26 @@ namespace Projet2.Models
             return _bddContext.Adherents.Include(U => U.Utilisateur).Include(U=>U.Utilisateur.InfosPersonnelles).Include(U => U.Utilisateur.InfosPersonnelles.Adresse).Include(U => U.Utilisateur.Compte).ToList(); 
         }
 
-        
+
+        public int CreateAdherent(int IdClub, int idCompte, int IdInfosPersonnelles)
+        {
+            Utilisateur utilisateur = new Utilisateur { CompteId = idCompte, InfosPersonnellesId = IdInfosPersonnelles };
+            Adherent adherent = new Adherent { ClubId = IdClub, Utilisateur= utilisateur };
+            _bddContext.Utilisateurs.Add(utilisateur);
+            _bddContext.Adherents.Add(adherent);
+            _bddContext.SaveChanges();
+            return adherent.Id;
+        }
+
+
+        public int CreateAdherent(Adherent adherent)
+        {
+            _bddContext.Adherents.Add(adherent);
+            _bddContext.SaveChanges();
+            return adherent.Id;
+        }
+
+
 
     }
 }
