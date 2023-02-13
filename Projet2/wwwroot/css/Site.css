@@ -431,10 +431,47 @@ form input {
     }
 
 
-
         .link-redirection-inspcritpion-club a:hover {
             color: #2BAEF7;
         }
+
+
+/*Page offre abonnement*/
+.containerOffre {
+    display: flex;
+    width: 90%;
+    padding: 0 5%;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 30px;
+    background-color: #23437a;
+    border-radius: 30px;
+    text-align: center;
+    color: white;
+}
+
+
+    .containerOffre .img {
+        border-radius: 30px;
+        width: 600px;
+    }
+
+updatebtn {
+    color: red;
+}
+
+.loginOffre {
+    width: 500px;
+}
+
+    .loginOffre p {
+        color: #999;
+    }
+
+
+
+
+
 
 .footer {
     margin-block: 1px;

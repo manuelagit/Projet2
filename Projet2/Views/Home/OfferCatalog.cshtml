@@ -3,50 +3,42 @@
     ViewBag.Title = "OffreAbonnement";
     Layout = "_LayoutClub";
 }
+<center>
+    <h1>Choississez l'offre qui vous convient</h1>
+</center>
 
-    <h1>Choississez l'offre qui vous convient</h1><br />
-    <table class="abo">
+<bodyOffreCatalgue>
+    <div class="containerOffre">
+        <div class="img" style="margin: 30px 0px 30px 0px;">
+            <img src="~/Images/OffreAbonnement.png" alt="1" size="400px">
+            
+        </div>
 
-        <form method="GET">
-
-
-            <label>
-                @foreach (var member in Model)
+        <div class="loginOffre" style="margin: 0px 0px 0px 0px;">
+            <h1>Quelle offre préférez-vous ?</h1>
+            <p> Sélectionnez l'offre qui vous convient puis validez </p>
+            @foreach (var member in Model)
+            {
                 {
-                    <input type="radio" name="OffreAbonnement" value="Abonnement" required>
-
-                    <b>Abonnement @member.TypeOffre </b>
-
-                    <b> @member.Prix €</b>
+                    <input type="radio" name="OffreAbonnement" value="Abonnement" required><b>Abonnement @member.TypeOffre </b><b> @member.Prix €</b>
                     <p><em>Engagement : @member.DureeOffreMois mois</em></p>
                     <p>@member.DescriptionOffre</p>
                     <br />
                 }
-            </label>
-
-        <input type="button" onclick="window.location.href='https://localhost:5001/Home/PaymentViewClub';" value="S'abonner" style="display:none;" id="abonnementbutton">
-
-            @*<p style="color:red">ce bouton permet d'obliger à sélectionner un élément et renvoit  vers la page paiement </p>*@
-
-        </form>
-
-    </table>
 
 
-    <br />
-    <br />
-
-    @*<div>
-        <input type="submit" onclick="window.location.href='https://localhost:5001/Home/PaymentViewClub';" value="S'abonner" />
+            }
+            <input type="button" onclick="window.location.href='https://localhost:5001/Home/PaymentViewClub';" value="S'abonner" style="display:none;" id="abonnementbutton">
+        </div>
     </div>
-    <p style="color:red">ce bouton ne permet d'obliger à sélectionner un élément mais renvoit vers la page paiement, à terme il ne sera pas bon, on le laisse pour l'isntant </p>*@
+</bodyOffreCatalgue>
+
 
 
 
 @*    Script permettant l'apparition du bouton avec un radiobutton selectionné*@
-    @section JS{
-        <script>
-            function updatebtn(){
+@section JS{
+    <script>function updatebtn() {
             var radioButtons = document.querySelectorAll('input[name="OffreAbonnement"]')
             var ischecked = false
             for (let btn of radioButtons) {
@@ -58,15 +50,14 @@
                 var inputbtn = document.getElementById("abonnementbutton")
                 inputbtn.style.display = "block"
             }
-            }
+        }
         var radioButtons = document.querySelectorAll('input[name="OffreAbonnement"]')
         for (let btn of radioButtons) {
-               btn.addEventListener("click",function(){
-               updatebtn()
-               })
-            }
-        </script>
-    }
+            btn.addEventListener("click", function () {
+                updatebtn()
+            })
+        }</script>
+}
 
 
 
