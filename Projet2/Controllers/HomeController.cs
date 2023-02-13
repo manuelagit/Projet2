@@ -177,10 +177,6 @@ namespace Projet2.Controllers
 
 
 
-
-
-
-
         // recovers the saved values and displays them
         public IActionResult ModifyClubCreation(int id)
         {
@@ -194,7 +190,9 @@ namespace Projet2.Controllers
                     {
                         return View("Error");
                     }
-                    return View("ModifyClubCreation", club);
+                    CreateClubViewModel createClubViewModel = new CreateClubViewModel { Club = club };
+
+                    return View("ModifyClubCreation", createClubViewModel);
                 }
             }
             return View("Error");
@@ -296,12 +294,28 @@ namespace Projet2.Controllers
 
         // sending the data
         [HttpPost]
-        public IActionResult CreateClub(Club club)
+        public IActionResult CreateClub(Club club, IFormFile imageUploaded)
         {
             Dal dal = new Dal();
             List<Utilisateur> utilisateurs = dal.GetUsersList();
             club.CompteId = dal.CreateCompte(club.Compte);
             club.InfosClubId = dal.CreateInfosClub(club.InfosClub);
+
+            if (imageUploaded != null)
+            {
+                if (imageUploaded.Length != 0)
+                {
+                    string uploads = Path.Combine(_env.WebRootPath, "Images");
+                    string filePath = Path.Combine(uploads, imageUploaded.FileName);
+                    using (Stream fileStream = new FileStream(filePath, FileMode.Create))
+                    {
+                        imageUploaded.CopyTo(fileStream);
+                     
+                    }
+                    club.InfosClub.urlLogo = imageUploaded.FileName;
+                }
+            }
+
             dal.CreateClub(club);
 
             CreateClubViewModel createClubViewModel = new CreateClubViewModel { Club = club, Utilisateurs = utilisateurs };
