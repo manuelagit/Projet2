@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Club</title>
     <link rel="stylesheet" href="~/css/Site.css">
     @RenderSection("extracss", required: false)
 </head>
 <body>
-    <div class="header"></div>
+    <div class="header-Club"></div>
     <div class="general">
-        <div class="menu">
+        <div class="menuClub">
             <div>
                 <input type="button" onclick="window.location.href='https://localhost:5001/Home';" class="btn btn--btnAcceuil" value="Accueil" />
                 <input type="button" onclick="window.location.href='https://localhost:5001/Home/AdminLogin';" class="btn btn--btnAdmin" value="Admin" />
@@ -24,9 +24,9 @@
     <div class="footer">
         <h3>Contact - 0188980303 - wingsolution@gmail.com</h3>
     </div>
-
     @RenderSection("extrajs", required: false)
     @RenderSection("JS", required: false)
+
 
 </body>
 </html>

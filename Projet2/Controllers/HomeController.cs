@@ -812,9 +812,6 @@ namespace Projet2.Controllers
 
             Adherent newAdherent = new Adherent { Club = club, Utilisateur = utilisateur };
 
-            
-
-            //newAdherent.ClubId = dal.CreateClub(adherent.Club);
 
 
             //ListeUtilisateurs.CreateUser(idCount, utilisateur.Compte, utilisateur.InfosPersonnelles);
@@ -822,13 +819,12 @@ namespace Projet2.Controllers
             return View("PaymentViewUser");
         }
 
-      
+            //ListeUtilisateurs.CreateUser(idCount, utilisateur.Compte, utilisateur.InfosPersonnelles);
+            dal.CreateAdherent(adherent);
+            return RedirectToAction("Activites");
+        }
 
-
-    }
-
-
-    
+    }    
 
 }
 

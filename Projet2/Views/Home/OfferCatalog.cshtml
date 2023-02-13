@@ -1,63 +1,72 @@
 ﻿@model List<Projet2.Models.OffreAbonnement>
 @{
     ViewBag.Title = "OffreAbonnement";
-    Layout = "_Layout";
+    Layout = "_LayoutClub";
 }
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catalogue d'offre d'abonnement</title>
-</head>
-<body>
+
     <h1>Choississez l'offre qui vous convient</h1><br />
     <table class="abo">
 
-    <form method="GET">
+        <form method="GET">
 
 
+            <label>
+                @foreach (var member in Model)
+                {
+                    <input type="radio" name="OffreAbonnement" value="Abonnement" required>
 
-        <label>
-            @foreach (var member in Model)
-            {
-                <input type="radio" name="OffreAbonnement" value="Abonnement" required><b>Abonnement @member.TypeOffre </b><b> @member.Prix €</b>
-                <p><em>Engagement : @member.DureeOffreMois mois</em></p>
-                <p>@member.DescriptionOffre</p>
-                <br/>
-            }
-        </label>
-        <input type="submit" value="S'abonner" >
-    </form>
+                    <b>Abonnement @member.TypeOffre </b>
 
-            @*<tr>
-                <td><input name="OffreAbonnement" value="news" type="radio" required></td>
-                <td><b>Abonnement @member.TypeOffre </b> -- <b> @member.Prix €</b></td>
-            </tr>
+                    <b> @member.Prix €</b>
+                    <p><em>Engagement : @member.DureeOffreMois mois</em></p>
+                    <p>@member.DescriptionOffre</p>
+                    <br />
+                }
+            </label>
 
-            <tr>
-                <td></td>
-                <td><em>Engagement : @member.DureeOffreMois mois</em></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td>@member.DescriptionOffre</td>
-            </tr>
+        <input type="button" onclick="window.location.href='https://localhost:5001/Home/PaymentViewClub';" value="S'abonner" style="display:none;" id="abonnementbutton">
 
-        }*@
-                   
+            @*<p style="color:red">ce bouton permet d'obliger à sélectionner un élément et renvoit  vers la page paiement </p>*@
+
+        </form>
+
     </table>
 
 
     <br />
     <br />
 
-    <div>
+    @*<div>
         <input type="submit" onclick="window.location.href='https://localhost:5001/Home/PaymentViewClub';" value="S'abonner" />
     </div>
+    <p style="color:red">ce bouton ne permet d'obliger à sélectionner un élément mais renvoit vers la page paiement, à terme il ne sera pas bon, on le laisse pour l'isntant </p>*@
 
-</body>
+
+
+@*    Script permettant l'apparition du bouton avec un radiobutton selectionné*@
+    @section JS{
+        <script>
+            function updatebtn(){
+            var radioButtons = document.querySelectorAll('input[name="OffreAbonnement"]')
+            var ischecked = false
+            for (let btn of radioButtons) {
+                if (btn.checked) {
+                    ischecked = true
+                }
+            }
+            if (ischecked) {
+                var inputbtn = document.getElementById("abonnementbutton")
+                inputbtn.style.display = "block"
+            }
+            }
+        var radioButtons = document.querySelectorAll('input[name="OffreAbonnement"]')
+        for (let btn of radioButtons) {
+               btn.addEventListener("click",function(){
+               updatebtn()
+               })
+            }
+        </script>
+    }
 
 
 
