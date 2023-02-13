@@ -14,9 +14,6 @@
 <body>
     <center>
         <h1>Bienvenue @Html.ValueFor(m => Model.Club.InfosClub.NomClub)</h1>
-        <p style="color: red">pour le bouton "Ajouter une adhérent", il faut relier la création de l'utilisateur au fait qu'il soit ajouté comme adhérent de CD club</p>
-        <p style="color: red">"Modifier" ça bugge</p>
-        <p style="color: red">liste adhérents -> à faire</p>
 
         <p><h4>Voici la page que verrons les visiteurs</h4></p>
         <a href=@("/Home/EspaceClubVisible/"+Model.Club.Id)><button>Valider et accéder à la page club</button></a>
@@ -27,7 +24,6 @@
 
         <a href=@("/Home/createUser4Club/"+Model.Club.Id)><button>Ajouter un adhérent</button></a>
 
-        <button type="submit" onclick="window.location.href='https://localhost:5001/Home/createUser4Club';">Ajouter un adhérent</button>
 
 
         <br />
