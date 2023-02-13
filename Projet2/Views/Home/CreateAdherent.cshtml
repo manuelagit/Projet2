@@ -1,0 +1,77 @@
+﻿@model Projet2.Models.Adherent
+@{
+    ViewBag.Title = "CreateUser";
+    Layout = "_Layout";
+}
+@using (Html.BeginForm())
+{
+    <fieldset>
+
+        <legend><h4>Création d'un compte utilisateur</h4></legend>
+        <table>
+            <tbody>
+                 <tr>
+
+                    <td>@Html.LabelFor(m => Model.ClubId)</td>
+                    <td>@Html.DropDownListFor(M => M.ClubId, new SelectList(ViewBag.Clubs as List<Projet2.Models.Club>,"Id", "Name"))</td>
+                    <td>@Html.ValidationMessageFor(m => Model.ClubId)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => Model.Utilisateur.InfosPersonnelles.Nom)</td>
+                    <td>@Html.TextBoxFor(m => Model.Utilisateur.InfosPersonnelles.Nom, new { placeholder = "nom" })</td>
+                    <td>@Html.ValidationMessageFor(m => Model.Utilisateur.InfosPersonnelles.Nom)</td>
+                </tr>  
+                <tr>
+                    <td>@Html.LabelFor(m => Model.Utilisateur.InfosPersonnelles.Prenom)</td>
+                    <td>@Html.TextBoxFor(m => Model.Utilisateur.InfosPersonnelles.Prenom, new { placeholder = "prénom" })</td>
+                    <td>@Html.ValidationMessageFor(m => Model.Utilisateur.InfosPersonnelles.Prenom)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => Model.Utilisateur.InfosPersonnelles.DateNaissance)</td>
+                    <td>@Html.TextBoxFor(m => Model.Utilisateur.InfosPersonnelles.DateNaissance, new { type = "Date" })</td>
+                    <td>@Html.ValidationMessageFor(m => Model.Utilisateur.InfosPersonnelles.DateNaissance)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => Model.Utilisateur.InfosPersonnelles.Adresse)</td>
+                    <td>@Html.TextBoxFor(m => Model.Utilisateur.InfosPersonnelles.Adresse.NumeroRue, new { placeholder = "n°" })</td>
+                    <td>@Html.ValidationMessageFor(m => Model.Utilisateur.InfosPersonnelles.Adresse.NumeroRue)</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>@Html.TextBoxFor(m => Model.Utilisateur.InfosPersonnelles.Adresse.NomRue, new { placeholder = "rue" })</td>
+                    <td>@Html.ValidationMessageFor(m => Model.Utilisateur.InfosPersonnelles.Adresse.NomRue)</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>@Html.TextBoxFor(m => Model.Utilisateur.InfosPersonnelles.Adresse.CodePostal, new { placeholder = "code postal" })</td>
+                    <td>@Html.ValidationMessageFor(m => Model.Utilisateur.InfosPersonnelles.Adresse.CodePostal)</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>@Html.TextBoxFor(m => Model.Utilisateur.InfosPersonnelles.Adresse.NomVille, new { placeholder = "Ville" })</td>
+                    <td>@Html.ValidationMessageFor(m => Model.Utilisateur.InfosPersonnelles.Adresse.NomVille)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => Model.Utilisateur.Compte.AdressEmail)</td>
+                    <td>@Html.TextBoxFor(m => Model.Utilisateur.Compte.AdressEmail, new { type = "email", placeholder = "mail" })</td>
+                    <td>@Html.ValidationMessageFor(m => Model.Utilisateur.Compte.AdressEmail)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => Model.Utilisateur.Compte.MotDePasse)</td>
+                    <td>@Html.TextBoxFor(m => Model.Utilisateur.Compte.MotDePasse, new { type = "password" })</td>
+                    <td>@Html.ValidationMessageFor(m => Model.Utilisateur.Compte.MotDePasse)</td>
+                </tr>
+
+            </tbody>
+        </table>
+        <br />
+        <br />
+
+        <input type="button" onclick="window.location.href='https://localhost:5001/Home/Activites';" value="Liste des activites" />
+        <input type="image" src="~/Images/btnValider.png" alt="Valider" width="43" height="38" />
+    </fieldset>
+}
+@*vérification du type de données dans le front*@
+<script type="text/javascript" src="~/Scripts/jquery-3.3.1.js"></script>
+<script type="text/javascript" src="~/Scripts/jquery.validate-vsdoc.js"></script>
+<script type="text/javascript" src="~/Scripts/jquery.validate.unobtrusive.js"></script>

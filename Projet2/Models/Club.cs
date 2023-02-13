@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Projet2.Models
 {
@@ -13,6 +15,9 @@ namespace Projet2.Models
 
         public int? CompteId { get; set; }
         public Compte Compte { get; set; }
+
+        [NotMapped]
+        public string Name { get; set; }
 
         //public int? AdherentId { get; set; }
         //public Adherent Adherent { get; set; }

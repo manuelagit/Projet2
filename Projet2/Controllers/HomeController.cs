@@ -803,6 +803,14 @@ namespace Projet2.Controllers
 
         public IActionResult CreateAdherent()
         {
+            Dal dal = new Dal();
+            
+            List<Club> clubs= dal.GetClubsList();
+            foreach (Club club in clubs)
+            {
+                club.Name = club.InfosClub.NomClub; 
+            }
+            ViewBag.Clubs = clubs;
             return View();
         }
 
@@ -811,21 +819,26 @@ namespace Projet2.Controllers
         public IActionResult CreateAdherent(Adherent adherent)
         {
             Dal dal = new Dal();
-            adherent.ClubId = dal.CreateClub(adherent.Club);
+            adherent.Utilisateur.InfosPersonnellesId = dal.CreateInfosPersonnelles(adherent.Utilisateur.InfosPersonnelles);
+            adherent.Utilisateur.CompteId = dal.CreateCompte(adherent.Utilisateur.Compte);
+            Utilisateur utilisateur = new Utilisateur { CompteId = adherent.Utilisateur.CompteId, InfosPersonnellesId = adherent.Utilisateur.InfosPersonnellesId };
+            Club club = dal.GetClubsList().Where(r => r.Id == adherent.ClubId).FirstOrDefault();
 
+            Adherent newAdherent = new Adherent { Club = club, Utilisateur = utilisateur };
+
+
+
+            //ListeUtilisateurs.CreateUser(idCount, utilisateur.Compte, utilisateur.InfosPersonnelles);
+            dal.CreateAdherent(newAdherent);
+            return View("PaymentViewUser");
+        }
 
             //ListeUtilisateurs.CreateUser(idCount, utilisateur.Compte, utilisateur.InfosPersonnelles);
             dal.CreateAdherent(adherent);
             return RedirectToAction("Activites");
         }
 
-
-
-
-    }
-
-
-    
+    }    
 
 }
 
