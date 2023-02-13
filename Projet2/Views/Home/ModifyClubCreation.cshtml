@@ -1,4 +1,4 @@
-﻿@model Projet2.ViewModels.CreateClubViewModel
+﻿@model Projet2.Models.Club
 @{
     ViewBag.Title = "ModifyClubCreation";
     Layout = "_Layout";
@@ -7,46 +7,49 @@
     @using (Html.BeginForm())
         {
         <fieldset>
-            @Html.HiddenFor(m => Model.Club)            @*crée des inputs cachés qui contiennent les valeurs pour ne pas perdre les données*@
+            @Html.HiddenFor(m => Model.CompteId)            @*crée des inputs cachés qui contiennent les valeurs pour ne pas perdre les données*@
+            @Html.HiddenFor(m => Model.Compte.Id)           @*clé primaire dans la table Compte*@
+            @Html.HiddenFor(m => Model.InfosClubId)
+            @Html.HiddenFor(m => Model.InfosClub.Id)
 
             <legend><h4>Créez votre compte club</h4></legend>
             <table>
                 <tbody>
                     <tr>
-                        <td>@Html.LabelFor(m => Model.Club.InfosClub.NomClub)</td>
-                        <td>@Html.TextBoxFor(m => Model.Club.InfosClub.NomClub, new { placeholder = "nom du club" })</td>
-                        <td>@Html.ValidationMessageFor(m => Model.Club.InfosClub.NomClub)</td>
+                        <td>@Html.LabelFor(m => Model.InfosClub.NomClub)</td>
+                        <td>@Html.TextBoxFor(m => Model.InfosClub.NomClub, new { placeholder = "nom du club" })</td>
+                        <td>@Html.ValidationMessageFor(m => Model.InfosClub.NomClub)</td>
                     </tr>
 
                     <tr>
-                        <td>@Html.LabelFor(m => Model.Club.InfosClub.Adresse)</td>
-                        <td>@Html.TextBoxFor(m => Model.Club.InfosClub.Adresse.NumeroRue, new { placeholder = "n°" })</td>
-                        <td>@Html.ValidationMessageFor(m => Model.Club.InfosClub.Adresse.NumeroRue)</td>
+                        <td>@Html.LabelFor(m => Model.InfosClub.Adresse)</td>
+                        <td>@Html.TextBoxFor(m => Model.InfosClub.Adresse.NumeroRue, new { placeholder = "n°" })</td>
+                        <td>@Html.ValidationMessageFor(m => Model.InfosClub.Adresse.NumeroRue)</td>
                     </tr>
                     <tr>
                         <td></td>
-                        <td>@Html.TextBoxFor(m => Model.Club.InfosClub.Adresse.NomRue, new { placeholder = "rue" })</td>
-                        <td>@Html.ValidationMessageFor(m => Model.Club.InfosClub.Adresse.NomRue)</td>
+                        <td>@Html.TextBoxFor(m => Model.InfosClub.Adresse.NomRue, new { placeholder = "rue" })</td>
+                        <td>@Html.ValidationMessageFor(m => Model.InfosClub.Adresse.NomRue)</td>
                     </tr>
                     <tr>
                         <td></td>
-                        <td>@Html.TextBoxFor(m => Model.Club.InfosClub.Adresse.CodePostal, new { placeholder = "code postal" })</td>
-                        <td>@Html.ValidationMessageFor(m => Model.Club.InfosClub.Adresse.CodePostal)</td>
+                        <td>@Html.TextBoxFor(m => Model.InfosClub.Adresse.CodePostal, new { placeholder = "code postal" })</td>
+                        <td>@Html.ValidationMessageFor(m => Model.InfosClub.Adresse.CodePostal)</td>
                     </tr>
                     <tr>
                         <td></td>
-                        <td>@Html.TextBoxFor(m => Model.Club.InfosClub.Adresse.NomVille, new { placeholder = "Ville" })</td>
-                        <td>@Html.ValidationMessageFor(m => Model.Club.InfosClub.Adresse.NomVille)</td>
+                        <td>@Html.TextBoxFor(m => Model.InfosClub.Adresse.NomVille, new { placeholder = "Ville" })</td>
+                        <td>@Html.ValidationMessageFor(m => Model.InfosClub.Adresse.NomVille)</td>
                     </tr>
                     <tr>
-                        <td>@Html.LabelFor(m => Model.Club.Compte.AdressEmail)</td>
-                        <td>@Html.TextBoxFor(m => Model.Club.Compte.AdressEmail, new { type = "email", placeholder = "mail" })</td>
-                        <td>@Html.ValidationMessageFor(m => Model.Club.Compte.AdressEmail)</td>
+                        <td>@Html.LabelFor(m => Model.Compte.AdressEmail)</td>
+                        <td>@Html.TextBoxFor(m => Model.Compte.AdressEmail, new { type = "email", placeholder = "mail" })</td>
+                        <td>@Html.ValidationMessageFor(m => Model.Compte.AdressEmail)</td>
                     </tr>
                     <tr>
-                        <td>@Html.LabelFor(m => Model.Club.Compte.MotDePasse)</td>
-                        <td>@Html.TextBoxFor(m => Model.Club.Compte.MotDePasse, new { type = "password" })</td>
-                        <td>@Html.ValidationMessageFor(m => Model.Club.Compte.MotDePasse)</td>
+                        <td>@Html.LabelFor(m => Model.Compte.MotDePasse)</td>
+                        <td>@Html.TextBoxFor(m => Model.Compte.MotDePasse, new { type = "password" })</td>
+                        <td>@Html.ValidationMessageFor(m => Model.Compte.MotDePasse)</td>
                     </tr>
 
                 </tbody>
@@ -63,15 +66,15 @@
             <table>
                 <tbody>
                     <tr>
-                        <td>@Html.LabelFor(m => Model.Club.InfosClub.titreClub)</td>
-                        <td>@Html.TextBoxFor(m => Model.Club.InfosClub.titreClub, new { placeholder = "Bienvenue sur notre site !" })</td>
-                        <td>@Html.ValidationMessageFor(m => Model.Club.InfosClub.titreClub)</td>
+                        <td>@Html.LabelFor(m => Model.InfosClub.titreClub)</td>
+                        <td>@Html.TextBoxFor(m => Model.InfosClub.titreClub, new { placeholder = "Bienvenue sur notre site !" })</td>
+                        <td>@Html.ValidationMessageFor(m => Model.InfosClub.titreClub)</td>
                     </tr>
 
                     <tr>
-                        <td>@Html.LabelFor(m => Model.Club.InfosClub.DescriptionClub)</td>
-                        <td>@Html.TextAreaFor(m => Model.Club.InfosClub.DescriptionClub, 10, 60, htmlAttributes: new { style = "width: 100%; max-width: 100%;", placeholder = "Annecy Vol Libre est un club situé à 3 km du Lac d'Annecy, offrant de nombreuses possibilités de vols." })</td>
-                        <td>@Html.ValidationMessageFor(m => Model.Club.InfosClub.DescriptionClub)</td>
+                        <td>@Html.LabelFor(m => Model.InfosClub.DescriptionClub)</td>
+                        <td>@Html.TextAreaFor(m => Model.InfosClub.DescriptionClub, 10, 60, htmlAttributes: new { style = "width: 100%; max-width: 100%;", placeholder = "Annecy Vol Libre est un club situé à 3 km du Lac d'Annecy, offrant de nombreuses possibilités de vols." })</td>
+                        <td>@Html.ValidationMessageFor(m => Model.InfosClub.DescriptionClub)</td>
                     </tr>
 
                     <tr>
@@ -84,6 +87,10 @@
 
                 </tbody>
             </table>
+
+
+            <input type="submit" value="Modifier" />
+
         </fieldset>
 
 

@@ -16,7 +16,7 @@ namespace Projet2.Models
         public int? CompteId { get; set; }
         public Compte Compte { get; set; }
 
-        [NotMapped]
+        [NotMapped] // is not added to the db
         public string Name { get; set; }
 
         //public int? AdherentId { get; set; }

@@ -192,7 +192,7 @@ namespace Projet2.Controllers
                     }
                     CreateClubViewModel createClubViewModel = new CreateClubViewModel { Club = club };
 
-                    return View("ModifyClubCreation", createClubViewModel);
+                    return View("ModifyClubCreation", club);
                 }
             }
             return View("Error");
@@ -206,22 +206,34 @@ namespace Projet2.Controllers
         [HttpPost]
         public IActionResult ModifyClubCreation(Club club)
         {
-            if (club.Id != 0)
-            {
-                using (Dal dal = new Dal())
-                {
-                    dal.ModifyClubCreation(club.Id);
-                    CreateClubViewModel createClubViewModel = new CreateClubViewModel { Club = club };
+            Dal dal = new Dal();
+           // Club club = dal.GetClubsList().Where(r => r.Id == createClubViewModel.Club.Id).FirstOrDefault();
 
-                    return View("EspaceClubLogged", createClubViewModel);
-                }
-            }
-            else
-            {
-                return View("Error");
-            }
+            dal.ModifyClubCreation(club);
+            CreateClubViewModel createClubViewModel = new CreateClubViewModel { Club = club };
+
+            return View("EspaceClubLogged", createClubViewModel);
         }
 
+        //// sends the modified data
+        //[HttpPost]
+        //public IActionResult ModifyClubCreation(CreateClubViewModel createClubViewModel)
+        //{
+        //    if (club.Id != 0)
+        //    {
+        //        using (Dal dal = new Dal())
+        //        {
+        //            dal.ModifyClubCreation(club.Id);
+        //            CreateClubViewModel createClubViewModel = new CreateClubViewModel { Club = club };
+
+        //            return View("EspaceClubLogged", createClubViewModel);
+        //        }
+        //    }
+        //    else
+        //    {
+        //        return View("Error");
+        //    }
+        //}
 
         //[HttpPost]
         //public IActionResult ModifyClubCreation(Club club)
@@ -263,26 +275,71 @@ namespace Projet2.Controllers
         }
 
 
-        public IActionResult CreateUser4Club()
+        public IActionResult CreateUser4Club(int id)
         {
-            return View();
+            if (id != 0)
+            {
+                using (Dal dal = new Dal())
+                {
+                    Club club = dal.GetClubsList().Where(r => r.Id == id).FirstOrDefault();
+
+                    if (club == null)
+                    {
+                        return View("Error");
+                    }
+                    CreateClubViewModel createClubViewModel = new CreateClubViewModel { Club = club};
+                    return View("CreateUser4Club", createClubViewModel);
+                }
+            }
+            return View("Error");
         }
 
         // sending the data
         [HttpPost]
-        public IActionResult CreateUser4Club(Utilisateur utilisateur, Club club)
+        public IActionResult CreateUser4Club(CreateClubViewModel createClubViewModel)
         {
             Dal dal = new Dal();
-            utilisateur.InfosPersonnellesId = dal.CreateInfosPersonnelles(utilisateur.InfosPersonnelles);
-            utilisateur.CompteId = dal.CreateCompte(utilisateur.Compte);
+            int UserId = dal.CreateUser(createClubViewModel.Utilisateur);
 
-            //ListeUtilisateurs.CreateUser(idCount, utilisateur.Compte, utilisateur.InfosPersonnelles);
-            dal.CreateUser(utilisateur);
-            CreateClubViewModel createClubViewModel = new CreateClubViewModel { Club = club};
+            Adherent newAdherent = new Adherent { ClubId = createClubViewModel.Club.Id, UtilisateurId = UserId };
+            dal.CreateAdherent(newAdherent);
 
             return View("EspaceClubLogged", createClubViewModel);
         }
-        
+
+        //sending the data
+        [HttpPost]
+        public IActionResult CreateAdherent(Adherent adherent)
+        {
+            Dal dal = new Dal();
+            adherent.Utilisateur.InfosPersonnellesId = dal.CreateInfosPersonnelles(adherent.Utilisateur.InfosPersonnelles);
+            adherent.Utilisateur.CompteId = dal.CreateCompte(adherent.Utilisateur.Compte);
+            Utilisateur utilisateur = new Utilisateur { CompteId = adherent.Utilisateur.CompteId, InfosPersonnellesId = adherent.Utilisateur.InfosPersonnellesId };
+            Club club = dal.GetClubsList().Where(r => r.Id == adherent.ClubId).FirstOrDefault();
+
+            Adherent newAdherent = new Adherent { Club = club, Utilisateur = utilisateur };
+
+            //ListeUtilisateurs.CreateUser(idCount, utilisateur.Compte, utilisateur.InfosPersonnelles);
+            dal.CreateAdherent(newAdherent);
+            return View("PaymentViewUser");
+        }
+
+
+
+
+        public IActionResult CreateAdherent()
+        {
+            Dal dal = new Dal();
+
+            List<Club> clubs = dal.GetClubsList();
+            foreach (Club club in clubs)
+            {
+                club.Name = club.InfosClub.NomClub;
+            }
+            ViewBag.Clubs = clubs;
+            return View();
+        }
+
 
 
         // Creation of a club
@@ -801,37 +858,7 @@ namespace Projet2.Controllers
 
         //return RedirectToAction("EspaceClubLogged");
 
-        public IActionResult CreateAdherent()
-        {
-            Dal dal = new Dal();
-            
-            List<Club> clubs= dal.GetClubsList();
-            foreach (Club club in clubs)
-            {
-                club.Name = club.InfosClub.NomClub; 
-            }
-            ViewBag.Clubs = clubs;
-            return View();
-        }
 
-        //sending the data
-       [HttpPost]
-        public IActionResult CreateAdherent(Adherent adherent)
-        {
-            Dal dal = new Dal();
-            adherent.Utilisateur.InfosPersonnellesId = dal.CreateInfosPersonnelles(adherent.Utilisateur.InfosPersonnelles);
-            adherent.Utilisateur.CompteId = dal.CreateCompte(adherent.Utilisateur.Compte);
-            Utilisateur utilisateur = new Utilisateur { CompteId = adherent.Utilisateur.CompteId, InfosPersonnellesId = adherent.Utilisateur.InfosPersonnellesId };
-            Club club = dal.GetClubsList().Where(r => r.Id == adherent.ClubId).FirstOrDefault();
-
-            Adherent newAdherent = new Adherent { Club = club, Utilisateur = utilisateur };
-
-
-
-            //ListeUtilisateurs.CreateUser(idCount, utilisateur.Compte, utilisateur.InfosPersonnelles);
-            dal.CreateAdherent(newAdherent);
-            return View("PaymentViewUser");
-        }
 
 
 
