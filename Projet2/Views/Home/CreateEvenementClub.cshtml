@@ -1,22 +1,30 @@
-﻿@model Projet2.Models.Activite
+﻿@model Projet2.ViewModels.ActiviteViewModel
 @{
     ViewBag.Title = "CreateEvenementClub";
     Layout = "_Layout";
 }
-@using (Html.BeginForm("AddEvenementClub", "EvenementClub", FormMethod.Post))
-{
+@*@using (Html.BeginForm("EspaceClubLogged", "Home", FormMethod.Post))
+{*@
+    @using (Html.BeginForm())
+    {
 
-    <fieldset>
+        <fieldset>
 
-        <legend><h4>Création d'un evenement</h4></legend>
-        <table>
-            <tbody>
-                <tr>
-                    <td>@Html.LabelFor(m => Model.NomActivite, "Nom")</td>
-                    <td>@Html.TextBoxFor(m => Model.NomActivite, new { placeholder = "Nom" })</td>
-                    <td>@Html.ValidationMessageFor(m => Model.NomActivite)</td>
-                </tr>
-                @*<tr>
+            @Html.HiddenFor(m => Model.Club.CompteId)            @*crée des inputs cachés qui contiennent les valeurs pour ne pas perdre les données*@
+            @Html.HiddenFor(m => Model.Club.Compte.Id)           @*clé primaire dans la table Compte*@
+            @Html.HiddenFor(m => Model.Club.InfosClubId)
+            @Html.HiddenFor(m => Model.Club.InfosClub.Id)
+
+
+            <legend><h4>Création d'une activité club</h4></legend>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>@Html.LabelFor(m => Model.Activite.NomActivite, "Nom")</td>
+                        <td>@Html.TextBoxFor(m => Model.Activite.NomActivite, new { placeholder = "Nom" })</td>
+                        <td>@Html.ValidationMessageFor(m => Model.Activite.NomActivite)</td>
+                    </tr>
+                    @*<tr>
                     <td>@Html.LabelFor(m => Model.DateDebutActivite, "Date debut")</td>
                     <td>@Html.TextBoxFor(m => Model.DateDebutActivite, new { placeholder = "Date debut" })</td>
                     <td>@Html.ValidationMessageFor(m => Model.DateDebutActivite)</td>
@@ -26,84 +34,82 @@
                     <td>@Html.TextBoxFor(m => Model.DateFinActivite, new { placeholder = "Date fin" })</td>
                     <td>@Html.ValidationMessageFor(m => Model.DateFinActivite)</td>
                 </tr>*@
-                <tr>
-                    <td>
-                         Date de l'évenement
-                    </td>
-                    <td>
-                        <input type="text" name="datefilter" value="" />
-                    </td>
-                </tr>
-                <tr>
-                    <td>@Html.LabelFor(m => Model.DescriptionActivite, "Description")</td>
-                    <td>@Html.TextBoxFor(m => Model.DescriptionActivite, new { placeholder = "Description" })</td>
-                    <td>@Html.ValidationMessageFor(m => Model.DescriptionActivite)</td>
-                </tr>
-                <tr>
-                    <td>@Html.LabelFor(m => Model.LieuActivite, "Lieu")</td>
-                    <td>@Html.TextBoxFor(m => Model.LieuActivite, new { placeholder = "Lieu" })</td>
-                    <td>@Html.ValidationMessageFor(m => Model.LieuActivite)</td>
-                </tr>
-                <tr>
-                    <td>@Html.LabelFor(m => Model.NombrePlaceActivite, "Nombre de place")</td>
-                    <td>@Html.TextBoxFor(m => Model.NombrePlaceActivite, new { placeholder = "Nombre de place" })</td>
-                    <td>@Html.ValidationMessageFor(m => Model.NombrePlaceActivite)</td>
-                </tr>
-                <tr>
-                    <td>@Html.LabelFor(m => Model.EvenementClub.Prix, "Prix")</td>
-                    <td>@Html.TextBoxFor(m => Model.EvenementClub.Prix, new { placeholder = "Prix" })</td>
-                    <td>@Html.ValidationMessageFor(m => Model.EvenementClub.Prix)</td>
-                </tr>
-                <tr>
-                    <td>@Html.LabelFor(m => Model.EvenementClub.NiveauRequis, "Niveau requis")</td>
-                    <td>@Html.TextBoxFor(m => Model.EvenementClub.NiveauRequis, new { placeholder = "Niveau requis" })</td>
-                    <td>@Html.ValidationMessageFor(m => Model.EvenementClub.NiveauRequis)</td>
-                </tr>
-            </tbody>
-        </table>
-        <br />
-        <br />
+                    <tr>
+                        <td>
+                            Date de l'évenement
+                        </td>
+                        <td>
+                            <input type="text" name="datefilter" value="" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(m => Model.Activite.DescriptionActivite, "Description")</td>
+                        <td>@Html.TextBoxFor(m => Model.Activite.DescriptionActivite, new { placeholder = "Description" })</td>
+                        <td>@Html.ValidationMessageFor(m => Model.Activite.DescriptionActivite)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(m => Model.Activite.LieuActivite, "Lieu")</td>
+                        <td>@Html.TextBoxFor(m => Model.Activite.LieuActivite, new { placeholder = "Lieu" })</td>
+                        <td>@Html.ValidationMessageFor(m => Model.Activite.LieuActivite)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(m => Model.Activite.NombrePlaceActivite, "Nombre de place")</td>
+                        <td>@Html.TextBoxFor(m => Model.Activite.NombrePlaceActivite, new { placeholder = "Nombre de place" })</td>
+                        <td>@Html.ValidationMessageFor(m => Model.Activite.NombrePlaceActivite)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(m => Model.EvenementClub.Prix, "Prix")</td>
+                        <td>@Html.TextBoxFor(m => Model.EvenementClub.Prix, new { placeholder = "Prix" })</td>
+                        <td>@Html.ValidationMessageFor(m => Model.EvenementClub.Prix)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(m => Model.EvenementClub.NiveauRequis, "Niveau requis")</td>
+                        <td>@Html.TextBoxFor(m => Model.EvenementClub.NiveauRequis, new { placeholder = "Niveau requis" })</td>
+                        <td>@Html.ValidationMessageFor(m => Model.EvenementClub.NiveauRequis)</td>
+                    </tr>
+                </tbody>
+            </table>
+            <br />
+            <br />
 
-        <input type="button" onclick="window.location.href='https://localhost:5001/Home/UserList';" value="Retour Liste des clubs" />
-        
-        <input type="submit" value="AddEvenementClub">
+            <input type="button" onclick="window.location.href='https://localhost:5001/Home/UserList';" value="Retour Liste des clubs" />
 
-    </fieldset>
-        
+            <input type="submit" value="Ajouter cette activité club">
 
-}
-@*vérification du type de données dans le front*@
-@*<script type="text/javascript" src="~/Scripts/jquery-3.3.1.js"></script>
-<script type="text/javascript" src="~/Scripts/jquery.validate-vsdoc.js"></script>
-<script type="text/javascript" src="~/Scripts/jquery.validate.unobtrusive.js"></script>*@
-@section extracss{
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
-}
-@section extrajs{
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-    <script type="text/javascript">
-        $(function () {
+        </fieldset>
 
-            $('input[name="datefilter"]').daterangepicker({
-                autoUpdateInput: false,
-                locale: {
-                    cancelLabel: 'Clear'
-                }
-            });
 
-            $('input[name="datefilter"]').on('apply.daterangepicker', function (ev, picker) {
-                $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
-            });
+    }
+    @*vérification du type de données dans le front*@
+    @*<script type="text/javascript" src="~/Scripts/jquery-3.3.1.js"></script>
+        <script type="text/javascript" src="~/Scripts/jquery.validate-vsdoc.js"></script>
+        <script type="text/javascript" src="~/Scripts/jquery.validate.unobtrusive.js"></script>*@
+    @section extracss{
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+    }
+    @section extrajs{
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+        <script type="text/javascript">$(function () {
 
-            $('input[name="datefilter"]').on('cancel.daterangepicker', function (ev, picker) {
-                $(this).val('');
-            });
+                $('input[name="datefilter"]').daterangepicker({
+                    autoUpdateInput: false,
+                    locale: {
+                        cancelLabel: 'Clear'
+                    }
+                });
 
-            console.log(picker.startDate.format('YYYY-MM-DD'));
-            console.log(picker.endDate.format('YYYY-MM-DD'));
+                $('input[name="datefilter"]').on('apply.daterangepicker', function (ev, picker) {
+                    $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
+                });
 
-        });
-    </script>
-}
+                $('input[name="datefilter"]').on('cancel.daterangepicker', function (ev, picker) {
+                    $(this).val('');
+                });
+
+                console.log(picker.startDate.format('YYYY-MM-DD'));
+                console.log(picker.endDate.format('YYYY-MM-DD'));
+
+            });</script>
+    }

@@ -326,6 +326,21 @@ namespace Projet2.Controllers
             return View("EspaceClubLogged", createClubViewModel);
         }
 
+
+        public IActionResult CreateAdherent()
+        {
+            Dal dal = new Dal();
+
+            List<Club> clubs = dal.GetClubsList();
+            foreach (Club club in clubs)
+            {
+                club.Name = club.InfosClub.NomClub;
+            }
+            ViewBag.Clubs = clubs;
+            return View();
+        }
+
+
         //sending the data
         [HttpPost]
         public IActionResult CreateAdherent(Adherent adherent)
@@ -350,18 +365,7 @@ namespace Projet2.Controllers
 
 
 
-        public IActionResult CreateAdherent()
-        {
-            Dal dal = new Dal();
 
-            List<Club> clubs = dal.GetClubsList();
-            foreach (Club club in clubs)
-            {
-                club.Name = club.InfosClub.NomClub;
-            }
-            ViewBag.Clubs = clubs;
-            return View();
-        }
 
 
 
@@ -431,7 +435,7 @@ namespace Projet2.Controllers
 
 
 
-
+        
         public IActionResult EspaceAdmin(string nomAdmin)
         {
             return View();
@@ -809,10 +813,44 @@ namespace Projet2.Controllers
         }
 
 
-        public IActionResult CreateEvenementClub()
+        public IActionResult CreateEvenementClub(int id)
         {
-            return View("CreateEvenementClub");
+            if (id != 0)
+            {
+                using (Dal dal = new Dal())
+                {
+                    Club club = dal.GetClubsList().Where(r => r.Id == id).FirstOrDefault();
+
+                    if (club == null)
+                    {
+                        return View("Error");
+                    }
+                    ActiviteViewModel activiteViewModel = new ActiviteViewModel { Club = club };
+                    return View("CreateEvenementClub", activiteViewModel);
+                }
+            }
+            return View("Error");
         }
+
+        [HttpPost]
+        public IActionResult CreateEvenementClub(ActiviteViewModel activiteViewModel)
+        {
+            Dal dal = new Dal();
+
+
+            EvenementClub evenementClub = new EvenementClub { NiveauRequis = activiteViewModel.EvenementClub.NiveauRequis, Prix = activiteViewModel.EvenementClub.Prix};
+            int clubId = activiteViewModel.Club.InfosClub.Id;
+            Club club = dal.GetClubsList().Where(r => r.Id == clubId).FirstOrDefault();
+
+
+            dal.CreateEvenementClub(evenementClub);
+            Activite activite = new Activite { EvenementClub = evenementClub };
+            dal.CreateActivite(activite);
+            CreateClubViewModel createClubViewModel = new CreateClubViewModel { Club = club };
+
+            return View("EspaceClubLogged", createClubViewModel);
+        }
+
 
         public IActionResult CreateSortieAdherent()
         {
