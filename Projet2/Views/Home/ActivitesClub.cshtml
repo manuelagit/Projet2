@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "ActiviteViewModel";
     Layout = "_Layout";
+
     }
 
     @using (Html.BeginForm())
@@ -11,8 +12,10 @@
 
             <h3>Événements Club</h3>
 
+              <table class="tableau-style" id="Voyage">
+              <thead>
 
-                <table id="Voyage" onkeyup="myFunction()" border="1" style="margin: 20px">
+                @*<table id="Voyage" onkeyup="myFunction()" border="1" style="margin: 20px">*@
                     <tr>
                         @*<th>Id</th>*@
                         @*<th>Type Activite</th>*@
@@ -51,7 +54,10 @@
 
 
              <h3>Sorties membres</h3>
-                <table id="SortieAdherent" onkeyup="myFunction()" border="1" style="margin: 20px">
+
+            <table class="tableau-style" id="SortieAdherent">
+                <!--<table id="SortieAdherent" onkeyup="myFunction()" border="1" style="margin: 20px">-->
+                    <thead>
                     <tr>
                         @*<th>Id</th>*@
                         @*<th>Type Activite</th>*@
@@ -106,16 +112,11 @@
                         ischecked = true
                     }
                 }
-                if (ischecked) {
-                var inputbtn = document.getElementById("inscrirebutton")
-                    inputbtn.style.display = "block"
-                }
-            }
-        var radioButtons = document.querySelectorAll('input[name="Activite"]')
-            for (let btn of radioButtons) {
-                btn.addEventListener("click", function () {
-                    updatebtn()
-                })
-            }</script>
-    }
+                var radioButtons = document.querySelectorAll('input[name="Activite"]')
+                for (let btn of radioButtons) {
+                    btn.addEventListener("click", function () {
+                        updatebtn()
+                    })
+                }</script>
+        }
 
