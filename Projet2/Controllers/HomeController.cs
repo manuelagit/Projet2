@@ -512,10 +512,7 @@ namespace Projet2.Controllers
             return View();
         }
 
-        public IActionResult PageEvents()
-        {
-            return View();
-        }
+
 
         public IActionResult ClubList4Admin(string nomAdmin)
         {
@@ -787,14 +784,14 @@ namespace Projet2.Controllers
                 }
 
 
-                List<Activite> activites = dal.GetActivityList();
-                List<EvenementClub> evenementClubs = dal.GetEvenementClubList();
-                List<SortieAdherent> sortieAdherents = dal.GetSortieAdherentList();
+                List<Activite> activites = dal.GetActivityList().Where(r => r.ClubId == Id).ToList();
+               //EvenementClub evenementClubs = dal.GetEvenementClubList().Where(r => r.Club.Id == Id).FirstOrDefault();
+                //SortieAdherent sortieAdherents = dal.GetSortieAdherentList().Where(r => r.Club.Id == Id).FirstOrDefault();
 
                 ActiviteViewModel activiteViewModel = new ActiviteViewModel
                 {
-                    EvenementClubs = evenementClubs,
-                    SortieAdherents = sortieAdherents,
+                    //EvenementClubs = evenementClubs,
+                    //SortieAdherents = sortieAdherents,
                     Activites = activites,
                     Club = club,
 
@@ -845,6 +842,7 @@ namespace Projet2.Controllers
 
             dal.CreateEvenementClub(evenementClub);
             Activite activite = new Activite { EvenementClub = evenementClub };
+
             dal.CreateActivite(activite);
             CreateClubViewModel createClubViewModel = new CreateClubViewModel { Club = club };
 

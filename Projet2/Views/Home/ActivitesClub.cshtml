@@ -9,7 +9,7 @@
     {
         <h1>Liste des activités proposées par le club</h1><br /> 
 
-            <h3>Evenements Club</h3>
+            <h3>Événements Club</h3>
 
            
                 <table id="Voyage" onkeyup="myFunction()" border="1" style="margin: 20px">
@@ -27,24 +27,25 @@
                         <th>Selection</th>
                     </tr>
                     <tbody>
-                       @foreach (var member in Model.Activites.Where(i => i.EvenementClubId == null && i.ClubId == Model.Club.Id))
 
-                           {
-                            <tr>
-                                <td>@member.Id</td>
-                                <td>@member.TypeActivite</td>
-                                <td>@member.NomActivite</td>
-                                <td>@member.DateDebutActivite</td>
-                                <td>@member.DateFinActivite</td>
-                                <td>@member.DescriptionActivite</td>
-                                <td>@member.LieuActivite</td>
-                                <td>@member.NombrePlaceActivite</td>
-                                <td>@member.EvenementClub.NiveauRequis</td>
-                                <td>@member.EvenementClub.Prix €</td>
-                                <td><input name="Activite" value="news" type="radio" /></td>
-                            </tr>
+                            @foreach (var member in Model.Activites.Where(i => i.SortieAdherentId == null))
 
-                        }
+                            {
+                                <tr>
+                                    <td>@member.Id</td>
+                                    <td>@member.TypeActivite</td>
+                                    <td>@member.NomActivite</td>
+                                    <td>@member.DateDebutActivite</td>
+                                    <td>@member.DateFinActivite</td>
+                                    <td>@member.DescriptionActivite</td>
+                                    <td>@member.LieuActivite</td>
+                                    <td>@member.NombrePlaceActivite</td>
+                                    <td>@member.EvenementClub.NiveauRequis</td>
+                                    <td>@member.EvenementClub.Prix €</td>
+                                    <td><input name="Activite" value="news" type="radio" /></td>
+                                </tr>
+
+                            }
                     </tbody>
                 </table><br />
 
@@ -65,7 +66,7 @@
                         <th>Selection</th>
                     </tr>
                     <tbody>
-                        @foreach (var member in Model.Activites.Where(r => r.EvenementClubId == null && r.ClubId == Model.Club.Id))
+                        @foreach (var member in Model.Activites.Where(r => r.EvenementClubId == null))
 
                             {
                                 <tr>
