@@ -761,12 +761,14 @@ namespace Projet2.Controllers
             List<Activite> activites = dal.GetActivityList();
             List<EvenementClub> evenementClubs = dal.GetEvenementClubList();
             List<SortieAdherent> sortieAdherents = dal.GetSortieAdherentList();
+            List<Club> clubs = dal.GetClubsList();
 
             ActiviteViewModel viewModel = new ActiviteViewModel
             {
                 EvenementClubs = evenementClubs,
                 SortieAdherents = sortieAdherents,
                 Activites = activites,
+                Clubs = clubs,
             };
 
             return View(viewModel);

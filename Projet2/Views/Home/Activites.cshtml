@@ -11,25 +11,26 @@
     @using (Html.BeginForm())
     {
         <center>
-            <h1>Liste des activités proposées par le club</h1><br />
+            <h1>Liste des activités proposées par l'ensemble des clubs</h1><br />
 
-            <h3>Evenements Club</h3>
+            <h3>Événements Club</h3>
         </center>
         <table class="tableau-style" id="Voyage">
             <thead>
 
                 <tr>
-                    <th>Id</th>
-                    <th>Type Activite</th>
-                    <th>Nom Activite</th>
-                    <th>Date debut</th>
-                    <th>Date fin</th>
+                    @*<th>Id</th>*@
+                    @*<th>Type Activite</th>*@
+                    <th>Activité</th>
+                    <th>Club</th>
+                    <th>Date de début</th>
+                    <th>Date de fin</th>
                     <th>Description</th>
                     <th>Lieu</th>
-                    <th>Nombre de Place</th>
-                    <th>Niveau Requis</th>
+                    <th>Places</th>
+                    <th>Niveau</th>
                     <th>Prix</th>
-                    <th>Selection</th>
+                    <th>Séléction</th>
                 </tr>
             </thead>
             <tbody>
@@ -38,11 +39,12 @@
 
                 {
                     <tr>
-                        <td>@member.Id</td>
-                        <td>@member.TypeActivite</td>
+                        @*<td>@member.Id</td>*@
+                        @*<td>@member.TypeActivite</td>*@
                         <td>@member.NomActivite</td>
-                        <td>@member.DateDebutActivite</td>
-                        <td>@member.DateFinActivite</td>
+                        <td>@member.Club.InfosClub.NomClub</td>
+                        <td>@member.DateDebutActivite.ToString("dd/MM/yyyy")</td>
+                        <td>@member.DateFinActivite.ToString("dd/MM/yyyy")</td>
                         <td>@member.DescriptionActivite</td>
                         <td>@member.LieuActivite</td>
                         <td>@member.NombrePlaceActivite</td>
@@ -56,23 +58,24 @@
         <br />
 
         <center>
-            <h3>Sorties</h3>
+            <h3>Sorties membres</h3>
         </center>
         <table class="tableau-style" id="SortieAdherent">
 
             <thead>
                 <tr>
-                    <th>Id</th>
-                    <th>Type Activite</th>
-                    <th>Nom Activite</th>
-                    <th>Date debut</th>
-                    <th>Date fin</th>
+                    @*<th>Id</th>*@
+                    @*<th>Type Activite</th>*@
+                    <th>Activité</th>
+                    <th>Club</th>
+                    <th>Date de début</th>
+                    <th>Date de fin</th>
                     <th>Description</th>
                     <th>Lieu</th>
-                    <th>Nombre de Place</th>
-                    <th>Nom leader</th>
-                    <th>Telephone</th>
-                    <th>Selection</th>
+                    <th>Places</th>
+                    <th>Encadrant</th>
+                    <th>Téléphone</th>
+                    <th>Séléction</th>
                 </tr>
             </thead>
                 <tbody>
@@ -80,11 +83,12 @@
 
                     {
                         <tr>
-                            <td>@member.Id</td>
-                            <td>@member.TypeActivite</td>
+                            @*<td>@member.Id</td>*@
+                            @*<td>@member.TypeActivite</td>*@
                             <td>@member.NomActivite</td>
-                            <td>@member.DateDebutActivite</td>
-                            <td>@member.DateFinActivite</td>
+                            <td>@member.Club.InfosClub.NomClub</td>
+                            <td>@member.DateDebutActivite.ToString("dd/MM/yyyy")</td>
+                            <td>@member.DateFinActivite.ToString("dd/MM/yyyy")</td>
                             <td>@member.DescriptionActivite</td>
                             <td>@member.LieuActivite</td>
                             <td>@member.NombrePlaceActivite</td>
