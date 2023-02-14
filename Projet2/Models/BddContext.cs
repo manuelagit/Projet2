@@ -23,23 +23,13 @@ namespace Projet2.Models
 
         public DbSet<SortieAdherent> SortieAdherents { get; set; }
 
+        public DbSet<Admin> Admins { get; set; }
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+            optionsBuilder.UseMySql("server=localhost;user id=root;password=rrrrr;database=BDDprojet2");
 
-            if (System.Diagnostics.Debugger.IsAttached)
-            {
-                optionsBuilder.UseMySql("server=localhost;user id=root;password=rrrrrrrr;database=BDDprojet2");
-            }
-            else
-            {
-                IConfiguration configuration = new ConfigurationBuilder()
-                .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
-                .AddJsonFile("appsettings.json")
-                .Build();
-                optionsBuilder.UseMySql(configuration.GetConnectionString("DefaultConnection"));
-            }
         }
 
         public void InitialiseDb()
@@ -47,7 +37,7 @@ namespace Projet2.Models
             this.Database.EnsureDeleted();
             this.Database.EnsureCreated();
             Adresse adresse = new Adresse() { Id = 1, CodePostal = 75014, NomVille = "Paris", NomRue = "pigeon", NumeroRue = 48 };
-            InfosPersonnelles infosperso = new InfosPersonnelles() { Id = 1, Nom = "Paubel", Prenom = "Paul", DateNaissance = new DateTime(2008, 3, 15), AdresseId = 1 };
+            InfosPersonnelles infosperso = new InfosPersonnelles() { Id = 1, Nom = "Paubel", Prenom = "Paul", DateNaissance = new DateTime(1993, 3, 15), AdresseId = 1 };
             Compte compte = new Compte() { Id = 1, AdressEmail = "papa@gmail.com", MotDePasse = "123" };
             Utilisateur utilisateur = new Utilisateur() { Id = 1, InfosPersonnellesId = 1, CompteId = 1 };
 
@@ -88,7 +78,7 @@ namespace Projet2.Models
             Activite activite3 = new Activite() { Id = 3, SortieAdherentId = 1, NomActivite = "Voyage découverte vin", DateDebutActivite = new DateTime(2023 / 03 / 18), DateFinActivite = new DateTime(2023 / 03 / 18), DescriptionActivite = "Decouverte vin Alexandre", LieuActivite = "Bordeaux", NombrePlaceActivite = 5, TypeActivite = "SortieAdherent", ClubId = 3, SortieAdherent = sortieAdherent1 };
 
             Adherent adherent1 = new Adherent() { Id = 1, ClubId = 3, UtilisateurId=1 };
-            
+            Admin admin1 = new Admin() { Id = 1, UtilisateurId = 1, IsAdmin=true};
 
             this.Adresses.Add(adresse);
             this.InfosPersonnelles.Add(infosperso);
@@ -116,6 +106,7 @@ namespace Projet2.Models
             this.Facturations.Add(facturation);
             this.Paiements.Add(paiement);
 
+            this.Admins.Add(admin1);
             this.SaveChanges();
         }
 
