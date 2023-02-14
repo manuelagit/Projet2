@@ -304,7 +304,7 @@ h4 .soustitre {
     content: url("/Images/decollage1.png");
 }
 
-
+/*page visible club*/
 .logo {
     border: 2px solid black;
     border-radius: 30px;
@@ -331,7 +331,7 @@ div .pageVisible {
 }
 
 tr .contactPageVisible {
-    background-color: lightcoral;
+    background-color: red;
     padding: 20px;
     margin-block: 20px;
     text-align: center;
@@ -462,6 +462,7 @@ updatebtn {
 
 .loginOffre {
     width: 500px;
+    margin: 30px;
 }
 
     .loginOffre p {

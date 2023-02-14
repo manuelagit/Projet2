@@ -3,43 +3,26 @@
     Layout = "_LayoutClub";
     ViewBag.Title = "EspaceClub";
 }
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Site de votre club</title>
-</head>
+
 
     <body>
         <center>
-            <div class="pageVisible">
-                <tr>
-                    <td><h1>@Html.ValueFor(m => Model.Club.InfosClub.titreClub)</h1></td>
-                </tr>
-                <br />
-                <tr>
+            <div class="containerOffre">
+                <div class="img" style="margin: 30px 0px 30px 0px;">
                     <img src="~/Images/@Html.ValueFor(m=> Model.Club.InfosClub.urlLogo)" width="300px">
-                </tr>
-                <tr>
+                    
+                </div>
+                <div class="loginOffre">
+                    <td><h1>@Html.ValueFor(m => Model.Club.InfosClub.titreClub)</h1></td>
+
                     <p>@Html.ValueFor(m => Model.Club.InfosClub.DescriptionClub)</p>
-                </tr>
 
-                <tr>
-                    <div class="contactPageVisible">
-                        <h3>Contact</h3>
-                        <p>@Html.ValueFor(m => Model.Club.Compte.AdressEmail)</p>
-                    </div>
-                </tr>
-                <br />
-                <br />
-                <button type="button" onclick="window.location.href='https://localhost:5001/Home/ListeAdherentsView';">Liste des adhérents</button>
-
-                <button type="submit" onclick="window.location.href='https://localhost:5001/Home/ActivitesClub';">Liste des activités du club</button>
-            </div>
-        </center>
+                    <h3>Contact</h3>
+                    <p>@Html.ValueFor(m => Model.Club.Compte.AdressEmail)</p>
+                    <button type="button" onclick="window.location.href='https://localhost:5001/Home/ListeAdherentsView';"class="btnPara btnPara--btnClub">Liste des adhérents</button>
+                    <a href="@("/Home/ActivitesClub/"+Model.Club.Id)"><button type="button"  class="btnPara btnPara--btnClub" >Liste des activités du club</button></a> 
+                </div>
+             </div>
+         </center>
     </body>
 
-</html>
-
-<br />

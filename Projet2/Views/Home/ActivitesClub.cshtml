@@ -3,119 +3,127 @@
 @{
     ViewBag.Title = "ActiviteViewModel";
     Layout = "_Layout";
-    }
+}
 
-    @using (Html.BeginForm())
-    {
-        <h1>Liste des activités proposées par le club</h1><br /> 
+@using (Html.BeginForm())
+{
+    <h1>Liste des activités proposées par le club</h1>
+    <br />
 
-            <h3>Événements Club</h3>
+    <h3>Événements Club</h3>
 
-           
-                <table id="Voyage" onkeyup="myFunction()" border="1" style="margin: 20px">
-                    <tr>
-                        <th>Id</th>
-                        <th>Type Activite</th>
-                        <th>Nom Activite</th>
-                        <th>Date debut</th>
-                        <th>Date fin</th>
-                        <th>Description</th>
-                        <th>Lieu</th>
-                        <th>Nombre de Place</th>
-                        <th>Niveau Requis</th>
-                        <th>Prix</th>
-                        <th>Selection</th>
-                    </tr>
-                    <tbody>
+    <table class="tableau-style" id="Voyage">
+        <!--<table id="Voyage" onkeyup="myFunction()" border="1" style="margin: 20px">-->
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Type Activite</th>
+                <th>Nom Activite</th>
+                <th>Date debut</th>
+                <th>Date fin</th>
+                <th>Description</th>
+                <th>Lieu</th>
+                <th>Nombre de Place</th>
+                <th>Niveau Requis</th>
+                <th>Prix</th>
+                <th>Selection</th>
+            </tr>
+        </thead>
+        <tbody>
 
-                            @foreach (var member in Model.Activites.Where(i => i.SortieAdherentId == null))
+            @foreach (var member in Model.Activites.Where(i => i.SortieAdherentId == null))
 
-                            {
-                                <tr>
-                                    <td>@member.Id</td>
-                                    <td>@member.TypeActivite</td>
-                                    <td>@member.NomActivite</td>
-                                    <td>@member.DateDebutActivite</td>
-                                    <td>@member.DateFinActivite</td>
-                                    <td>@member.DescriptionActivite</td>
-                                    <td>@member.LieuActivite</td>
-                                    <td>@member.NombrePlaceActivite</td>
-                                    <td>@member.EvenementClub.NiveauRequis</td>
-                                    <td>@member.EvenementClub.Prix €</td>
-                                    <td><input name="Activite" value="news" type="radio" /></td>
-                                </tr>
+            {
+                <tr>
+                    <td>@member.Id</td>
+                    <td>@member.TypeActivite</td>
+                    <td>@member.NomActivite</td>
+                    <td>@member.DateDebutActivite</td>
+                    <td>@member.DateFinActivite</td>
+                    <td>@member.DescriptionActivite</td>
+                    <td>@member.LieuActivite</td>
+                    <td>@member.NombrePlaceActivite</td>
+                    <td>@member.EvenementClub.NiveauRequis</td>
+                    <td>@member.EvenementClub.Prix €</td>
+                    <td><input name="Activite" value="news" type="radio" /></td>
+                </tr>
 
-                            }
-                    </tbody>
-                </table><br />
-
-
-             <h3>Sorties</h3>
-                <table id="SortieAdherent" onkeyup="myFunction()" border="1" style="margin: 20px">
-                    <tr>
-                        <th>Id</th>
-                        <th>Type Activite</th>
-                        <th>Nom Activite</th>
-                        <th>Date debut</th>
-                        <th>Date fin</th>
-                        <th>Description</th>
-                        <th>Lieu</th>
-                        <th>Nombre de Place</th>
-                        <th>Nom leader</th>
-                        <th>Telephone</th>
-                        <th>Selection</th>
-                    </tr>
-                    <tbody>
-                        @foreach (var member in Model.Activites.Where(r => r.EvenementClubId == null))
-
-                            {
-                                <tr>
-                                    <td>@member.Id</td>
-                                    <td>@member.TypeActivite</td>
-                                    <td>@member.NomActivite</td>
-                                    <td>@member.DateDebutActivite</td>
-                                    <td>@member.DateFinActivite</td>
-                                    <td>@member.DescriptionActivite</td>
-                                    <td>@member.LieuActivite</td>
-                                    <td>@member.NombrePlaceActivite</td>
-                                    <td>@member.SortieAdherent.NomLeader</td>
-                                    <td>@member.SortieAdherent.Telephone</td>
-                                    <td><input name="Activite" value="news" type="radio" /></td>
-                                </tr>
-                            }
-                    </tbody>
-                </table><br />
+            }
+        </tbody>
+    </table>
+    <br />
 
 
-    <input type="button" onclick="window.location.href='https://localhost:5001/Home/PaymentViewUser';" value="S'inscrire" style="display:none;" id="inscrirebutton" />
+    <h3>Sorties</h3>
+
+    <table class="tableau-style" id="SortieAdherent">
+        <!--<table id="SortieAdherent" onkeyup="myFunction()" border="1" style="margin: 20px">-->
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Type Activite</th>
+                <th>Nom Activite</th>
+                <th>Date debut</th>
+                <th>Date fin</th>
+                <th>Description</th>
+                <th>Lieu</th>
+                <th>Nombre de Place</th>
+                <th>Nom leader</th>
+                <th>Telephone</th>
+                <th>Selection</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var member in Model.Activites.Where(r => r.EvenementClubId == null))
+
+            {
+                <tr>
+                    <td>@member.Id</td>
+                    <td>@member.TypeActivite</td>
+                    <td>@member.NomActivite</td>
+                    <td>@member.DateDebutActivite</td>
+                    <td>@member.DateFinActivite</td>
+                    <td>@member.DescriptionActivite</td>
+                    <td>@member.LieuActivite</td>
+                    <td>@member.NombrePlaceActivite</td>
+                    <td>@member.SortieAdherent.NomLeader</td>
+                    <td>@member.SortieAdherent.Telephone</td>
+                    <td><input name="Activite" value="news" type="radio" /></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+        <br />
 
 
-    }
-    @*vérification du type de données dans le front*@
-    <script type="text/javascript" src="~/Scripts/jquery-3.3.1.js"></script>
-    <script type="text/javascript" src="~/Scripts/jquery.validate-vsdoc.js"></script>
-    <script type="text/javascript" src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+        <input type="button" onclick="window.location.href='https://localhost:5001/Home/PaymentViewUser';" value="S'inscrire" style="display:none;" id="inscrirebutton" />
 
-    @section JS{
-        <script>
-            function updatebtn() {
-            var radioButtons = document.querySelectorAll('input[name="Activite"]')
-                var ischecked = false
-                for (let btn of radioButtons) {
-                    if (btn.checked) {
-                        ischecked = true
+
+        }
+        @*vérification du type de données dans le front*@
+        <script type="text/javascript" src="~/Scripts/jquery-3.3.1.js"></script>
+        <script type="text/javascript" src="~/Scripts/jquery.validate-vsdoc.js"></script>
+        <script type="text/javascript" src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+
+        @section JS{
+            <script>function updatebtn() {
+                    var radioButtons = document.querySelectorAll('input[name="Activite"]')
+                    var ischecked = false
+                    for (let btn of radioButtons) {
+                        if (btn.checked) {
+                            ischecked = true
+                        }
+                    }
+                    if (ischecked) {
+                        var inputbtn = document.getElementById("inscrirebutton")
+                        inputbtn.style.display = "block"
                     }
                 }
-                if (ischecked) {
-                var inputbtn = document.getElementById("inscrirebutton")
-                    inputbtn.style.display = "block"
-                }
-            }
-        var radioButtons = document.querySelectorAll('input[name="Activite"]')
-            for (let btn of radioButtons) {
-                btn.addEventListener("click", function () {
-                    updatebtn()
-                })
-            }</script>
-    }
+                var radioButtons = document.querySelectorAll('input[name="Activite"]')
+                for (let btn of radioButtons) {
+                    btn.addEventListener("click", function () {
+                        updatebtn()
+                    })
+                }</script>
+        }
 
