@@ -8,6 +8,8 @@ namespace Projet2.ViewModels
         public Activite Activite { get; set; }
         public List<Activite> Activites { get; set; }
 
+        public Club Club { get; set; }
+
         public SortieAdherent SortieAdherent { get; set; }
         public List<SortieAdherent> SortieAdherents { get; set; }
 

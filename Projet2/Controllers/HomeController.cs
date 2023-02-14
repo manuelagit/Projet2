@@ -427,9 +427,9 @@ namespace Projet2.Controllers
 
 
 
-        public IActionResult EspaceAdmin(Utilisateur utilisateur)
+        public IActionResult EspaceAdmin(string nomAdmin)
         {
-            return View(utilisateur);
+            return View();
         }
 
 
@@ -508,7 +508,7 @@ namespace Projet2.Controllers
             return View();
         }
 
-        public IActionResult ClubList4Admin()
+        public IActionResult ClubList4Admin(string nomAdmin)
         {
             Dal dal = new Dal();
             List<Club> listeClubs4Admin = dal.GetClubsList(); // to be able to use the helper, instead of ViewData["ListeUtilisateurs"] = dal.GetUsersList();
@@ -761,12 +761,48 @@ namespace Projet2.Controllers
                 EvenementClubs = evenementClubs,
                 SortieAdherents = sortieAdherents,
                 Activites = activites,
-
-
             };
 
             return View(viewModel);
         }
+
+
+        public IActionResult ActivitesClub(int Id)
+        {
+            using (Dal dal = new Dal())
+            {
+                Club club = dal.GetClubsList().Where(r => r.Id == Id).FirstOrDefault();
+                if (club == null)
+                {
+                    return View("Error");
+                }
+
+
+                List<Activite> activites = dal.GetActivityList();
+                List<EvenementClub> evenementClubs = dal.GetEvenementClubList();
+                List<SortieAdherent> sortieAdherents = dal.GetSortieAdherentList();
+
+                ActiviteViewModel activiteViewModel = new ActiviteViewModel
+                {
+                    EvenementClubs = evenementClubs,
+                    SortieAdherents = sortieAdherents,
+                    Activites = activites,
+                    Club = club,
+
+                };
+                
+                return View(activiteViewModel);
+            }
+        }
+
+
+        [HttpPost]
+        public IActionResult ActivitesClub(ActiviteViewModel activiteViewModel)
+        {
+
+            return View(activiteViewModel);
+        }
+
 
         public IActionResult CreateEvenementClub()
         {
