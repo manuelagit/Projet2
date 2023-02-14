@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 
 namespace Projet2.Models
 {
@@ -22,11 +23,13 @@ namespace Projet2.Models
 
         public DbSet<SortieAdherent> SortieAdherents { get; set; }
 
+        public DbSet<Admin> Admins { get; set; }
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseMySql("server=localhost;user id=root;password=rrrrrrrr;database=BDDprojet2");
+            optionsBuilder.UseMySql("server=localhost;user id=root;password=rrrrr;database=BDDprojet2");
+
         }
 
         public void InitialiseDb()
@@ -34,7 +37,7 @@ namespace Projet2.Models
             this.Database.EnsureDeleted();
             this.Database.EnsureCreated();
             Adresse adresse = new Adresse() { Id = 1, CodePostal = 75014, NomVille = "Paris", NomRue = "pigeon", NumeroRue = 48 };
-            InfosPersonnelles infosperso = new InfosPersonnelles() { Id = 1, Nom = "Paubel", Prenom = "Paul", DateNaissance = new DateTime(2008, 3, 15), AdresseId = 1 };
+            InfosPersonnelles infosperso = new InfosPersonnelles() { Id = 1, Nom = "Paubel", Prenom = "Paul", DateNaissance = new DateTime(1993, 3, 15), AdresseId = 1 };
             Compte compte = new Compte() { Id = 1, AdressEmail = "papa@gmail.com", MotDePasse = "123" };
             Utilisateur utilisateur = new Utilisateur() { Id = 1, InfosPersonnellesId = 1, CompteId = 1 };
 
@@ -90,6 +93,7 @@ namespace Projet2.Models
             Activite activite1 = new Activite() { Id = 1, EvenementClubId = 1,  NomActivite = "Voyage Maroc", DateDebutActivite = new DateTime(2023/03/18), DateFinActivite = new DateTime(2023 / 03 / 18), DescriptionActivite = "Stage perfectionnement", LieuActivite = "Maroc", NombrePlaceActivite = 12, TypeActivite = "EvenementClub", ClubId = 5, EvenementClub = evenement1 };
             Activite activite2 = new Activite() { Id = 2, EvenementClubId = 2, NomActivite = "Voyage Algerie", DateDebutActivite = new DateTime(2023 / 03 / 18), DateFinActivite = new DateTime(2023 / 03 / 18), DescriptionActivite = "Stage aprofondissement", LieuActivite = "Algerie", NombrePlaceActivite = 20, TypeActivite = "EvenementClub", ClubId = 6, EvenementClub = evenement2 };
             Activite activite3 = new Activite() { Id = 3, SortieAdherentId = 1, NomActivite = "Voyage découverte vin", DateDebutActivite = new DateTime(2023 / 03 / 18), DateFinActivite = new DateTime(2023 / 03 / 18), DescriptionActivite = "Decouverte vin Alexandre", LieuActivite = "Bordeaux", NombrePlaceActivite = 5, TypeActivite = "SortieAdherent", ClubId = 6, SortieAdherent = sortieAdherent1 };
+           Admin admin1 = new Admin() { Id = 1, UtilisateurId = 1, IsAdmin=true};
 
             Adherent adherent1 = new Adherent() { Id = 1, ClubId = 6, UtilisateurId=1 };
 
@@ -131,8 +135,9 @@ namespace Projet2.Models
             this.Facturations.Add(facturation);
             this.Paiements.Add(paiement);
 
-            this.SaveChanges();
 
+            this.Admins.Add(admin1);
+            this.SaveChanges();
         }
 
 

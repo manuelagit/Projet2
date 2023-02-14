@@ -3,28 +3,24 @@
   Layout = "_Layout";
     ViewBag.Title = "EspaceFacture";
     }
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Liste des factures</title>
-</head>
-<center>
-    <body>
+
+
+<body>
+    <center>
         <h1>Liste des factures</h1>
-        <table border="1" style="margin: 20px">
-            <tr>
-                <th>Nom</th>
-                <th>Prenom</th>
-                <th>Adresse de Facturation</th>
-                <th>Ville</th>
-                <th>Code Postal</th>
-                <th>Pays</th>
-                <th>Telephone</th>
-                <th>Club</th>
-            </tr>
+        <table class="tableau-style">
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Prenom</th>
+                    <th>Adresse de Facturation</th>
+                    <th>Ville</th>
+                    <th>Code Postal</th>
+                    <th>Pays</th>
+                    <th>Telephone</th>
+                    <th>Club</th>
+                </tr>
+            </thead>
             <tbody>
                 @foreach (var member in Model)
 
@@ -55,6 +51,7 @@
         </div>
 
 
+
         @{Html.BeginForm("CreatePDFDocument", "Home", FormMethod.Get);
             {
                 <div>
@@ -62,14 +59,8 @@
                 </div>
             }
             Html.EndForm();
-        }
-    </body>
-</center>
 
-</html>
 
-@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+    </center>
+</body>
+

@@ -16,6 +16,8 @@ using Syncfusion.Pdf;
 using Syncfusion.Pdf.Grid;
 using Microsoft.AspNetCore.Authentication;
 using static System.Reflection.Metadata.BlobBuilder;
+using ChoixSejour.ViewModels;
+using System.Security.Claims;
 
 namespace Projet2.Controllers
 {
@@ -27,8 +29,11 @@ namespace Projet2.Controllers
 
         public IActionResult Index()
         {
+           
             return View("WelcomeView");
         }
+
+       
 
         public IActionResult Error()
         {
