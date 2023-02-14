@@ -475,7 +475,7 @@ updatebtn {
     width: auto;
     box-shadow: 0 5px 50px rgba(0,0,0,0.15);
     cursor: pointer;
-    margin: 100px auto;
+    margin: 30px auto;
     border: 2px solid #2BAEF7;
 }
 
@@ -497,6 +497,8 @@ tbody tr, td, th {
     tbody tr:nth-child(even) {
         background-color: #f3f3f3;
     }
+
+
 
 .footer {
     margin-block: 1px;
