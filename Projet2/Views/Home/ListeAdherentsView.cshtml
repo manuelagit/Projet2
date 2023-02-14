@@ -1,4 +1,5 @@
-﻿@model List<Projet2.Models.Adherent>
+﻿@*@model List<Projet2.Models.Adherent>*@
+@model Projet2.ViewModels.CreateClubViewModel
 @{
     ViewBag.Title = "AdherentList";
     Layout = "_LayoutClub";
@@ -19,26 +20,35 @@
                 </tr>
             </thead>
             <tbody>
-                    @foreach (var member in Model)
-                    {
-                        <tr>
-                            @* <td>@member.Id</td>
-                        <td>@member.ClubId</td>
-                        <td>@member.UtilisateurId</td>*@
-                            <td>@member.Utilisateur.InfosPersonnelles.Nom</td>
-                            <td>@member.Utilisateur.InfosPersonnelles.Prenom</td>
-                            <td>@member.Utilisateur.InfosPersonnelles.DateNaissance.ToShortDateString()</td>
-                            <td>
-                                @member.Utilisateur.InfosPersonnelles.Adresse.NumeroRue,
-                                @member.Utilisateur.InfosPersonnelles.Adresse.NomRue,
-                                @member.Utilisateur.InfosPersonnelles.Adresse.CodePostal,
-                                @member.Utilisateur.InfosPersonnelles.Adresse.NomVille
-                            </td>
-                            <td>@member.Utilisateur.Compte.AdressEmail</td>
-                        </tr>
-                    }
+                @foreach (var member in Model.Adherents)
+                {
+                    <tr>
+                        @* <td>@member.Id</td>
+                            <td>@member.ClubId</td>
+                            <td>@member.UtilisateurId</td>*@
+                        <td>@member.Utilisateur.InfosPersonnelles.Nom</td>
+                        <td>@member.Utilisateur.InfosPersonnelles.Prenom</td>
+                        <td>@member.Utilisateur.InfosPersonnelles.DateNaissance.ToShortDateString()</td>
+                        <td>
+                            @member.Utilisateur.InfosPersonnelles.Adresse.NumeroRue,
+                            @member.Utilisateur.InfosPersonnelles.Adresse.NomRue,
+                            @member.Utilisateur.InfosPersonnelles.Adresse.CodePostal,
+                            @member.Utilisateur.InfosPersonnelles.Adresse.NomVille
+                        </td>
+                        <td>@member.Utilisateur.Compte.AdressEmail</td>
+                    </tr>
+                }
             </tbody>
         </table>
+
+
+
+
+
+        <div>
+            <a href=@("/Home/EspaceClubLogged/"+Model.Club.Id)><button>Retour Espace club</button></a>
+        </div>
+
     </center>
 </body>
 

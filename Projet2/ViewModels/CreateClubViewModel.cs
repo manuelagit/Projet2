@@ -11,6 +11,9 @@ namespace Projet2.ViewModels
         public Utilisateur Utilisateur { get; set; }
         public List<Utilisateur> Utilisateurs { get; set; }
 
+        public Adherent adherent { get; set; }
+        public List<Adherent> Adherents { get; set; }
+
 
     }
 }

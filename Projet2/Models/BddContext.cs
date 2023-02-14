@@ -88,7 +88,7 @@ namespace Projet2.Models
             EvenementClub evenement1 = new EvenementClub() { Id =1, NiveauRequis = 1, Prix = 45.3};
             EvenementClub evenement2 = new EvenementClub() { Id = 2, NiveauRequis = 1, Prix = 50 };
             SortieAdherent sortieAdherent1 = new SortieAdherent() { Id = 1, NomLeader = "Alexandre", Telephone = "0645857812" };
-            
+
 
             Activite activite1 = new Activite() { Id = 1, EvenementClubId = 1,  NomActivite = "Voyage Maroc", DateDebutActivite = new DateTime(2023/03/18), DateFinActivite = new DateTime(2023 / 03 / 18), DescriptionActivite = "Stage perfectionnement", LieuActivite = "Maroc", NombrePlaceActivite = 12, TypeActivite = "EvenementClub", ClubId = 4, EvenementClub = evenement1 };
             Activite activite2 = new Activite() { Id = 2, EvenementClubId = 2, NomActivite = "Voyage Algerie", DateDebutActivite = new DateTime(2023 / 03 / 18), DateFinActivite = new DateTime(2023 / 03 / 18), DescriptionActivite = "Stage aprofondissement", LieuActivite = "Algerie", NombrePlaceActivite = 20, TypeActivite = "EvenementClub", ClubId = 6, EvenementClub = evenement2 };
