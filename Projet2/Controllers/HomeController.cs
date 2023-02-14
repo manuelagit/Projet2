@@ -234,41 +234,6 @@ namespace Projet2.Controllers
             return View("EspaceClubLogged", createClubViewModel);
         }
 
-        //// sends the modified data
-        //[HttpPost]
-        //public IActionResult ModifyClubCreation(CreateClubViewModel createClubViewModel)
-        //{
-        //    if (club.Id != 0)
-        //    {
-        //        using (Dal dal = new Dal())
-        //        {
-        //            dal.ModifyClubCreation(club.Id);
-        //            CreateClubViewModel createClubViewModel = new CreateClubViewModel { Club = club };
-
-        //            return View("EspaceClubLogged", createClubViewModel);
-        //        }
-        //    }
-        //    else
-        //    {
-        //        return View("Error");
-        //    }
-        //}
-
-        //[HttpPost]
-        //public IActionResult ModifyClubCreation(Club club)
-        //{
-        //    Dal dal = new Dal();
-        //    List<Utilisateur> utilisateurs = dal.GetUsersList();
-        //    club.CompteId = dal.CreateCompte(club.Compte);
-        //    club.InfosClubId = dal.CreateInfosClub(club.InfosClub);
-        //    dal.CreateClub(club);
-
-        //    CreateClubViewModel createClubViewModel = new CreateClubViewModel { Club = club, Utilisateurs = utilisateurs };
-
-        //    return View("EspaceClubLogged", createClubViewModel);
-        //}
-
-
 
 
 
@@ -418,6 +383,22 @@ namespace Projet2.Controllers
             return View(createClubViewModel);
         }
 
+        public IActionResult EspaceClubVisible(int Id)
+        {
+
+            using (Dal dal = new Dal())
+            {
+                Club club = dal.GetClubsList().Where(r => r.Id == Id).FirstOrDefault();
+                if (club == null)
+                {
+                    return View("Error");
+                }
+                CreateClubViewModel createClubViewModel = new CreateClubViewModel { Club = club };
+
+                return View(createClubViewModel);
+            }
+        }
+
         [HttpPost]
         public IActionResult EspaceClubVisible(Club club)
         {
@@ -435,7 +416,8 @@ namespace Projet2.Controllers
 
 
 
-        
+
+
         public IActionResult EspaceAdmin(string nomAdmin)
         {
             return View();
@@ -447,21 +429,6 @@ namespace Projet2.Controllers
             return View();
         }
 
-        public IActionResult EspaceClubVisible(int Id)
-        {
-
-            using (Dal dal = new Dal())
-            {
-                Club club = dal.GetClubsList().Where(r => r.Id == Id).FirstOrDefault();
-                if (club == null)
-                {
-                    return View("Error");
-                }
-                CreateClubViewModel createClubViewModel = new CreateClubViewModel { Club = club};
-
-                return View(createClubViewModel);
-            }
-        }
 
 
 
@@ -746,11 +713,15 @@ namespace Projet2.Controllers
             return View(sortieAdherent);
         }
 
-        public IActionResult ListeAdherentsView()
+        public IActionResult ListeAdherentsView(int Id)
         {
             Dal dal = new Dal();
-            List<Adherent> adherent = dal.GetAdherentsList();
-            return View(adherent);
+            List<Adherent> adherents = dal.GetAdherentsList();
+            Club club = dal.GetClubsList().Where(r => r.Id == Id).FirstOrDefault();
+
+            CreateClubViewModel createClubViewModel = new CreateClubViewModel { Club = club, Adherents = adherents };
+
+            return View(createClubViewModel);
             
         }
 
@@ -961,14 +932,6 @@ namespace Projet2.Controllers
 
 
 
-        //Activite activite = new Activite{ EvenementClubId = evenmentClubId, DateDebutActivite = activiteStart, DateFinActivite = activiteEnd };
-
-        //var ctx = new BddContext();
-        //ctx.Activites.Add(activite);
-        //ctx.SaveChanges();
-
-
-        //return RedirectToAction("EspaceClubLogged");
 
 
 
