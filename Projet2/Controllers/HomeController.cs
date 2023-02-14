@@ -15,6 +15,7 @@ using Projet2.ViewModels;
 using Syncfusion.Pdf;
 using Syncfusion.Pdf.Grid;
 using Microsoft.AspNetCore.Authentication;
+using static System.Reflection.Metadata.BlobBuilder;
 using ChoixSejour.ViewModels;
 using System.Security.Claims;
 
@@ -85,7 +86,7 @@ namespace Projet2.Controllers
                 if (iFormFile != null)
                 {
                     UploadFile(iFormFile);
-                    club.InfosClub.urlLogo = "~/Images/" + iFormFile.FileName;
+                    club.InfosClub.urlLogo = "/Images/" + iFormFile.FileName;
                 }
                 HttpContext.SignOutAsync();
                 return RedirectToAction("CreateClub");
@@ -209,11 +210,24 @@ namespace Projet2.Controllers
 
         // sends the modified data
         [HttpPost]
-        public IActionResult ModifyClubCreation(Club club)
+        public IActionResult ModifyClubCreation(Club club, IFormFile imageUploaded)
         {
             Dal dal = new Dal();
-           // Club club = dal.GetClubsList().Where(r => r.Id == createClubViewModel.Club.Id).FirstOrDefault();
+            // Club club = dal.GetClubsList().Where(r => r.Id == createClubViewModel.Club.Id).FirstOrDefault();
+            if (imageUploaded != null)
+            {
+                if (imageUploaded.Length != 0)
+                {
+                    string uploads = Path.Combine(_env.WebRootPath, "Images");
+                    string filePath = Path.Combine(uploads, imageUploaded.FileName);
+                    using (Stream fileStream = new FileStream(filePath, FileMode.Create))
+                    {
+                        imageUploaded.CopyTo(fileStream);
 
+                    }
+                    club.InfosClub.urlLogo = imageUploaded.FileName;
+                }
+            }
             dal.ModifyClubCreation(club);
             CreateClubViewModel createClubViewModel = new CreateClubViewModel { Club = club };
 
@@ -317,16 +331,20 @@ namespace Projet2.Controllers
         public IActionResult CreateAdherent(Adherent adherent)
         {
             Dal dal = new Dal();
+
             adherent.Utilisateur.InfosPersonnellesId = dal.CreateInfosPersonnelles(adherent.Utilisateur.InfosPersonnelles);
             adherent.Utilisateur.CompteId = dal.CreateCompte(adherent.Utilisateur.Compte);
             Utilisateur utilisateur = new Utilisateur { CompteId = adherent.Utilisateur.CompteId, InfosPersonnellesId = adherent.Utilisateur.InfosPersonnellesId };
+            dal.CreateUser(utilisateur);
             Club club = dal.GetClubsList().Where(r => r.Id == adherent.ClubId).FirstOrDefault();
 
-            Adherent newAdherent = new Adherent { Club = club, Utilisateur = utilisateur };
+            Adherent newAdherent = new Adherent { ClubId = club.Id, UtilisateurId = utilisateur.Id };
 
             //ListeUtilisateurs.CreateUser(idCount, utilisateur.Compte, utilisateur.InfosPersonnelles);
-            dal.CreateAdherent(newAdherent);
-            return View("PaymentViewUser");
+            adherent.Id = dal.CreateAdherent(newAdherent);
+            ViewBag.Club = club;
+
+            return RedirectToAction("PaymentViewUser", new { @Id = club.Id }); //change l'url 
         }
 
 
@@ -414,9 +432,9 @@ namespace Projet2.Controllers
 
 
 
-        public IActionResult EspaceAdmin(Utilisateur utilisateur)
+        public IActionResult EspaceAdmin(string nomAdmin)
         {
-            return View(utilisateur);
+            return View();
         }
 
 
@@ -495,12 +513,18 @@ namespace Projet2.Controllers
             return View();
         }
 
-        public IActionResult ClubList4Admin()
+        public IActionResult ClubList4Admin(string nomAdmin)
         {
             Dal dal = new Dal();
             List<Club> listeClubs4Admin = dal.GetClubsList(); // to be able to use the helper, instead of ViewData["ListeUtilisateurs"] = dal.GetUsersList();
-            return View(listeClubs4Admin);
+            CreateClubViewModel createClubViewModel = new CreateClubViewModel { Clubs = listeClubs4Admin };
+
+            return View("ClubList4Admin", createClubViewModel);
         }
+
+
+
+
         //public async Task<IActionResult> Search(string SearchString)
         //{
         //    using (Dal dal = new Dal())
@@ -568,12 +592,21 @@ namespace Projet2.Controllers
         }
 
 
-        public IActionResult PaymentViewUser()
+        public IActionResult PaymentViewUser(int Id)
         {
+            ViewBag.ClubId = Id;
             return View();
         }
 
         [HttpPost]
+        public IActionResult PaymentViewUser(Paiement paiement, int ClubId)
+        {
+            return Redirect("/Home/EspaceClubVisible/"+ ClubId); //redirecToAction attend une méthode
+        }
+
+
+
+    [HttpPost]
         public IActionResult User(Paiement paiement)
         {
             Dal dal = new Dal();
@@ -733,12 +766,48 @@ namespace Projet2.Controllers
                 EvenementClubs = evenementClubs,
                 SortieAdherents = sortieAdherents,
                 Activites = activites,
-
-
             };
 
             return View(viewModel);
         }
+
+
+        public IActionResult ActivitesClub(int Id)
+        {
+            using (Dal dal = new Dal())
+            {
+                Club club = dal.GetClubsList().Where(r => r.Id == Id).FirstOrDefault();
+                if (club == null)
+                {
+                    return View("Error");
+                }
+
+
+                List<Activite> activites = dal.GetActivityList();
+                List<EvenementClub> evenementClubs = dal.GetEvenementClubList();
+                List<SortieAdherent> sortieAdherents = dal.GetSortieAdherentList();
+
+                ActiviteViewModel activiteViewModel = new ActiviteViewModel
+                {
+                    EvenementClubs = evenementClubs,
+                    SortieAdherents = sortieAdherents,
+                    Activites = activites,
+                    Club = club,
+
+                };
+                
+                return View(activiteViewModel);
+            }
+        }
+
+
+        [HttpPost]
+        public IActionResult ActivitesClub(ActiviteViewModel activiteViewModel)
+        {
+
+            return View(activiteViewModel);
+        }
+
 
         public IActionResult CreateEvenementClub()
         {

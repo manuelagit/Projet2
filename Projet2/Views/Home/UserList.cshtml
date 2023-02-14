@@ -12,6 +12,7 @@
 
         <label for="name">Recherche</label>
         <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Recherche par nom...">
+
         <table class="tableau-style" id="ListUsersTable">
             <thead>
             <!--<table id="ListUsersTable" onkeyup="myFunction()" border="1" style="margin: 20px">-->
@@ -41,8 +42,7 @@
                 }
             </tbody>
         </table>
-    
-        
+
 
         <script>function myFunction() {
                 // Declare variables
@@ -70,9 +70,9 @@
         <form action="RemoveUser" method="get">
             <div style="margin: 20px">
                 <input type="text" name="id" placeholder="Id" size="10rem" />
-                <button type="submit">Remove member</button>
-            </div>
-        </form>
+                <button type="submit">Supprimer membre</button>
+
+
 
         <form action="ModifyUser" method="get">
             <div style="margin: 20px">
@@ -83,15 +83,14 @@
 
 
 
-
         <div style="margin: 20px">
             <button type="submit" onclick="window.location.href='https://localhost:5001/Home/createUser';">Créer membre</button>
-
         </div>
 
-
-    </center>
-</body>
-
-
+        <div>
+            <input type="button" onclick="window.location.href='https://localhost:5001/Home/EspaceAdmin';" value="Retour Espace Admin" />
+        </div>
+    </body>
+</center>
+</html>
 

@@ -16,10 +16,11 @@
             <div class="pageVisible">
                 <tr>
                     <td><h1>@Html.ValueFor(m => Model.Club.InfosClub.titreClub)</h1></td>
-
-
                 </tr>
                 <br />
+                <tr>
+                    <img src="~/Images/@Html.ValueFor(m=> Model.Club.InfosClub.urlLogo)" width="300px">
+                </tr>
                 <tr>
                     <p>@Html.ValueFor(m => Model.Club.InfosClub.DescriptionClub)</p>
                 </tr>
@@ -34,7 +35,7 @@
                 <br />
                 <button type="button" onclick="window.location.href='https://localhost:5001/Home/ListeAdherentsView';">Liste des adhérents</button>
 
-                <button type="submit" onclick="window.location.href='https://localhost:5001/Home/Activites';">Liste des activités du club</button>
+                <button type="submit" onclick="window.location.href='https://localhost:5001/Home/ActivitesClub';">Liste des activités du club</button>
             </div>
         </center>
     </body>

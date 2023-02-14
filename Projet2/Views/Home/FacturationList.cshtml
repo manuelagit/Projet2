@@ -46,6 +46,11 @@
             </div>
         </form>
 
+        <div>
+            <input type="button" onclick="window.location.href='https://localhost:5001/Home/EspaceAdmin';" value="Retour Espace Admin" />
+        </div>
+
+
 
         @{Html.BeginForm("CreatePDFDocument", "Home", FormMethod.Get);
             {
@@ -55,15 +60,7 @@
             }
             Html.EndForm();
 
-        }
+
     </center>
 </body>
 
-
-
-
-@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}

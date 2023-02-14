@@ -45,20 +45,37 @@ namespace Projet2.Models
             OffreAbonnement offreAbonnement = new OffreAbonnement() { Id = 1, DescriptionOffre = "Avec notre abonnement annuel, vous bénéficiez d'un accès à notre plateforme à compter du jour de votre inscription, valable jusqu'à la même date de l'année suivante.", TypeOffre = "Annuel", DureeOffreMois = 12, Prix = 680.00 };
             OffreAbonnement offreAbonnement2 = new OffreAbonnement() { Id = 2, DescriptionOffre = "Avec notre abonnement mensuel, vous bénéficiez d'un accès à notre plateforme renouvelable 6 mois minimum, payable par mensualité.", TypeOffre = "Mensuel", DureeOffreMois = 6, Prix = 70.00 };
 
-            Adresse adresseClub = new Adresse() { Id = 3, CodePostal = 11170, NomVille = "Gex", NomRue = "rue alphonse", NumeroRue = 4};
-            InfosClub infosClub = new InfosClub() { Id = 1, NomClub = "VLG", AdresseId = 3, urlLogo = "~/Images/btnValider.png", DescriptionClub = "Notre école de parapente Air et Aventure est basée à Lumbin en Isère. L’Isère, c’est The Place to Be pour la pratique du parapente. Grâce à sa position géographique, notre école jouit de la proximité de l’un des spots les plus réputés au monde, celui de Saint-Hilaire-du-Touvet ! C’est d’ailleurs de ce lieu idéal que vous effectuerez la plupart de vos vols lors de votre stage de parapente. \n\nAfin de mieux s’adapter à tous les types de pilotes ou nouveaux pilotes et leurs besoins, nous proposons 10 types de stages différents. Allant du mini-stage découverte pour les débutants jusqu’à des stages plus techniques comme des stages de cross ou de performance thermique qui s’adresse à des parapentistes plus expérimentés.  Nous proposons également des stages pour des parapentistes de niveau intermédiaire, ayant pour objectif le perfectionnement de leurs capacités et de leur mental. ", titreClub = "VLG" };
 
-            Compte compteClub = new Compte() { Id =3, AdressEmail = "vlg@gmail.com", MotDePasse = "123" };
-            Club club = new Club() { Id = 3, CompteId = 3, InfosClubId = 1};
 
+
+            ///// AVL
             Adresse adresseClubAVL = new Adresse() { Id = 4, CodePostal = 38870, NomVille = "Annecy", NomRue = "rue Daudet", NumeroRue = 43 };
-            InfosClub infosClubAVL = new InfosClub() { Id = 4, NomClub = "Annecy Vol Libre", AdresseId = 4, urlLogo = "~/Images/btnValider.png", DescriptionClub = "Le club de vol libre Gessien (FFVL n°03173) est une association qui est super dynamique et où l’on est super bien accueilli.\n\nOn y trouve de tout, du débutant au vieux baroudeur qui connaît le Jura comme sa poche et qui se fera un plaisir de vous indiquer les pièges à éviter et les bons thermiques à exploiter pour crosser jusqu’à Bellegarde.\n\nIls s’occupent de l’entretien des aires de décollage et d’atterrissage*, organisent des manifestations (Rallye de la Saucisse), des formations de sécurité (soirée repliage de secours avec l’aide de professionnels bénévoles), etc.\n\nVous pouvez prendre contact avec le club au travers de la page FFVL (en cliquant ici) ou en remplissant directement le formulaire ci-dessous.", titreClub = "Mon super club" };
-
-
+            InfosClub infosClubAVL = new InfosClub() { Id = 4, NomClub = "Annecy Vol Libre", AdresseId = 4, urlLogo = "logoAVL.png", DescriptionClub = "Le club de vol libre Gessien (FFVL n°03173) est une association qui est super dynamique et où l’on est super bien accueilli.\n\nOn y trouve de tout, du débutant au vieux baroudeur qui connaît le Jura comme sa poche et qui se fera un plaisir de vous indiquer les pièges à éviter et les bons thermiques à exploiter pour crosser jusqu’à Bellegarde.\n\nIls s’occupent de l’entretien des aires de décollage et d’atterrissage*, organisent des manifestations (Rallye de la Saucisse), des formations de sécurité (soirée repliage de secours avec l’aide de professionnels bénévoles), etc.\n\nVous pouvez prendre contact avec le club au travers de la page FFVL (en cliquant ici) ou en remplissant directement le formulaire ci-dessous.", titreClub = "Bienvenue sur Annecy Vol Libre" };
             Compte compteClubAVL = new Compte() { Id = 4, AdressEmail = "avl@gmail.com", MotDePasse = "12EEE3" };
             Club clubAVL = new Club() { Id = 4, CompteId = 4, InfosClubId = 4 };
 
-            Facturation facturation = new Facturation() { Id = 1, NomFacturation = "Paubel", PrenomFacturation = "Paul", VilleFacturation = "Paris", AdresseFacturation = "11 rue des pigeons", CodePostalFacturation = "75000", PaysFacturation = "France", TelephoneFacturation = "0622113344", ClubId=3};
+            ///// Prevol
+            Adresse adresseClubPrevol = new Adresse() { Id = 5, CodePostal = 38870, NomVille = "St-Hilaire-du-Touvet", NomRue = "rue Daudet", NumeroRue = 43 };
+            InfosClub infosClubPrevol = new InfosClub() { Id = 5, NomClub = "Prevol", AdresseId = 4, urlLogo = "logoPrevol.png", DescriptionClub = "Le club de vol libre Gessien (FFVL n°03173) est une association qui est super dynamique et où l’on est super bien accueilli.\n\nOn y trouve de tout, du débutant au vieux baroudeur qui connaît le Jura comme sa poche et qui se fera un plaisir de vous indiquer les pièges à éviter et les bons thermiques à exploiter pour crosser jusqu’à Bellegarde.\n\nIls s’occupent de l’entretien des aires de décollage et d’atterrissage*, organisent des manifestations (Rallye de la Saucisse), des formations de sécurité (soirée repliage de secours avec l’aide de professionnels bénévoles), etc.\n\nVous pouvez prendre contact avec le club au travers de la page FFVL (en cliquant ici) ou en remplissant directement le formulaire ci-dessous.", titreClub = "Bienvenue chez Prevol" };
+            Compte compteClubPrevol = new Compte() { Id = 5, AdressEmail = "prevol@gmail.com", MotDePasse = "12EEE3" };
+            Club clubPrevol = new Club() { Id = 5, CompteId = 5, InfosClubId = 5 };
+
+            ///// Air Alpin
+            Adresse adresseClubAirAlpin = new Adresse() { Id = 7, CodePostal = 38870, NomVille = "St-Hilaire-du-Touvet", NomRue = "rue Daudet", NumeroRue = 43 };
+            InfosClub infosClubAirAlpin = new InfosClub() { Id = 7, NomClub = "Air Alpin", AdresseId = 4, urlLogo = "logoAA.png", DescriptionClub = "Le club de vol libre Gessien (FFVL n°03173) est une association qui est super dynamique et où l’on est super bien accueilli.\n\nOn y trouve de tout, du débutant au vieux baroudeur qui connaît le Jura comme sa poche et qui se fera un plaisir de vous indiquer les pièges à éviter et les bons thermiques à exploiter pour crosser jusqu’à Bellegarde.\n\nIls s’occupent de l’entretien des aires de décollage et d’atterrissage*, organisent des manifestations (Rallye de la Saucisse), des formations de sécurité (soirée repliage de secours avec l’aide de professionnels bénévoles), etc.\n\nVous pouvez prendre contact avec le club au travers de la page FFVL (en cliquant ici) ou en remplissant directement le formulaire ci-dessous.", titreClub = "Bienvenue chez Air Alpin" };
+            Compte compteClubAirAlpin = new Compte() { Id = 7, AdressEmail = "airalpin@gmail.com", MotDePasse = "12EEE3" };
+            Club clubAirAlpin = new Club() { Id = 7, CompteId = 7, InfosClubId = 7 };
+
+
+            ///// CVLS
+            Adresse adresseClubCVLS = new Adresse() { Id = 6, CodePostal = 38870, NomVille = "Annemasse", NomRue = "rue Daudet", NumeroRue = 43 };
+            InfosClub infosClubCVLS = new InfosClub() { Id = 6, NomClub = "Club de Vol Libre du Salève", AdresseId = 4, urlLogo = "logoCVLS.png", DescriptionClub = "Le club de vol libre Gessien (FFVL n°03173) est une association qui est super dynamique et où l’on est super bien accueilli.\n\nOn y trouve de tout, du débutant au vieux baroudeur qui connaît le Jura comme sa poche et qui se fera un plaisir de vous indiquer les pièges à éviter et les bons thermiques à exploiter pour crosser jusqu’à Bellegarde.\n\nIls s’occupent de l’entretien des aires de décollage et d’atterrissage*, organisent des manifestations (Rallye de la Saucisse), des formations de sécurité (soirée repliage de secours avec l’aide de professionnels bénévoles), etc.\n\nVous pouvez prendre contact avec le club au travers de la page FFVL (en cliquant ici) ou en remplissant directement le formulaire ci-dessous.", titreClub = "Bienvenue au Club de Vol Libre du Salève !" };
+            Compte compteClubCVLS = new Compte() { Id = 6, AdressEmail = "CVLS@gmail.com", MotDePasse = "12EEE3" };
+            Club clubCVLS = new Club() { Id = 6, CompteId = 6, InfosClubId = 6 };
+
+
+
+            Facturation facturation = new Facturation() { Id = 1, NomFacturation = "Paubel", PrenomFacturation = "Paul", VilleFacturation = "Paris", AdresseFacturation = "11 rue des pigeons", CodePostalFacturation = "75000", PaysFacturation = "France", TelephoneFacturation = "0622113344", ClubId=5};
             Paiement paiement = new Paiement() { Id = 1, NumeroCB = "1111222233334444",DateExpiration= new DateTime(2026,12,1),CodeDeSecurite=123,FacturationId=1 };
 
 
@@ -73,12 +90,13 @@ namespace Projet2.Models
             SortieAdherent sortieAdherent1 = new SortieAdherent() { Id = 1, NomLeader = "Alexandre", Telephone = "0645857812" };
             
 
-            Activite activite1 = new Activite() { Id = 1, EvenementClubId = 1,  NomActivite = "Voyage Maroc", DateDebutActivite = new DateTime(2023/03/18), DateFinActivite = new DateTime(2023 / 03 / 18), DescriptionActivite = "Stage perfectionnement", LieuActivite = "Maroc", NombrePlaceActivite = 12, TypeActivite = "EvenementClub", ClubId = 3, EvenementClub = evenement1 };
-            Activite activite2 = new Activite() { Id = 2, EvenementClubId = 2, NomActivite = "Voyage Algerie", DateDebutActivite = new DateTime(2023 / 03 / 18), DateFinActivite = new DateTime(2023 / 03 / 18), DescriptionActivite = "Stage aprofondissement", LieuActivite = "Algerie", NombrePlaceActivite = 20, TypeActivite = "EvenementClub", ClubId = 3, EvenementClub = evenement2 };
-            Activite activite3 = new Activite() { Id = 3, SortieAdherentId = 1, NomActivite = "Voyage découverte vin", DateDebutActivite = new DateTime(2023 / 03 / 18), DateFinActivite = new DateTime(2023 / 03 / 18), DescriptionActivite = "Decouverte vin Alexandre", LieuActivite = "Bordeaux", NombrePlaceActivite = 5, TypeActivite = "SortieAdherent", ClubId = 3, SortieAdherent = sortieAdherent1 };
+            Activite activite1 = new Activite() { Id = 1, EvenementClubId = 1,  NomActivite = "Voyage Maroc", DateDebutActivite = new DateTime(2023/03/18), DateFinActivite = new DateTime(2023 / 03 / 18), DescriptionActivite = "Stage perfectionnement", LieuActivite = "Maroc", NombrePlaceActivite = 12, TypeActivite = "EvenementClub", ClubId = 5, EvenementClub = evenement1 };
+            Activite activite2 = new Activite() { Id = 2, EvenementClubId = 2, NomActivite = "Voyage Algerie", DateDebutActivite = new DateTime(2023 / 03 / 18), DateFinActivite = new DateTime(2023 / 03 / 18), DescriptionActivite = "Stage aprofondissement", LieuActivite = "Algerie", NombrePlaceActivite = 20, TypeActivite = "EvenementClub", ClubId = 6, EvenementClub = evenement2 };
+            Activite activite3 = new Activite() { Id = 3, SortieAdherentId = 1, NomActivite = "Voyage découverte vin", DateDebutActivite = new DateTime(2023 / 03 / 18), DateFinActivite = new DateTime(2023 / 03 / 18), DescriptionActivite = "Decouverte vin Alexandre", LieuActivite = "Bordeaux", NombrePlaceActivite = 5, TypeActivite = "SortieAdherent", ClubId = 6, SortieAdherent = sortieAdherent1 };
+           Admin admin1 = new Admin() { Id = 1, UtilisateurId = 1, IsAdmin=true};
 
-            Adherent adherent1 = new Adherent() { Id = 1, ClubId = 3, UtilisateurId=1 };
-            Admin admin1 = new Admin() { Id = 1, UtilisateurId = 1, IsAdmin=true};
+            Adherent adherent1 = new Adherent() { Id = 1, ClubId = 6, UtilisateurId=1 };
+
 
             this.Adresses.Add(adresse);
             this.InfosPersonnelles.Add(infosperso);
@@ -88,16 +106,27 @@ namespace Projet2.Models
             this.OffreAbonnements.Add(offreAbonnement);
             this.OffreAbonnements.Add(offreAbonnement2);
 
-            club.Compte = compteClub;
-            club.InfosClub = infosClub;
-            this.Adresses.Add(adresseClub);
-            this.InfosClubs.Add(infosClub);
-            this.Comptes.Add(compteClub);
-            this.Clubs.Add(club);
+
+
             this.Adresses.Add(adresseClubAVL);
             this.InfosClubs.Add(infosClubAVL);
             this.Comptes.Add(compteClubAVL);
             this.Clubs.Add(clubAVL);
+
+            this.Adresses.Add(adresseClubPrevol);
+            this.InfosClubs.Add(infosClubPrevol);
+            this.Comptes.Add(compteClubPrevol);
+            this.Clubs.Add(clubPrevol);
+
+            this.Adresses.Add(adresseClubAirAlpin);
+            this.InfosClubs.Add(infosClubAirAlpin);
+            this.Comptes.Add(compteClubAirAlpin);
+            this.Clubs.Add(clubAirAlpin);
+
+            this.Adresses.Add(adresseClubCVLS);
+            this.InfosClubs.Add(infosClubCVLS);
+            this.Comptes.Add(compteClubCVLS);
+            this.Clubs.Add(clubCVLS);
 
             this.Activites.Add(activite1);
             this.Activites.Add(activite2);
@@ -105,6 +134,7 @@ namespace Projet2.Models
 
             this.Facturations.Add(facturation);
             this.Paiements.Add(paiement);
+
 
             this.Admins.Add(admin1);
             this.SaveChanges();
