@@ -3,21 +3,27 @@
     Layout = "_Layout";
     ViewBag.Title = "EspaceParapentiste";
 }
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome</title>
-</head>
-<body>
-    <h1>Bienvenue sur votre espace personnel</h1>
 
-    <p>Vous pouvez visionner la liste des clubs et vous inscrire à l'un d'entre eux, ainsi qu'à des événements.</p>
 
-    <button type="submit" onclick="window.location.href='https://localhost:5001/Home/ClubList';">Voir la liste des clubs</button>
+    <bodyOffreCatalgue>
+        <div class="containerOffre">
+            <div class="img" style="margin: 30px 0px 30px 0px;">
+                <img src="~/Images/espaceparaTiste.png" alt="1" size="400px">
 
-</body>
-</html>
+            </div>
 
-<br />
+
+
+            <div class="loginOffre" style="margin: 0px 0px 0px 0px;">
+                <h1>Bienvenue sur votre espace personnel !</h1>
+                <h1>Ce qui vous attend ?</h1>
+
+                <p>Un décollage imminent vers votre club de parapente ! Vous pourrez visionner la liste des clubs et vous inscrire à l'un d'entre eux, ainsi qu'à des événements.</p>
+                
+                <button type="submit" onclick="window.location.href='https://localhost:5001/Home/ClubList';" class="btnPara btnPara--btnClub">Voir la liste des Club</button>
+            </div>
+            
+        </div>
+    </bodyOffreCatalgue>
+
+
