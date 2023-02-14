@@ -16,10 +16,11 @@
             <div class="pageVisible">
                 <tr>
                     <td><h1>@Html.ValueFor(m => Model.Club.InfosClub.titreClub)</h1></td>
-
-
                 </tr>
                 <br />
+                <tr>
+                    <img src="~/Images/@Html.ValueFor(m=> Model.Club.InfosClub.urlLogo)" width="300px">
+                </tr>
                 <tr>
                     <p>@Html.ValueFor(m => Model.Club.InfosClub.DescriptionClub)</p>
                 </tr>

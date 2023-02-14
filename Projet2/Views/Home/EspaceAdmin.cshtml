@@ -14,9 +14,12 @@
 </head>
 
 <body>
+
     <h1>@Html.ValueFor(m => Model.InfosPersonnelles.Nom), bienvenue sur votre espace admin </h1>
 
     <div style="margin: 20px">
+        <a href=@("/Home/ClubList4Admin/"+Model.InfosPersonnelles.Nom)><button>Liste des clubs</button></a>
+
         <input type="button" onclick="window.location.href='https://localhost:5001/Home/ClubList4Admin';" value="Liste des clubs" />
         <input type="button" onclick="window.location.href='https://localhost:5001/Home/UserList';" value="Liste des utilisateurs" />
         <input type="button" onclick="window.location.href='https://localhost:5001/Home/FacturationList';" value="Liste des factures" />

@@ -4,99 +4,103 @@
     Layout = "_Layout";
 }
 
-    @using (Html.BeginForm())
-        {
-        <fieldset>
-            @Html.HiddenFor(m => Model.CompteId)            @*crée des inputs cachés qui contiennent les valeurs pour ne pas perdre les données*@
-            @Html.HiddenFor(m => Model.Compte.Id)           @*clé primaire dans la table Compte*@
-            @Html.HiddenFor(m => Model.InfosClubId)
-            @Html.HiddenFor(m => Model.InfosClub.Id)
+@using (Html.BeginForm("ModifyClubCreation", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <fieldset>
+        @Html.HiddenFor(m => Model.CompteId)            @*crée des inputs cachés qui contiennent les valeurs pour ne pas perdre les données*@
+        @Html.HiddenFor(m => Model.Compte.Id)           @*clé primaire dans la table Compte*@
+        @Html.HiddenFor(m => Model.InfosClubId)
+        @Html.HiddenFor(m => Model.InfosClub.Id)
 
-            <legend><h4>Créez votre compte club</h4></legend>
-            <table>
-                <tbody>
-                    <tr>
-                        <td>@Html.LabelFor(m => Model.InfosClub.NomClub)</td>
-                        <td>@Html.TextBoxFor(m => Model.InfosClub.NomClub, new { placeholder = "nom du club" })</td>
-                        <td>@Html.ValidationMessageFor(m => Model.InfosClub.NomClub)</td>
-                    </tr>
+        <legend><h4>Créez votre compte club</h4></legend>
+        <table>
+            <tbody>
+                <tr>
+                    <td>@Html.LabelFor(m => Model.InfosClub.NomClub)</td>
+                    <td>@Html.TextBoxFor(m => Model.InfosClub.NomClub, new { placeholder = "nom du club" })</td>
+                    <td>@Html.ValidationMessageFor(m => Model.InfosClub.NomClub)</td>
+                </tr>
 
-                    <tr>
-                        <td>@Html.LabelFor(m => Model.InfosClub.Adresse)</td>
-                        <td>@Html.TextBoxFor(m => Model.InfosClub.Adresse.NumeroRue, new { placeholder = "n°" })</td>
-                        <td>@Html.ValidationMessageFor(m => Model.InfosClub.Adresse.NumeroRue)</td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>@Html.TextBoxFor(m => Model.InfosClub.Adresse.NomRue, new { placeholder = "rue" })</td>
-                        <td>@Html.ValidationMessageFor(m => Model.InfosClub.Adresse.NomRue)</td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>@Html.TextBoxFor(m => Model.InfosClub.Adresse.CodePostal, new { placeholder = "code postal" })</td>
-                        <td>@Html.ValidationMessageFor(m => Model.InfosClub.Adresse.CodePostal)</td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>@Html.TextBoxFor(m => Model.InfosClub.Adresse.NomVille, new { placeholder = "Ville" })</td>
-                        <td>@Html.ValidationMessageFor(m => Model.InfosClub.Adresse.NomVille)</td>
-                    </tr>
-                    <tr>
-                        <td>@Html.LabelFor(m => Model.Compte.AdressEmail)</td>
-                        <td>@Html.TextBoxFor(m => Model.Compte.AdressEmail, new { type = "email", placeholder = "mail" })</td>
-                        <td>@Html.ValidationMessageFor(m => Model.Compte.AdressEmail)</td>
-                    </tr>
-                    <tr>
-                        <td>@Html.LabelFor(m => Model.Compte.MotDePasse)</td>
-                        <td>@Html.TextBoxFor(m => Model.Compte.MotDePasse, new { type = "password" })</td>
-                        <td>@Html.ValidationMessageFor(m => Model.Compte.MotDePasse)</td>
-                    </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => Model.InfosClub.Adresse)</td>
+                    <td>@Html.TextBoxFor(m => Model.InfosClub.Adresse.NumeroRue, new { placeholder = "n°" })</td>
+                    <td>@Html.ValidationMessageFor(m => Model.InfosClub.Adresse.NumeroRue)</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>@Html.TextBoxFor(m => Model.InfosClub.Adresse.NomRue, new { placeholder = "rue" })</td>
+                    <td>@Html.ValidationMessageFor(m => Model.InfosClub.Adresse.NomRue)</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>@Html.TextBoxFor(m => Model.InfosClub.Adresse.CodePostal, new { placeholder = "code postal" })</td>
+                    <td>@Html.ValidationMessageFor(m => Model.InfosClub.Adresse.CodePostal)</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>@Html.TextBoxFor(m => Model.InfosClub.Adresse.NomVille, new { placeholder = "Ville" })</td>
+                    <td>@Html.ValidationMessageFor(m => Model.InfosClub.Adresse.NomVille)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => Model.Compte.AdressEmail)</td>
+                    <td>@Html.TextBoxFor(m => Model.Compte.AdressEmail, new { type = "email", placeholder = "mail" })</td>
+                    <td>@Html.ValidationMessageFor(m => Model.Compte.AdressEmail)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => Model.Compte.MotDePasse)</td>
+                    <td>@Html.TextBoxFor(m => Model.Compte.MotDePasse, new { type = "password" })</td>
+                    <td>@Html.ValidationMessageFor(m => Model.Compte.MotDePasse)</td>
+                </tr>
 
-                </tbody>
-            </table>
-            <br />
-            <br />
-
-        </fieldset>
+            </tbody>
+        </table>
+        <br />
         <br />
 
-        <fieldset>
-            @*@using (Html.BeginForm("Modify", "User", FormMethod.Post, new { enctype = "multipart/form-data" }));*@
-            <legend><h4>Personnalisez votre espace club</h4></legend>
-            <table>
-                <tbody>
-                    <tr>
-                        <td>@Html.LabelFor(m => Model.InfosClub.titreClub)</td>
-                        <td>@Html.TextBoxFor(m => Model.InfosClub.titreClub, new { placeholder = "Bienvenue sur notre site !" })</td>
-                        <td>@Html.ValidationMessageFor(m => Model.InfosClub.titreClub)</td>
-                    </tr>
+    </fieldset>
+    <br />
 
-                    <tr>
-                        <td>@Html.LabelFor(m => Model.InfosClub.DescriptionClub)</td>
-                        <td>@Html.TextAreaFor(m => Model.InfosClub.DescriptionClub, 10, 60, htmlAttributes: new { style = "width: 100%; max-width: 100%;", placeholder = "Annecy Vol Libre est un club situé à 3 km du Lac d'Annecy, offrant de nombreuses possibilités de vols." })</td>
-                        <td>@Html.ValidationMessageFor(m => Model.InfosClub.DescriptionClub)</td>
-                    </tr>
+    <fieldset>
+        <legend><h4>Personnalisez votre espace club</h4></legend>
+        <table>
+            <tbody>
+                <tr>
+                    <td>@Html.LabelFor(m => Model.InfosClub.titreClub)</td>
+                    <td>@Html.TextBoxFor(m => Model.InfosClub.titreClub, new { placeholder = "Bienvenue sur notre site !" })</td>
+                    <td>@Html.ValidationMessageFor(m => Model.InfosClub.titreClub)</td>
+                </tr>
 
-                    <tr>
+                <tr>
+                    <td>@Html.LabelFor(m => Model.InfosClub.DescriptionClub)</td>
+                    <td>@Html.TextAreaFor(m => Model.InfosClub.DescriptionClub, 10, 60, htmlAttributes: new { style = "width: 100%; max-width: 100%;", placeholder = "Annecy Vol Libre est un club situé à 3 km du Lac d'Annecy, offrant de nombreuses possibilités de vols." })</td>
+                    <td>@Html.ValidationMessageFor(m => Model.InfosClub.DescriptionClub)</td>
+                </tr>
 
-                        <input type="file" accept="image/*" name="image" id="file" onchange="loadFile(event)" style="display: none;">
-                        <p><label for="file" style="cursor: pointer;">Ajoutez le logo de votre club</label></p>
-                        <p><img id="output" width="200" /></p>
+                <tr>
 
-                    </tr>
+                    <input type="file" accept="image/*" name="imageUploaded" id="file" onchange="loadFile(event)" style="display: none;">
+                    <p><label for="file" style="cursor: pointer;">Ajoutez le logo de votre club</label></p>
+                    <p><img id="output" width="200" /></p>
 
-                </tbody>
-            </table>
+                </tr>
 
-
-            <input type="submit" value="Modifier" />
-
-        </fieldset>
+            </tbody>
+        </table>
 
 
-        @*vérification du type de données dans le front*@
-        <script type="text/javascript" src="~/Scripts/jquery-3.3.1.js"></script>
-        <script type="text/javascript" src="~/Scripts/jquery.validate-vsdoc.js"></script>
-        <script type="text/javascript" src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+        <input type="submit" value="Modifier" />
 
-        }
+    </fieldset>
+
+    <script>function loadFile(event) {
+            var image = document.getElementById('output');
+            image.src = URL.createObjectURL(event.target.files[0]);
+        };</script>
+
+
+    @*vérification du type de données dans le front*@
+    <script type="text/javascript" src="~/Scripts/jquery-3.3.1.js"></script>
+    @*<script type="text/javascript" src="~/Scripts/jquery.validate-vsdoc.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.validate.unobtrusive.js"></script>*@
+
+}
