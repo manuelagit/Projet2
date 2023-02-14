@@ -9,19 +9,17 @@
     <center>
         <h1>Bienvenue @Html.ValueFor(m => Model.Club.InfosClub.NomClub)</h1>
 
-        <p><h4>Voici la page que verrons les visiteurs</h4></p>
-        <div>
-            <a href=@("/Home/EspaceClubVisible/"+Model.Club.Id)><button>Valider et accéder à la page club</button></a>
-            @*<input type="submit" value="Valider et accéder à la page club" />*@
-        </div>
-        <br/>
-
-        <a href=@("/Home/ModifyClubCreation/"+Model.Club.Id)><button>Modifier</button></a>
-
-
-        <a href=@("/Home/createUser4Club/"+Model.Club.Id)><button>Ajouter un adhérent</button></a>
+        <p><h4>Voici un apperçu de votre page pour les visiteurs</h4></p>
         
-        <a href=@("/Home/CreateEvenementClub/"+Model.Club.Id)><button>Ajouter une activité</button></a>
+        <a href=@("/Home/EspaceClubVisible/"+Model.Club.Id)><button type="button" class="btnParaBis btnParaBis--btnBis">Valider la page club</button></a>
+      
+
+        <a href=@("/Home/ModifyClubCreation/"+Model.Club.Id)><button class="btnParaBis btnParaBis--btnBis">Modifier</button></a>
+
+
+        <a href=@("/Home/createUser4Club/"+Model.Club.Id)><button class="btnParaBis btnParaBis--btnBis">Ajouter un adhérent</button></a>
+        
+        <a href=@("/Home/CreateEvenementClub/"+Model.Club.Id)><button class="btnParaBis btnParaBis--btnBis">Ajouter une activité</button></a>
 
 
         <br />
@@ -46,10 +44,10 @@
             </tr>
             <br />
             <br />
-            <a href=@("/Home/ListeAdherentsView/"+Model.Club.Id)><button>Liste des adhérents du club</button></a>
+            <a href=@("/Home/ListeAdherentsView/"+Model.Club.Id)><button type="button" class="btnParaBis btnParaBis--btnBis">Liste des adhérents du club</button></a>
 
 
-            <a href=@("/Home/ActivitesClub/"+Model.Club.Id)><button>Liste des activités du club</button></a>
+            <a href=@("/Home/ActivitesClub/"+Model.Club.Id)><button type="button" class="btnParaBis btnParaBis--btnBis">Liste des activités du club</button></a>
 
         </div>
 

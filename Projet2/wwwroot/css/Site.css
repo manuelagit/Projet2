@@ -525,6 +525,30 @@ tbody tr, td, th {
     color: black;
 }
 
+.btnParaBis {
+    margin: 5px;
+    min-width: 20%;
+    border-radius: 50px;
+    border: 0;
+    font-size: 1rem;
+    margin: 1rem 0;
+    padding: 8px 8px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    text-align: center;
+    cursor: pointer;
+}
+
+
+.btnParaBis--btnBis {
+    background: #2BAEF7;
+    color:white;
+}
+
+    .btnParaBis--btnBis:hover {
+        background: lightblue;
+        color: black;
+    }
 
 
 
