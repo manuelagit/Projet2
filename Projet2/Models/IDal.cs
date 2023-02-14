@@ -59,6 +59,10 @@ namespace Projet2.Models
 
         int CreateAdherent(Adherent adherent);
 
+        Utilisateur Authentifier(string adresseEmail, string password);
+        Utilisateur GetUser(int id);
+        Utilisateur GetUser(string idStr);
+       
     }
 }
 

@@ -2,6 +2,8 @@
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using XSystem.Security.Cryptography;
 
 namespace Projet2.Models
 {
@@ -382,7 +384,33 @@ namespace Projet2.Models
             return adherent.Id;
         }
 
+        public Utilisateur Authentifier(string adresseEmail, string password)
+        {
+            string motDePasse = EncodeMD5(password);
+            Utilisateur user = this._bddContext.Utilisateurs.FirstOrDefault(u => u.Compte.AdressEmail == adresseEmail && u.Compte.MotDePasse == motDePasse);
+            return user;
+        }
 
+        public Utilisateur GetUser(int id)
+        {
+            return this._bddContext.Utilisateurs.Find(id);
+        }
+
+        public Utilisateur GetUser(string idStr)
+        {
+            int id;
+            if (int.TryParse(idStr, out id))
+            {
+                return this.GetUser(id);
+            }
+            return null;
+        }
+
+        public static string EncodeMD5(string motDePasse)
+        {
+            string motDePasseSel = "Utilisateur" + motDePasse + "ASP.NET MVC";
+            return BitConverter.ToString(new MD5CryptoServiceProvider().ComputeHash(ASCIIEncoding.Default.GetBytes(motDePasseSel)));
+        }
 
     }
 }
