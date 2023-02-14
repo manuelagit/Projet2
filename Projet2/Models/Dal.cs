@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using XSystem.Security.Cryptography;
+using System.Security.Cryptography;
 
 namespace Projet2.Models
 {

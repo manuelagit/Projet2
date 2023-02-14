@@ -1,6 +1,6 @@
 ﻿@model List<Projet2.Models.Facturation>
 @{
-  Layout = "_Layout";
+    Layout = "_Layout";
     ViewBag.Title = "EspaceFacture";
     }
 
@@ -24,7 +24,7 @@
             <tbody>
                 @foreach (var member in Model)
 
-                {
+                    {
                     <tr>
                         <td>@member.NomFacturation</td>
                         <td>@member.PrenomFacturation </td>
@@ -35,7 +35,7 @@
                         <td>@member.TelephoneFacturation</td>
                         <td>@member.Club.InfosClub.NomClub</td>
                     </tr>
-                }
+                    }
             </tbody>
         </table>
 
@@ -57,9 +57,9 @@
                 <div>
                     <input type="submit" value="Exporter" style="width:300px;height:27px" />
                 </div>
+                }
+                Html.EndForm();
             }
-            Html.EndForm();
-
 
     </center>
 </body>
