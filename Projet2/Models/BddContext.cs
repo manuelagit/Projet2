@@ -55,20 +55,20 @@ namespace Projet2.Models
             Club clubAVL = new Club() { Id = 4, CompteId = 7, InfosClubId = 4 };
 
             ///// Prevol
-            Adresse adresseClubPrevol = new Adresse() { Id = 8, CodePostal = 38870, NomVille = "ST-HILAIRE-DU-TOUVET", NomRue = "rue Daudet", NumeroRue = 43 };
+            Adresse adresseClubPrevol = new Adresse() { Id = 8, CodePostal = 38870, NomVille = "ST-HILAIRE-DU-TOUVET", NomRue = "rue Blanchon", NumeroRue = 43 };
             InfosClub infosClubPrevol = new InfosClub() { Id = 5, NomClub = "Prevol", AdresseId = 8, urlLogo = "logoPrevol.png", DescriptionClub = "Le club de vol libre Gessien (FFVL n°03173) est une association qui est super dynamique et où l’on est super bien accueilli.\n\nOn y trouve de tout, du débutant au vieux baroudeur qui connaît le Jura comme sa poche et qui se fera un plaisir de vous indiquer les pièges à éviter et les bons thermiques à exploiter pour crosser jusqu’à Bellegarde.\n\nIls s’occupent de l’entretien des aires de décollage et d’atterrissage*, organisent des manifestations (Rallye de la Saucisse), des formations de sécurité (soirée repliage de secours avec l’aide de professionnels bénévoles), etc.\n\nVous pouvez prendre contact avec le club au travers de la page FFVL (en cliquant ici) ou en remplissant directement le formulaire ci-dessous.", titreClub = "Bienvenue chez Prevol" };
             Compte compteClubPrevol = new Compte() { Id = 8, AdressEmail = "prevol@gmail.com", MotDePasse = "hgèeeE3" };
             Club clubPrevol = new Club() { Id = 5, CompteId = 8, InfosClubId = 5 };
 
             ///// Air Alpin
-            Adresse adresseClubAirAlpin = new Adresse() { Id = 9, CodePostal = 38870, NomVille = "ST-HILAIRE-DU-TOUVET", NomRue = "rue Daudet", NumeroRue = 43 };
+            Adresse adresseClubAirAlpin = new Adresse() { Id = 9, CodePostal = 38870, NomVille = "ST-HILAIRE-DU-TOUVET", NomRue = "rue du Drac", NumeroRue = 43 };
             InfosClub infosClubAirAlpin = new InfosClub() { Id = 7, NomClub = "Air Alpin", AdresseId = 9, urlLogo = "logoAA.png", DescriptionClub = "Le club de vol libre Gessien (FFVL n°03173) est une association qui est super dynamique et où l’on est super bien accueilli.\n\nOn y trouve de tout, du débutant au vieux baroudeur qui connaît le Jura comme sa poche et qui se fera un plaisir de vous indiquer les pièges à éviter et les bons thermiques à exploiter pour crosser jusqu’à Bellegarde.\n\nIls s’occupent de l’entretien des aires de décollage et d’atterrissage*, organisent des manifestations (Rallye de la Saucisse), des formations de sécurité (soirée repliage de secours avec l’aide de professionnels bénévoles), etc.\n\nVous pouvez prendre contact avec le club au travers de la page FFVL (en cliquant ici) ou en remplissant directement le formulaire ci-dessous.", titreClub = "Bienvenue chez Air Alpin" };
             Compte compteClubAirAlpin = new Compte() { Id = 9, AdressEmail = "airalpin@gmail.com", MotDePasse = "totèd!a" };
             Club clubAirAlpin = new Club() { Id = 7, CompteId = 9, InfosClubId = 7 };
 
 
             ///// CVLS
-            Adresse adresseClubCVLS = new Adresse() { Id = 10, CodePostal = 38870, NomVille = "ANNEMASSE", NomRue = "rue Daudet", NumeroRue = 43 };
+            Adresse adresseClubCVLS = new Adresse() { Id = 10, CodePostal = 38870, NomVille = "ANNEMASSE", NomRue = "ruelle d'Italie", NumeroRue = 43 };
             InfosClub infosClubCVLS = new InfosClub() { Id = 6, NomClub = "Club de Vol Libre du Salève", AdresseId = 10, urlLogo = "logoCVLS.png", DescriptionClub = "Le club de vol libre Gessien (FFVL n°03173) est une association qui est super dynamique et où l’on est super bien accueilli.\n\nOn y trouve de tout, du débutant au vieux baroudeur qui connaît le Jura comme sa poche et qui se fera un plaisir de vous indiquer les pièges à éviter et les bons thermiques à exploiter pour crosser jusqu’à Bellegarde.\n\nIls s’occupent de l’entretien des aires de décollage et d’atterrissage*, organisent des manifestations (Rallye de la Saucisse), des formations de sécurité (soirée repliage de secours avec l’aide de professionnels bénévoles), etc.\n\nVous pouvez prendre contact avec le club au travers de la page FFVL (en cliquant ici) ou en remplissant directement le formulaire ci-dessous.", titreClub = "Bienvenue au Club de Vol Libre du Salève !" };
             Compte compteClubCVLS = new Compte() { Id = 10, AdressEmail = "CVLS@gmail.com", MotDePasse = "klll'r'rs" };
             Club clubCVLS = new Club() { Id = 6, CompteId = 10, InfosClubId = 6 };
