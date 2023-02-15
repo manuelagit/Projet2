@@ -47,7 +47,7 @@
         </form>
 
         <div>
-            <input type="button" onclick="window.location.href='https://localhost:5001/Home/EspaceAdmin';" value="Retour Espace Admin" />
+            <input type="button" onclick="window.location.href='https://localhost:5001/Home/EspaceAdmin';" value="Retour Espace Admin" class="btnParaBis btnParaBis--btnBis"/>
         </div>
 
 
@@ -55,7 +55,7 @@
         @{Html.BeginForm("CreatePDFDocument", "Home", FormMethod.Get);
             {
                 <div>
-                    <input type="submit" value="Exporter" style="width:300px;height:27px" />
+                    <input type="submit" value="Exporter" style="width:300px;height:27px" class="btnParaBis btnParaBis--btnBis"/>
                 </div>
                 }
                 Html.EndForm();
