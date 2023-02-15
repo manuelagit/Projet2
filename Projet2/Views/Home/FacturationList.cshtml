@@ -24,7 +24,7 @@
             <tbody>
                 @foreach (var member in Model)
 
-                    {
+                {
                     <tr>
                         <td>@member.NomFacturation</td>
                         <td>@member.PrenomFacturation </td>
@@ -35,7 +35,7 @@
                         <td>@member.TelephoneFacturation</td>
                         <td>@member.Club.InfosClub.NomClub</td>
                     </tr>
-                    }
+                }
             </tbody>
         </table>
 
@@ -46,20 +46,23 @@
             </div>
         </form>
 
-        <div>
-            <input type="button" onclick="window.location.href='https://localhost:5001/Home/EspaceAdmin';" value="Retour Espace Admin" class="btnParaBis btnParaBis--btnBis"/>
-        </div>
-
 
 
         @{Html.BeginForm("CreatePDFDocument", "Home", FormMethod.Get);
             {
                 <div>
-                    <input type="submit" value="Exporter" style="width:300px;height:27px" class="btnParaBis btnParaBis--btnBis"/>
+                    <input type="submit" value="Exporter" style="width:300px;height:27px" class="btnParaBis btnParaBis--btnBis" />
                 </div>
-                }
-                Html.EndForm();
             }
+            Html.EndForm();
+        }
+
+        <div>
+            <input type="button" onclick="window.location.href='https://localhost:5001/Home/EspaceAdmin';" value="Retour Espace Admin" class="btnParaBis btnParaBis--btnBis" />
+        </div>
+
+
+
 
     </center>
 </body>

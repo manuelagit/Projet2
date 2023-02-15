@@ -6,7 +6,7 @@
 }
 <body>
     <center>
-        <h1>Liste des adhérents</h1>
+        <h1>Liste des adhérents du @Html.ValueFor(m => Model.Club.InfosClub.NomClub)</h1>
 
 
         <table class="tableau-style">
@@ -20,24 +20,25 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (var member in Model.Adherents)
-                {
-                    <tr>
-                        @* <td>@member.Id</td>
-                            <td>@member.ClubId</td>
-                            <td>@member.UtilisateurId</td>*@
-                        <td>@member.Utilisateur.InfosPersonnelles.Nom</td>
-                        <td>@member.Utilisateur.InfosPersonnelles.Prenom</td>
-                        <td>@member.Utilisateur.InfosPersonnelles.DateNaissance.ToShortDateString()</td>
-                        <td>
-                            @member.Utilisateur.InfosPersonnelles.Adresse.NumeroRue,
-                            @member.Utilisateur.InfosPersonnelles.Adresse.NomRue,
-                            @member.Utilisateur.InfosPersonnelles.Adresse.CodePostal,
-                            @member.Utilisateur.InfosPersonnelles.Adresse.NomVille
-                        </td>
-                        <td>@member.Utilisateur.Compte.AdressEmail</td>
-                    </tr>
-                }
+
+                    @foreach (var member in Model.Adherents.Where(r => r.ClubId == Model.Club.Id))
+                    {
+                        <tr>
+                            @* <td>@member.Id</td>
+                    <td>@member.ClubId</td>
+                    <td>@member.UtilisateurId</td>*@
+                            <td>@member.Utilisateur.InfosPersonnelles.Nom</td>
+                            <td>@member.Utilisateur.InfosPersonnelles.Prenom</td>
+                            <td>@member.Utilisateur.InfosPersonnelles.DateNaissance.ToShortDateString()</td>
+                            <td>
+                                @member.Utilisateur.InfosPersonnelles.Adresse.NumeroRue,
+                                @member.Utilisateur.InfosPersonnelles.Adresse.NomRue -
+                                @member.Utilisateur.InfosPersonnelles.Adresse.CodePostal
+                                @member.Utilisateur.InfosPersonnelles.Adresse.NomVille
+                            </td>
+                            <td>@member.Utilisateur.Compte.AdressEmail</td>
+                        </tr>
+                    }
             </tbody>
         </table>
 
@@ -46,7 +47,7 @@
 
 
         <div>
-            <a href=@("/Home/EspaceClubLogged/"+Model.Club.Id)><button type="button"class="btnParaBis btnParaBis--btnBis">Retour Espace club</button></a>
+            <a href=@("/Home/EspaceClubVisible/"+Model.Club.Id)><button type="button"class="btnParaBis btnParaBis--btnBis">Retour Espace club</button></a>
         </div>
 
     </center>

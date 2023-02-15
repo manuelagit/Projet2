@@ -78,58 +78,60 @@
                     <th>Séléction</th>
                 </tr>
             </thead>
-                <tbody>
-                    @foreach (var member in Model.Activites.Where(i => i.EvenementClubId == null))
+            <tbody>
+                @foreach (var member in Model.Activites.Where(i => i.EvenementClubId == null))
 
-                    {
-                        <tr>
-                            @*<td>@member.Id</td>*@
-                            @*<td>@member.TypeActivite</td>*@
-                            <td>@member.NomActivite</td>
-                            <td>@member.Club.InfosClub.NomClub</td>
-                            <td>@member.DateDebutActivite.ToString("dd/MM/yyyy")</td>
-                            <td>@member.DateFinActivite.ToString("dd/MM/yyyy")</td>
-                            <td>@member.DescriptionActivite</td>
-                            <td>@member.LieuActivite</td>
-                            <td>@member.NombrePlaceActivite</td>
-                            <td>@member.SortieAdherent.NomLeader</td>
-                            <td>@member.SortieAdherent.Telephone</td>
-                            <td><input name="Activite" value="news" type="radio" /></td>
-                        </tr>
+                {
+                    <tr>
+                        @*<td>@member.Id</td>*@
+                        @*<td>@member.TypeActivite</td>*@
+                        <td>@member.NomActivite</td>
+                        <td>@member.Club.InfosClub.NomClub</td>
+                        <td>@member.DateDebutActivite.ToString("dd/MM/yyyy")</td>
+                        <td>@member.DateFinActivite.ToString("dd/MM/yyyy")</td>
+                        <td>@member.DescriptionActivite</td>
+                        <td>@member.LieuActivite</td>
+                        <td>@member.NombrePlaceActivite</td>
+                        <td>@member.SortieAdherent.NomLeader</td>
+                        <td>@member.SortieAdherent.Telephone</td>
+                        <td><input name="Activite" value="news" type="radio" /></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <br />
+
+        <div>
+            <a href=@("/Home/PaymentViewUser/")><button type="button" id="inscrirebutton" class="btnParaBis btnParaBis--btnBis">M'inscrire</button></a>
+        </div>
+
+
+    }
+    @*vérification du type de données dans le front*@
+    <script type="text/javascript" src="~/Scripts/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.validate-vsdoc.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+
+    @section JS{
+        <script>function updatebtn() {
+                var radioButtons = document.querySelectorAll('input[name="Activite"]')
+                var ischecked = false
+                for (let btn of radioButtons) {
+                    if (btn.checked) {
+                        ischecked = true
                     }
-                </tbody>
-            </table>
-            <br />
-
-
-            <input type="button" onclick="window.location.href='https://localhost:5001/Home/PaymentViewUser';" value="S'inscrire" style="display:none;" id="inscrirebutton" class="btnParaBis btnParaBis--btnBis"/>
-
+                }
+                if (ischecked) {
+                    var inputbtn = document.getElementById("inscrirebutton")
+                    inputbtn.style.display = "block"
+                }
             }
-            @*vérification du type de données dans le front*@
-            <script type="text/javascript" src="~/Scripts/jquery-3.3.1.js"></script>
-            <script type="text/javascript" src="~/Scripts/jquery.validate-vsdoc.js"></script>
-            <script type="text/javascript" src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+            var radioButtons = document.querySelectorAll('input[name="Activite"]')
+            for (let btn of radioButtons) {
+                btn.addEventListener("click", function () {
+                    updatebtn()
+                })
+            }</script>
+    }
 
-            @section JS{
-                <script>function updatebtn() {
-                        var radioButtons = document.querySelectorAll('input[name="Activite"]')
-                        var ischecked = false
-                        for (let btn of radioButtons) {
-                            if (btn.checked) {
-                                ischecked = true
-                            }
-                        }
-                        if (ischecked) {
-                            var inputbtn = document.getElementById("inscrirebutton")
-                            inputbtn.style.display = "block"
-                        }
-                    }
-                    var radioButtons = document.querySelectorAll('input[name="Activite"]')
-                    for (let btn of radioButtons) {
-                        btn.addEventListener("click", function () {
-                            updatebtn()
-                        })
-                    }</script>
-            }
-
-    </body>
+</body>

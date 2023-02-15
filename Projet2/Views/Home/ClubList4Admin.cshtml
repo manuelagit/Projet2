@@ -1,5 +1,5 @@
-﻿@*//@model List<Projet2.Models.Club>*@
-@model Projet2.ViewModels.CreateClubViewModel
+﻿@model List<Projet2.Models.Club>
+@*@model Projet2.ViewModels.CreateClubViewModel*@
 
 @{
     ViewBag.Title = "ClubList";
@@ -8,10 +8,10 @@
 
 
 <body>
-        <center>
-            <h1>Liste des clubs</h1>
-            <label for="name">Recherche</label>
-            <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Recherche par nom..." class="btnPara btnPara--btnClub">
+    <center>
+        <h1>Liste des clubs</h1>
+        <label for="name">Recherche</label>
+        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Recherche par nom...">
 
             <table class="tableau-style" id="ListClubsTable">
                 <thead>
@@ -24,7 +24,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var member in Model.Clubs)
+                    @foreach (var member in Model)
 
                     {
                         <tr>
@@ -77,17 +77,16 @@
 
 
 
-        <a href=@("/Home/EspaceAdmin/"+Model.Utilisateur.InfosPersonnelles.Nom)><button class="btnParaBis btnParaBis--btnBis">Bon retour</button></a>
 
 
-        <div style="margin: 20px">
-            <button type="submit" onclick="window.location.href='https://localhost:5001/Home/CreateClub';" class="btnParaBis btnParaBis--btnBis">Créer club</button>
-        </div>
-        <div>
+            <div style="margin: 20px">
+                <button type="submit" onclick="window.location.href='https://localhost:5001/Home/CreateClub';" class="btnParaBis btnParaBis--btnBis">Créer club</button>
+            </div>
+            <div>
 
-            <input type="button" onclick="window.location.href='https://localhost:5001/Home/EspaceAdmin';" value="Retour Espace Admin" class="btnParaBis btnParaBis--btnBis"/>
-        </div>
-      </center>
+                <input type="button" onclick="window.location.href='https://localhost:5001/Home/EspaceAdmin';" value="Retour Espace Admin" class="btnParaBis btnParaBis--btnBis" />
+            </div>
+    </center>
     </body>
 
 

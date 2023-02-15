@@ -12,7 +12,7 @@
             <tbody>
                  <tr>
 
-                    <td>@Html.LabelFor(m => Model.ClubId)</td>
+                    <td>@Html.LabelFor(m => Model.Club.InfosClub.NomClub)</td>
                     <td>@Html.DropDownListFor(M => M.ClubId, new SelectList(ViewBag.Clubs as List<Projet2.Models.Club>,"Id", "Name"))</td>
                     <td>@Html.ValidationMessageFor(m => Model.ClubId)</td>
                 </tr>
@@ -67,7 +67,6 @@
         <br />
         <br />
 
-        <input type="button" onclick="window.location.href='https://localhost:5001/Home/Activites';" value="Liste des activites" />
         <input type="image" src="~/Images/btnValider.png" alt="Valider" width="43" height="38" />
     </fieldset>
 }

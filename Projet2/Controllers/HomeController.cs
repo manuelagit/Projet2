@@ -333,7 +333,6 @@ namespace Projet2.Controllers
 
 
 
-
         // Creation of a club
         // Display of the view
         public IActionResult CreateClub()
@@ -415,14 +414,28 @@ namespace Projet2.Controllers
 
 
 
+        //public IActionResult EspaceAdmin()
+        //{
+        //    Dal dal = new Dal();
+        //    List<Utilisateur> utilisateurs = dal.GetUsersList();
+        //    List<Club> clubs = dal.GetClubsList();
 
+        //    CreateClubViewModel createClubViewModel = new CreateClubViewModel { Clubs = clubs, Utilisateurs = utilisateurs };
 
+        //    return View("EspaceAdmin", createClubViewModel);
+        //}
 
-        public IActionResult EspaceAdmin(string nomAdmin)
+        //[HttpPost]
+        //public IActionResult EspaceAdmin(CreateClubViewModel createClubViewModel)
+        //{
+
+        //    return View(createClubViewModel);
+        //}
+
+        public IActionResult EspaceAdmin()
         {
             return View();
         }
-
 
         public IActionResult EspaceClub()
         {
@@ -481,15 +494,23 @@ namespace Projet2.Controllers
 
 
 
-        public IActionResult ClubList4Admin(string nomAdmin)
+        //public IActionResult ClubList4Admin(CreateClubViewModel createClubViewModel)
+        //{
+        //    Dal dal = new Dal();
+        //    List<Club> listeClubs4Admin = dal.GetClubsList(); // to be able to use the helper, instead of ViewData["ListeUtilisateurs"] = dal.GetUsersList();
+        //   // CreateClubViewModel createClubViewModel = new CreateClubViewModel { Clubs = listeClubs4Admin };
+
+        //    return View("ClubList4Admin", createClubViewModel);
+        //}
+
+        public IActionResult ClubList4Admin()
         {
             Dal dal = new Dal();
             List<Club> listeClubs4Admin = dal.GetClubsList(); // to be able to use the helper, instead of ViewData["ListeUtilisateurs"] = dal.GetUsersList();
-            CreateClubViewModel createClubViewModel = new CreateClubViewModel { Clubs = listeClubs4Admin };
+                                                              // CreateClubViewModel createClubViewModel = new CreateClubViewModel { Clubs = listeClubs4Admin };
 
-            return View("ClubList4Admin", createClubViewModel);
+            return View(listeClubs4Admin);
         }
-
 
 
 
@@ -734,7 +755,7 @@ namespace Projet2.Controllers
             List<SortieAdherent> sortieAdherents = dal.GetSortieAdherentList();
             List<Club> clubs = dal.GetClubsList();
 
-            ActiviteViewModel viewModel = new ActiviteViewModel
+            ActiviteViewModel activiteViewModel = new ActiviteViewModel
             {
                 EvenementClubs = evenementClubs,
                 SortieAdherents = sortieAdherents,
@@ -742,9 +763,14 @@ namespace Projet2.Controllers
                 Clubs = clubs,
             };
 
-            return View(viewModel);
+            return View(activiteViewModel);
         }
 
+        [HttpPost]
+        public IActionResult Activites(ActiviteViewModel activiteViewModel)
+        {
+            return View("EspaceParapentiste");
+        }
 
         public IActionResult ActivitesClub(int Id)
         {
@@ -769,7 +795,8 @@ namespace Projet2.Controllers
                     Club = club,
 
                 };
-                
+
+
                 return View(activiteViewModel);
             }
         }
@@ -778,7 +805,10 @@ namespace Projet2.Controllers
         [HttpPost]
         public IActionResult ActivitesClub(ActiviteViewModel activiteViewModel)
         {
+            Dal dal = new Dal();
+            Club club = dal.GetClubsList().Where(r => r.Id == activiteViewModel.Club.Id).FirstOrDefault();
 
+            //return RedirectToAction("EspaceClubVisible", new { @Id = club.Id }); //change l'url 
             return View(activiteViewModel);
         }
 

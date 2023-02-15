@@ -481,8 +481,9 @@ updatebtn {
 }
 
 thead tr {
-    background-color: #2BAEF7;
-    color : #fff;
+    //background-color: #2BAEF7;
+    background-color: #5499C7;
+    color: #fff;
 }
 
 th, td {

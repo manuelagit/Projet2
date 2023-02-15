@@ -15,17 +15,17 @@
 
         <table class="tableau-style" id="ListUsersTable">
             <thead>
-            <!--<table id="ListUsersTable" onkeyup="myFunction()" border="1" style="margin: 20px">-->
+                <!--<table id="ListUsersTable" onkeyup="myFunction()" border="1" style="margin: 20px">-->
 
-            <tr>
-                <th>Id</th>
-                <th>Nom</th>
-                <th>Prénom</th>
-                <th>Date de naissance</th>
-                <th>Adresse</th>
-                <th>adresse Email</th>
-                <th>Mot de passe</th>
-            </tr>
+                <tr>
+                    <th>Id</th>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Date de naissance</th>
+                    <th>Adresse</th>
+                    <th>adresse Email</th>
+                    <th>Mot de passe</th>
+                </tr>
             <tbody>
                 @foreach (var member in Model)
 
@@ -71,7 +71,7 @@
             <div style="margin: 20px">
                 <input type="text" name="id" placeholder="Id" size="10rem" />
                 <button type="submit">Supprimer membre</button>
-
+        </form>
 
 
         <form action="ModifyUser" method="get">
@@ -82,14 +82,17 @@
         </form>
 
 
+        <form action="createUser" method="get">
 
-        <div style="margin: 20px">
-            <button type="submit" onclick="window.location.href='https://localhost:5001/Home/createUser';">Créer membre</button>
-        </div>
+            <div style="margin: 20px">
+                <button type="submit" onclick="window.location.href='https://localhost:5001/Home/createUser';">Créer membre</button>
+            </div>
+        </form>
 
-        <div>
-            <input type="button" onclick="window.location.href='https://localhost:5001/Home/EspaceAdmin';" value="Retour Espace Admin" />
-        </div>
+            <div>
+                <input type="button" onclick="window.location.href='https://localhost:5001/Home/EspaceAdmin';" class="btnParaBis btnParaBis--btnBis" value="Retour Espace Admin" />
+            </div>
+
     </body>
-   </center>
+</center>
 
