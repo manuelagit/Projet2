@@ -19,7 +19,7 @@
 
                     <h3>Contact</h3>
                     <p>@Html.ValueFor(m => Model.Club.Compte.AdressEmail)</p>
-                    <button type="button" onclick="window.location.href='https://localhost:5001/Home/ListeAdherentsView';"class="btnPara btnPara--btnClub">Liste des adhérents</button>
+                    <a href="@("/Home/ListeAdherentsView/"+Model.Club.Id)"><button type="button" class="btnPara btnPara--btnClub">Liste des adhérents</button></a>
                     <a href="@("/Home/ActivitesClub/"+Model.Club.Id)"><button type="button"  class="btnPara btnPara--btnClub" >Liste des activités du club</button></a> 
 
                 </div>
