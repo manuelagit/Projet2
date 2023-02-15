@@ -844,7 +844,7 @@ namespace Projet2.Controllers
 
 
             dal.CreateEvenementClub(evenementClub);
-            Activite activite = new Activite { EvenementClub = evenementClub };
+            Activite activite = new Activite { EvenementClub = evenementClub, EvenementClubId = evenementClub.Id, ClubId = clubId, LieuActivite = activiteViewModel.Activite.LieuActivite, NomActivite = activiteViewModel.Activite.NomActivite, DescriptionActivite = activiteViewModel.Activite.DescriptionActivite };
 
             dal.CreateActivite(activite);
             CreateClubViewModel createClubViewModel = new CreateClubViewModel { Club = club };
