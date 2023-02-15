@@ -85,17 +85,21 @@ namespace Projet2.Models
             EvenementClub evenementClub1 = new EvenementClub { Id = 1, StageId = 1, Stage = stage };
             EvenementClub evenementClub2 = new EvenementClub { Id = 2, VoyageId = 1, Voyage = voyage };*/
 
-            EvenementClub evenement1 = new EvenementClub() { Id =1, NiveauRequis = 1, Prix = 45.3};
-            EvenementClub evenement2 = new EvenementClub() { Id = 2, NiveauRequis = 1, Prix = 50 };
-            SortieAdherent sortieAdherent1 = new SortieAdherent() { Id = 1, NomLeader = "Alexandre", Telephone = "0645857812" };
+            EvenementClub evenement1 = new EvenementClub() { Id =1, NiveauRequis = 1, Prix = 450};
+            EvenementClub evenement2 = new EvenementClub() { Id = 2, NiveauRequis = 1, Prix = 590 };
+            SortieAdherent sortieAdherentVolSoir = new SortieAdherent() { Id = 1, NomLeader = "Marc", Telephone = "0612327812" };
+            SortieAdherent sortieAdherentDune = new SortieAdherent() { Id = 2, NomLeader = "Alexandre", Telephone = "0645857812" };
 
 
             Activite activite1 = new Activite() { Id = 1, EvenementClubId = 1,  NomActivite = "Voyage Maroc", DateDebutActivite = new DateTime(2023/03/18), DateFinActivite = new DateTime(2023 / 03 / 18), DescriptionActivite = "Stage perfectionnement", LieuActivite = "Maroc", NombrePlaceActivite = 12, TypeActivite = "EvenementClub", ClubId = 4, EvenementClub = evenement1 };
-            Activite activite2 = new Activite() { Id = 2, EvenementClubId = 2, NomActivite = "Voyage Algerie", DateDebutActivite = new DateTime(2023 / 03 / 18), DateFinActivite = new DateTime(2023 / 03 / 18), DescriptionActivite = "Stage aprofondissement", LieuActivite = "Algerie", NombrePlaceActivite = 20, TypeActivite = "EvenementClub", ClubId = 6, EvenementClub = evenement2 };
-            Activite activite3 = new Activite() { Id = 3, SortieAdherentId = 1, NomActivite = "Voyage découverte vin", DateDebutActivite = new DateTime(2023 / 03 / 18), DateFinActivite = new DateTime(2023 / 03 / 18), DescriptionActivite = "Decouverte vin Alexandre", LieuActivite = "Bordeaux", NombrePlaceActivite = 5, TypeActivite = "SortieAdherent", ClubId = 6, SortieAdherent = sortieAdherent1 };
+            Activite activite2 = new Activite() { Id = 2, EvenementClubId = 2, NomActivite = "Voyage Algerie", DateDebutActivite = new DateTime(2023 / 03 / 18), DateFinActivite = new DateTime(2023 / 03 / 18), DescriptionActivite = "Stage cross", LieuActivite = "Slovénie", NombrePlaceActivite = 20, TypeActivite = "EvenementClub", ClubId = 6, EvenementClub = evenement2 };
+            Activite activite3 = new Activite() { Id = 3, SortieAdherentId = 1, NomActivite = "Vol du soir", DateDebutActivite = new DateTime(2023 / 03 / 18), DateFinActivite = new DateTime(2023 / 03 / 18), DescriptionActivite = "Découverte vin Alexandre", LieuActivite = "Bordeaux", NombrePlaceActivite = 5, TypeActivite = "SortieAdherent", ClubId = 6, SortieAdherent = sortieAdherentVolSoir };
+            Activite activite4 = new Activite() { Id = 4, SortieAdherentId = 2, NomActivite = "Wagas à la Dune", DateDebutActivite = new DateTime(2023 / 07 / 12), DateFinActivite = new DateTime(2023 / 03 / 19), DescriptionActivite = "Dune du Pilat et vin", LieuActivite = "Bordeaux", NombrePlaceActivite = 10, TypeActivite = "SortieAdherent", ClubId = 6, SortieAdherent = sortieAdherentDune };
+
             Admin admin1 = new Admin() { Id = 1, UtilisateurId = 1, IsAdmin=true};
 
-            Adherent adherent1 = new Adherent() { Id = 1, ClubId = 6, UtilisateurId=1 };
+            Adherent adherent1 = new Adherent() { Id = 1, ClubId = 6, UtilisateurId = 1 };
+            Adherent alexandre = new Adherent() { Id = 2, ClubId = 6, UtilisateurId = 2 };
 
 
             this.Adresses.Add(adresse);
@@ -131,6 +135,7 @@ namespace Projet2.Models
             this.Activites.Add(activite1);
             this.Activites.Add(activite2);
             this.Activites.Add(activite3);
+            this.Activites.Add(activite4);
 
             this.Facturations.Add(facturation);
             this.Paiements.Add(paiement);
